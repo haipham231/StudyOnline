@@ -62,6 +62,31 @@ Bám mạch kiến thức Toán 1 — Chương trình GDPT 2018. **Không có nh
 |---|---|
 | 📖 Toán đố | 8 dạng: thêm, bớt, gộp nhóm, nhiều hơn, ít hơn, rời khỏi, tìm số lúc đầu, hơn kém |
 
+### 🗡️ Giải cứu công chúa
+
+Game phiêu lưu: rồng bắt công chúa, bé phải vượt **6 chặng** để cứu. Mỗi câu đúng là
+hiệp sĩ tiến một bước; sai thì mất một trái tim, hết ba tim phải chơi lại chặng đó
+(tiến độ các chặng trước vẫn giữ). Chặng cuối là trận đánh rồng có thanh máu.
+
+| Chặng | Nội dung toán | Số câu |
+|---|---|---|
+| 🌳 Rừng Xanh | Cộng trừ phạm vi 10 | 5 |
+| 🏞️ Dòng Sông | Tách gộp số, điền số còn thiếu | 5 |
+| ⛰️ Núi Đá | Cộng trừ phạm vi 20, tính dãy | 6 |
+| 🏜️ Sa Mạc | So sánh, lớn nhất bé nhất, dãy số | 6 |
+| 🌋 Hang Lửa | Toán đố | 6 |
+| 🏰 Lâu Đài Rồng | Trộn tất cả, phạm vi 100 — **trận cuối** | 8 |
+
+Mỗi chặng chấm 1–3 ⭐ tuỳ số tim còn lại. Tiến độ lưu bằng `localStorage`.
+
+**Nhân vật** (hiệp sĩ, công chúa, rồng, lồng giam) được **vẽ bằng SVG trong
+`js/nhan-vat.js`** — hoàn toàn tự làm, không dùng hình có bản quyền. Muốn đổi sang ảnh
+khác chỉ cần sửa file đó, ví dụ:
+
+```js
+hiepSi: function () { return '<img src="…" alt="hiệp sĩ">'; }
+```
+
 ### 📝 Bài kiểm tra
 
 Ba bộ đề theo ba mốc của năm học, mỗi đề **20 câu** rút theo ma trận cố định từ
@@ -88,14 +113,17 @@ máy mới chấm. Có đồng hồ đếm thời gian làm bài. Phiếu kết 
 ├── css/style.css         # giao diện chung cho cả hai khu
 ├── js/
 │   ├── quiz.js           # engine dùng chung (luyện tập + chế độ kiểm tra)
-│   ├── toan-lop-1.js     # bộ sinh đề lớp 1 — trang bài tập và trang kiểm tra dùng chung
+│   ├── toan-lop-1.js     # bộ sinh đề lớp 1 — bài tập, kiểm tra và game dùng chung
+│   ├── game-cong-chua.js # engine game Giải cứu công chúa
+│   ├── nhan-vat.js       # hiệp sĩ, công chúa, rồng — vẽ bằng SVG
 │   └── con-vat.js        # dữ liệu con vật (khu mầm non)
 ├── mam-non/
 │   ├── index.html
 │   └── bai-tap/*.html
 └── lop-1/
     ├── index.html
-    ├── kiem-tra.html     # ba bộ đề, chấm thang 10
+    ├── cuu-cong-chua.html # game 6 chặng
+    ├── kiem-tra.html      # ba bộ đề, chấm thang 10
     └── bai-tap/*.html
 ```
 

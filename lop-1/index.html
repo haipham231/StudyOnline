@@ -32,6 +32,12 @@
 
 <script src="../js/quiz.js"></script>
 <script>
+  var GAME = {
+    id: 'game-cong-chua', emoji: '🗡️', mau: '#ff8fd0', ten: 'Giải cứu công chúa',
+    mo_ta: 'Rồng bắt mất công chúa rồi! Vượt 6 chặng, giải đúng bài toán để tiến bước và đánh bại rồng.',
+    href: 'cuu-cong-chua.html'
+  };
+
   var KIEM_TRA = {
     id: 'kiem-tra', emoji: '📝', mau: '#8b7bf7', ten: 'Bài kiểm tra',
     mo_ta: 'Ba bộ đề theo giữa kì 1, cuối kì 1 và cuối năm. Máy chấm điểm thang 10 và chỉ ra bé còn yếu phần nào.',
@@ -87,7 +93,16 @@
     card.style.setProperty('--tint', bai.mau);
 
     var huy = '';
-    if (noiBat) {
+    if (bai.id === 'game-cong-chua') {
+      var tt = null;
+      try { tt = JSON.parse(localStorage.getItem('studyonline:game-cong-chua') || 'null'); } catch (e) {}
+      if (tt) {
+        var sao = 0;
+        Object.keys(tt.sao || {}).forEach(function (k) { sao += tt.sao[k]; });
+        huy = '<span class="best">' + (tt.daCuu ? '👑 Đã cứu được công chúa · ' : 'Đang ở chặng ' + tt.mo + ' · ') +
+              sao + '/18 ⭐</span>';
+      }
+    } else if (noiBat) {
       var ds = Quiz.readLichSu('kiem-tra');
       if (ds.length) huy = '<span class="best">Lần gần nhất: ' + ds[0].diem + '/10 — ' + ds[0].de + '</span>';
     } else if (best) {
@@ -101,11 +116,12 @@
     return card;
   }
 
-  // Thẻ bài kiểm tra đặt lên đầu
-  var luoiKT = document.createElement('div');
-  luoiKT.className = 'grid';
-  luoiKT.appendChild(taoThe(KIEM_TRA, true));
-  goc.appendChild(luoiKT);
+  // Game và bài kiểm tra đặt lên đầu
+  var luoiTren = document.createElement('div');
+  luoiTren.className = 'grid';
+  luoiTren.appendChild(taoThe(GAME, true));
+  luoiTren.appendChild(taoThe(KIEM_TRA, true));
+  goc.appendChild(luoiTren);
 
   NHOM.forEach(function (nhom) {
     var tieu = document.createElement('h2');
