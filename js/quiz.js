@@ -279,7 +279,7 @@
         feedback.className = 'feedback ok';
         feedback.textContent = pick(['🎉 Giỏi lắm!', '👏 Chính xác!', '⭐ Tuyệt vời!', '✅ Đúng rồi!']);
       } else {
-        state.misses.push({ text: q.text, given: given, answer: q.answer });
+        state.misses.push({ text: q.text, after: q.after, given: given, answer: q.answer });
         feedback.className = 'feedback bad';
         feedback.textContent = '❌ Chưa đúng — đáp án là ' + q.answer;
       }
@@ -337,7 +337,8 @@
         state.misses.forEach(function (m) {
           ul.appendChild(el('li', null,
             m.text + ' <span class="yours">' + m.given + '</span>' +
-            '<span class="right">' + m.answer + '</span>'));
+            '<span class="right">' + m.answer + '</span>' +
+            (m.after ? ' ' + m.after : '')));
         });
         review.appendChild(ul);
         panel.appendChild(review);
