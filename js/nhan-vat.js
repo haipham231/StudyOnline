@@ -31,9 +31,8 @@
   }
 
   // Công chúa — vương miện, váy hồng
-  function congChua(rong) {
-    return svg(
-      '<ellipse cx="50" cy="114" rx="24" ry="5" fill="rgba(43,47,85,.14)"/>' +
+  function hinhCongChua(coBong) {
+    return (coBong ? '<ellipse cx="50" cy="114" rx="24" ry="5" fill="rgba(43,47,85,.14)"/>' : '') +
       '<path d="M50 48 l26 62 h-52z" fill="#ff8fd0"/>' +
       '<path d="M50 48 l10 62 h-20z" fill="#ffa8da"/>' +
       '<circle cx="50" cy="28" r="20" fill="#ffd9b8"/>' +
@@ -44,8 +43,11 @@
       '<circle cx="58" cy="32" r="3" fill="#2b2f55"/>' +
       '<circle cx="36" cy="38" r="4" fill="#ff9aa2" opacity=".6"/>' +
       '<circle cx="65" cy="38" r="4" fill="#ff9aa2" opacity=".6"/>' +
-      '<path d="M44 40 q6 6 12 0" stroke="#2b2f55" stroke-width="2.6" fill="none" stroke-linecap="round"/>',
-      rong);
+      '<path d="M44 40 q6 6 12 0" stroke="#2b2f55" stroke-width="2.6" fill="none" stroke-linecap="round"/>';
+  }
+
+  function congChua(rong) {
+    return svg(hinhCongChua(true), rong);
   }
 
   // Rồng — kẻ bắt cóc công chúa
@@ -70,14 +72,17 @@
       rong_);
   }
 
-  // Lồng giam công chúa ở cuối chặng
+  // Lồng giam — công chúa đang bị nhốt bên trong
   function long(rong) {
     return svg(
+      '<ellipse cx="50" cy="110" rx="30" ry="5" fill="rgba(43,47,85,.14)"/>' +
       '<rect x="18" y="26" width="64" height="80" rx="8" fill="#e2e7fb"/>' +
-      '<rect x="24" y="32" width="52" height="68" rx="5" fill="#fff"/>' +
+      '<rect x="24" y="32" width="52" height="68" rx="5" fill="#fff6fb"/>' +
+      '<g transform="translate(24,34) scale(.52)">' + hinhCongChua(false) + '</g>' +
       '<g stroke="#9aa3c7" stroke-width="4" stroke-linecap="round">' +
       '<path d="M34 32 v68"/><path d="M50 32 v68"/><path d="M66 32 v68"/></g>' +
-      '<rect x="14" y="20" width="72" height="12" rx="6" fill="#8b7bf7"/>',
+      '<rect x="14" y="20" width="72" height="12" rx="6" fill="#8b7bf7"/>' +
+      '<rect x="24" y="98" width="52" height="8" rx="3" fill="#c3cbec"/>',
       rong);
   }
 

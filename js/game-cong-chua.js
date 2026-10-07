@@ -185,6 +185,13 @@
     var canh = el('div', 'canh');
     canh.style.setProperty('--nen', man.nen);
 
+    // vài chi tiết nền cho cảnh đỡ trống
+    var trangTri = el('div', 'trang-tri');
+    trangTri.innerHTML = new Array(5).join().split(',')
+      .map(function (_, k) { return '<span style="left:' + (6 + k * 23) + '%">' + man.emoji + '</span>'; })
+      .join('');
+    canh.appendChild(trangTri);
+
     var duong = el('div', 'duong');
     for (var b = 0; b < man.soCau; b++) {
       duong.appendChild(el('i', 'moc' + (b < van.buoc ? ' qua' : '')));
