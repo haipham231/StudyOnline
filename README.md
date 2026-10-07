@@ -63,6 +63,39 @@ Bám mạch kiến thức Toán 1 — Chương trình GDPT 2018. **Không có nh
 |---|---|
 | 📖 Toán đố | 8 dạng: thêm, bớt, gộp nhóm, nhiều hơn, ít hơn, rời khỏi, tìm số lúc đầu, hơn kém |
 
+### 🎃 Đêm Halloween
+
+Phù thuỷ giấu hết kẹo của cả xóm. Bé vượt **6 ải**, mỗi ải **xen kẽ một câu Toán và một
+câu Tiếng Việt**. Đúng được một viên kẹo, đúng liền từ ba câu trở lên được thưởng gấp đôi;
+sai mất một quả bí ngô, hết ba quả thì làm lại ải đó.
+
+| Ải | Toán | Tiếng Việt |
+|---|---|---|
+| 🎃 Cổng Bí Ngô | Cộng trừ phạm vi 10 | Chữ cái, thanh điệu |
+| 👻 Lối Mòn Ma Trơi | Tách gộp số | Ghép vần, âm đầu |
+| 🦇 Rừng Dơi Đen | Cộng trừ phạm vi 20 | Quy tắc chính tả, vần |
+| 🐈‍⬛ Nghĩa Địa Mèo Đen | So sánh, dãy số | Chính tả dễ lẫn |
+| 🐉 Hang Rồng Lửa | Toán đố | Từ ngữ, câu |
+| 🧙‍♀️ Lâu Đài Phù Thuỷ | Trộn tất cả | Trộn tất cả — **ải cuối** |
+
+Thắng ải cuối thì bé thành **Vua Halloween**.
+
+### 📚 Tiếng Việt lớp 1
+
+Bám chương trình Tiếng Việt 1 (GDPT 2018). Toàn bộ là dạng bấm chọn vì bé chưa gõ chữ được,
+và **có nút loa đọc đề** cho bé chưa đọc trơn.
+
+| Bài | Nội dung |
+|---|---|
+| 🔤 Chữ cái | Chữ hoa – chữ thường, âm đầu |
+| 🧩 Ghép vần | Âm đầu + vần + thanh thành tiếng |
+| 🎵 Thanh điệu | Ngang, huyền, sắc, hỏi, ngã, nặng |
+| 📏 Quy tắc chính tả | c/k, g/gh, ng/ngh |
+| ✍️ Chính tả dễ lẫn | s/x, ch/tr, l/n, d/gi/r, dấu hỏi – dấu ngã |
+| 🏷️ Từ ngữ | Từ chỉ sự vật – hoạt động – đặc điểm, từ trái nghĩa |
+| 📝 Câu | Sắp xếp câu, dấu cuối câu, đếm tiếng |
+| 📖 Đọc hiểu | Đoạn văn ngắn kèm câu hỏi |
+
 ### 🗡️ Giải cứu công chúa
 
 Game phiêu lưu: rồng bắt công chúa, bé phải vượt **6 chặng** để cứu. Mỗi câu đúng là
@@ -173,9 +206,12 @@ Cùng cơ chế với lớp 1: không báo đúng sai từng câu, chấm thang 
 ├── js/
 │   ├── quiz.js           # engine dùng chung (luyện tập + chế độ kiểm tra)
 │   ├── o-tra-loi.js      # ô nhập đáp án dùng chung (số nguyên, thập phân, bấm chọn)
-│   ├── toan-lop-1.js     # bộ sinh đề lớp 1
+│   ├── toan-lop-1.js     # bộ sinh đề Toán lớp 1
+│   ├── tieng-viet-lop-1.js # bộ sinh đề Tiếng Việt lớp 1
 │   ├── toan-lop-5.js     # bộ sinh đề lớp 5
 │   ├── game-cong-chua.js # engine game Giải cứu công chúa (lớp 1)
+│   ├── game-halloween.js # engine game Đêm Halloween (lớp 1)
+│   ├── hoat-hinh.js      # bọc trình phát Lottie, có đường lui SVG
 │   ├── game-vu-tru.js    # engine game Du hành vũ trụ (lớp 5)
 │   ├── nhan-vat.js       # hiệp sĩ, công chúa, rồng — vẽ bằng SVG
 │   ├── vat-the-vu-tru.js # phi thuyền, hành tinh, trạm vũ trụ
@@ -186,8 +222,10 @@ Cùng cơ chế với lớp 1: không báo đúng sai từng câu, chấm thang 
 ├── lop-1/
 │   ├── index.html
 │   ├── cuu-cong-chua.html # game 6 chặng
+│   ├── halloween.html     # game 6 ải, toán xen tiếng Việt
 │   ├── kiem-tra.html      # ba bộ đề, chấm thang 10
-│   └── bai-tap/*.html
+│   ├── bai-tap/*.html     # Toán
+│   └── tieng-viet/*.html  # Tiếng Việt
 └── lop-5/
     ├── index.html
     ├── du-hanh-vu-tru.html # game 6 hành tinh

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Học Toán Lớp 1</title>
+<title>Học Lớp 1 — Toán và Tiếng Việt</title>
 <meta name="description" content="Luyện toán lớp 1 theo chương trình GDPT 2018: số và phép tính, hình học và đo lường, giải toán có lời văn, kèm bộ đề kiểm tra.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,14 +18,14 @@
 
   <header class="hero">
     <div class="mascot">🦊</div>
-    <h1>Học Toán Lớp 1</h1>
+    <h1>Học Lớp 1</h1>
     <p id="loi-chao">Chọn một bài để bắt đầu nhé!</p>
   </header>
 
   <main id="noi-dung"></main>
 
   <footer>
-    <p>Bám chương trình Toán 1 (GDPT 2018) · Đề sinh ngẫu nhiên mỗi lần chơi.</p>
+    <p>Bám chương trình Toán 1 và Tiếng Việt 1 (GDPT 2018) · Đề sinh ngẫu nhiên mỗi lần chơi.</p>
   </footer>
 
 </div>
@@ -37,6 +37,12 @@
     id: 'game-cong-chua', emoji: '🗡️', mau: '#ff8fd0', ten: 'Giải cứu công chúa',
     mo_ta: 'Rồng bắt mất công chúa rồi! Vượt 6 chặng, giải đúng bài toán để tiến bước và đánh bại rồng.',
     href: 'cuu-cong-chua.html'
+  };
+
+  var GAME_HALLOWEEN = {
+    id: 'game-halloween', emoji: '🎃', mau: '#ff8f3c', ten: 'Đêm Halloween',
+    mo_ta: 'Phù thuỷ giấu hết kẹo! Vượt 6 ải, xen kẽ một câu Toán và một câu Tiếng Việt để đòi lại kẹo.',
+    href: 'halloween.html'
   };
 
   var KIEM_TRA = {
@@ -77,31 +83,43 @@
     { ten: 'Giải toán có lời văn', bai: [
       { id: 'toan-do', emoji: '📖', mau: '#ff8fd0', ten: 'Toán đố',
         mo_ta: 'Thêm, bớt, nhiều hơn, ít hơn, tìm số lúc đầu.' }
+    ] },
+    { ten: 'Tiếng Việt', tv: true, bai: [
+      { id: 'chu-cai',    emoji: '🔤', mau: '#4aa8ff', ten: 'Chữ cái', mo_ta: 'Chữ hoa, chữ thường, âm đầu.' },
+      { id: 'ghep-van',   emoji: '🧩', mau: '#8b7bf7', ten: 'Ghép vần', mo_ta: 'Âm đầu + vần + thanh thành tiếng.' },
+      { id: 'thanh-dieu', emoji: '🎵', mau: '#ffc93c', ten: 'Thanh điệu', mo_ta: 'Ngang, huyền, sắc, hỏi, ngã, nặng.' },
+      { id: 'quy-tac',    emoji: '📏', mau: '#2fcf90', ten: 'Quy tắc chính tả', mo_ta: 'c/k, g/gh, ng/ngh.' },
+      { id: 'chinh-ta',   emoji: '✍️', mau: '#ff7a7a', ten: 'Chính tả dễ lẫn', mo_ta: 's/x, ch/tr, l/n, d/gi/r, hỏi/ngã.' },
+      { id: 'tu-ngu',     emoji: '🏷️', mau: '#ff8fd0', ten: 'Từ ngữ', mo_ta: 'Từ loại và từ trái nghĩa.' },
+      { id: 'cau',        emoji: '📝', mau: '#4aa8ff', ten: 'Câu', mo_ta: 'Sắp xếp câu, dấu câu, đếm tiếng.' },
+      { id: 'doc-hieu',   emoji: '📖', mau: '#8b7bf7', ten: 'Đọc hiểu', mo_ta: 'Đọc đoạn ngắn rồi trả lời.' }
     ] }
   ];
 
   var goc = document.getElementById('noi-dung');
   var tongSao = 0;
 
-  function taoThe(bai, noiBat) {
-    var best = Quiz.readBest(bai.id);
+  function taoThe(bai, noiBat, laTiengViet) {
+    var best = Quiz.readBest(laTiengViet ? 'tv-' + bai.id : bai.id);
     var sao = best ? Quiz.starsFor(best.correct, best.total) : 0;
     if (!noiBat) tongSao += sao;
 
     var card = document.createElement('a');
     card.className = 'card' + (noiBat ? ' noi-bat' : '');
-    card.href = bai.href || ('bai-tap/' + bai.id + '.html');
+    card.href = bai.href || ((laTiengViet ? 'tieng-viet/' : 'bai-tap/') + bai.id + '.html');
     card.style.setProperty('--tint', bai.mau);
 
     var huy = '';
-    if (bai.id === 'game-cong-chua') {
+    if (bai.id === 'game-cong-chua' || bai.id === 'game-halloween') {
       var tt = null;
-      try { tt = JSON.parse(localStorage.getItem('studyonline:game-cong-chua') || 'null'); } catch (e) {}
+      try { tt = JSON.parse(localStorage.getItem('studyonline:' + bai.id) || 'null'); } catch (e) {}
       if (tt) {
         var sao = 0;
         Object.keys(tt.sao || {}).forEach(function (k) { sao += tt.sao[k]; });
-        huy = '<span class="best">' + (tt.daCuu ? '👑 Đã cứu được công chúa · ' : 'Đang ở chặng ' + tt.mo + ' · ') +
-              sao + '/18 ⭐</span>';
+        var xong = bai.id === 'game-halloween'
+          ? (tt.thang ? '👑 Vua Halloween · 🍬 ' + (tt.keo || 0) + ' · ' : 'Đang ở ải ' + tt.mo + ' · 🍬 ' + (tt.keo || 0) + ' · ')
+          : (tt.daCuu ? '👑 Đã cứu được công chúa · ' : 'Đang ở chặng ' + tt.mo + ' · ');
+        huy = '<span class="best">' + xong + sao + '/18 ⭐</span>';
       }
     } else if (noiBat) {
       var ds = Quiz.readLichSu('kiem-tra');
@@ -120,6 +138,7 @@
   // Game và bài kiểm tra đặt lên đầu
   var luoiTren = document.createElement('div');
   luoiTren.className = 'grid';
+  luoiTren.appendChild(taoThe(GAME_HALLOWEEN, true));
   luoiTren.appendChild(taoThe(GAME, true));
   luoiTren.appendChild(taoThe(KIEM_TRA, true));
   goc.appendChild(luoiTren);
@@ -132,7 +151,7 @@
 
     var luoi = document.createElement('div');
     luoi.className = 'grid';
-    nhom.bai.forEach(function (bai) { luoi.appendChild(taoThe(bai, false)); });
+    nhom.bai.forEach(function (bai) { luoi.appendChild(taoThe(bai, false, nhom.tv)); });
     goc.appendChild(luoi);
   });
 
