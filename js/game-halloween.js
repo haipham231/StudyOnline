@@ -32,7 +32,7 @@
       toan: function () { return T.congTru(20, false); },
       tviet: mix(V.quyTacChinhTa, V.timVan) },
 
-    { ten: 'Nghĩa Địa Mèo Đen', hinh: 'bi-ngo', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
+    { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
       mota: 'So sánh và dãy số · chính tả dễ lẫn',
       toan: mix(function () { return T.soSanh(20); }, function () { return T.lonNhatBeNhat(20); }),
       tviet: V.vietDung },

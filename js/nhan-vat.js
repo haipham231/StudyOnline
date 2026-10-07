@@ -10,8 +10,9 @@
 
   // Hoạt hình Lottie tải sẵn trong assets/lottie; heSo chỉnh cho cân với khung cảnh
   var ANH = {
-    hiepSi: { tep: 'hiep-si', heSo: 1.5, tacGia: 'Tuân Nguyễn' },
-    rong:   { tep: 'rong', heSo: 1.9, tacGia: 'Matheus Mesquita' }
+    hiepSi:   { tep: 'hiep-si', heSo: 1.5, tacGia: 'Abdul Latif' },
+    rong:     { tep: 'rong', heSo: 1.9, tacGia: 'Matheus Mesquita' },
+    congChua: { tep: 'cong-chua', heSo: 1.6, tacGia: 'Sharmin' }
   };
 
   function svg(noiDung, rong) {
@@ -60,8 +61,13 @@
       '<path d="M44 40 q6 6 12 0" stroke="#2b2f55" stroke-width="2.6" fill="none" stroke-linecap="round"/>';
   }
 
-  function congChua(rong) {
+  function congChuaSVG(rong) {
     return svg(hinhCongChua(true), rong);
+  }
+
+  function congChua(rong) {
+    var c = Math.round((rong || 74) * ANH.congChua.heSo);
+    return global.HoatHinh.ve(ANH.congChua.tep, c, 'NhanVat.congChuaSVG');
   }
 
   // Rồng — bản vẽ dự phòng khi ảnh không tải được
@@ -108,6 +114,6 @@
   global.NhanVat = {
     hiepSi: hiepSi, hiepSiSVG: hiepSiSVG,
     rong: rong, rongSVG: rongSVG,
-    congChua: congChua, long: long, ANH: ANH
+    congChua: congChua, congChuaSVG: congChuaSVG, long: long, ANH: ANH
   };
 })(window);
