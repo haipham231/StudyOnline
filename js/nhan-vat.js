@@ -8,16 +8,18 @@
 (function (global) {
   'use strict';
 
+  // heSo: sticker nằm ngang cần rộng hơn mới cân với nhân vật vẽ dọc
   var ANH = {
-    hiepSi: 'https://media.giphy.com/media/JrwZsuor72mL2x6qyT/giphy.gif',
-    rong: 'https://media.giphy.com/media/8vvNfLiB5Wm9Zx0SWt/giphy.gif'
+    hiepSi: { url: 'https://media.giphy.com/media/JrwZsuor72mL2x6qyT/giphy.gif', heSo: 1.15 },
+    rong:   { url: 'https://media.giphy.com/media/8vvNfLiB5Wm9Zx0SWt/giphy.gif', heSo: 2.1 }
   };
 
   // bọc ảnh ngoài, hỏng thì gọi bản SVG thay thế
-  function anhCoDuongLui(nguon, rong, ten, duPhong) {
+  function anhCoDuongLui(anh, rong, ten, duPhong) {
     var id = 'nv' + Math.random().toString(36).slice(2, 8);
+    var w = Math.round(rong * (anh.heSo || 1));
     return '<span id="' + id + '" class="nv-anh">' +
-      '<img src="' + nguon + '" width="' + rong + '" alt="' + ten + '" ' +
+      '<img src="' + anh.url + '" width="' + w + '" alt="' + ten + '" ' +
       'onerror="var o=document.getElementById(\'' + id + '\'); if(o) o.innerHTML=' +
       'window.NhanVat.' + duPhong + '(' + rong + ');">' +
       '</span>';
