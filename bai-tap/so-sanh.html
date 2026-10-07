@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>So sánh số — Học Toán Online</title>
+<title>So sánh số — Học Toán Lớp 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>⚖️</text></svg>">
 </head>
@@ -24,16 +27,16 @@
 
   function soSanhSo(max) {
     var a = r(1, max);
-    // một phần tư số câu cho đáp án "=" để bé không đoán bừa
-    var b = Math.random() < 0.25 ? a : r(1, max);
+    var b = Math.random() < 0.25 ? a : r(1, max);   // chừa phần cho đáp án "="
     return { text: String(a), after: String(b), answer: dau(a, b), choices: DAU };
   }
 
-  function soSanhPhepTinh(max) {
-    var a = r(1, max), b = r(1, max);
-    var c = r(1, max), d = r(1, max);
+  function soSanhPhepTinh() {
+    var a = r(1, 9), b = r(1, 10 - a);
+    var c = r(1, 9), d = r(1, 10 - c);
     if (Math.random() < 0.25) { c = a; d = b; }
     return {
+      prompt: 'Tính hai vế rồi điền dấu thích hợp nhé!',
       text: a + ' + ' + b,
       after: c + ' + ' + d,
       answer: dau(a + b, c + d),
@@ -45,9 +48,9 @@
     id: 'so-sanh',
     total: 10,
     levels: [
-      { name: 'So sánh số', hint: 'Các số đến 20', gen: function () { return soSanhSo(20); } },
-      { name: 'So sánh số', hint: 'Các số đến 100', gen: function () { return soSanhSo(100); } },
-      { name: 'So sánh phép tính', hint: 'Ví dụ: 3 + 4 … 2 + 6', gen: function () { return soSanhPhepTinh(10); } }
+      { name: 'Các số đến 10', gen: function () { return soSanhSo(10); } },
+      { name: 'Các số đến 100', gen: function () { return soSanhSo(100); } },
+      { name: 'So sánh phép tính', hint: 'Ví dụ: 3 + 4 … 2 + 6', gen: soSanhPhepTinh }
     ]
   });
 </script>

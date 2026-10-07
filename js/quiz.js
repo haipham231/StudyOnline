@@ -1,8 +1,10 @@
-/* ===== Học Toán Online — engine bài tập dùng chung ===== */
+/* ===== Học Toán Lớp 1 — engine bài tập dùng chung ===== */
 (function (global) {
   'use strict';
 
   var STORE = 'studyonline:';
+
+  /* ---------- tiện ích sinh đề ---------- */
 
   function randInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -11,6 +13,34 @@
   function pick(arr) {
     return arr[randInt(0, arr.length - 1)];
   }
+
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = randInt(0, i);
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  /** Tạo n lựa chọn gồm đáp án đúng và các số gần đó, đã xáo trộn. */
+  function choicesAround(answer, n, min, max) {
+    var set = [answer];
+    var step = 1;
+    while (set.length < n && step < 12) {
+      [answer - step, answer + step].forEach(function (v) {
+        if (set.length < n && v >= min && v <= max && set.indexOf(v) === -1) set.push(v);
+      });
+      step++;
+    }
+    return shuffle(set);
+  }
+
+  function repeatArt(emoji, count) {
+    return new Array(count + 1).join(emoji);
+  }
+
+  /* ---------- lưu kỷ lục ---------- */
 
   function readBest(id) {
     try {
@@ -24,7 +54,7 @@
     try {
       localStorage.setItem(STORE + id, JSON.stringify(data));
     } catch (e) {
-      /* chế độ riêng tư: bỏ qua, không lưu được cũng không sao */
+      /* chế độ riêng tư không lưu được — vẫn chơi bình thường */
     }
   }
 
@@ -36,11 +66,7 @@
     return 0;
   }
 
-  function formatTime(sec) {
-    var m = Math.floor(sec / 60);
-    var s = sec % 60;
-    return m + ':' + (s < 10 ? '0' + s : s);
-  }
+  /* ---------- tiện ích DOM ---------- */
 
   function el(tag, className, html) {
     var node = document.createElement(tag);
@@ -49,12 +75,38 @@
     return node;
   }
 
+  function formatTime(sec) {
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
+    return m + ':' + (s < 10 ? '0' + s : s);
+  }
+
+  function confetti() {
+    var colors = ['#4aa8ff', '#8b7bf7', '#2fcf90', '#ffc93c', '#ff7a7a', '#ff8fd0'];
+    var layer = el('div', 'confetti');
+    for (var i = 0; i < 70; i++) {
+      var bit = document.createElement('i');
+      bit.style.left = Math.random() * 100 + '%';
+      bit.style.background = colors[i % colors.length];
+      bit.style.animationDuration = (1.8 + Math.random() * 1.6) + 's';
+      bit.style.animationDelay = (Math.random() * 0.6) + 's';
+      layer.appendChild(bit);
+    }
+    document.body.appendChild(layer);
+    setTimeout(function () { layer.remove(); }, 4200);
+  }
+
+  /* ---------- engine ---------- */
+
+  var KHEN = ['🎉 Giỏi quá!', '👏 Chính xác!', '⭐ Tuyệt vời!', '✅ Đúng rồi!', '🥳 Siêu ghê!', '💪 Quá đỉnh!'];
+
   /**
    * config = {
-   *   id:     'cong-tru',              // khoá lưu localStorage
-   *   total:  10,                      // số câu mỗi lượt
-   *   levels: [{ name, hint, gen }]    // gen() -> { text, answer, choices? }
+   *   id, total,
+   *   levels: [{ name, hint, gen }]
    * }
+   * gen() trả về:
+   *   { prompt?, art?, text?, after?, answer, choices?, cols?, unit? }
    */
   function init(config) {
     var root = document.getElementById('quiz');
@@ -62,7 +114,7 @@
     var state = null;
     var onKeyDown = null;
 
-    /* --- Màn hình chọn độ khó --- */
+    /* --- Chọn mức độ --- */
 
     function showStart() {
       detachKeyboard();
@@ -70,7 +122,7 @@
 
       var panel = el('div', 'panel');
       panel.appendChild(el('h2', null, 'Chọn mức độ'));
-      panel.appendChild(el('p', 'lead', 'Mỗi lượt gồm ' + total + ' câu hỏi.'));
+      panel.appendChild(el('p', 'lead', 'Mỗi lượt chơi gồm ' + total + ' câu.'));
 
       var chosen = 0;
       var list = el('div', 'levels');
@@ -78,8 +130,10 @@
       config.levels.forEach(function (level, i) {
         var btn = el('button', 'level');
         btn.type = 'button';
-        btn.innerHTML = '<b>' + level.name + '</b>' +
-          (level.hint ? '<br><small>' + level.hint + '</small>' : '');
+        btn.innerHTML =
+          '<span class="dot">' + (i + 1) + '</span>' +
+          '<span><b>' + level.name + '</b>' +
+          (level.hint ? '<small>' + level.hint + '</small>' : '') + '</span>';
         btn.setAttribute('aria-pressed', String(i === 0));
         btn.addEventListener('click', function () {
           chosen = i;
@@ -89,17 +143,16 @@
         });
         list.appendChild(btn);
       });
-
       panel.appendChild(list);
 
       var best = readBest(config.id);
       if (best) {
         panel.appendChild(el('p', 'lead',
-          'Kỷ lục của bé: <b>' + best.score + ' điểm</b> ' +
-          '(' + best.correct + '/' + best.total + ' câu đúng)'));
+          '🏆 Kỷ lục của bé: <b>' + best.score + ' điểm</b> — ' +
+          best.correct + '/' + best.total + ' câu đúng'));
       }
 
-      var go = el('button', 'btn', '🚀 Bắt đầu');
+      var go = el('button', 'btn go', '🚀 Bắt đầu');
       go.type = 'button';
       go.addEventListener('click', function () { startRound(chosen); });
       panel.appendChild(go);
@@ -135,11 +188,12 @@
       detachKeyboard();
       root.innerHTML = '';
 
+      var q = state.question;
       var panel = el('div', 'panel');
 
       var meta = el('div', 'meta');
       meta.appendChild(el('span', null, 'Câu ' + state.index + ' / ' + total));
-      state.scoreEl = el('span', null, '✅ ' + state.correct);
+      state.scoreEl = el('span', 'hits', '✅ ' + state.correct);
       meta.appendChild(state.scoreEl);
       panel.appendChild(meta);
 
@@ -149,31 +203,28 @@
       bar.appendChild(fill);
       panel.appendChild(bar);
 
-      var q = state.question;
-      var question = el('div', 'question');
-      question.innerHTML = q.text + ' ';
+      if (q.prompt) panel.appendChild(el('p', 'prompt', q.prompt));
+      if (q.art) panel.appendChild(el('div', 'art', q.art));
 
       var box = el('span', 'answer-box empty', '?');
-      question.appendChild(box);
-      if (q.after) question.appendChild(document.createTextNode(' ' + q.after));
-      panel.appendChild(question);
+      var line = el('div', 'question');
+      if (q.text) line.innerHTML = q.text + ' ';
+      line.appendChild(box);
+      if (q.after) line.appendChild(document.createTextNode(' ' + q.after));
+      panel.appendChild(line);
 
       var feedback = el('div', 'feedback', '&nbsp;');
       panel.appendChild(feedback);
 
-      if (q.choices) {
-        panel.appendChild(buildChoices(q, box, feedback));
-      } else {
-        panel.appendChild(buildPad(q, box, feedback));
-      }
-
+      panel.appendChild(q.choices ? buildChoices(q, box, feedback) : buildPad(q, box, feedback));
       root.appendChild(panel);
     }
 
-    /* --- Dạng chọn đáp án (>, <, =) --- */
+    /* --- Dạng bấm chọn --- */
 
     function buildChoices(q, box, feedback) {
       var wrap = el('div', 'choices');
+      wrap.style.setProperty('--cols', q.cols || q.choices.length);
 
       q.choices.forEach(function (value) {
         var btn = el('button', 'choice', String(value));
@@ -181,10 +232,11 @@
         btn.addEventListener('click', function () {
           if (state.locked) return;
           state.locked = true;
-          box.textContent = String(value);
+          box.innerHTML = String(value);
           box.classList.remove('empty');
-          btn.classList.add(String(value) === String(q.answer) ? 'is-ok' : 'is-bad');
-          judge(String(value) === String(q.answer), q, value, feedback);
+          var ok = String(value) === String(q.answer);
+          btn.classList.add(ok ? 'is-ok' : 'is-bad');
+          judge(ok, q, value, feedback);
         });
         wrap.appendChild(btn);
       });
@@ -192,7 +244,7 @@
       return wrap;
     }
 
-    /* --- Dạng nhập số --- */
+    /* --- Dạng gõ số --- */
 
     function buildPad(q, box, feedback) {
       var pad = el('div', 'pad');
@@ -203,7 +255,7 @@
       }
 
       function type(digit) {
-        if (state.locked || state.typed.length >= 4) return;
+        if (state.locked || state.typed.length >= 3) return;
         if (state.typed === '0') state.typed = '';
         state.typed += digit;
         redraw();
@@ -228,7 +280,7 @@
         pad.appendChild(key);
       });
 
-      var del = el('button', 'key', '⌫');
+      var del = el('button', 'key fn', '⌫');
       del.type = 'button';
       del.addEventListener('click', erase);
       pad.appendChild(del);
@@ -238,7 +290,7 @@
       zero.addEventListener('click', function () { type('0'); });
       pad.appendChild(zero);
 
-      var clear = el('button', 'key', 'C');
+      var clear = el('button', 'key fn', 'Xoá');
       clear.type = 'button';
       clear.addEventListener('click', function () {
         if (state.locked) return;
@@ -252,7 +304,6 @@
       ok.addEventListener('click', submit);
       pad.appendChild(ok);
 
-      /* Bàn phím máy tính cũng dùng được */
       onKeyDown = function (ev) {
         if (ev.key >= '0' && ev.key <= '9') { type(ev.key); ev.preventDefault(); }
         else if (ev.key === 'Backspace') { erase(); ev.preventDefault(); }
@@ -273,17 +324,23 @@
     /* --- Chấm một câu --- */
 
     function judge(isCorrect, q, given, feedback) {
+      feedback.className = 'feedback pop ' + (isCorrect ? 'ok' : 'bad');
+
       if (isCorrect) {
         state.correct += 1;
         if (state.scoreEl) state.scoreEl.textContent = '✅ ' + state.correct;
-        feedback.className = 'feedback ok';
-        feedback.textContent = pick(['🎉 Giỏi lắm!', '👏 Chính xác!', '⭐ Tuyệt vời!', '✅ Đúng rồi!']);
+        feedback.textContent = pick(KHEN);
       } else {
-        state.misses.push({ text: q.text, after: q.after, given: given, answer: q.answer });
-        feedback.className = 'feedback bad';
-        feedback.textContent = '❌ Chưa đúng — đáp án là ' + q.answer;
+        state.misses.push({
+          label: (q.prompt ? q.prompt + ' ' : '') + (q.text || '') ,
+          after: q.after,
+          given: given,
+          answer: q.answer
+        });
+        feedback.innerHTML = '❌ Chưa đúng — đáp án là <b>' + q.answer + '</b>';
       }
-      setTimeout(nextQuestion, isCorrect ? 650 : 1500);
+
+      setTimeout(nextQuestion, isCorrect ? 700 : 1900);
     }
 
     /* --- Kết quả --- */
@@ -297,15 +354,19 @@
       var stars = starsFor(state.correct, total);
 
       var panel = el('div', 'panel');
+      panel.appendChild(el('div', 'result-mascot',
+        stars === 3 ? '🏆' : stars === 2 ? '🥳' : stars === 1 ? '🙂' : '🐣'));
       panel.appendChild(el('div', 'stars',
-        '⭐'.repeat(stars) + '<span style="opacity:.25">' + '⭐'.repeat(3 - stars) + '</span>'));
+        '⭐'.repeat(stars) + '<span class="off">' + '⭐'.repeat(3 - stars) + '</span>'));
       panel.appendChild(el('h2', null,
-        stars === 3 ? 'Xuất sắc!' : stars === 2 ? 'Làm tốt lắm!' : stars === 1 ? 'Cố thêm chút nữa nhé!' : 'Mình thử lại nào!'));
+        stars === 3 ? 'Xuất sắc!' :
+        stars === 2 ? 'Làm tốt lắm!' :
+        stars === 1 ? 'Cố thêm chút nữa nhé!' : 'Mình thử lại nào!'));
       panel.appendChild(el('div', 'score', score + ' điểm'));
 
       var summary = el('div', 'summary');
-      summary.appendChild(el('div', null, '<b>' + state.correct + '/' + total + '</b> câu đúng'));
-      summary.appendChild(el('div', null, '<b>' + formatTime(seconds) + '</b> thời gian'));
+      summary.appendChild(el('div', null, '<b>' + state.correct + '/' + total + '</b>câu đúng'));
+      summary.appendChild(el('div', null, '<b>' + formatTime(seconds) + '</b>thời gian'));
 
       var best = readBest(config.id);
       if (!best || score > best.score) {
@@ -313,14 +374,14 @@
           score: score, correct: state.correct, total: total,
           seconds: seconds, date: new Date().toISOString().slice(0, 10)
         });
-        summary.appendChild(el('div', null, '<b>🏆 Mới</b> kỷ lục'));
+        summary.appendChild(el('div', null, '<b>🏆 Mới</b>kỷ lục'));
       } else {
-        summary.appendChild(el('div', null, '<b>' + best.score + '</b> kỷ lục'));
+        summary.appendChild(el('div', null, '<b>' + best.score + '</b>kỷ lục cũ'));
       }
       panel.appendChild(summary);
 
       var actions = el('div', 'actions');
-      var again = el('button', 'btn', '🔁 Làm lại');
+      var again = el('button', 'btn go', '🔁 Chơi lại');
       again.type = 'button';
       again.addEventListener('click', showStart);
       actions.appendChild(again);
@@ -332,11 +393,11 @@
 
       if (state.misses.length) {
         var review = el('div', 'review');
-        review.appendChild(el('h3', null, 'Xem lại các câu sai'));
+        review.appendChild(el('h3', null, '📝 Xem lại các câu chưa đúng'));
         var ul = el('ul');
         state.misses.forEach(function (m) {
           ul.appendChild(el('li', null,
-            m.text + ' <span class="yours">' + m.given + '</span>' +
+            m.label + ' <span class="yours">' + m.given + '</span>' +
             '<span class="right">' + m.answer + '</span>' +
             (m.after ? ' ' + m.after : '')));
         });
@@ -345,6 +406,7 @@
       }
 
       root.appendChild(panel);
+      if (stars >= 2) confetti();
     }
 
     showStart();
@@ -354,6 +416,9 @@
     init: init,
     randInt: randInt,
     pick: pick,
+    shuffle: shuffle,
+    choicesAround: choicesAround,
+    repeatArt: repeatArt,
     readBest: readBest,
     starsFor: starsFor
   };

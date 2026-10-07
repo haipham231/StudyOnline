@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Điền số còn thiếu — Học Toán Lớp 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧩</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Trang chủ</a>
+  <h1>🧩 Điền số còn thiếu</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../js/quiz.js"></script>
+<script>
+  var r = Quiz.randInt;
+
+  function thieu(max) {
+    var a = r(1, max - 1);
+    var b = r(1, max - a);
+    var tong = a + b;
+
+    switch (r(1, 4)) {
+      case 1:  return { text: a + ' +', after: '= ' + tong, answer: b };        // a + ? = tổng
+      case 2:  return { after: '+ ' + b + ' = ' + tong, answer: a };            // ? + b = tổng
+      case 3:  return { text: tong + ' −', after: '= ' + a, answer: b };        // tổng − ? = a
+      default: return { after: '− ' + b + ' = ' + a, answer: tong };            // ? − b = a
+    }
+  }
+
+  function tronChuc() {
+    var a = r(1, 8) * 10;
+    var b = r(1, 9 - a / 10) * 10;
+    return Math.random() < 0.5
+      ? { text: a + ' +', after: '= ' + (a + b), answer: b }
+      : { text: (a + b) + ' −', after: '= ' + a, answer: b };
+  }
+
+  Quiz.init({
+    id: 'dien-so',
+    total: 10,
+    levels: [
+      { name: 'Phạm vi 10', hint: 'Ví dụ: 3 + ? = 7', gen: function () { return thieu(10); } },
+      { name: 'Phạm vi 20', hint: 'Khó hơn một chút', gen: function () { return thieu(20); } },
+      { name: 'Số tròn chục', hint: 'Ví dụ: 30 + ? = 70', gen: tronChuc }
+    ]
+  });
+</script>
+</body>
+</html>

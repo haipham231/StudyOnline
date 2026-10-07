@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đếm và dãy số — Học Toán Lớp 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🔢</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Trang chủ</a>
+  <h1>🔢 Đếm và dãy số</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../js/quiz.js"></script>
+<script>
+  var r = Quiz.randInt, chon = Quiz.pick;
+
+  var VAT = [
+    { ten: 'quả táo', e: '🍎' }, { ten: 'bông hoa', e: '🌸' }, { ten: 'con cá', e: '🐟' },
+    { ten: 'cái kẹo', e: '🍬' }, { ten: 'quả bóng', e: '⚽' }, { ten: 'con bướm', e: '🦋' },
+    { ten: 'ngôi sao', e: '⭐' }, { ten: 'chiếc lá', e: '🍀' }
+  ];
+
+  // Đếm số lượng hình
+  function dem(max) {
+    var v = chon(VAT), n = r(2, max);
+    return {
+      prompt: 'Có bao nhiêu ' + v.ten + '?',
+      art: Quiz.repeatArt(v.e, n),
+      answer: n
+    };
+  }
+
+  // Số liền trước / liền sau
+  function lienKe(max) {
+    var n = r(1, max - 1);
+    return Math.random() < 0.5
+      ? { prompt: 'Số liền sau của ' + n + ' là số nào?', answer: n + 1 }
+      : { prompt: 'Số liền trước của ' + (n + 1) + ' là số nào?', answer: n };
+  }
+
+  // Dãy số đếm thêm — che một ô bất kỳ
+  function daySo(buoc, max) {
+    var batDau = r(1, Math.max(1, max - buoc * 5));
+    var day = [0, 1, 2, 3, 4].map(function (i) { return batDau + i * buoc; });
+    var an = r(1, 3);   // không giấu ô đầu và ô cuối
+
+    return {
+      prompt: 'Điền số còn thiếu vào dãy số (đếm thêm ' + buoc + ')',
+      text: day.slice(0, an).join('&nbsp; '),
+      after: day.slice(an + 1).join('&nbsp; '),
+      answer: day[an]
+    };
+  }
+
+  Quiz.init({
+    id: 'dem-day-so',
+    total: 10,
+    levels: [
+      { name: 'Đếm hình', hint: 'Đếm số lượng trong tranh',
+        gen: function () { return dem(10); } },
+      { name: 'Số liền trước, liền sau', hint: 'Các số đến 100',
+        gen: function () { return lienKe(100); } },
+      { name: 'Dãy số', hint: 'Đếm thêm 1, 2, 5 hoặc 10',
+        gen: function () { return daySo(chon([1, 2, 5, 10]), 100); } }
+    ]
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xem giờ — Học Toán Lớp 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🕐</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Trang chủ</a>
+  <h1>🕐 Xem giờ</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../js/quiz.js"></script>
+<script>
+  var r = Quiz.randInt;
+
+  // Toạ độ đầu kim: góc 0° là hướng 12 giờ, quay theo chiều kim đồng hồ
+  function dauKim(gocDo, daiKim) {
+    var rad = (gocDo - 90) * Math.PI / 180;
+    return [100 + daiKim * Math.cos(rad), 100 + daiKim * Math.sin(rad)];
+  }
+
+  function veDongHo(gio, phut) {
+    var vach = '';
+    for (var i = 0; i < 12; i++) {
+      var ngoai = dauKim(i * 30, 82);
+      var trong = dauKim(i * 30, i % 3 === 0 ? 68 : 74);
+      vach += '<line x1="' + trong[0].toFixed(1) + '" y1="' + trong[1].toFixed(1) +
+              '" x2="' + ngoai[0].toFixed(1) + '" y2="' + ngoai[1].toFixed(1) +
+              '" stroke="#c3cbec" stroke-width="' + (i % 3 === 0 ? 6 : 3) +
+              '" stroke-linecap="round"/>';
+    }
+
+    var so = '';
+    [[12, 0], [3, 90], [6, 180], [9, 270]].forEach(function (p) {
+      var v = dauKim(p[1], 54);
+      so += '<text x="' + v[0].toFixed(1) + '" y="' + (v[1] + 8).toFixed(1) +
+            '" text-anchor="middle" font-family="Baloo 2, sans-serif" font-size="22" ' +
+            'font-weight="700" fill="#7d84ab">' + p[0] + '</text>';
+    });
+
+    var kimGio = dauKim((gio % 12) * 30 + phut * 0.5, 46);
+    var kimPhut = dauKim(phut * 6, 68);
+
+    return '<svg viewBox="0 0 200 200" width="190" height="190" role="img" aria-label="đồng hồ">' +
+      '<circle cx="100" cy="100" r="94" fill="#fff" stroke="#e2e7fb" stroke-width="7"/>' +
+      vach + so +
+      '<line x1="100" y1="100" x2="' + kimGio[0].toFixed(1) + '" y2="' + kimGio[1].toFixed(1) +
+        '" stroke="#2b2f55" stroke-width="10" stroke-linecap="round"/>' +
+      '<line x1="100" y1="100" x2="' + kimPhut[0].toFixed(1) + '" y2="' + kimPhut[1].toFixed(1) +
+        '" stroke="#4aa8ff" stroke-width="7" stroke-linecap="round"/>' +
+      '<circle cx="100" cy="100" r="8" fill="#8b7bf7"/>' +
+      '</svg>';
+  }
+
+  function docGio(gio, phut) {
+    return phut === 0 ? gio + ' giờ' : gio + ' giờ rưỡi';
+  }
+
+  // Ba đáp án nhiễu: lệch giờ, hoặc đúng giờ nhưng sai phút
+  function cacLuaChon(gio, phut) {
+    var dung = docGio(gio, phut);
+    var set = [dung];
+    var them = function (g, p) {
+      var s = docGio(((g - 1 + 12) % 12) + 1, p);
+      if (set.indexOf(s) === -1) set.push(s);
+    };
+    them(gio, phut === 0 ? 30 : 0);
+    them(gio + 1, phut);
+    them(gio - 1, phut);
+    them(gio + 2, phut);
+    return Quiz.shuffle(set.slice(0, 4));
+  }
+
+  function cauHoi(coRuoi) {
+    var gio = r(1, 12);
+    var phut = coRuoi && Math.random() < 0.5 ? 30 : 0;
+    return {
+      prompt: 'Đồng hồ chỉ mấy giờ?',
+      art: veDongHo(gio, phut),
+      answer: docGio(gio, phut),
+      choices: cacLuaChon(gio, phut),
+      cols: 2
+    };
+  }
+
+  Quiz.init({
+    id: 'xem-gio',
+    total: 8,
+    levels: [
+      { name: 'Giờ đúng', hint: 'Ví dụ: 3 giờ, 8 giờ', gen: function () { return cauHoi(false); } },
+      { name: 'Giờ đúng và giờ rưỡi', hint: 'Thêm ví dụ: 3 giờ rưỡi', gen: function () { return cauHoi(true); } }
+    ]
+  });
+</script>
+</body>
+</html>

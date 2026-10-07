@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toán đố — Học Toán Lớp 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>📖</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Trang chủ</a>
+  <h1>📖 Toán đố</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../js/quiz.js"></script>
+<script>
+  var r = Quiz.randInt, chon = Quiz.pick;
+
+  var TEN = ['Lan', 'Nam', 'Mai', 'Bình', 'Hà', 'An', 'Tú', 'Linh', 'Minh', 'Hoa', 'Khoa', 'Ngọc'];
+
+  var VAT = [
+    { ten: 'quả táo',   dv: 'quả',  e: '🍎' },
+    { ten: 'quả cam',   dv: 'quả',  e: '🍊' },
+    { ten: 'cái kẹo',   dv: 'cái',  e: '🍬' },
+    { ten: 'bông hoa',  dv: 'bông', e: '🌸' },
+    { ten: 'quyển vở',  dv: 'quyển', e: '📒' },
+    { ten: 'cái bút',   dv: 'cái',  e: '✏️' },
+    { ten: 'viên bi',   dv: 'viên', e: '🔵' },
+    { ten: 'quả bóng',  dv: 'quả',  e: '⚽' },
+    { ten: 'con cá',    dv: 'con',  e: '🐟' },
+    { ten: 'quả trứng', dv: 'quả',  e: '🥚' }
+  ];
+
+  var CAP_VAT = [
+    { a: { ten: 'quả cam', e: '🍊' }, b: { ten: 'quả quýt', e: '🍋' }, chung: 'quả', noi: 'Trong rổ' },
+    { a: { ten: 'con gà',  e: '🐔' }, b: { ten: 'con vịt',  e: '🦆' }, chung: 'con', noi: 'Trong sân' },
+    { a: { ten: 'bông hoa đỏ', e: '🌹' }, b: { ten: 'bông hoa vàng', e: '🌻' }, chung: 'bông', noi: 'Trong vườn' },
+    { a: { ten: 'cái bút chì', e: '✏️' }, b: { ten: 'cái bút màu', e: '🖍️' }, chung: 'cái', noi: 'Trong hộp' }
+  ];
+
+  // Hai tên khác nhau
+  function haiTen() {
+    var x = chon(TEN), y;
+    do { y = chon(TEN); } while (y === x);
+    return [x, y];
+  }
+
+  /* ---- Các dạng đề ---- */
+
+  // 1. Cho thêm  →  a + b
+  function choThem(max, veHinh) {
+    var a = r(2, max - 2), b = r(1, max - a), v = chon(VAT), ten = chon(TEN);
+    return {
+      prompt: ten + ' có ' + a + ' ' + v.ten + '. Mẹ cho ' + ten + ' thêm ' + b + ' ' + v.ten +
+              '. Hỏi ' + ten + ' có tất cả bao nhiêu ' + v.ten + '?',
+      art: veHinh ? Quiz.repeatArt(v.e, a) + ' &nbsp;+&nbsp; ' + Quiz.repeatArt(v.e, b) : null,
+      after: v.dv, answer: a + b
+    };
+  }
+
+  // 2. Cho đi  →  tổng − b
+  function choDi(max, veHinh) {
+    var tong = r(3, max), b = r(1, tong - 1), v = chon(VAT), ten = chon(TEN);
+    return {
+      prompt: ten + ' có ' + tong + ' ' + v.ten + '. ' + ten + ' cho bạn ' + b + ' ' + v.ten +
+              '. Hỏi ' + ten + ' còn lại bao nhiêu ' + v.ten + '?',
+      art: veHinh ? Quiz.repeatArt(v.e, tong) : null,
+      after: v.dv, answer: tong - b
+    };
+  }
+
+  // 3. Gộp hai nhóm  →  a + b
+  function gopNhom(max, veHinh) {
+    var a = r(2, max - 2), b = r(1, max - a), c = chon(CAP_VAT);
+    return {
+      prompt: c.noi + ' có ' + a + ' ' + c.a.ten + ' và ' + b + ' ' + c.b.ten +
+              '. Hỏi có tất cả bao nhiêu ' + c.chung + '?',
+      art: veHinh ? Quiz.repeatArt(c.a.e, a) + ' ' + Quiz.repeatArt(c.b.e, b) : null,
+      after: c.chung, answer: a + b
+    };
+  }
+
+  // 4. Nhiều hơn  →  a + b
+  function nhieuHon(max) {
+    var a = r(2, max - 2), b = r(1, max - a), v = chon(VAT), t = haiTen();
+    return {
+      prompt: t[0] + ' có ' + a + ' ' + v.ten + '. ' + t[1] + ' có nhiều hơn ' + t[0] + ' ' +
+              b + ' ' + v.ten + '. Hỏi ' + t[1] + ' có bao nhiêu ' + v.ten + '?',
+      after: v.dv, answer: a + b
+    };
+  }
+
+  // 5. Ít hơn  →  tổng − b
+  function itHon(max) {
+    var tong = r(3, max), b = r(1, tong - 1), v = chon(VAT), t = haiTen();
+    return {
+      prompt: t[0] + ' có ' + tong + ' ' + v.ten + '. ' + t[1] + ' có ít hơn ' + t[0] + ' ' +
+              b + ' ' + v.ten + '. Hỏi ' + t[1] + ' có bao nhiêu ' + v.ten + '?',
+      after: v.dv, answer: tong - b
+    };
+  }
+
+  // 6. Bay đi / rời khỏi  →  tổng − b
+  function roiKhoi(max) {
+    var canh = [
+      { noi: 'Trên cây có', vat: 'con chim', dv: 'con', di: 'bay đi', e: '🐦' },
+      { noi: 'Trong ao có', vat: 'con vịt',  dv: 'con', di: 'lên bờ', e: '🦆' },
+      { noi: 'Trên bàn có', vat: 'cái bánh', dv: 'cái', di: 'được ăn hết', e: '🧁' },
+      { noi: 'Trong bến có', vat: 'chiếc xe', dv: 'chiếc', di: 'chạy đi', e: '🚗' }
+    ];
+    var c = chon(canh), tong = r(3, max), b = r(1, tong - 1);
+    return {
+      prompt: c.noi + ' ' + tong + ' ' + c.vat + '. Có ' + b + ' ' + c.vat + ' ' + c.di +
+              '. Hỏi còn lại bao nhiêu ' + c.vat + '?',
+      after: c.dv, answer: tong - b
+    };
+  }
+
+  // 7. Tìm số lúc đầu  →  a + b
+  function lucDau(max) {
+    var a = r(1, max - 2), b = r(1, max - a), v = chon(VAT), ten = chon(TEN);
+    return {
+      prompt: ten + ' cho em ' + b + ' ' + v.ten + ' thì còn lại ' + a + ' ' + v.ten +
+              '. Hỏi lúc đầu ' + ten + ' có bao nhiêu ' + v.ten + '?',
+      after: v.dv, answer: a + b
+    };
+  }
+
+  // 8. Hơn kém bao nhiêu  →  x − y
+  function honKem(max) {
+    var x = r(3, max), y = r(1, x - 1), v = chon(VAT), t = haiTen();
+    return {
+      prompt: t[0] + ' có ' + x + ' ' + v.ten + ', ' + t[1] + ' có ' + y + ' ' + v.ten +
+              '. Hỏi ' + t[0] + ' có nhiều hơn ' + t[1] + ' bao nhiêu ' + v.ten + '?',
+      after: v.dv, answer: x - y
+    };
+  }
+
+  function tron(ds) {
+    return function () { return chon(ds)(); };
+  }
+
+  Quiz.init({
+    id: 'toan-do',
+    total: 8,
+    levels: [
+      { name: 'Phạm vi 10', hint: 'Thêm vào, bớt đi, gộp lại — có hình minh hoạ',
+        gen: tron([
+          function () { return choThem(10, true); },
+          function () { return choDi(10, true); },
+          function () { return gopNhom(10, true); }
+        ]) },
+      { name: 'Phạm vi 20', hint: 'Thêm cả dạng nhiều hơn, ít hơn',
+        gen: tron([
+          function () { return choThem(20, false); },
+          function () { return choDi(20, false); },
+          function () { return gopNhom(20, false); },
+          function () { return nhieuHon(20); },
+          function () { return itHon(20); },
+          function () { return roiKhoi(20); }
+        ]) },
+      { name: 'Thử thách', hint: 'Tìm số lúc đầu, hơn kém bao nhiêu',
+        gen: tron([
+          function () { return lucDau(20); },
+          function () { return honKem(20); },
+          function () { return nhieuHon(20); },
+          function () { return itHon(20); },
+          function () { return roiKhoi(20); }
+        ]) }
+    ]
+  });
+</script>
+</body>
+</html>

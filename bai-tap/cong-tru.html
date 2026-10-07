@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cộng trừ — Học Toán Online</title>
+<title>Cộng trừ — Học Toán Lớp 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>➕</text></svg>">
 </head>
@@ -18,35 +21,45 @@
 <script src="../js/quiz.js"></script>
 <script>
   var r = Quiz.randInt;
+  var HINH = ['🍎', '🍊', '🌸', '⭐', '🐥', '🎈', '🍬'];
 
-  // Sinh một phép cộng hoặc trừ, kết quả luôn nằm trong [0, max]
-  function congTru(max, carry) {
-    var a, b;
-    do {
-      a = r(1, max);
-      b = r(1, max - 1);
-    } while (a + b > max);
+  // Cộng hoặc trừ trong phạm vi max, kết quả luôn không âm
+  function trongPhamVi(max, veHinh) {
+    var a = r(1, max - 1);
+    var b = r(1, max - a);
 
-    if (carry && (a % 10) + (b % 10) < 10) {
-      // ép có nhớ cho mức khó: tăng hàng đơn vị của b
-      b = b - (b % 10) + r(10 - (a % 10), 9);
-      if (a + b > max) b = b - 10;
-      if (b < 1) b = 1;
+    if (Math.random() < 0.5) return { text: (a + b) + ' − ' + b + ' =', answer: a };
+
+    var q = { text: a + ' + ' + b + ' =', answer: a + b };
+    if (veHinh) {
+      var e = Quiz.pick(HINH);
+      q.art = Quiz.repeatArt(e, a) + ' &nbsp;+&nbsp; ' + Quiz.repeatArt(e, b);
     }
+    return q;
+  }
 
-    if (Math.random() < 0.5) {
-      return { text: a + ' + ' + b + ' =', answer: a + b };
-    }
-    return { text: (a + b) + ' − ' + b + ' =', answer: a };
+  // Số có hai chữ số, cộng trừ không nhớ trong phạm vi 100
+  function khongNho() {
+    var chucA = r(1, 8), donViA = r(0, 8);
+    var chucB = r(1, 9 - chucA), donViB = r(0, 9 - donViA);
+    var a = chucA * 10 + donViA;
+    var b = chucB * 10 + donViB;
+
+    return Math.random() < 0.5
+      ? { text: a + ' + ' + b + ' =', answer: a + b }
+      : { text: (a + b) + ' − ' + b + ' =', answer: a };
   }
 
   Quiz.init({
     id: 'cong-tru',
     total: 10,
     levels: [
-      { name: 'Dễ', hint: 'Trong phạm vi 10', gen: function () { return congTru(10, false); } },
-      { name: 'Vừa', hint: 'Trong phạm vi 20', gen: function () { return congTru(20, false); } },
-      { name: 'Khó', hint: 'Trong phạm vi 100, có nhớ', gen: function () { return congTru(100, true); } }
+      { name: 'Phạm vi 10', hint: 'Có hình minh hoạ để bé dễ đếm',
+        gen: function () { return trongPhamVi(10, true); } },
+      { name: 'Phạm vi 20', hint: 'Cộng trừ có nhớ',
+        gen: function () { return trongPhamVi(20, false); } },
+      { name: 'Phạm vi 100', hint: 'Số có hai chữ số, không nhớ',
+        gen: khongNho }
     ]
   });
 </script>
