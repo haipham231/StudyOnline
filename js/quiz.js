@@ -139,7 +139,8 @@
 
       var meta = el('div', 'meta');
       meta.appendChild(el('span', null, 'Câu ' + state.index + ' / ' + total));
-      meta.appendChild(el('span', null, '✅ ' + state.correct));
+      state.scoreEl = el('span', null, '✅ ' + state.correct);
+      meta.appendChild(state.scoreEl);
       panel.appendChild(meta);
 
       var bar = el('div', 'bar');
@@ -274,6 +275,7 @@
     function judge(isCorrect, q, given, feedback) {
       if (isCorrect) {
         state.correct += 1;
+        if (state.scoreEl) state.scoreEl.textContent = '✅ ' + state.correct;
         feedback.className = 'feedback ok';
         feedback.textContent = pick(['🎉 Giỏi lắm!', '👏 Chính xác!', '⭐ Tuyệt vời!', '✅ Đúng rồi!']);
       } else {
