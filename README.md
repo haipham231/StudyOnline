@@ -29,20 +29,33 @@ người lớn đọc cùng bé. Có nút 🔊 nghe lại.
 | ⬜ Hình gì | Đâu là hình tròn, vuông, tam giác, chữ nhật |
 | ⚖️ Nhiều hơn, ít hơn | So sánh số lượng hai nhóm |
 
-**Học tiếng Việt** — dùng được cho cả bé trong nước và bé gốc Việt ở nước ngoài. Bật
-**“Hiện thêm tiếng Anh”** thì mỗi từ kèm nghĩa tiếng Anh ngay dưới hình; lựa chọn này
-nhớ lại cho lần sau.
+### Học tiếng Việt — 2 đến 5 tuổi
 
-| Bài | Nội dung |
+Trang chủ khu mầm non có **thanh chọn độ tuổi** (2 · 3 · 4 · 5 tuổi): chọn tuổi thì chỉ hiện
+những bài vừa sức, lựa chọn được nhớ lại cho lần sau. Mỗi thẻ bài ghi rõ độ tuổi phù hợp.
+
+| Lộ trình | Bài |
 |---|---|
-| 🗣️ Từ vựng | Con vật, trái cây, đồ vật, màu sắc — nghe rồi chọn hình, hoặc nhìn hình gọi tên |
-| 👨‍👩‍👧 Gia đình | Ông, bà, bố, mẹ, anh, chị, em bé |
-| 🧒 Cơ thể của bé | Mắt, tai, mũi, miệng, tay, chân, tóc, răng |
-| 🔤 Làm quen chữ cái | Nhận mặt chữ hoa – thường, chữ đầu của từ |
-| 🔢 Đếm bằng tiếng Việt | Một, hai, ba… đến mười, viết bằng chữ |
-| 🙏 Chào hỏi lễ phép | Con chào ạ, con cảm ơn ạ, con xin lỗi ạ |
+| **2 tuổi** — tập nói | 🍼 Bé tập nói (chỉ 2 lựa chọn) · cơ thể · gia đình · con vật kêu · màu sắc |
+| **3 tuổi** — mở rộng vốn từ | 🗣️ Từ vựng · 🏠 Đồ dùng quanh bé · 🚗 Phương tiện · 🍚 Đồ ăn và rau củ · 🌈 Thời tiết · 🙏 Chào hỏi |
+| **4 tuổi** — nói câu, phân loại | 🏃 Hoạt động hằng ngày · 📍 Trên dưới trong ngoài · 🧩 Cái nào khác nhóm · 🔤 Làm quen chữ cái |
+| **5 tuổi** — chuẩn bị vào lớp 1 | 🧩 Ghép âm thành tiếng · 🎵 Nghe thanh điệu · ✂️ Tách tiếng trong câu |
 
-47 từ vựng trong 6 chủ đề, mỗi từ có sẵn nghĩa tiếng Anh.
+**93 từ vựng trong 12 chủ đề**, mỗi từ đều có sẵn nghĩa tiếng Anh.
+
+### 🇻🇳 Dành cho bé Việt kiều
+
+Phần riêng cho bé lớn lên ở nước ngoài, tập trung vào đúng những chỗ các bé hay thiếu:
+
+| Bài | Vì sao cần |
+|---|---|
+| 👨‍👩‍👧‍👦 Xưng hô trong gia đình | Con hay cháu, chú – bác – cậu – dì khác nhau thế nào — tiếng Anh chỉ có *uncle* và *aunt* |
+| 🎵 Nghe thanh điệu | Sáu thanh *ma – mà – má – mả – mã – mạ*, thứ bé nói tiếng Anh hằng ngày khó nghe ra nhất |
+| 💬 Mẫu câu hằng ngày | Nói sao cho lễ phép và tự nhiên, không dịch thẳng từ tiếng Anh |
+| 🇻🇳 Văn hoá Việt Nam | Bánh chưng, áo dài, nón lá, lì xì, đèn ông sao |
+
+Bật **“🇬🇧 Hiện thêm tiếng Anh”** thì mỗi từ kèm nghĩa tiếng Anh ngay dưới hình, để bố mẹ
+giảng cùng bé. Lựa chọn này nhớ lại cho lần sau.
 
 Bảy con vật quen thuộc (mèo, chó, thỏ, voi, chim, bò, lợn) hiển thị bằng **hoạt hình
 Lottie**; những con còn lại dùng emoji.

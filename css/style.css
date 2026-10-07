@@ -1188,3 +1188,57 @@ h2.nhom::before {
 .bao-danh-hieu .bao { padding: 10px 16px 10px 12px; }
 .bao-danh-hieu .bao span { font-size: 27px; }
 .bao-danh-hieu .bao small { font-size: 15.5px; }
+
+/* ===== Thanh chọn độ tuổi ở khu mầm non ===== */
+
+.chon-tuoi-thanh {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.nut-tuoi {
+  padding: 10px 20px;
+  border: 3px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+
+.nut-tuoi:hover { transform: translateY(-2px); }
+
+.nut-tuoi[aria-pressed="true"] {
+  border-color: var(--grape);
+  background: var(--grape);
+  color: #fff;
+}
+
+.tuoi-nhan {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--soft);
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+h2.nhom.viet-kieu::before { background: var(--coral); }
+
+.ghi-chu-nhom {
+  margin: -6px 0 14px;
+  padding: 12px 16px;
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--coral) 10%, #fff);
+  color: var(--ink);
+  font-size: 14.5px;
+}

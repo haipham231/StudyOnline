@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mầm non — Toán và Tiếng Việt</title>
-<meta name="description" content="Bé mầm non làm quen con vật, con vật ăn gì, màu sắc và đếm số — có đọc to bằng tiếng Việt.">
+<meta name="description" content="Chương trình mầm non 2–5 tuổi: nhận thức, toán sớm và tiếng Việt, có phần riêng cho bé Việt kiều với chế độ song ngữ.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧸</text></svg>">
 <script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧸</text></svg>">
 </head>
 <body>
 <div class="wrap">
@@ -20,118 +20,187 @@
   <header class="hero">
     <div class="mascot" id="mascot">🧸</div>
     <h1>Mầm non</h1>
-    <p id="loi-chao">Bé chọn một trò để chơi nhé!</p>
+    <p id="loi-chao">Bé mấy tuổi rồi? Chọn tuổi để xem bài vừa sức nhé!</p>
   </header>
 
-  <main class="grid" id="list"></main>
+  <nav class="chon-tuoi-thanh" id="loc-tuoi"></nav>
+
+  <main id="noi-dung"></main>
 
   <footer>
-    <p>🔊 Máy sẽ đọc câu hỏi cho bé nghe — bé chưa biết chữ vẫn chơi được.</p>
+    <p>🔊 Máy đọc câu hỏi cho bé nghe — bé chưa biết chữ vẫn chơi được.</p>
   </footer>
 
 </div>
 
-<script src="../js/o-tra-loi.js"></script>
 <script src="../js/hoat-hinh.js"></script>
 <script src="../js/quiz.js"></script>
 <script src="../js/danh-hieu.js"></script>
 <script>
-  var TRO_CHOI = [
-    { id: 'mn-con-vat-an-gi', emoji: '🍽️', mau: '#ff8fd0', ten: 'Con vật ăn gì',
-      mo_ta: 'Thỏ thích ăn gì? Mèo thích ăn gì?', href: 'bai-tap/con-vat-an-gi.html' },
-    { id: 'mn-con-vat-keu', emoji: '🔊', mau: '#8b7bf7', ten: 'Con gì kêu',
-      mo_ta: 'Gâu gâu, meo meo, cạp cạp…', href: 'bai-tap/con-vat-keu.html' },
-    { id: 'mn-con-vat-o-dau', emoji: '🏞️', mau: '#4aa8ff', ten: 'Sống ở đâu',
-      mo_ta: 'Dưới nước, trên cạn hay trên trời?', href: 'bai-tap/con-vat-o-dau.html' },
-    { id: 'mn-mau-sac', emoji: '🎨', mau: '#ffc93c', ten: 'Màu sắc',
-      mo_ta: 'Cái nào màu đỏ, màu vàng, màu xanh?', href: 'bai-tap/mau-sac.html' },
-    { id: 'mn-dem-den-5', emoji: '🖐️', mau: '#2fcf90', ten: 'Đếm cùng bé',
-      mo_ta: 'Có mấy con thỏ? Đếm từ 1 đến 10.', href: 'bai-tap/dem-den-5.html' },
-    { id: 'mn-khac-nhom', emoji: '🧩', mau: '#ff7a7a', ten: 'Cái nào khác nhóm',
-      mo_ta: 'Con vật, trái cây, xe cộ, đồ chơi.', href: 'bai-tap/khac-nhom.html' },
-    { id: 'mn-to-nho', emoji: '📐', mau: '#8b7bf7', ten: 'To nhỏ, dài ngắn',
-      mo_ta: 'To hơn, nhỏ hơn, dài ngắn, cao thấp.', href: 'bai-tap/to-nho.html' },
-    { id: 'mn-hinh-gi', emoji: '⬜', mau: '#4aa8ff', ten: 'Hình gì',
-      mo_ta: 'Đâu là hình tròn, hình vuông, tam giác?', href: 'bai-tap/hinh-gi.html' },
-    { id: 'mn-nhieu-it', emoji: '⚖️', mau: '#2fcf90', ten: 'Nhiều hơn, ít hơn',
-      mo_ta: 'Bên nào nhiều hơn, bên nào ít hơn?', href: 'bai-tap/nhieu-it.html' }
-  ];
-
   var mascot = document.getElementById('mascot');
   if (window.HoatHinh) mascot.innerHTML = window.HoatHinh.ve('con-vat/tho', 130, null);
 
-  var TIENG_VIET = [
-    { id: 'mn-tv-tu-vung',       emoji: '🗣️', mau: '#4aa8ff', ten: 'Từ vựng',
-      mo_ta: 'Con vật, trái cây, đồ vật, màu sắc.', href: 'tieng-viet/tu-vung.html' },
-    { id: 'mn-tv-gia-dinh',      emoji: '👨‍👩‍👧', mau: '#ff8fd0', ten: 'Gia đình',
-      mo_ta: 'Ông bà, bố mẹ, anh chị em.', href: 'tieng-viet/gia-dinh.html' },
-    { id: 'mn-tv-co-the',        emoji: '🧒', mau: '#2fcf90', ten: 'Cơ thể của bé',
-      mo_ta: 'Mắt, tai, mũi, miệng, tay, chân.', href: 'tieng-viet/co-the.html' },
-    { id: 'mn-tv-chu-cai',       emoji: '🔤', mau: '#8b7bf7', ten: 'Làm quen chữ cái',
-      mo_ta: 'Nhận mặt chữ và chữ đầu của từ.', href: 'tieng-viet/chu-cai.html' },
-    { id: 'mn-tv-dem-tieng-viet', emoji: '🔢', mau: '#ffc93c', ten: 'Đếm bằng tiếng Việt',
-      mo_ta: 'Một, hai, ba… đến mười.', href: 'tieng-viet/dem-tieng-viet.html' },
-    { id: 'mn-tv-chao-hoi',      emoji: '🙏', mau: '#ff7a7a', ten: 'Chào hỏi lễ phép',
-      mo_ta: 'Con chào, con cảm ơn, con xin lỗi ạ.', href: 'tieng-viet/chao-hoi.html' }
+  /* tuoi: những độ tuổi mà bài này phù hợp */
+  var NHOM = [
+    { ten: 'Làm quen và nhận thức', bai: [
+      { id: 'mn-con-vat-an-gi', emoji: '🍽️', mau: '#ff8fd0', ten: 'Con vật ăn gì',
+        mo_ta: 'Thỏ thích ăn gì? Mèo thích ăn gì?', href: 'bai-tap/con-vat-an-gi.html', tuoi: [3, 4, 5] },
+      { id: 'mn-con-vat-keu', emoji: '🔊', mau: '#8b7bf7', ten: 'Con gì kêu',
+        mo_ta: 'Gâu gâu, meo meo, cạp cạp…', href: 'bai-tap/con-vat-keu.html', tuoi: [2, 3, 4] },
+      { id: 'mn-con-vat-o-dau', emoji: '🏞️', mau: '#4aa8ff', ten: 'Sống ở đâu',
+        mo_ta: 'Dưới nước, trên cạn hay trên trời?', href: 'bai-tap/con-vat-o-dau.html', tuoi: [4, 5] },
+      { id: 'mn-mau-sac', emoji: '🎨', mau: '#ffc93c', ten: 'Màu sắc',
+        mo_ta: 'Cái nào màu đỏ, màu vàng, màu xanh?', href: 'bai-tap/mau-sac.html', tuoi: [2, 3, 4] },
+      { id: 'mn-khac-nhom', emoji: '🧩', mau: '#ff7a7a', ten: 'Cái nào khác nhóm',
+        mo_ta: 'Con vật, trái cây, xe cộ, đồ chơi.', href: 'bai-tap/khac-nhom.html', tuoi: [4, 5] },
+      { id: 'mn-to-nho', emoji: '📐', mau: '#8b7bf7', ten: 'To nhỏ, dài ngắn',
+        mo_ta: 'To hơn, nhỏ hơn, dài ngắn, cao thấp.', href: 'bai-tap/to-nho.html', tuoi: [3, 4, 5] },
+      { id: 'mn-hinh-gi', emoji: '⬜', mau: '#4aa8ff', ten: 'Hình gì',
+        mo_ta: 'Đâu là hình tròn, hình vuông, tam giác?', href: 'bai-tap/hinh-gi.html', tuoi: [3, 4, 5] }
+    ] },
+    { ten: 'Toán sớm', bai: [
+      { id: 'mn-dem-den-5', emoji: '🖐️', mau: '#2fcf90', ten: 'Đếm cùng bé',
+        mo_ta: 'Có mấy con thỏ? Đếm từ 1 đến 10.', href: 'bai-tap/dem-den-5.html', tuoi: [3, 4, 5] },
+      { id: 'mn-nhieu-it', emoji: '⚖️', mau: '#2fcf90', ten: 'Nhiều hơn, ít hơn',
+        mo_ta: 'Bên nào nhiều hơn, bên nào ít hơn?', href: 'bai-tap/nhieu-it.html', tuoi: [4, 5] },
+      { id: 'mn-tv-dem-tieng-viet', emoji: '🔢', mau: '#ffc93c', ten: 'Đếm bằng tiếng Việt',
+        mo_ta: 'Một, hai, ba… đến mười.', href: 'tieng-viet/dem-tieng-viet.html', tuoi: [3, 4, 5] }
+    ] },
+    { ten: 'Tiếng Việt — tập nói và từ vựng', bai: [
+      { id: 'mn-tv-be-2-tuoi', emoji: '🍼', mau: '#ff8fd0', ten: 'Bé tập nói',
+        mo_ta: 'Chỉ 2 lựa chọn, từ quen thuộc nhất.', href: 'tieng-viet/be-2-tuoi.html', tuoi: [2] },
+      { id: 'mn-tv-tu-vung', emoji: '🗣️', mau: '#4aa8ff', ten: 'Từ vựng',
+        mo_ta: 'Con vật, trái cây, đồ vật, màu sắc.', href: 'tieng-viet/tu-vung.html', tuoi: [3, 4, 5] },
+      { id: 'mn-tv-do-dung', emoji: '🏠', mau: '#8b7bf7', ten: 'Đồ dùng quanh bé',
+        mo_ta: 'Đồ trong nhà và quần áo.', href: 'tieng-viet/do-dung.html', tuoi: [3, 4] },
+      { id: 'mn-tv-phuong-tien', emoji: '🚗', mau: '#ffc93c', ten: 'Phương tiện giao thông',
+        mo_ta: 'Xe cộ, tàu thuyền, máy bay.', href: 'tieng-viet/phuong-tien.html', tuoi: [3, 4] },
+      { id: 'mn-tv-do-an-rau-cu', emoji: '🍚', mau: '#ff7a7a', ten: 'Đồ ăn và rau củ',
+        mo_ta: 'Cơm, phở, cà rốt, bắp ngô…', href: 'tieng-viet/do-an-rau-cu.html', tuoi: [3, 4] },
+      { id: 'mn-tv-gia-dinh', emoji: '👨‍👩‍👧', mau: '#ff8fd0', ten: 'Gia đình',
+        mo_ta: 'Ông, bà, bố, mẹ, anh, chị, em bé.', href: 'tieng-viet/gia-dinh.html', tuoi: [2, 3, 4, 5] },
+      { id: 'mn-tv-co-the', emoji: '🧒', mau: '#2fcf90', ten: 'Cơ thể của bé',
+        mo_ta: 'Mắt, tai, mũi, miệng, tay, chân.', href: 'tieng-viet/co-the.html', tuoi: [2, 3] },
+      { id: 'mn-tv-hoat-dong', emoji: '🏃', mau: '#4aa8ff', ten: 'Hoạt động hằng ngày',
+        mo_ta: 'Ăn, ngủ, chạy, hát, đánh răng…', href: 'tieng-viet/hoat-dong.html', tuoi: [3, 4, 5] },
+      { id: 'mn-tv-vi-tri', emoji: '📍', mau: '#8b7bf7', ten: 'Trên dưới trong ngoài',
+        mo_ta: 'Vị trí của đồ vật.', href: 'tieng-viet/vi-tri.html', tuoi: [4, 5] },
+      { id: 'mn-tv-thoi-tiet', emoji: '🌈', mau: '#ffc93c', ten: 'Thời tiết',
+        mo_ta: 'Nắng, mưa, gió, cầu vồng.', href: 'tieng-viet/thoi-tiet.html', tuoi: [3, 4, 5] },
+      { id: 'mn-tv-chao-hoi', emoji: '🙏', mau: '#ff7a7a', ten: 'Chào hỏi lễ phép',
+        mo_ta: 'Con chào, con cảm ơn, con xin lỗi ạ.', href: 'tieng-viet/chao-hoi.html', tuoi: [3, 4, 5] }
+    ] },
+    { ten: 'Chuẩn bị vào lớp 1', bai: [
+      { id: 'mn-tv-chu-cai', emoji: '🔤', mau: '#4aa8ff', ten: 'Làm quen chữ cái',
+        mo_ta: 'Nhận mặt chữ và chữ đầu của từ.', href: 'tieng-viet/chu-cai.html', tuoi: [4, 5] },
+      { id: 'mn-tv-ghep-am', emoji: '🧩', mau: '#8b7bf7', ten: 'Ghép âm thành tiếng',
+        mo_ta: 'b + a = ba', href: 'tieng-viet/ghep-am.html', tuoi: [5] },
+      { id: 'mn-tv-thanh-dieu', emoji: '🎵', mau: '#ffc93c', ten: 'Nghe thanh điệu',
+        mo_ta: 'ma, mà, má, mả, mã, mạ.', href: 'tieng-viet/thanh-dieu.html', tuoi: [5] },
+      { id: 'mn-tv-tach-tieng', emoji: '✂️', mau: '#2fcf90', ten: 'Tách tiếng trong câu',
+        mo_ta: 'Câu này có mấy tiếng?', href: 'tieng-viet/tach-tieng.html', tuoi: [5] }
+    ] },
+    { ten: 'Dành cho bé Việt kiều', vietKieu: true, bai: [
+      { id: 'mn-tv-xung-ho', emoji: '👨‍👩‍👧‍👦', mau: '#ff8fd0', ten: 'Xưng hô trong gia đình',
+        mo_ta: 'Con hay cháu? Chú, bác, cậu, dì khác nhau thế nào?', href: 'tieng-viet/xung-ho.html', tuoi: [4, 5] },
+      { id: 'mn-tv-mau-cau', emoji: '💬', mau: '#4aa8ff', ten: 'Mẫu câu hằng ngày',
+        mo_ta: 'Nói sao cho lễ phép và tự nhiên.', href: 'tieng-viet/mau-cau.html', tuoi: [4, 5] },
+      { id: 'mn-tv-van-hoa', emoji: '🇻🇳', mau: '#ff7a7a', ten: 'Văn hoá Việt Nam',
+        mo_ta: 'Bánh chưng, áo dài, nón lá, lì xì…', href: 'tieng-viet/van-hoa.html', tuoi: [4, 5] },
+      { id: 'mn-tv-thanh-dieu-vk', emoji: '🎵', mau: '#ffc93c', ten: 'Nghe thanh điệu',
+        mo_ta: 'Sáu thanh tiếng Việt — phần bé xa quê hay nhầm nhất.', href: 'tieng-viet/thanh-dieu.html', tuoi: [4, 5] }
+    ] }
   ];
 
-  var list = document.getElementById('list');
-  var tongSao = 0;
+  var TUOI = [
+    { v: 0, ten: 'Tất cả' }, { v: 2, ten: '2 tuổi' }, { v: 3, ten: '3 tuổi' },
+    { v: 4, ten: '4 tuổi' }, { v: 5, ten: '5 tuổi' }
+  ];
 
-  TRO_CHOI.forEach(function (tro) {
-    var best = Quiz.readBest(tro.id);
-    var sao = best ? Quiz.starsFor(best.correct, best.total) : 0;
-    tongSao += sao;
-
-    var card = document.createElement('a');
-    card.className = 'card';
-    card.href = tro.href;
-    card.style.setProperty('--tint', tro.mau);
-    card.innerHTML =
-      '<div class="emoji">' + tro.emoji + '</div>' +
-      '<h2>' + tro.ten + '</h2>' +
-      '<p>' + tro.mo_ta + '</p>' +
-      (best ? '<span class="best">' + '⭐'.repeat(sao) + '</span>' : '');
-    list.appendChild(card);
-  });
-
-  // nhóm Tiếng Việt
-  var tieu = document.createElement('h2');
-  tieu.className = 'nhom';
-  tieu.textContent = 'Học tiếng Việt';
-  list.parentNode.insertBefore(tieu, list.nextSibling);
-
-  var luoiTV = document.createElement('div');
-  luoiTV.className = 'grid';
-  tieu.parentNode.insertBefore(luoiTV, tieu.nextSibling);
-
-  TIENG_VIET.forEach(function (tro) {
-    var best = Quiz.readBest(tro.id);
-    var sao = best ? Quiz.starsFor(best.correct, best.total) : 0;
-    tongSao += sao;
-
-    var card = document.createElement('a');
-    card.className = 'card';
-    card.href = tro.href;
-    card.style.setProperty('--tint', tro.mau);
-    card.innerHTML = '<div class="emoji">' + tro.emoji + '</div><h2>' + tro.ten + '</h2>' +
-      '<p>' + tro.mo_ta + '</p>' + (best ? '<span class="best">' + '⭐'.repeat(sao) + '</span>' : '');
-    luoiTV.appendChild(card);
-  });
-
-  if (tongSao > 0) {
-    document.getElementById('loi-chao').innerHTML =
-      'Bé đã có <b>' + tongSao + ' ⭐</b> — giỏi quá!';
+  var KHOA_TUOI = 'studyonline:mn-tuoi';
+  function tuoiDaChon() {
+    try { return Number(localStorage.getItem(KHOA_TUOI) || 0); } catch (e) { return 0; }
+  }
+  function datTuoi(v) {
+    try { localStorage.setItem(KHOA_TUOI, String(v)); } catch (e) {}
   }
 
-  // dải danh hiệu ở cuối trang
-  if (window.DanhHieu) {
-    var dai = document.createElement('div');
-    dai.innerHTML = DanhHieu.veDai('mam-non');
-    (document.getElementById('noi-dung') || document.getElementById('list').parentNode)
-      .appendChild(dai);
-    DanhHieu.baoMoiDat();
+  var goc = document.getElementById('noi-dung');
+  var thanh = document.getElementById('loc-tuoi');
+
+  function ve() {
+    var tuoi = tuoiDaChon();
+    goc.innerHTML = '';
+    var tongSao = 0, soBai = 0;
+
+    NHOM.forEach(function (nhom) {
+      var bai = nhom.bai.filter(function (b) { return !tuoi || b.tuoi.indexOf(tuoi) !== -1; });
+      if (!bai.length) return;
+
+      var tieu = document.createElement('h2');
+      tieu.className = 'nhom' + (nhom.vietKieu ? ' viet-kieu' : '');
+      tieu.textContent = nhom.ten;
+      goc.appendChild(tieu);
+
+      if (nhom.vietKieu) {
+        var ghi = document.createElement('p');
+        ghi.className = 'ghi-chu-nhom';
+        ghi.innerHTML = 'Những phần bé lớn lên ở nước ngoài hay thiếu nhất. ' +
+          'Trong mỗi bài có nút <b>🇬🇧 Hiện thêm tiếng Anh</b> để bố mẹ giảng cùng bé.';
+        goc.appendChild(ghi);
+      }
+
+      var luoi = document.createElement('div');
+      luoi.className = 'grid';
+      bai.forEach(function (b) {
+        var best = Quiz.readBest(b.id);
+        var sao = best ? Quiz.starsFor(best.correct, best.total) : 0;
+        tongSao += sao; soBai++;
+
+        var card = document.createElement('a');
+        card.className = 'card';
+        card.href = b.href;
+        card.style.setProperty('--tint', b.mau);
+        card.innerHTML = '<div class="emoji">' + b.emoji + '</div><h2>' + b.ten + '</h2>' +
+          '<p>' + b.mo_ta + '</p>' +
+          '<span class="tuoi-nhan">' + b.tuoi.join(', ') + ' tuổi</span>' +
+          (best ? '<span class="best">' + '⭐'.repeat(sao) + '</span>' : '');
+        luoi.appendChild(card);
+      });
+      goc.appendChild(luoi);
+    });
+
+    document.getElementById('loi-chao').innerHTML = tuoi
+      ? 'Đang xem <b>' + soBai + ' bài</b> dành cho bé <b>' + tuoi + ' tuổi</b>' +
+        (tongSao ? ' · đã có <b>' + tongSao + ' ⭐</b>' : '')
+      : (tongSao ? 'Bé đã có <b>' + tongSao + ' ⭐</b> — giỏi quá!'
+                 : 'Bé mấy tuổi rồi? Chọn tuổi để xem bài vừa sức nhé!');
+
+    if (window.DanhHieu) {
+      var dai = document.createElement('div');
+      dai.innerHTML = DanhHieu.veDai('mam-non');
+      goc.appendChild(dai);
+    }
   }
+
+  TUOI.forEach(function (t) {
+    var nut = document.createElement('button');
+    nut.type = 'button';
+    nut.className = 'nut-tuoi';
+    nut.textContent = t.ten;
+    nut.setAttribute('aria-pressed', String(tuoiDaChon() === t.v));
+    nut.addEventListener('click', function () {
+      datTuoi(t.v);
+      [].forEach.call(thanh.children, function (x, i) {
+        x.setAttribute('aria-pressed', String(TUOI[i].v === t.v));
+      });
+      ve();
+    });
+    thanh.appendChild(nut);
+  });
+
+  ve();
+  if (window.DanhHieu) DanhHieu.baoMoiDat();
 </script>
 </body>
 </html>
