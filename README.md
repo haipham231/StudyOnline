@@ -7,7 +7,8 @@ Web học vui cho trẻ em, chia theo lứa tuổi — chạy hoàn toàn trong 
 ```
 🎈 Học cùng bé  (trang cổng, chọn lứa tuổi)
 ├── 🧸 Mầm non — 3–4 tuổi
-└── 🎒 Lớp 1   — 6–7 tuổi
+├── 🎒 Lớp 1   — 6–7 tuổi
+└── 🦉 Lớp 5   — 10–11 tuổi
 ```
 
 ## 🧸 Khu Mầm non (3–4 tuổi)
@@ -106,6 +107,51 @@ máy mới chấm. Có đồng hồ đếm thời gian làm bài. Phiếu kết 
 - Danh sách các câu cần xem lại, kèm đáp án đúng và nhãn mạch kiến thức
 - Lưu 5 lần làm bài gần nhất
 
+## 🦉 Khu Lớp 5 (10–11 tuổi)
+
+Bám mạch kiến thức Toán 5 — Chương trình GDPT 2018. **19 bài tập**, bộ đề kiểm tra và một game.
+
+| Nhóm | Bài |
+|---|---|
+| Phân số | Rút gọn và quy đồng · Cộng trừ · Nhân chia (có biểu thức hỗn hợp) · So sánh và sắp xếp · Hỗn số |
+| Số thập phân | Cộng trừ (có tính thuận tiện) · Nhân chia (kể cả nhân chia hai số thập phân) · Làm tròn và giá trị chữ số · Đổi phân số ↔ thập phân · Tìm x |
+| Tỉ số phần trăm | Ba dạng cơ bản |
+| Hình học và đo lường | Diện tích tam giác, hình thang, bình hành · Hình tròn · Hình hộp (thể tích, Sxq, Stp) · Bài toán tính ngược · Đổi đơn vị đo · Số đo thời gian |
+| Chuyển động và giải toán | Chuyển động đều · Toán có lời văn |
+
+Các dạng khó gồm **bài toán tính ngược** (biết diện tích tìm chiều cao, biết chu vi tìm bán kính),
+**diện tích phần tô màu** (hình vuông có hình tròn nội tiếp) và **biểu thức hỗn hợp phân số**.
+Hình tam giác, hình thang, hình bình hành, hình tròn và hình hộp đều được vẽ bằng SVG kèm số đo.
+
+Số thập phân viết theo kiểu Việt Nam (dấu phẩy); bàn phím có nút `,` riêng.
+
+### 🚀 Du hành vũ trụ
+
+Bay qua **6 hành tinh** để tới Trạm Thiên Hà. Mỗi câu đúng tiến một chặng và được tiếp
+**+8% nhiên liệu**, mỗi câu sai hụt **−30%**; cạn nhiên liệu thì bay lại hành tinh đó
+(các hành tinh đã qua vẫn giữ nguyên).
+
+| Hành tinh | Nội dung | Câu |
+|---|---|---|
+| 🪐 Sao Phân Số | Toàn bộ phân số | 6 |
+| 💧 Sao Thập Phân | Bốn phép tính thập phân | 6 |
+| 🔆 Sao Phần Trăm | Tỉ số phần trăm | 6 |
+| 🧊 Sao Hình Học | Diện tích, thể tích, hình tròn | 7 |
+| ⏳ Sao Đo Lường | Đổi đơn vị, thời gian, tìm x | 7 |
+| 🌌 Trạm Thiên Hà | Chuyển động, tính ngược, giải toán — **đích** | 8 |
+
+Sao chấm theo nhiên liệu còn lại: ≥90% được 3 ⭐, ≥60% được 2 ⭐.
+
+### 📝 Bài kiểm tra lớp 5
+
+| Đề | Phạm vi |
+|---|---|
+| Giữa học kì 1 | Phân số và số thập phân |
+| Cuối học kì 1 | Bốn phép tính thập phân, phần trăm, diện tích |
+| Cuối năm học | Toàn bộ chương trình, có hình tròn và chuyển động |
+
+Cùng cơ chế với lớp 1: không báo đúng sai từng câu, chấm thang 10, biểu đồ theo mạch kiến thức.
+
 ## Cấu trúc
 
 ```
@@ -113,17 +159,26 @@ máy mới chấm. Có đồng hồ đếm thời gian làm bài. Phiếu kết 
 ├── css/style.css         # giao diện chung cho cả hai khu
 ├── js/
 │   ├── quiz.js           # engine dùng chung (luyện tập + chế độ kiểm tra)
-│   ├── toan-lop-1.js     # bộ sinh đề lớp 1 — bài tập, kiểm tra và game dùng chung
-│   ├── game-cong-chua.js # engine game Giải cứu công chúa
+│   ├── o-tra-loi.js      # ô nhập đáp án dùng chung (số nguyên, thập phân, bấm chọn)
+│   ├── toan-lop-1.js     # bộ sinh đề lớp 1
+│   ├── toan-lop-5.js     # bộ sinh đề lớp 5
+│   ├── game-cong-chua.js # engine game Giải cứu công chúa (lớp 1)
+│   ├── game-vu-tru.js    # engine game Du hành vũ trụ (lớp 5)
 │   ├── nhan-vat.js       # hiệp sĩ, công chúa, rồng — vẽ bằng SVG
+│   ├── vat-the-vu-tru.js # phi thuyền, hành tinh, trạm vũ trụ
 │   └── con-vat.js        # dữ liệu con vật (khu mầm non)
 ├── mam-non/
 │   ├── index.html
 │   └── bai-tap/*.html
-└── lop-1/
+├── lop-1/
+│   ├── index.html
+│   ├── cuu-cong-chua.html # game 6 chặng
+│   ├── kiem-tra.html      # ba bộ đề, chấm thang 10
+│   └── bai-tap/*.html
+└── lop-5/
     ├── index.html
-    ├── cuu-cong-chua.html # game 6 chặng
-    ├── kiem-tra.html      # ba bộ đề, chấm thang 10
+    ├── du-hanh-vu-tru.html # game 6 hành tinh
+    ├── kiem-tra.html
     └── bai-tap/*.html
 ```
 

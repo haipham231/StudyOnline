@@ -3,33 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tính dãy — Toán lớp 1</title>
+<title>Nhân chia phân số — Toán lớp 5</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../css/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧮</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>✖️</text></svg>">
 </head>
 <body>
 <header class="topbar">
   <a class="back" href="../index.html">← Trang chủ</a>
-  <h1>🧮 Tính dãy</h1>
+  <h1>✖️ Nhân chia phân số</h1>
 </header>
 
 <main id="quiz" class="quiz"></main>
 
 <script src="../../js/o-tra-loi.js"></script>
 <script src="../../js/quiz.js"></script>
-<script src="../../js/toan-lop-1.js"></script>
+<script src="../../js/toan-lop-5.js"></script>
 <script>
-  var T = ToanL1;
+  var T = ToanL5;
 
   Quiz.init({
-    id: 'tinh-day',
+    id: 'l5-nhan-chia-phan-so',
     total: 10,
     levels: [
-      { name: 'Phạm vi 10', hint: 'Ví dụ: 3 + 2 + 4', gen: function () { return T.tinhDay(10); } },
-      { name: 'Phạm vi 20', hint: 'Tính lần lượt từ trái sang phải', gen: function () { return T.tinhDay(20); } }
+      { name: 'Nhân chia phân số', gen: T.nhanChiaPhanSo },
+      { name: 'Biểu thức hỗn hợp', hint: 'Nhân chia trước, cộng trừ sau', gen: T.tinhHonHopPhanSo }
     ]
   });
 </script>

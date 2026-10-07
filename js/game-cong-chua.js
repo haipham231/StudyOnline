@@ -77,10 +77,10 @@
     setTimeout(function () { lop.remove(); }, 4500);
   }
 
-  var goc, tt, van, phimTat;
+  var goc, tt, van;
 
   function thaoPhim() {
-    if (phimTat) { document.removeEventListener('keydown', phimTat); phimTat = null; }
+    if (van && van.oTraLoi) { van.oTraLoi.huy(); van.oTraLoi = null; }
   }
 
   /* ---------- Màn hình bản đồ ---------- */
@@ -224,113 +224,10 @@
   /* ---------- Vẽ câu hỏi + ô trả lời ---------- */
 
   function veCauHoi(khung, q) {
-    if (q.prompt) khung.appendChild(el('p', 'prompt', q.prompt));
-    if (q.art) khung.appendChild(el('div', 'art', q.art));
-
-    var o = el('span', 'answer-box empty', '?');
-    var dong = el('div', 'question');
-    if (q.text) dong.innerHTML = q.text + ' ';
-    dong.appendChild(o);
-    if (q.after) dong.appendChild(el('span', null, ' ' + q.after));
-    if (q.small || ((q.text || '') + (q.after || '')).replace(/&nbsp;/g, ' ').length > 12) {
-      dong.classList.add('sm');
-    }
-    khung.appendChild(dong);
-
-    var phanHoi = el('div', 'feedback', '&nbsp;');
-    khung.appendChild(phanHoi);
-
-    khung.appendChild(q.choices ? nutChon(q, o, phanHoi) : banPhim(q, o, phanHoi));
-  }
-
-  function nutChon(q, o, phanHoi) {
-    var boc = el('div', 'choices');
-    boc.style.setProperty('--cols', q.cols || q.choices.length);
-
-    q.choices.forEach(function (gt) {
-      var nut = el('button', 'choice', String(gt));
-      nut.type = 'button';
-      nut.addEventListener('click', function () {
-        if (van.khoa) return;
-        van.khoa = true;
-        o.innerHTML = String(gt);
-        o.classList.remove('empty');
-        var dung = String(gt) === String(q.answer);
-        nut.classList.add(dung ? 'is-ok' : 'is-bad');
-        cham(dung, q, phanHoi);
-      });
-      boc.appendChild(nut);
+    van.oTraLoi = global.OTraLoi.ve(khung, q, {
+      nhanNop: '⚔️ Tấn công',
+      khiTraLoi: function (dung, _daNhap, phanHoi) { cham(dung, q, phanHoi); }
     });
-    return boc;
-  }
-
-  function banPhim(q, o, phanHoi) {
-    var pad = el('div', 'pad');
-
-    function veLai() {
-      o.textContent = van.goTiep === '' ? '?' : van.goTiep;
-      o.classList.toggle('empty', van.goTiep === '');
-    }
-
-    function go(d) {
-      if (van.khoa || van.goTiep.length >= 3) return;
-      if (van.goTiep === '0') van.goTiep = '';
-      van.goTiep += d;
-      veLai();
-    }
-
-    function xoa() {
-      if (van.khoa) return;
-      van.goTiep = van.goTiep.slice(0, -1);
-      veLai();
-    }
-
-    function nop() {
-      if (van.khoa || van.goTiep === '') return;
-      van.khoa = true;
-      cham(Number(van.goTiep) === Number(q.answer), q, phanHoi);
-    }
-
-    ['1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(function (d) {
-      var k = el('button', 'key', d);
-      k.type = 'button';
-      k.addEventListener('click', function () { go(d); });
-      pad.appendChild(k);
-    });
-
-    var xl = el('button', 'key fn', '⌫');
-    xl.type = 'button';
-    xl.addEventListener('click', xoa);
-    pad.appendChild(xl);
-
-    var k0 = el('button', 'key', '0');
-    k0.type = 'button';
-    k0.addEventListener('click', function () { go('0'); });
-    pad.appendChild(k0);
-
-    var xoaHet = el('button', 'key fn', 'Xoá');
-    xoaHet.type = 'button';
-    xoaHet.addEventListener('click', function () {
-      if (van.khoa) return;
-      van.goTiep = '';
-      veLai();
-    });
-    pad.appendChild(xoaHet);
-
-    var ok = el('button', 'key wide', '⚔️ Tấn công');
-    ok.type = 'button';
-    ok.addEventListener('click', nop);
-    pad.appendChild(ok);
-
-    phimTat = function (ev) {
-      if (ev.key >= '0' && ev.key <= '9') { go(ev.key); ev.preventDefault(); }
-      else if (ev.key === 'Backspace') { xoa(); ev.preventDefault(); }
-      else if (ev.key === 'Enter') { nop(); ev.preventDefault(); }
-    };
-    document.addEventListener('keydown', phimTat);
-
-    veLai();
-    return pad;
   }
 
   /* ---------- Chấm một câu ---------- */

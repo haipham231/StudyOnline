@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tỉ số phần trăm — Toán lớp 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>💯</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Trang chủ</a>
+  <h1>💯 Tỉ số phần trăm</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/o-tra-loi.js"></script>
+<script src="../../js/quiz.js"></script>
+<script src="../../js/toan-lop-5.js"></script>
+<script>
+  var T = ToanL5;
+
+  Quiz.init({
+    id: 'l5-ti-so-phan-tram',
+    total: 10,
+    levels: [
+      { name: 'Tìm giá trị phần trăm', hint: 'Tìm 25 phần trăm của 80', gen: T.giaTriPhanTram },
+      { name: 'Tìm số ban đầu', hint: '20 là 25 phần trăm của số nào?', gen: T.timSoBanDau },
+      { name: 'Tìm tỉ số phần trăm', hint: '20 chiếm bao nhiêu phần trăm của 80?', gen: T.tiSoPhanTram },
+      { name: 'Trộn tất cả', gen: function () { return Quiz.pick([T.giaTriPhanTram, T.timSoBanDau, T.tiSoPhanTram])(); } }
+    ]
+  });
+</script>
+</body>
+</html>

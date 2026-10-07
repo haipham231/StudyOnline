@@ -166,7 +166,6 @@
     var root = document.getElementById('quiz');
     var total = config.total || 10;
     var state = null;
-    var onKeyDown = null;
 
     /* --- Chọn mức độ --- */
 
@@ -284,131 +283,15 @@
       bar.appendChild(fill);
       panel.appendChild(bar);
 
-      if (q.prompt) {
-        var dong = el('p', 'prompt', q.prompt);
-        if (config.speak) {
-          var loa = el('button', 'loa', '🔊');
-          loa.type = 'button';
-          loa.title = 'Nghe lại';
-          loa.setAttribute('aria-label', 'Nghe lại câu hỏi');
-          loa.addEventListener('click', function () { docTo(q.speak || q.prompt); });
-          dong.appendChild(loa);
-        }
-        panel.appendChild(dong);
-      }
-      if (q.art) panel.appendChild(el('div', 'art', q.art));
       if (config.speak) docTo(q.speak || q.prompt);
 
-      var box = el('span', 'answer-box empty', '?');
-      var line = el('div', 'question');
-      if (q.text) line.innerHTML = q.text + ' ';
-      line.appendChild(box);
-      if (q.after) line.appendChild(el('span', null, ' ' + q.after));
+      state.oTraLoi = global.OTraLoi.ve(panel, q, {
+        coLoa: config.speak,
+        doc: docTo,
+        khiTraLoi: function (dung, daNhap, phanHoi) { judge(dung, q, daNhap, phanHoi); }
+      });
 
-      // đề dài thì thu nhỏ cho vừa màn hình điện thoại
-      var doDai = ((q.text || '') + (q.after || '')).replace(/&nbsp;/g, ' ').length;
-      if (q.small || doDai > 12) line.classList.add('sm');
-      panel.appendChild(line);
-
-      var feedback = el('div', 'feedback', '&nbsp;');
-      panel.appendChild(feedback);
-
-      panel.appendChild(q.choices ? buildChoices(q, box, feedback) : buildPad(q, box, feedback));
       root.appendChild(panel);
-    }
-
-    /* --- Dạng bấm chọn --- */
-
-    function buildChoices(q, box, feedback) {
-      var wrap = el('div', 'choices');
-      wrap.style.setProperty('--cols', q.cols || q.choices.length);
-
-      q.choices.forEach(function (value) {
-        var btn = el('button', 'choice', String(value));
-        btn.type = 'button';
-        btn.addEventListener('click', function () {
-          if (state.locked) return;
-          state.locked = true;
-          box.innerHTML = String(value);
-          box.classList.remove('empty');
-          var ok = String(value) === String(q.answer);
-          btn.classList.add(ok ? 'is-ok' : 'is-bad');
-          judge(ok, q, value, feedback);
-        });
-        wrap.appendChild(btn);
-      });
-
-      return wrap;
-    }
-
-    /* --- Dạng gõ số --- */
-
-    function buildPad(q, box, feedback) {
-      var pad = el('div', 'pad');
-
-      function redraw() {
-        box.textContent = state.typed === '' ? '?' : state.typed;
-        box.classList.toggle('empty', state.typed === '');
-      }
-
-      function type(digit) {
-        if (state.locked || state.typed.length >= 3) return;
-        if (state.typed === '0') state.typed = '';
-        state.typed += digit;
-        redraw();
-      }
-
-      function erase() {
-        if (state.locked) return;
-        state.typed = state.typed.slice(0, -1);
-        redraw();
-      }
-
-      function submit() {
-        if (state.locked || state.typed === '') return;
-        state.locked = true;
-        judge(Number(state.typed) === Number(q.answer), q, state.typed, feedback);
-      }
-
-      ['1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(function (d) {
-        var key = el('button', 'key', d);
-        key.type = 'button';
-        key.addEventListener('click', function () { type(d); });
-        pad.appendChild(key);
-      });
-
-      var del = el('button', 'key fn', '⌫');
-      del.type = 'button';
-      del.addEventListener('click', erase);
-      pad.appendChild(del);
-
-      var zero = el('button', 'key', '0');
-      zero.type = 'button';
-      zero.addEventListener('click', function () { type('0'); });
-      pad.appendChild(zero);
-
-      var clear = el('button', 'key fn', 'Xoá');
-      clear.type = 'button';
-      clear.addEventListener('click', function () {
-        if (state.locked) return;
-        state.typed = '';
-        redraw();
-      });
-      pad.appendChild(clear);
-
-      var ok = el('button', 'key wide', 'Trả lời');
-      ok.type = 'button';
-      ok.addEventListener('click', submit);
-      pad.appendChild(ok);
-
-      onKeyDown = function (ev) {
-        if (ev.key >= '0' && ev.key <= '9') { type(ev.key); ev.preventDefault(); }
-        else if (ev.key === 'Backspace') { erase(); ev.preventDefault(); }
-        else if (ev.key === 'Enter') { submit(); ev.preventDefault(); }
-      };
-      document.addEventListener('keydown', onKeyDown);
-
-      return pad;
     }
 
     function chayDongHo() {
@@ -420,10 +303,7 @@
     }
 
     function detachKeyboard() {
-      if (onKeyDown) {
-        document.removeEventListener('keydown', onKeyDown);
-        onKeyDown = null;
-      }
+      if (state && state.oTraLoi) { state.oTraLoi.huy(); state.oTraLoi = null; }
     }
 
     /* --- Chấm một câu --- */
