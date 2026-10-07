@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bảng cửu chương — Học Toán Online</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>✖️</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Trang chủ</a>
+  <h1>✖️ Bảng cửu chương</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../js/quiz.js"></script>
+<script>
+  var r = Quiz.randInt;
+
+  function nhan(from, to) {
+    var a = r(from, to);
+    var b = r(1, 10);
+    return { text: a + ' × ' + b + ' =', answer: a * b };
+  }
+
+  function chia(from, to) {
+    var a = r(from, to);
+    var b = r(1, 10);
+    return { text: (a * b) + ' ÷ ' + a + ' =', answer: b };
+  }
+
+  Quiz.init({
+    id: 'bang-cuu-chuong',
+    total: 10,
+    levels: [
+      { name: 'Nhân — bảng 2 đến 5', gen: function () { return nhan(2, 5); } },
+      { name: 'Nhân — bảng 6 đến 9', gen: function () { return nhan(6, 9); } },
+      { name: 'Nhân & chia — tất cả các bảng', gen: function () {
+          return Math.random() < 0.5 ? nhan(2, 9) : chia(2, 9);
+        } }
+    ]
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cộng trừ — Học Toán Online</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>➕</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Trang chủ</a>
+  <h1>➕ Cộng trừ</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../js/quiz.js"></script>
+<script>
+  var r = Quiz.randInt;
+
+  // Sinh một phép cộng hoặc trừ, kết quả luôn nằm trong [0, max]
+  function congTru(max, carry) {
+    var a, b;
+    do {
+      a = r(1, max);
+      b = r(1, max - 1);
+    } while (a + b > max);
+
+    if (carry && (a % 10) + (b % 10) < 10) {
+      // ép có nhớ cho mức khó: tăng hàng đơn vị của b
+      b = b - (b % 10) + r(10 - (a % 10), 9);
+      if (a + b > max) b = b - 10;
+      if (b < 1) b = 1;
+    }
+
+    if (Math.random() < 0.5) {
+      return { text: a + ' + ' + b + ' =', answer: a + b };
+    }
+    return { text: (a + b) + ' − ' + b + ' =', answer: a };
+  }
+
+  Quiz.init({
+    id: 'cong-tru',
+    total: 10,
+    levels: [
+      { name: 'Dễ', hint: 'Trong phạm vi 10', gen: function () { return congTru(10, false); } },
+      { name: 'Vừa', hint: 'Trong phạm vi 20', gen: function () { return congTru(20, false); } },
+      { name: 'Khó', hint: 'Trong phạm vi 100, có nhớ', gen: function () { return congTru(100, true); } }
+    ]
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>So sánh số — Học Toán Online</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>⚖️</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Trang chủ</a>
+  <h1>⚖️ So sánh số</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../js/quiz.js"></script>
+<script>
+  var r = Quiz.randInt;
+  var DAU = ['>', '<', '='];
+
+  function dau(x, y) { return x > y ? '>' : x < y ? '<' : '='; }
+
+  function soSanhSo(max) {
+    var a = r(1, max);
+    // một phần tư số câu cho đáp án "=" để bé không đoán bừa
+    var b = Math.random() < 0.25 ? a : r(1, max);
+    return { text: String(a), after: String(b), answer: dau(a, b), choices: DAU };
+  }
+
+  function soSanhPhepTinh(max) {
+    var a = r(1, max), b = r(1, max);
+    var c = r(1, max), d = r(1, max);
+    if (Math.random() < 0.25) { c = a; d = b; }
+    return {
+      text: a + ' + ' + b,
+      after: c + ' + ' + d,
+      answer: dau(a + b, c + d),
+      choices: DAU
+    };
+  }
+
+  Quiz.init({
+    id: 'so-sanh',
+    total: 10,
+    levels: [
+      { name: 'So sánh số', hint: 'Các số đến 20', gen: function () { return soSanhSo(20); } },
+      { name: 'So sánh số', hint: 'Các số đến 100', gen: function () { return soSanhSo(100); } },
+      { name: 'So sánh phép tính', hint: 'Ví dụ: 3 + 4 … 2 + 6', gen: function () { return soSanhPhepTinh(10); } }
+    ]
+  });
+</script>
+</body>
+</html>

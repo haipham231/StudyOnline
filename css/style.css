@@ -1,0 +1,351 @@
+/* ===== Học Toán Online — style chung ===== */
+
+:root {
+  --bg: #eef2ff;
+  --bg-deco: #dfe7ff;
+  --card: #ffffff;
+  --ink: #232a4d;
+  --muted: #6f779b;
+  --line: #e3e8f7;
+  --primary: #4c6ef5;
+  --primary-dark: #3b5bdb;
+  --ok: #2fb380;
+  --ok-soft: #e4f7ef;
+  --bad: #ef5a5a;
+  --bad-soft: #fde9e9;
+  --accent: #ffb020;
+  --radius: 20px;
+  --shadow: 0 8px 22px rgba(40, 50, 110, 0.09);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141a30;
+    --bg-deco: #1d2542;
+    --card: #1e2540;
+    --ink: #eaeefb;
+    --muted: #9aa3c7;
+    --line: #2d3760;
+    --ok-soft: #16342a;
+    --bad-soft: #3a1f23;
+    --shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 16px 48px;
+  background: var(--bg);
+  background-image: radial-gradient(circle at 15% 0%, var(--bg-deco) 0%, transparent 45%);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", sans-serif;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+}
+
+.wrap { max-width: 720px; margin: 0 auto; }
+
+/* ===== Header ===== */
+
+.hero {
+  text-align: center;
+  padding: 40px 0 28px;
+}
+
+.hero h1 {
+  margin: 0 0 6px;
+  font-size: clamp(28px, 7vw, 40px);
+  letter-spacing: -0.5px;
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 0 10px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: clamp(20px, 5vw, 26px);
+}
+
+.back {
+  flex: none;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 15px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.back:hover { color: var(--primary); }
+
+/* ===== Danh sách bài ===== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: block;
+  padding: 22px;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(40, 50, 110, 0.14);
+}
+
+.card .emoji { font-size: 38px; line-height: 1; }
+.card h2 { margin: 12px 0 4px; font-size: 20px; }
+.card p { margin: 0; color: var(--muted); font-size: 14px; }
+
+.card .best {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--ok-soft);
+  color: var(--ok);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ===== Nút ===== */
+
+.btn {
+  display: inline-block;
+  padding: 14px 26px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  font-size: 17px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.btn:hover { background: var(--primary-dark); }
+.btn.ghost { background: var(--card); color: var(--ink); box-shadow: var(--shadow); }
+.btn.ghost:hover { color: var(--primary); }
+
+/* ===== Khung bài tập ===== */
+
+.quiz {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.panel {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 26px;
+  text-align: center;
+}
+
+.panel h2 { margin: 0 0 6px; font-size: 22px; }
+.panel .lead { margin: 0 0 20px; color: var(--muted); }
+
+.levels {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.level {
+  padding: 14px 18px;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.level[aria-pressed="true"] {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  font-weight: 700;
+}
+
+/* ===== Thanh tiến độ ===== */
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.bar {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.bar > span {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: var(--primary);
+  transition: width 0.25s ease;
+}
+
+/* ===== Câu hỏi ===== */
+
+.question {
+  font-size: clamp(34px, 11vw, 54px);
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin: 10px 0 18px;
+}
+
+.answer-box {
+  display: inline-block;
+  min-width: 130px;
+  padding: 8px 18px;
+  border-bottom: 4px solid var(--primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.answer-box.empty { color: var(--muted); opacity: 0.45; }
+
+.feedback {
+  min-height: 30px;
+  margin: 6px 0 14px;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.feedback.ok { color: var(--ok); }
+.feedback.bad { color: var(--bad); }
+
+/* ===== Bàn phím số ===== */
+
+.pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.key {
+  padding: 18px 0;
+  border: 0;
+  border-radius: 16px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.key:hover { background: var(--line); }
+.key.wide { grid-column: span 3; background: var(--primary); color: #fff; font-size: 20px; }
+.key.wide:hover { background: var(--primary-dark); }
+.key:disabled { opacity: 0.5; cursor: default; }
+
+/* ===== Nút chọn đáp án ===== */
+
+.choices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.choice {
+  padding: 22px 0;
+  border: 0;
+  border-radius: 18px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 30px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.choice:hover { background: var(--line); }
+.choice.is-ok { background: var(--ok); color: #fff; }
+.choice.is-bad { background: var(--bad); color: #fff; }
+
+/* ===== Kết quả ===== */
+
+.score { font-size: 60px; font-weight: 800; margin: 4px 0; }
+.stars { font-size: 36px; letter-spacing: 6px; margin-bottom: 8px; }
+
+.summary {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  flex-wrap: wrap;
+  margin: 16px 0 24px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.summary b { display: block; color: var(--ink); font-size: 20px; }
+
+.actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+.review {
+  margin-top: 26px;
+  text-align: left;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.review h3 { margin: 0 0 10px; font-size: 16px; color: var(--muted); }
+
+.review li {
+  font-size: 17px;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.review .yours { color: var(--bad); text-decoration: line-through; margin-right: 6px; }
+.review .right { color: var(--ok); font-weight: 700; }
+
+footer {
+  text-align: center;
+  margin-top: 36px;
+  color: var(--muted);
+  font-size: 14px;
+}

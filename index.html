@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Học Toán Online</title>
+<meta name="description" content="Các bài luyện toán vui cho trẻ em: cộng trừ, bảng cửu chương, so sánh số.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧮</text></svg>">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🧮 Học Toán Online</h1>
+    <p>Chọn một bài để bắt đầu luyện tập nhé!</p>
+  </header>
+
+  <main class="grid" id="list"></main>
+
+  <footer>
+    <p>Làm bằng HTML + CSS + JavaScript · Điểm được lưu ngay trên máy của bé.</p>
+  </footer>
+
+</div>
+
+<script src="js/quiz.js"></script>
+<script>
+  var BAI_TAP = [
+    { id: 'cong-tru', emoji: '➕', ten: 'Cộng trừ',
+      mo_ta: 'Phép cộng và trừ trong phạm vi 10, 20 hoặc 100.',
+      href: 'bai-tap/cong-tru.html' },
+    { id: 'bang-cuu-chuong', emoji: '✖️', ten: 'Bảng cửu chương',
+      mo_ta: 'Luyện nhân và chia từ bảng 2 đến bảng 9.',
+      href: 'bai-tap/bang-cuu-chuong.html' },
+    { id: 'so-sanh', emoji: '⚖️', ten: 'So sánh số',
+      mo_ta: 'Điền dấu lớn hơn, bé hơn hoặc bằng.',
+      href: 'bai-tap/so-sanh.html' }
+  ];
+
+  var list = document.getElementById('list');
+
+  BAI_TAP.forEach(function (bai) {
+    var best = Quiz.readBest(bai.id);
+    var card = document.createElement('a');
+    card.className = 'card';
+    card.href = bai.href;
+    card.innerHTML =
+      '<div class="emoji">' + bai.emoji + '</div>' +
+      '<h2>' + bai.ten + '</h2>' +
+      '<p>' + bai.mo_ta + '</p>' +
+      (best
+        ? '<span class="best">' + '⭐'.repeat(Quiz.starsFor(best.correct, best.total)) +
+          ' Kỷ lục ' + best.score + ' điểm</span>'
+        : '');
+    list.appendChild(card);
+  });
+</script>
+</body>
+</html>
