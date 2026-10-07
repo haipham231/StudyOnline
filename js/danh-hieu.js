@@ -153,12 +153,17 @@
   function baoMoiDat() {
     var moi = moiDat();
     if (!moi.length) return;
+    // mở khoá nhiều cùng lúc thì chỉ hiện ba cái, còn lại gộp một dòng
+    var HIEN = 3;
     var o = document.createElement('div');
     o.className = 'bao-danh-hieu';
-    o.innerHTML = moi.map(function (d) {
+    o.innerHTML = moi.slice(0, HIEN).map(function (d) {
       return '<div class="bao"><span>' + d.e + '</span><div><b>Mở khoá danh hiệu!</b>' +
         '<small>' + d.ten + '</small></div></div>';
-    }).join('');
+    }).join('') + (moi.length > HIEN
+      ? '<div class="bao"><span>🏅</span><div><b>Và thêm nữa</b><small>' +
+        (moi.length - HIEN) + ' danh hiệu khác</small></div></div>'
+      : '');
     document.body.appendChild(o);
     setTimeout(function () { o.classList.add('an'); }, 5200);
     setTimeout(function () { o.remove(); }, 6000);
