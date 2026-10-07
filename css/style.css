@@ -1001,3 +1001,6 @@ h2.nhom::before {
 @media (max-width: 430px) {
   .vu-tru { height: 132px; }
 }
+
+.nv-anh img, .nv-anh svg { display: block; }
+.nv-anh { display: inline-block; line-height: 0; }

@@ -80,13 +80,26 @@ hiệp sĩ tiến một bước; sai thì mất một trái tim, hết ba tim ph
 
 Mỗi chặng chấm 1–3 ⭐ tuỳ số tim còn lại. Tiến độ lưu bằng `localStorage`.
 
-**Nhân vật** (hiệp sĩ, công chúa, rồng, lồng giam) được **vẽ bằng SVG trong
-`js/nhan-vat.js`** — hoàn toàn tự làm, không dùng hình có bản quyền. Muốn đổi sang ảnh
-khác chỉ cần sửa file đó, ví dụ:
+**Nhân vật** nằm gọn trong `js/nhan-vat.js`:
+
+- **Hiệp sĩ** và **rồng** dùng sticker trên GIPHY (của Lunime và Twilight Force), có ghi
+  công ở cuối trang game.
+- **Công chúa** và **lồng giam** tự vẽ bằng SVG.
+- Mọi ảnh ngoài đều có **đường lui**: tải không được thì tự thay bằng bản SVG, nên game
+  vẫn chơi bình thường khi mất mạng.
+
+Muốn đổi ảnh khác chỉ cần sửa biến `ANH` ở đầu file:
 
 ```js
-hiepSi: function () { return '<img src="…" alt="hiệp sĩ">'; }
+var ANH = {
+  hiepSi: 'https://…',
+  rong: 'https://…'
+};
 ```
+
+Nếu cần nguồn hoàn toàn tự do về giấy phép, hai chỗ tốt là
+[kenney.nl](https://kenney.nl) (CC0, khỏi ghi công) và
+[game-icons.net](https://game-icons.net) (CC BY 3.0, hơn 4000 icon SVG game).
 
 ### 📝 Bài kiểm tra
 

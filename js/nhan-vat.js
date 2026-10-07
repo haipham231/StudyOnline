@@ -1,17 +1,35 @@
-/* ===== Nhân vật của game "Giải cứu công chúa" — vẽ bằng SVG, tự làm hoàn toàn =====
-   Muốn thay bằng ảnh khác thì chỉ cần sửa trong file này, ví dụ:
-     hiepSi: function () { return '<img src="…" alt="hiệp sĩ">'; }
+/* ===== Nhân vật của game "Giải cứu công chúa" =====
+   Hiệp sĩ và rồng dùng sticker trên GIPHY (có ghi công ở cuối trang game);
+   công chúa và lồng giam tự vẽ bằng SVG.
+   Mỗi ảnh ngoài đều có đường lui: tải không được thì tự thay bằng bản SVG,
+   nên game vẫn chơi bình thường khi mất mạng.
+   Muốn đổi ảnh khác chỉ cần sửa ANH ở ngay dưới đây.
 */
 (function (global) {
   'use strict';
+
+  var ANH = {
+    hiepSi: 'https://media.giphy.com/media/JrwZsuor72mL2x6qyT/giphy.gif',
+    rong: 'https://media.giphy.com/media/8vvNfLiB5Wm9Zx0SWt/giphy.gif'
+  };
+
+  // bọc ảnh ngoài, hỏng thì gọi bản SVG thay thế
+  function anhCoDuongLui(nguon, rong, ten, duPhong) {
+    var id = 'nv' + Math.random().toString(36).slice(2, 8);
+    return '<span id="' + id + '" class="nv-anh">' +
+      '<img src="' + nguon + '" width="' + rong + '" alt="' + ten + '" ' +
+      'onerror="var o=document.getElementById(\'' + id + '\'); if(o) o.innerHTML=' +
+      'window.NhanVat.' + duPhong + '(' + rong + ');">' +
+      '</span>';
+  }
 
   function svg(noiDung, rong) {
     return '<svg viewBox="0 0 100 120" width="' + (rong || 74) + '" ' +
            'style="overflow:visible" aria-hidden="true">' + noiDung + '</svg>';
   }
 
-  // Hiệp sĩ nhỏ — mũ sắt, áo giáp xanh, khiên vàng
-  function hiepSi(rong) {
+  // Hiệp sĩ nhỏ — bản vẽ dự phòng khi ảnh không tải được
+  function hiepSiSVG(rong) {
     return svg(
       '<ellipse cx="50" cy="114" rx="22" ry="5" fill="rgba(43,47,85,.14)"/>' +
       '<rect x="36" y="86" width="11" height="24" rx="5" fill="#3b4a7a"/>' +
@@ -28,6 +46,10 @@
       '<rect x="70" y="42" width="12" height="5" rx="2" fill="#8a6400"/>' +
       '<path d="M18 52 h16 v18 q0 10 -8 14 -8 -4 -8 -14z" fill="#ffc93c"/>',
       rong);
+  }
+
+  function hiepSi(rong) {
+    return anhCoDuongLui(ANH.hiepSi, rong || 74, 'hiệp sĩ', 'hiepSiSVG');
   }
 
   // Công chúa — vương miện, váy hồng
@@ -50,8 +72,8 @@
     return svg(hinhCongChua(true), rong);
   }
 
-  // Rồng — kẻ bắt cóc công chúa
-  function rong(rong_) {
+  // Rồng — bản vẽ dự phòng khi ảnh không tải được
+  function rongSVG(rong_) {
     return svg(
       '<ellipse cx="50" cy="116" rx="30" ry="6" fill="rgba(43,47,85,.16)"/>' +
       '<path d="M16 54 q-14 -22 2 -30 2 16 14 20z" fill="#6a58e0"/>' +
@@ -72,6 +94,10 @@
       rong_);
   }
 
+  function rong(rong_) {
+    return anhCoDuongLui(ANH.rong, rong_ || 74, 'rồng', 'rongSVG');
+  }
+
   // Lồng giam — công chúa đang bị nhốt bên trong
   function long(rong) {
     return svg(
@@ -86,5 +112,9 @@
       rong);
   }
 
-  global.NhanVat = { hiepSi: hiepSi, congChua: congChua, rong: rong, long: long };
+  global.NhanVat = {
+    hiepSi: hiepSi, hiepSiSVG: hiepSiSVG,
+    rong: rong, rongSVG: rongSVG,
+    congChua: congChua, long: long, ANH: ANH
+  };
 })(window);
