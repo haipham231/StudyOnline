@@ -103,10 +103,10 @@
                   'mn-dem-den-5', 'mn-khac-nhom', 'mn-to-nho', 'mn-hinh-gi', 'mn-nhieu-it'];
         return ds.filter(function (id) { return sao(id) > 0; }).length >= 3;
       } },
-    { id: 'bay-cao', e: '🧙‍♀️', ten: 'Bạn Của Phù Thuỷ', mo: 'Bay tới được Lâu Đài Mây', khu: 'mam-non',
-      dat: function () { return !!game('game-phu-thuy').len; } },
+    { id: 'bay-cao', e: '🦄', ten: 'Bạn Của Kỳ Lân', mo: 'Bay tới được Lâu Đài Mây', khu: 'mam-non',
+      dat: function () { return !!game('game-ky-lan').len; } },
     { id: 'nhat-sao', e: '⭐', ten: 'Người Nhặt Sao', mo: 'Nhặt được 20 ngôi sao khi bay', khu: 'mam-non',
-      dat: function () { return (game('game-phu-thuy').ngoiSao || 0) >= 20; } },
+      dat: function () { return (game('game-ky-lan').ngoiSao || 0) >= 20; } },
     { id: 'be-noi-tieng-viet', e: '🇻🇳', ten: 'Bé Nói Tiếng Việt', mo: 'Đạt 3 sao ở 3 bài tiếng Việt mầm non', khu: 'mam-non',
       dat: function () {
         var ds = ['mn-tv-tu-vung', 'mn-tv-gia-dinh', 'mn-tv-co-the', 'mn-tv-chu-cai',

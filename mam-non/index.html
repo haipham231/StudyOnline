@@ -41,9 +41,9 @@
   if (window.HoatHinh) mascot.innerHTML = window.HoatHinh.ve('con-vat/tho', 130, null);
 
   var GAME = {
-    id: 'game-phu-thuy', emoji: '🧙‍♀️', mau: '#8b7bf7', ten: 'Bay cùng bà phù thuỷ',
+    id: 'game-ky-lan', emoji: '🦄', mau: '#8b7bf7', ten: 'Bay cùng kỳ lân',
     mo_ta: 'Bay lên trời qua 5 chặng: con vật, màu sắc, đếm số, chữ cái. Sai cũng không sao, bé cứ thử tiếp!',
-    href: 'bay-cung-phu-thuy.html', tuoi: [3, 4, 5]
+    href: 'bay-cung-ky-lan.html', tuoi: [2, 3, 4, 5]
   };
 
   /* tuoi: những độ tuổi mà bài này phù hợp */
@@ -144,12 +144,12 @@
       var luoiG = document.createElement('div');
       luoiG.className = 'grid';
       var tt = null;
-      try { tt = JSON.parse(localStorage.getItem('studyonline:game-phu-thuy') || 'null'); } catch (e) {}
+      try { tt = JSON.parse(localStorage.getItem('studyonline:game-ky-lan') || 'null'); } catch (e) {}
       var huy = '';
       if (tt) {
         var s = 0;
         Object.keys(tt.sao || {}).forEach(function (k) { s += tt.sao[k]; });
-        huy = '<span class="best">' + (tt.len ? '🧙‍♀️ Đã tới Lâu Đài Mây · ' : 'Đang ở chặng ' + tt.mo + ' · ') +
+        huy = '<span class="best">' + (tt.len ? '🦄 Đã tới Lâu Đài Mây · ' : 'Đang ở chặng ' + tt.mo + ' · ') +
               '⭐ ' + (tt.ngoiSao || 0) + '</span>';
       }
       var theG = document.createElement('a');

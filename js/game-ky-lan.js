@@ -1,13 +1,14 @@
-/* ===== Game "Bay cùng bà phù thuỷ" — mầm non =====
+/* ===== Game "Bay cùng kỳ lân" — mầm non =====
    Năm chặng bay lên trời. Mỗi câu đúng bay cao thêm một nấc và được một ngôi sao.
    Cố ý KHÔNG có mạng và không có màn thua: bé nhỏ trả lời sai thì chỉ được xem
    đáp án đúng rồi làm câu khác, cứ thế cho tới khi đủ số câu.
+   Không dùng nhân vật phù thuỷ để bé nhỏ khỏi sợ.
 */
 (function (global) {
   'use strict';
 
   var Q = global.Quiz, M = global.TiengVietMN;
-  var STORE = 'studyonline:game-phu-thuy';
+  var STORE = 'studyonline:game-ky-lan';
 
   function mix() {
     var ds = Array.prototype.slice.call(arguments);
@@ -31,7 +32,7 @@
       mota: 'Nhận biết chữ cái',
       de: mix(M.nhanBietChu, M.chuDauTu) },
 
-    { ten: 'Lâu Đài Mây', hinh: 'phu-thuy', emoji: '🧙‍♀️', mau: '#6a58e0', soCau: 6, dinh: true,
+    { ten: 'Lâu Đài Mây', hinh: 'troi/co-tien', emoji: '🧚', mau: '#6a58e0', soCau: 6, dinh: true,
       mota: 'Chặng cuối — trộn tất cả',
       de: mix(function () { return M.ngheVaChon(null, 3); }, M.nhanBietChu,
               function () { return M.demBangChu(5); }, M.hoatDong) }
@@ -94,8 +95,8 @@
 
     var khung = el('div', 'panel ban-do');
     khung.appendChild(el('div', 'cot-truyen',
-      hinh('phu-thuy', 100) +
-      '<p>Bà phù thuỷ rủ bé cưỡi chổi bay lên trời chơi! ' +
+      hinh('troi/ky-lan', 110) +
+      '<p>Bạn kỳ lân rủ bé bay lên trời chơi! ' +
       'Mỗi câu trả lời đúng bé bay cao thêm một nấc và nhặt được một ngôi sao. ' +
       '<b>Trả lời sai cũng không sao cả</b> — bé cứ thử tiếp nhé.</p>'));
 
@@ -103,7 +104,7 @@
     Object.keys(tt.sao).forEach(function (k) { tongSao += tt.sao[k]; });
     khung.appendChild(el('p', 'lead',
       '⭐ Đã nhặt <b>' + (tt.ngoiSao || 0) + ' ngôi sao</b> · 🏆 <b>' + tongSao + '/' + (CHANG.length * 3) + '</b>' +
-      (tt.len ? ' · 🧙‍♀️ Bé đã bay tới Lâu Đài Mây!' : '')));
+      (tt.len ? ' · 🦄 Bé đã bay tới Lâu Đài Mây!' : '')));
 
     var ds = el('div', 'chang-list');
     CHANG.forEach(function (chang, i) {
@@ -182,7 +183,7 @@
     var troi = el('div', 'bau-troi');
     troi.appendChild(el('div', 'dich-tren', hinh(chang.hinh, chang.dinh ? 86 : 74)));
 
-    var bay = el('div', 'nguoi-bay' + (hieuUng === 'len' ? ' vut-len' : ''), hinh('phu-thuy', 76));
+    var bay = el('div', 'nguoi-bay' + (hieuUng === 'len' ? ' vut-len' : ''), hinh('troi/ky-lan', 82));
     bay.style.bottom = (6 + van.buoc / chang.soCau * 56) + '%';
     troi.appendChild(bay);
 
@@ -210,7 +211,7 @@
     if (dung) {
       van.buoc += 1;
       phanHoi.className = 'feedback pop ok';
-      phanHoi.innerHTML = Q.pick(['⭐ Giỏi quá!', '🪄 Bay cao hơn rồi!', '🎉 Đúng rồi!', '✨ Tuyệt vời!']);
+      phanHoi.innerHTML = Q.pick(['⭐ Giỏi quá!', '🦄 Bay cao hơn rồi!', '🎉 Đúng rồi!', '✨ Tuyệt vời!']);
       if (Q.docTo) Q.docTo('Giỏi quá');
 
       setTimeout(function () {
@@ -224,7 +225,7 @@
     // sai thì không mất gì, chỉ xem đáp án rồi làm câu khác
     van.sai += 1;
     phanHoi.className = 'feedback pop bad';
-    phanHoi.innerHTML = '🪄 Đáp án đúng là <b>' + String(q.answer).replace(/<[^>]+>/g, ' ').trim() + '</b>' +
+    phanHoi.innerHTML = '✨ Đáp án đúng là <b>' + String(q.answer).replace(/<[^>]+>/g, ' ').trim() + '</b>' +
                         '<br><small>Không sao đâu, mình thử câu khác nhé!</small>';
 
     setTimeout(raCauHoi, 2400);
@@ -247,11 +248,11 @@
     goc.innerHTML = '';
     var khung = el('div', 'panel');
     khung.appendChild(el('div', 'doi-nhan-vat',
-      cuoi ? hinh('cup', 104) + hinh('phu-thuy', 76) : hinh('phu-thuy', 84) + hinh(van.chang.hinh, 70)));
+      cuoi ? hinh('cup', 104) + hinh('troi/ky-lan', 80) : hinh('troi/ky-lan', 86) + hinh(van.chang.hinh, 70)));
 
-    khung.appendChild(el('h2', null, cuoi ? '🧙‍♀️ Bé đã bay tới Lâu Đài Mây!' : '✨ Lên tới ' + van.chang.ten + '!'));
+    khung.appendChild(el('h2', null, cuoi ? '🦄 Bé đã bay tới Lâu Đài Mây!' : '✨ Lên tới ' + van.chang.ten + '!'));
     khung.appendChild(el('p', 'lead', cuoi
-      ? 'Bà phù thuỷ khen bé giỏi lắm!'
+      ? 'Bạn kỳ lân và cô tiên khen bé giỏi lắm!'
       : 'Bé nhặt được <b>' + van.chang.soCau + ' ngôi sao</b>. Chặng <b>' +
         CHANG[van.chiSo + 1].ten + '</b> đã mở!'));
 
@@ -260,7 +261,7 @@
 
     var actions = el('div', 'actions');
     if (!cuoi) {
-      var tiep = el('button', 'btn go', '🪄 Bay tiếp');
+      var tiep = el('button', 'btn go', '🦄 Bay tiếp');
       tiep.type = 'button';
       tiep.addEventListener('click', function () { bayLen(van.chiSo + 1); });
       actions.appendChild(tiep);
@@ -276,7 +277,7 @@
     if (global.DanhHieu) global.DanhHieu.baoMoiDat();
   }
 
-  global.GamePhuThuy = {
+  global.GameKyLan = {
     CHANG: CHANG,
     batDau: function (idGoc) {
       goc = document.getElementById(idGoc || 'game');
