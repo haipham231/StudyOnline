@@ -1004,3 +1004,6 @@ h2.nhom::before {
 
 .nv-anh img, .nv-anh svg { display: block; }
 .nv-anh { display: inline-block; line-height: 0; }
+
+/* chữ trong hình vẽ không chịu letter-spacing của khối .art */
+.art svg text { letter-spacing: normal; }
