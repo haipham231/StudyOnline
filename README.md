@@ -6,12 +6,12 @@ Web học vui cho trẻ em, chia theo lứa tuổi — chạy hoàn toàn trong 
 
 ```
 🎈 Học cùng bé  (trang cổng, chọn lứa tuổi)
-├── 🧸 Mầm non — 3–4 tuổi
+├── 🧸 Mầm non — 2–5 tuổi
 ├── 🎒 Lớp 1   — 6–7 tuổi
 └── 🦉 Lớp 5   — 10–11 tuổi
 ```
 
-## 🧸 Khu Mầm non (3–4 tuổi)
+## 🧸 Khu Mầm non (2–5 tuổi)
 
 Bé chưa biết chữ nên **mọi câu hỏi đều được đọc to bằng tiếng Việt** (Web Speech API,
 tự chọn giọng `vi-*` nếu máy có), lựa chọn là **hình cỡ lớn** kèm nhãn chữ nhỏ để
