@@ -212,9 +212,9 @@
       line.appendChild(box);
       if (q.after) line.appendChild(el('span', null, ' ' + q.after));
 
-      // đề dài (dãy số, so sánh phép tính) thì thu nhỏ cho vừa màn hình bé
+      // đề dài thì thu nhỏ cho vừa màn hình điện thoại
       var doDai = ((q.text || '') + (q.after || '')).replace(/&nbsp;/g, ' ').length;
-      if (doDai > 12) line.classList.add('sm');
+      if (q.small || doDai > 12) line.classList.add('sm');
       panel.appendChild(line);
 
       var feedback = el('div', 'feedback', '&nbsp;');
