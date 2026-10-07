@@ -30,7 +30,9 @@
     levels: [
       { name: 'Các số đến 10', gen: function () { return T.soSanh(10); } },
       { name: 'Các số đến 100', gen: function () { return T.soSanh(100); } },
-      { name: 'So sánh phép tính', hint: 'Ví dụ: 3 + 4 … 2 + 6', gen: T.soSanhPhepTinh }
+      { name: 'So sánh phép tính', hint: 'Ví dụ: 3 + 4 … 2 + 6', gen: T.soSanhPhepTinh },
+      { name: 'Cân thăng bằng', hint: 'Đếm khối trên hai đĩa cân — không có chữ số',
+        gen: function () { return T.canThangBang(10); } }
     ]
   });
 </script>

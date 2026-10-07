@@ -29,7 +29,9 @@
     total: 10,
     levels: [
       { name: 'Trong phạm vi 10', hint: 'Số 7 gồm 3 và mấy?', gen: function () { return T.tachGop(10); } },
-      { name: 'Trong phạm vi 20', hint: 'Khó hơn một chút', gen: function () { return T.tachGop(20); } }
+      { name: 'Trong phạm vi 20', hint: 'Khó hơn một chút', gen: function () { return T.tachGop(20); } },
+      { name: 'Thanh khối', hint: 'Nhìn ô đã tô và ô chưa tô',
+        gen: function () { return T.tachGopTrucQuan(10); } }
     ]
   });
 </script>

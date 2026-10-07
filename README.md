@@ -216,6 +216,30 @@ Sao chấm theo nhiên liệu còn lại: ≥90% được 3 ⭐, ≥60% được
 
 Cùng cơ chế với lớp 1: không báo đúng sai từng câu, chấm thang 10, biểu đồ theo mạch kiến thức.
 
+## 🏅 Danh hiệu
+
+Mỗi khu có bộ danh hiệu riêng, mở khoá dựa trên kết quả đã lưu — không cần ghi thêm dữ liệu
+gì. Danh hiệu hiện thành dải huy hiệu ở cuối trang chủ (chưa đạt thì xám và khoá), và bật
+lên một thông báo nhỏ ngay khi vừa mở khoá.
+
+| Khu | Ví dụ danh hiệu |
+|---|---|
+| 🎒 Lớp 1 | Bậc Thầy Phép Cộng · Kiến Trúc Sư Tách Gộp · Người Giữ Thời Gian · Nhà Ngôn Ngữ Nhí · Người Cứu Công Chúa · Vua Halloween · Thợ Săn Kẹo |
+| 🦉 Lớp 5 | Bậc Thầy Phân Số · Chuyên Gia Thập Phân · Trùm Phần Trăm · Kỹ Sư Hình Học · Nhà Thám Hiểm Ngược · Phi Hành Gia · Nhà Toán Học Nhí |
+| 🧸 Mầm non | Bé Ngoan · Bé Nói Tiếng Việt |
+
+## 🎨 Dạng bài trực quan
+
+Hai dạng bài cố tình **không hiện phép tính**, bé phải nhìn hình mà suy:
+
+- **Cân thăng bằng** — hai đĩa cân chứa các khối, không có một chữ số nào; bé đếm khối rồi
+  điền dấu `>`, `<`, `=`.
+- **Thanh khối** — một thanh chia ô, phần đã tô và phần còn trống; bé nhìn ra phép tách gộp
+  thay vì đọc đề.
+
+Trong game, đường đi là **cây cầu xây dần**: mỗi câu đúng dựng thêm một nhịp vòm, nhịp chưa
+xây chỉ là nét đứt mờ — bé thấy rõ mình còn cách đích bao xa.
+
 ## Cấu trúc
 
 ```
@@ -232,6 +256,7 @@ Cùng cơ chế với lớp 1: không báo đúng sai từng câu, chấm thang 
 │   ├── game-cong-chua.js # engine game Giải cứu công chúa (lớp 1)
 │   ├── game-halloween.js # engine game Đêm Halloween (lớp 1)
 │   ├── hoat-hinh.js      # bọc trình phát Lottie, có đường lui SVG
+│   ├── danh-hieu.js      # danh hiệu, suy ra từ kết quả đã lưu
 │   ├── game-vu-tru.js    # engine game Du hành vũ trụ (lớp 5)
 │   ├── nhan-vat.js       # hiệp sĩ, công chúa, rồng — vẽ bằng SVG
 │   ├── vat-the-vu-tru.js # phi thuyền, hành tinh, trạm vũ trụ

@@ -312,6 +312,7 @@
 
     goc.appendChild(khung);
     confetti();
+    if (global.DanhHieu) global.DanhHieu.baoMoiDat();
   }
 
   function thuaAi() {

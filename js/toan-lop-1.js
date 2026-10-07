@@ -482,6 +482,71 @@
     };
   }
 
+
+  /* ================= DẠNG TRỰC QUAN — KHÔNG HIỆN PHÉP TÍNH ================= */
+
+  // Cân thăng bằng: bé đếm khối trên hai đĩa rồi điền dấu, không thấy chữ số nào
+  function veCan(trai, phai) {
+    var khoi = function (n, x0) {
+      var o = '';
+      for (var i = 0; i < n; i++) {
+        var cot = i % 4, hang = Math.floor(i / 4);
+        o += '<rect x="' + (x0 + cot * 15) + '" y="' + (74 - hang * 15) + '" width="13" height="13" ' +
+             'rx="3" fill="#4aa8ff" stroke="#2b7fd4" stroke-width="1.5"/>';
+      }
+      return o;
+    };
+
+    return '<svg viewBox="0 0 300 150" width="300" style="max-width:100%">' +
+      '<rect x="146" y="40" width="8" height="90" fill="#9aa3c7"/>' +
+      '<path d="M120 134 h60 l-10 -6 h-40z" fill="#7d84ab"/>' +
+      '<line x1="40" y1="46" x2="260" y2="46" stroke="#7d84ab" stroke-width="7" stroke-linecap="round"/>' +
+      '<circle cx="150" cy="46" r="9" fill="#8b7bf7"/>' +
+      '<path d="M22 46 v34 M78 46 v34" stroke="#c3cbec" stroke-width="2.5"/>' +
+      '<path d="M222 46 v34 M278 46 v34" stroke="#c3cbec" stroke-width="2.5"/>' +
+      '<path d="M16 80 h68 l-8 10 h-52z" fill="#ffd9b8" stroke="#e0a800" stroke-width="2"/>' +
+      '<path d="M216 80 h68 l-8 10 h-52z" fill="#ffd9b8" stroke="#e0a800" stroke-width="2"/>' +
+      khoi(trai, 20) + khoi(phai, 220) +
+      '</svg>';
+  }
+
+  function canThangBang(max) {
+    var a = r(1, max);
+    var b = Math.random() < 0.25 ? a : r(1, max);
+    return {
+      prompt: 'Bên nào nặng hơn? Đếm số khối rồi điền dấu nhé!',
+      speak: 'Bên nào nặng hơn? Đếm số khối rồi điền dấu.',
+      art: veCan(a, b),
+      answer: dau(a, b), choices: DAU,
+      mach: 'So sánh'
+    };
+  }
+
+  // Thanh khối tách gộp: thấy tổng ô, phần đã tô và phần còn trống
+  function veThanhKhoi(tong, daTo) {
+    var rong = Math.min(34, Math.floor(280 / tong));
+    var o = '';
+    for (var i = 0; i < tong; i++) {
+      var daTo_ = i < daTo;
+      o += '<rect x="' + (6 + i * (rong + 3)) + '" y="8" width="' + rong + '" height="40" rx="6" ' +
+           'fill="' + (daTo_ ? '#4aa8ff' : '#f1f4ff') + '" stroke="' + (daTo_ ? '#2b7fd4' : '#c3cbec') +
+           '" stroke-width="2.5"' + (daTo_ ? '' : ' stroke-dasharray="5 4"') + '/>';
+    }
+    var w = 12 + tong * (rong + 3);
+    return '<svg viewBox="0 0 ' + w + ' 56" width="' + Math.min(w, 320) + '" style="max-width:100%">' + o + '</svg>';
+  }
+
+  function tachGopTrucQuan(max) {
+    var tong = r(3, max);
+    var a = r(1, tong - 1);
+    return {
+      prompt: 'Thanh có <b>' + tong + '</b> ô, đã tô <b>' + a + '</b> ô. Còn mấy ô chưa tô?',
+      speak: 'Thanh có ' + tong + ' ô, đã tô ' + a + ' ô. Còn mấy ô chưa tô?',
+      art: veThanhKhoi(tong, a),
+      after: 'ô', answer: tong - a, mach: 'Tách gộp số'
+    };
+  }
+
   global.ToanL1 = {
     congTru: congTru, congTruKhongNho: congTruKhongNho, tinhDay: tinhDay,
     dienSo: dienSo, dienSoTronChuc: dienSoTronChuc,
@@ -491,6 +556,7 @@
     choThem: choThem, choDi: choDi, gopNhom: gopNhom, nhieuHon: nhieuHon,
     itHon: itHon, roiKhoi: roiKhoi, lucDau: lucDau, honKem: honKem,
     nhanBietHinh: nhanBietHinh, demHinhHoc: demHinhHoc, hinhKhoi: hinhKhoi,
-    doDoDai: doDoDai, xemGio: xemGio
+    doDoDai: doDoDai, xemGio: xemGio,
+    canThangBang: canThangBang, tachGopTrucQuan: tachGopTrucQuan
   };
 })(window);

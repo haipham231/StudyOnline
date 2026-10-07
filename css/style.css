@@ -1110,3 +1110,77 @@ h2.nhom::before {
   font-size: 1.15em;
   font-weight: 700;
 }
+
+/* ===== Cây cầu trong game ===== */
+
+.canh .duong { height: 46px; bottom: 8px; background: none; padding: 0; }
+.canh .duong svg { overflow: visible; }
+
+/* ===== Danh hiệu ===== */
+
+.dai-danh-hieu { margin-top: 34px; }
+
+.dai-danh-hieu .dem {
+  margin-left: 8px;
+  padding: 2px 11px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--sun) 24%, #fff);
+  color: #8a6400;
+  font-size: 14px;
+}
+
+.huy-hieu {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.hh {
+  padding: 14px 12px;
+  border-radius: var(--r-md);
+  background: var(--card);
+  box-shadow: var(--lift);
+  text-align: center;
+  opacity: 0.55;
+  filter: grayscale(1);
+}
+
+.hh.dat { opacity: 1; filter: none; }
+.hh .bieu-tuong { display: block; font-size: 34px; line-height: 1.1; margin-bottom: 6px; }
+.hh b { display: block; font-size: 14.5px; }
+.hh small { display: block; margin-top: 3px; color: var(--muted); font-size: 12.5px; line-height: 1.45; }
+
+.hh.dat .bieu-tuong { animation: pop 0.5s ease; }
+
+/* thông báo mở khoá */
+
+.bao-danh-hieu {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 50;
+  display: grid;
+  gap: 8px;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.bao-danh-hieu.an { opacity: 0; transform: translateY(12px); }
+
+.bao-danh-hieu .bao {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px 12px 14px;
+  border-radius: var(--r-md);
+  background: var(--card);
+  box-shadow: 0 10px 28px rgba(43, 47, 85, 0.22);
+  animation: pop 0.45s ease;
+}
+
+.bao-danh-hieu .bao span { font-size: 32px; }
+.bao-danh-hieu .bao b { display: block; font-size: 13px; color: var(--muted); }
+.bao-danh-hieu .bao small { font-family: "Baloo 2", sans-serif; font-size: 17px; font-weight: 700; color: var(--ink); }
+
+@media (max-width: 430px) {
+  .bao-danh-hieu { left: 16px; right: 16px; }
+}
