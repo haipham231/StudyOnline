@@ -295,25 +295,25 @@
 
   var XUNG_HO = [
     { hoi: 'Bé nói chuyện với <b>mẹ</b> thì bé tự gọi mình là gì?', dung: 'con',
-      sai: ['em', 'cháu', 'tôi'], en: 'With parents, a child says "con"' },
+      sai: ['em', 'cháu', 'tôi'], en: 'How a child refers to themselves with parents' },
     { hoi: 'Bé nói chuyện với <b>bà</b> thì bé tự gọi mình là gì?', dung: 'cháu',
-      sai: ['con', 'em', 'tôi'], en: 'With grandparents, a child says "cháu"' },
+      sai: ['con', 'em', 'tôi'], en: 'How a child refers to themselves with grandparents' },
     { hoi: 'Bé nói chuyện với <b>anh trai</b> thì bé tự gọi mình là gì?', dung: 'em',
-      sai: ['con', 'cháu', 'anh'], en: 'With an older sibling, say "em"' },
+      sai: ['con', 'cháu', 'anh'], en: 'How a child refers to themselves with an older sibling' },
     { hoi: 'Gọi <b>em trai của bố</b> là gì?', dung: 'chú',
-      sai: ['bác', 'cậu', 'dượng'], en: 'Father’s younger brother = chú' },
+      sai: ['bác', 'cậu', 'dượng'], en: 'Father’s younger brother' },
     { hoi: 'Gọi <b>anh trai của bố</b> là gì?', dung: 'bác',
-      sai: ['chú', 'cậu', 'ông'], en: 'Father’s older brother = bác' },
+      sai: ['chú', 'cậu', 'ông'], en: 'Father’s older brother' },
     { hoi: 'Gọi <b>em trai của mẹ</b> là gì?', dung: 'cậu',
-      sai: ['chú', 'bác', 'dì'], en: 'Mother’s younger brother = cậu' },
+      sai: ['chú', 'bác', 'dì'], en: 'Mother’s younger brother' },
     { hoi: 'Gọi <b>em gái của mẹ</b> là gì?', dung: 'dì',
-      sai: ['cô', 'bác', 'mợ'], en: 'Mother’s younger sister = dì' },
+      sai: ['cô', 'bác', 'mợ'], en: 'Mother’s younger sister' },
     { hoi: 'Gọi <b>em gái của bố</b> là gì?', dung: 'cô',
-      sai: ['dì', 'bác', 'mợ'], en: 'Father’s younger sister = cô' },
+      sai: ['dì', 'bác', 'mợ'], en: 'Father’s younger sister' },
     { hoi: 'Bố của mẹ bé thì bé gọi là gì?', dung: 'ông ngoại',
-      sai: ['ông nội', 'bác', 'cậu'], en: 'Mother’s father = ông ngoại' },
+      sai: ['ông nội', 'bác', 'cậu'], en: 'Mother’s father' },
     { hoi: 'Mẹ của bố bé thì bé gọi là gì?', dung: 'bà nội',
-      sai: ['bà ngoại', 'cô', 'dì'], en: 'Father’s mother = bà nội' }
+      sai: ['bà ngoại', 'cô', 'dì'], en: 'Father’s mother' }
   ];
 
   function xungHo() {
