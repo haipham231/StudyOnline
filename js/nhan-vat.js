@@ -8,22 +8,11 @@
 (function (global) {
   'use strict';
 
-  // heSo: sticker nằm ngang cần rộng hơn mới cân với nhân vật vẽ dọc
+  // Hoạt hình Lottie tải sẵn trong assets/lottie; heSo chỉnh cho cân với khung cảnh
   var ANH = {
-    hiepSi: { url: 'https://media.giphy.com/media/JrwZsuor72mL2x6qyT/giphy.gif', heSo: 1.15 },
-    rong:   { url: 'https://media.giphy.com/media/8vvNfLiB5Wm9Zx0SWt/giphy.gif', heSo: 2.1 }
+    hiepSi: { tep: 'hiep-si', heSo: 1.5, tacGia: 'Tuân Nguyễn' },
+    rong:   { tep: 'rong', heSo: 1.9, tacGia: 'Matheus Mesquita' }
   };
-
-  // bọc ảnh ngoài, hỏng thì gọi bản SVG thay thế
-  function anhCoDuongLui(anh, rong, ten, duPhong) {
-    var id = 'nv' + Math.random().toString(36).slice(2, 8);
-    var w = Math.round(rong * (anh.heSo || 1));
-    return '<span id="' + id + '" class="nv-anh">' +
-      '<img src="' + anh.url + '" width="' + w + '" alt="' + ten + '" ' +
-      'onerror="var o=document.getElementById(\'' + id + '\'); if(o) o.innerHTML=' +
-      'window.NhanVat.' + duPhong + '(' + rong + ');">' +
-      '</span>';
-  }
 
   function svg(noiDung, rong) {
     return '<svg viewBox="0 0 100 120" width="' + (rong || 74) + '" ' +
@@ -51,7 +40,8 @@
   }
 
   function hiepSi(rong) {
-    return anhCoDuongLui(ANH.hiepSi, rong || 74, 'hiệp sĩ', 'hiepSiSVG');
+    var c = Math.round((rong || 74) * ANH.hiepSi.heSo);
+    return global.HoatHinh.ve(ANH.hiepSi.tep, c, 'NhanVat.hiepSiSVG');
   }
 
   // Công chúa — vương miện, váy hồng
@@ -97,7 +87,8 @@
   }
 
   function rong(rong_) {
-    return anhCoDuongLui(ANH.rong, rong_ || 74, 'rồng', 'rongSVG');
+    var c = Math.round((rong_ || 74) * ANH.rong.heSo);
+    return global.HoatHinh.ve(ANH.rong.tep, c, 'NhanVat.rongSVG');
   }
 
   // Lồng giam — công chúa đang bị nhốt bên trong

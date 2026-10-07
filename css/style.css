@@ -1007,3 +1007,14 @@ h2.nhom::before {
 
 /* chữ trong hình vẽ không chịu letter-spacing của khối .art */
 .art svg text { letter-spacing: normal; }
+
+/* ===== Hoạt hình Lottie ===== */
+
+.hoat {
+  display: inline-block;
+  line-height: 0;
+  min-height: var(--cao);
+}
+
+.hoat dotlottie-wc { display: block; }
+.hoat svg, .hoat img { display: block; }

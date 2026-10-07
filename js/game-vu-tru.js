@@ -273,8 +273,9 @@
 
     goc.innerHTML = '';
     var khung = el('div', 'panel');
-    khung.appendChild(el('div', 'doi-nhan-vat',
-      cuoi ? V.tram(100) + V.phiThuyen(64) : V.phiThuyen(70) + V.hanhTinh(van.chang.mau, van.chang.toi, van.chang.vanh, 80)));
+    khung.appendChild(el('div', 'doi-nhan-vat', cuoi
+      ? global.HoatHinh.ve('cup', 110, null) + V.tram(90)
+      : V.phiThuyen(64) + V.hanhTinh(van.chang.mau, van.chang.toi, van.chang.vanh, 76)));
 
     khung.appendChild(el('h2', null, cuoi
       ? '🏅 Đã tới Trạm Thiên Hà!'

@@ -277,7 +277,8 @@
     var khung = el('div', 'panel');
 
     if (cuoiCung) {
-      khung.appendChild(el('div', 'doi-nhan-vat', NV.hiepSi(96) + NV.congChua(96)));
+      khung.appendChild(el('div', 'doi-nhan-vat',
+        global.HoatHinh.ve('cup', 110, null) + NV.congChua(90)));
       khung.appendChild(el('h2', null, '👑 Bé đã cứu được công chúa!'));
       khung.appendChild(el('p', 'lead',
         'Hiệp sĩ nhỏ đã đánh bại rồng và đưa công chúa về nhà. Giỏi quá!'));

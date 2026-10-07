@@ -5,7 +5,7 @@
 (function (global) {
   'use strict';
 
-  var ANH_PHI_THUYEN = 'https://media.giphy.com/media/pcyoWXeoHCapjCvCTQ/giphy.gif';
+  var TAC_GIA = { phiThuyen: 'Sokol Laliçi', hanhTinh: 'Muhammad Talha' };
 
   function phiThuyenSVG(rong) {
     return '<svg viewBox="0 0 80 120" width="' + (rong || 62) + '" aria-hidden="true">' +
@@ -20,18 +20,19 @@
       '</svg>';
   }
 
-  // thẻ ảnh có sẵn đường lui: ảnh lỗi thì thay bằng SVG
+  // Lottie, hỏng thì rơi về bản SVG
   function phiThuyen(rong) {
-    var id = 'pt' + Math.random().toString(36).slice(2, 8);
-    return '<span id="' + id + '" class="phi-thuyen">' +
-      '<img src="' + ANH_PHI_THUYEN + '" width="' + (rong || 62) + '" alt="phi thuyền" ' +
-      'onerror="var o=document.getElementById(\'' + id + '\'); if(o) o.innerHTML=' +
-      'window.VatTheVuTru.phiThuyenSVG(' + (rong || 62) + ');">' +
-      '</span>';
+    return global.HoatHinh.ve('phi-thuyen', Math.round((rong || 62) * 1.7), 'VatTheVuTru.phiThuyenSVG');
   }
 
   // Hành tinh: vòng tròn có vành đai và vài hố
+  // hành tinh ở cuối chặng dùng hoạt hình cho sinh động
   function hanhTinh(mau, mauToi, coVanh, rong) {
+    return global.HoatHinh.ve('hanh-tinh', Math.round((rong || 86) * 1.35), null) ||
+           hanhTinhSVG(mau, mauToi, coVanh, rong);
+  }
+
+  function hanhTinhSVG(mau, mauToi, coVanh, rong) {
     var d = rong || 86;
     return '<svg viewBox="0 0 120 120" width="' + d + '" aria-hidden="true">' +
       (coVanh ? '<ellipse cx="60" cy="62" rx="56" ry="15" fill="none" stroke="' + mauToi +
@@ -63,7 +64,8 @@
     phiThuyen: phiThuyen,
     phiThuyenSVG: phiThuyenSVG,
     hanhTinh: hanhTinh,
+    hanhTinhSVG: hanhTinhSVG,
     tram: tram,
-    ANH_PHI_THUYEN: ANH_PHI_THUYEN
+    TAC_GIA: TAC_GIA
   };
 })(window);

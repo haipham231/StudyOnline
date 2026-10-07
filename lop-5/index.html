@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧑‍🚀</text></svg>">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -17,7 +18,7 @@
   <nav class="crumb"><a class="back" href="../index.html">← Chọn lứa tuổi</a></nav>
 
   <header class="hero">
-    <div class="mascot">🦉</div>
+    <div class="mascot" id="mascot">🦉</div>
     <h1>Học Toán Lớp 5</h1>
     <p id="loi-chao">Chọn một bài để bắt đầu nhé!</p>
   </header>
@@ -30,6 +31,7 @@
 
 </div>
 
+<script src="../js/hoat-hinh.js"></script>
 <script src="../js/quiz.js"></script>
 <script>
   var NOI_BAT = [
@@ -72,6 +74,9 @@
       { id: 'toan-do',     emoji: '📖', mau: '#ff8fd0', ten: 'Toán có lời văn', mo_ta: 'Trung bình cộng, tỉ lệ, tổng - tỉ, phần trăm.' }
     ] }
   ];
+
+  var mascot = document.getElementById('mascot');
+  if (window.HoatHinh) mascot.innerHTML = window.HoatHinh.ve('phi-hanh-gia', 128, null);
 
   var goc = document.getElementById('noi-dung');
   var tongSao = 0;
