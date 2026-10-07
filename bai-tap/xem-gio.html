@@ -31,8 +31,8 @@
   function veDongHo(gio, phut) {
     var vach = '';
     for (var i = 0; i < 12; i++) {
-      var ngoai = dauKim(i * 30, 82);
-      var trong = dauKim(i * 30, i % 3 === 0 ? 68 : 74);
+      var ngoai = dauKim(i * 30, 87);
+      var trong = dauKim(i * 30, i % 3 === 0 ? 77 : 81);
       vach += '<line x1="' + trong[0].toFixed(1) + '" y1="' + trong[1].toFixed(1) +
               '" x2="' + ngoai[0].toFixed(1) + '" y2="' + ngoai[1].toFixed(1) +
               '" stroke="#c3cbec" stroke-width="' + (i % 3 === 0 ? 6 : 3) +
@@ -41,14 +41,14 @@
 
     var so = '';
     [[12, 0], [3, 90], [6, 180], [9, 270]].forEach(function (p) {
-      var v = dauKim(p[1], 54);
+      var v = dauKim(p[1], 65);
       so += '<text x="' + v[0].toFixed(1) + '" y="' + (v[1] + 8).toFixed(1) +
             '" text-anchor="middle" font-family="Baloo 2, sans-serif" font-size="22" ' +
             'font-weight="700" fill="#7d84ab">' + p[0] + '</text>';
     });
 
-    var kimGio = dauKim((gio % 12) * 30 + phut * 0.5, 46);
-    var kimPhut = dauKim(phut * 6, 68);
+    var kimGio = dauKim((gio % 12) * 30 + phut * 0.5, 38);
+    var kimPhut = dauKim(phut * 6, 55);
 
     return '<svg viewBox="0 0 200 200" width="190" height="190" role="img" aria-label="đồng hồ">' +
       '<circle cx="100" cy="100" r="94" fill="#fff" stroke="#e2e7fb" stroke-width="7"/>' +
