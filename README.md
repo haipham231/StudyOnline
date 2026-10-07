@@ -29,6 +29,24 @@ người lớn đọc cùng bé. Có nút 🔊 nghe lại.
 | ⬜ Hình gì | Đâu là hình tròn, vuông, tam giác, chữ nhật |
 | ⚖️ Nhiều hơn, ít hơn | So sánh số lượng hai nhóm |
 
+**Học tiếng Việt** — dùng được cho cả bé trong nước và bé gốc Việt ở nước ngoài. Bật
+**“Hiện thêm tiếng Anh”** thì mỗi từ kèm nghĩa tiếng Anh ngay dưới hình; lựa chọn này
+nhớ lại cho lần sau.
+
+| Bài | Nội dung |
+|---|---|
+| 🗣️ Từ vựng | Con vật, trái cây, đồ vật, màu sắc — nghe rồi chọn hình, hoặc nhìn hình gọi tên |
+| 👨‍👩‍👧 Gia đình | Ông, bà, bố, mẹ, anh, chị, em bé |
+| 🧒 Cơ thể của bé | Mắt, tai, mũi, miệng, tay, chân, tóc, răng |
+| 🔤 Làm quen chữ cái | Nhận mặt chữ hoa – thường, chữ đầu của từ |
+| 🔢 Đếm bằng tiếng Việt | Một, hai, ba… đến mười, viết bằng chữ |
+| 🙏 Chào hỏi lễ phép | Con chào ạ, con cảm ơn ạ, con xin lỗi ạ |
+
+47 từ vựng trong 6 chủ đề, mỗi từ có sẵn nghĩa tiếng Anh.
+
+Bảy con vật quen thuộc (mèo, chó, thỏ, voi, chim, bò, lợn) hiển thị bằng **hoạt hình
+Lottie**; những con còn lại dùng emoji.
+
 Dữ liệu 22 con vật (emoji, thức ăn, nơi sống, tiếng kêu) nằm trong `js/con-vat.js`.
 
 ## 🎒 Khu Lớp 1 (6–7 tuổi)
@@ -202,12 +220,14 @@ Cùng cơ chế với lớp 1: không báo đúng sai từng câu, chấm thang 
 
 ```
 ├── index.html            # cổng chọn lứa tuổi
-├── css/style.css         # giao diện chung cho cả hai khu
+├── assets/lottie/        # hoạt hình tải sẵn (nhân vật, con vật, vũ trụ, Halloween)
+├── css/style.css         # giao diện chung cho cả ba khu
 ├── js/
 │   ├── quiz.js           # engine dùng chung (luyện tập + chế độ kiểm tra)
 │   ├── o-tra-loi.js      # ô nhập đáp án dùng chung (số nguyên, thập phân, bấm chọn)
 │   ├── toan-lop-1.js     # bộ sinh đề Toán lớp 1
 │   ├── tieng-viet-lop-1.js # bộ sinh đề Tiếng Việt lớp 1
+│   ├── tieng-viet-mam-non.js # Tiếng Việt mầm non, có chế độ song ngữ
 │   ├── toan-lop-5.js     # bộ sinh đề lớp 5
 │   ├── game-cong-chua.js # engine game Giải cứu công chúa (lớp 1)
 │   ├── game-halloween.js # engine game Đêm Halloween (lớp 1)

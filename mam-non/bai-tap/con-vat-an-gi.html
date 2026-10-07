@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../css/style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🍽️</text></svg>">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
 </head>
 <body>
 <header class="topbar">
@@ -19,6 +20,7 @@
 <main id="quiz" class="quiz"></main>
 
 <script src="../../js/o-tra-loi.js"></script>
+<script src="../../js/hoat-hinh.js"></script>
 <script src="../../js/quiz.js"></script>
 <script src="../../js/con-vat.js"></script>
 <script>
@@ -34,7 +36,7 @@
     return {
       prompt: Quiz.pick(['Bạn nhỏ ơi, ', '', 'Đố bé, ']) + con.ten + ' thích ăn gì?',
       speak: con.ten + ' thích ăn gì?',
-      art: '<span class="nhun">' + con.e + '</span>',
+      art: ConVat.veCon(con, 130),
       answer: dung,
       choices: luaChon,
       cols: soLuaChon === 2 ? 2 : 3

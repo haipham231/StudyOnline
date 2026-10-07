@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mầm non 3–4 tuổi</title>
+<title>Mầm non — Toán và Tiếng Việt</title>
 <meta name="description" content="Bé mầm non làm quen con vật, con vật ăn gì, màu sắc và đếm số — có đọc to bằng tiếng Việt.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧸</text></svg>">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -17,7 +18,7 @@
   <nav class="crumb"><a class="back" href="../index.html">← Chọn lứa tuổi</a></nav>
 
   <header class="hero">
-    <div class="mascot">🧸</div>
+    <div class="mascot" id="mascot">🧸</div>
     <h1>Mầm non</h1>
     <p id="loi-chao">Bé chọn một trò để chơi nhé!</p>
   </header>
@@ -31,6 +32,7 @@
 </div>
 
 <script src="../js/o-tra-loi.js"></script>
+<script src="../js/hoat-hinh.js"></script>
 <script src="../js/quiz.js"></script>
 <script>
   var TRO_CHOI = [
@@ -54,6 +56,24 @@
       mo_ta: 'Bên nào nhiều hơn, bên nào ít hơn?', href: 'bai-tap/nhieu-it.html' }
   ];
 
+  var mascot = document.getElementById('mascot');
+  if (window.HoatHinh) mascot.innerHTML = window.HoatHinh.ve('con-vat/tho', 130, null);
+
+  var TIENG_VIET = [
+    { id: 'mn-tv-tu-vung',       emoji: '🗣️', mau: '#4aa8ff', ten: 'Từ vựng',
+      mo_ta: 'Con vật, trái cây, đồ vật, màu sắc.', href: 'tieng-viet/tu-vung.html' },
+    { id: 'mn-tv-gia-dinh',      emoji: '👨‍👩‍👧', mau: '#ff8fd0', ten: 'Gia đình',
+      mo_ta: 'Ông bà, bố mẹ, anh chị em.', href: 'tieng-viet/gia-dinh.html' },
+    { id: 'mn-tv-co-the',        emoji: '🧒', mau: '#2fcf90', ten: 'Cơ thể của bé',
+      mo_ta: 'Mắt, tai, mũi, miệng, tay, chân.', href: 'tieng-viet/co-the.html' },
+    { id: 'mn-tv-chu-cai',       emoji: '🔤', mau: '#8b7bf7', ten: 'Làm quen chữ cái',
+      mo_ta: 'Nhận mặt chữ và chữ đầu của từ.', href: 'tieng-viet/chu-cai.html' },
+    { id: 'mn-tv-dem-tieng-viet', emoji: '🔢', mau: '#ffc93c', ten: 'Đếm bằng tiếng Việt',
+      mo_ta: 'Một, hai, ba… đến mười.', href: 'tieng-viet/dem-tieng-viet.html' },
+    { id: 'mn-tv-chao-hoi',      emoji: '🙏', mau: '#ff7a7a', ten: 'Chào hỏi lễ phép',
+      mo_ta: 'Con chào, con cảm ơn, con xin lỗi ạ.', href: 'tieng-viet/chao-hoi.html' }
+  ];
+
   var list = document.getElementById('list');
   var tongSao = 0;
 
@@ -72,6 +92,30 @@
       '<p>' + tro.mo_ta + '</p>' +
       (best ? '<span class="best">' + '⭐'.repeat(sao) + '</span>' : '');
     list.appendChild(card);
+  });
+
+  // nhóm Tiếng Việt
+  var tieu = document.createElement('h2');
+  tieu.className = 'nhom';
+  tieu.textContent = 'Học tiếng Việt';
+  list.parentNode.insertBefore(tieu, list.nextSibling);
+
+  var luoiTV = document.createElement('div');
+  luoiTV.className = 'grid';
+  tieu.parentNode.insertBefore(luoiTV, tieu.nextSibling);
+
+  TIENG_VIET.forEach(function (tro) {
+    var best = Quiz.readBest(tro.id);
+    var sao = best ? Quiz.starsFor(best.correct, best.total) : 0;
+    tongSao += sao;
+
+    var card = document.createElement('a');
+    card.className = 'card';
+    card.href = tro.href;
+    card.style.setProperty('--tint', tro.mau);
+    card.innerHTML = '<div class="emoji">' + tro.emoji + '</div><h2>' + tro.ten + '</h2>' +
+      '<p>' + tro.mo_ta + '</p>' + (best ? '<span class="best">' + '⭐'.repeat(sao) + '</span>' : '');
+    luoiTV.appendChild(card);
   });
 
   if (tongSao > 0) {

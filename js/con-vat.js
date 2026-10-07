@@ -4,20 +4,20 @@
 
   // o: nơi sống — 'nuoc' | 'can' | 'troi'
   var CON_VAT = [
-    { ten: 'con thỏ',    e: '🐰', an: { ten: 'củ cà rốt',    e: '🥕' }, o: 'can',  keu: null },
-    { ten: 'con chó',    e: '🐶', an: { ten: 'khúc xương',   e: '🦴' }, o: 'can',  keu: 'gâu gâu' },
-    { ten: 'con mèo',    e: '🐱', an: { ten: 'con cá',       e: '🐟' }, o: 'can',  keu: 'meo meo' },
+    { ten: 'con thỏ',    e: '🐰', lt: 'tho', an: { ten: 'củ cà rốt',    e: '🥕' }, o: 'can',  keu: null },
+    { ten: 'con chó',    e: '🐶', lt: 'cho', an: { ten: 'khúc xương',   e: '🦴' }, o: 'can',  keu: 'gâu gâu' },
+    { ten: 'con mèo',    e: '🐱', lt: 'meo', an: { ten: 'con cá',       e: '🐟' }, o: 'can',  keu: 'meo meo' },
     { ten: 'con khỉ',    e: '🐵', an: { ten: 'quả chuối',    e: '🍌' }, o: 'can',  keu: null },
     { ten: 'con gấu',    e: '🐻', an: { ten: 'mật ong',      e: '🍯' }, o: 'can',  keu: null },
     { ten: 'con chuột',  e: '🐭', an: { ten: 'miếng phô mai', e: '🧀' }, o: 'can', keu: 'chít chít' },
-    { ten: 'con bò',     e: '🐮', an: { ten: 'bó cỏ',        e: '🌿' }, o: 'can',  keu: 'ò ò' },
+    { ten: 'con bò',     e: '🐮', lt: 'bo', an: { ten: 'bó cỏ',        e: '🌿' }, o: 'can',  keu: 'ò ò' },
     { ten: 'con gà',     e: '🐔', an: { ten: 'hạt thóc',     e: '🌾' }, o: 'can',  keu: 'ó ó o' },
-    { ten: 'con chim',   e: '🐦', an: { ten: 'con sâu',      e: '🐛' }, o: 'troi', keu: 'líu lo' },
+    { ten: 'con chim',   e: '🐦', lt: 'chim', an: { ten: 'con sâu',      e: '🐛' }, o: 'troi', keu: 'líu lo' },
     { ten: 'gấu trúc',   e: '🐼', an: { ten: 'cây tre',      e: '🎋' }, o: 'can',  keu: null },
-    { ten: 'con voi',    e: '🐘', an: { ten: 'lá cây',       e: '🍃' }, o: 'can',  keu: null },
+    { ten: 'con voi',    e: '🐘', lt: 'voi', an: { ten: 'lá cây',       e: '🍃' }, o: 'can',  keu: null },
     { ten: 'con cá',     e: '🐠', an: { ten: 'con giun',     e: '🪱' }, o: 'nuoc', keu: null },
     { ten: 'con vịt',    e: '🦆', an: { ten: 'hạt thóc',     e: '🌾' }, o: 'nuoc', keu: 'cạp cạp' },
-    { ten: 'con lợn',    e: '🐷', an: { ten: 'bắp ngô',      e: '🌽' }, o: 'can',  keu: 'ụt ịt' },
+    { ten: 'con lợn',    e: '🐷', lt: 'lon', an: { ten: 'bắp ngô',      e: '🌽' }, o: 'can',  keu: 'ụt ịt' },
     { ten: 'sư tử',      e: '🦁', an: { ten: 'miếng thịt',   e: '🥩' }, o: 'can',  keu: 'gầm gừ' },
     { ten: 'con ếch',    e: '🐸', an: { ten: 'con ruồi',     e: '🪰' }, o: 'nuoc', keu: 'ộp ộp' },
     { ten: 'con ong',    e: '🐝', an: { ten: 'bông hoa',     e: '🌼' }, o: 'troi', keu: 'vo ve' },
@@ -51,7 +51,16 @@
     return ket;
   }
 
+  // con nào có hoạt hình thì dùng, còn lại vẫn là emoji
+  function veCon(con, cao) {
+    if (con.lt && global.HoatHinh) {
+      return global.HoatHinh.ve('con-vat/' + con.lt, cao || 120, null);
+    }
+    return '<span class="nhun">' + con.e + '</span>';
+  }
+
   global.ConVat = {
+    veCon: veCon,
     DS: CON_VAT,
     NOI_SONG: NOI_SONG,
     nut: nut,

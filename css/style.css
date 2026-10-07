@@ -1073,3 +1073,40 @@ h2.nhom::before {
 .nhan-mon.tviet { background: color-mix(in srgb, var(--bubble) 22%, #fff); color: var(--bubble-dark); }
 
 .feedback small { font-size: 14px; opacity: 0.85; }
+
+/* ===== Song ngữ cho bé ở nước ngoài ===== */
+
+.cong-tac { max-width: 760px; margin: 0 auto 6px; text-align: right; }
+
+.song-ngu {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--card);
+  box-shadow: var(--lift);
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.song-ngu input { width: 18px; height: 18px; accent-color: var(--grape); cursor: pointer; }
+
+.nhan .en, .choice .en, .answer-box .en {
+  display: block;
+  margin-top: 2px;
+  font-style: normal;
+  font-size: 0.78em;
+  font-weight: 700;
+  color: var(--grape-dark);
+  opacity: 0.85;
+}
+
+.en-de { font-style: normal; font-size: 0.8em; color: var(--muted); }
+
+.chu-to {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.15em;
+  font-weight: 700;
+}

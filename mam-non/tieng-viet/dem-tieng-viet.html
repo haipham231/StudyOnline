@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đếm bằng tiếng Việt — Tiếng Việt mầm non</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🔢</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>🔢 Đếm bằng tiếng Việt</h1>
+</header>
+
+<div class="cong-tac">
+  <label class="song-ngu">
+    <input type="checkbox" id="songngu"> <span>🇬🇧 Hiện thêm tiếng Anh</span>
+  </label>
+</div>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/o-tra-loi.js"></script>
+<script src="../../js/quiz.js"></script>
+<script src="../../js/tieng-viet-mam-non.js"></script>
+<script>
+  var M = TiengVietMN;
+
+  var o = document.getElementById('songngu');
+  o.checked = M.songNgu();
+  o.addEventListener('change', function () {
+    M.datSongNgu(o.checked);
+    location.reload();          // nạp lại để mọi câu hiện đúng kiểu
+  });
+
+  Quiz.init({
+    id: 'mn-tv-dem-tieng-viet',
+    total: 8,
+    kids: true,
+    speak: true,
+    levels: [
+      { name: 'Đếm đến 5', gen: function () { return M.demBangChu(5); } },
+      { name: 'Đếm đến 10', gen: function () { return M.demBangChu(10); } }
+    ]
+  });
+</script>
+</body>
+</html>
