@@ -171,22 +171,24 @@
     var W = 300, H = 46;
     var rong = W / soNhip;
     var o = '';
+    // cảnh ở đây nền sáng nên nhịp chưa xây phải là nét sẫm mờ mới nhìn ra
+    var mauMo = 'rgba(43,47,85,.22)';
 
     for (var i = 0; i < soNhip; i++) {
       var x = i * rong;
       var xong = i < daXay;
       // vòm cầu
       o += '<path d="M' + x.toFixed(1) + ' 34 q' + (rong / 2).toFixed(1) + ' -22 ' + rong.toFixed(1) + ' 0" ' +
-           'fill="none" stroke="' + (xong ? mau : 'rgba(255,255,255,.28)') + '" stroke-width="' + (xong ? 4 : 2.5) + '"' +
+           'fill="none" stroke="' + (xong ? mau : mauMo) + '" stroke-width="' + (xong ? 4 : 2.5) + '"' +
            (xong ? '' : ' stroke-dasharray="4 4"') + ' stroke-linecap="round"/>';
       // trụ cầu
       o += '<rect x="' + (x - 1.5).toFixed(1) + '" y="34" width="3" height="10" rx="1.5" fill="' +
-           (xong ? mau : 'rgba(255,255,255,.22)') + '"/>';
+           (xong ? mau : mauMo) + '"/>';
     }
     // mặt cầu phần đã xây
     o += '<rect x="0" y="32" width="' + (daXay * rong).toFixed(1) + '" height="4" rx="2" fill="' + mau + '"/>';
     o += '<rect x="' + (W - 3) + '" y="34" width="3" height="10" rx="1.5" fill="' +
-         (daXay >= soNhip ? mau : 'rgba(255,255,255,.22)') + '"/>';
+         (daXay >= soNhip ? mau : mauMo) + '"/>';
 
     return '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" ' +
            'style="width:100%;height:100%;display:block">' + o + '</svg>';
