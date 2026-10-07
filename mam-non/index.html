@@ -40,6 +40,12 @@
   var mascot = document.getElementById('mascot');
   if (window.HoatHinh) mascot.innerHTML = window.HoatHinh.ve('con-vat/tho', 130, null);
 
+  var GAME = {
+    id: 'game-phu-thuy', emoji: '🧙‍♀️', mau: '#8b7bf7', ten: 'Bay cùng bà phù thuỷ',
+    mo_ta: 'Bay lên trời qua 5 chặng: con vật, màu sắc, đếm số, chữ cái. Sai cũng không sao, bé cứ thử tiếp!',
+    href: 'bay-cung-phu-thuy.html', tuoi: [3, 4, 5]
+  };
+
   /* tuoi: những độ tuổi mà bài này phù hợp */
   var NHOM = [
     { ten: 'Làm quen và nhận thức', bai: [
@@ -132,6 +138,29 @@
     var tuoi = tuoiDaChon();
     goc.innerHTML = '';
     var tongSao = 0, soBai = 0;
+
+    // thẻ game đặt lên đầu
+    if (!tuoi || GAME.tuoi.indexOf(tuoi) !== -1) {
+      var luoiG = document.createElement('div');
+      luoiG.className = 'grid';
+      var tt = null;
+      try { tt = JSON.parse(localStorage.getItem('studyonline:game-phu-thuy') || 'null'); } catch (e) {}
+      var huy = '';
+      if (tt) {
+        var s = 0;
+        Object.keys(tt.sao || {}).forEach(function (k) { s += tt.sao[k]; });
+        huy = '<span class="best">' + (tt.len ? '🧙‍♀️ Đã tới Lâu Đài Mây · ' : 'Đang ở chặng ' + tt.mo + ' · ') +
+              '⭐ ' + (tt.ngoiSao || 0) + '</span>';
+      }
+      var theG = document.createElement('a');
+      theG.className = 'card noi-bat';
+      theG.href = GAME.href;
+      theG.style.setProperty('--tint', GAME.mau);
+      theG.innerHTML = '<div class="emoji">' + GAME.emoji + '</div><h2>' + GAME.ten + '</h2>' +
+        '<p>' + GAME.mo_ta + '</p>' + huy;
+      luoiG.appendChild(theG);
+      goc.appendChild(luoiG);
+    }
 
     NHOM.forEach(function (nhom) {
       var bai = nhom.bai.filter(function (b) { return !tuoi || b.tuoi.indexOf(tuoi) !== -1; });

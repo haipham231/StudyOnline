@@ -29,6 +29,23 @@ người lớn đọc cùng bé. Có nút 🔊 nghe lại.
 | ⬜ Hình gì | Đâu là hình tròn, vuông, tam giác, chữ nhật |
 | ⚖️ Nhiều hơn, ít hơn | So sánh số lượng hai nhóm |
 
+### 🧙‍♀️ Bay cùng bà phù thuỷ
+
+Game cho bé mầm non. Bé cưỡi chổi bay lên trời qua **5 chặng**, mỗi câu đúng bay cao thêm
+một nấc và nhặt được một ngôi sao.
+
+| Chặng | Nội dung |
+|---|---|
+| ☁️ Tầng Mây | Nhận biết con vật |
+| 🌈 Cầu Vồng | Nhận biết màu sắc |
+| ⭐ Vườn Sao | Đếm số bằng tiếng Việt |
+| 🌙 Cung Trăng | Nhận biết chữ cái |
+| 🧙‍♀️ Lâu Đài Mây | Trộn tất cả — chặng cuối |
+
+Khác hai game kia, game này **cố ý không có mạng và không có màn thua**: bé trả lời sai thì
+chỉ được xem đáp án đúng rồi làm câu khác, cứ thế cho tới khi đủ số câu. Sao chấm theo số
+lần sai. Mỗi câu tối đa 3–4 lựa chọn và đều được đọc to.
+
 ### Học tiếng Việt — 2 đến 5 tuổi
 
 Trang chủ khu mầm non có **thanh chọn độ tuổi** (2 · 3 · 4 · 5 tuổi): chọn tuổi thì chỉ hiện
@@ -268,6 +285,7 @@ xây chỉ là nét đứt mờ — bé thấy rõ mình còn cách đích bao x
 │   ├── toan-lop-5.js     # bộ sinh đề lớp 5
 │   ├── game-cong-chua.js # engine game Giải cứu công chúa (lớp 1)
 │   ├── game-halloween.js # engine game Đêm Halloween (lớp 1)
+│   ├── game-phu-thuy.js  # engine game Bay cùng bà phù thuỷ (mầm non)
 │   ├── hoat-hinh.js      # bọc trình phát Lottie, có đường lui SVG
 │   ├── danh-hieu.js      # danh hiệu, suy ra từ kết quả đã lưu
 │   ├── game-vu-tru.js    # engine game Du hành vũ trụ (lớp 5)

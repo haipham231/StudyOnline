@@ -207,8 +207,9 @@
     var c = chon(CHU_CAI);
     var hoa = Math.random() < 0.4;
     var dung = hoa ? c.c.toUpperCase() : c.c;
+    // bé mầm non chỉ nên chọn trong ba chữ, nhiều hơn là rối mắt
     var sai = Q.shuffle(CHU_CAI.filter(function (x) { return x.c !== c.c; }))
-      .slice(0, 5).map(function (x) { return hoa ? x.c.toUpperCase() : x.c; });
+      .slice(0, 2).map(function (x) { return hoa ? x.c.toUpperCase() : x.c; });
 
     return {
       prompt: 'Đâu là chữ <b>' + dung + '</b>?',
