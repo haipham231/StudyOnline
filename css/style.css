@@ -521,7 +521,7 @@ footer { text-align: center; margin-top: 40px; color: var(--muted); font-size: 1
   margin-bottom: 18px;
 }
 
-.panel.kids .art { font-size: clamp(56px, 20vw, 110px); letter-spacing: 6px; margin: 6px 0 18px; }
+.panel.kids .art { font-size: clamp(56px, 20vw, 110px); line-height: 1.15; letter-spacing: 6px; margin: 6px 0 18px; }
 .panel.kids .art svg { width: clamp(90px, 26vw, 140px); height: auto; }
 
 .panel.kids .question { display: none; }          /* bé chưa cần ô đáp án dạng chữ */

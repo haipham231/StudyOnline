@@ -26,9 +26,14 @@
     var n = Quiz.randInt(1, toiDa);
     var luaChon = Quiz.choicesAround(n, 3, 1, toiDa);
 
+    // nhiều con thì thu nhỏ lại, nếu không hàng nút bấm bị đẩy khỏi màn hình
+    var coChu = n > 6 ? 0.42 : n > 4 ? 0.6 : 1;
+    var hinh = Quiz.repeatArt(con.e, n);
+    if (coChu < 1) hinh = '<span style="font-size:' + coChu + 'em">' + hinh + '</span>';
+
     return {
       prompt: 'Có mấy ' + con.ten + '?',
-      art: Quiz.repeatArt(con.e, n),
+      art: hinh,
       answer: String(n),
       choices: luaChon.map(String),
       cols: 3
