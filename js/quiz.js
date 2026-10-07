@@ -210,7 +210,11 @@
       var line = el('div', 'question');
       if (q.text) line.innerHTML = q.text + ' ';
       line.appendChild(box);
-      if (q.after) line.appendChild(document.createTextNode(' ' + q.after));
+      if (q.after) line.appendChild(el('span', null, ' ' + q.after));
+
+      // đề dài (dãy số, so sánh phép tính) thì thu nhỏ cho vừa màn hình bé
+      var doDai = ((q.text || '') + (q.after || '')).replace(/&nbsp;/g, ' ').length;
+      if (doDai > 12) line.classList.add('sm');
       panel.appendChild(line);
 
       var feedback = el('div', 'feedback', '&nbsp;');
