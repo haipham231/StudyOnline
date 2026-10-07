@@ -344,23 +344,35 @@
 
   var LOAI_KHOI = ['khối lập phương', 'khối hộp chữ nhật', 'khối trụ', 'khối cầu'];
 
-  function veKhoi(loai, mau, toi) {
+  // Trộn màu với trắng (ti > 0) hoặc đen (ti < 0) để các mặt của khối phân biệt được
+  function pha(hex, ti) {
+    var n = parseInt(hex.slice(1), 16);
+    var rgb = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map(function (v) {
+      return Math.round(ti > 0 ? v + (255 - v) * ti : v * (1 + ti));
+    });
+    return 'rgb(' + rgb.join(',') + ')';
+  }
+
+  function veKhoi(loai, mau) {
+    var sang = pha(mau, 0.3), toi = pha(mau, -0.32);
     var s = '<svg viewBox="0 0 120 110" width="130" height="120">';
+
     if (loai === 'khối lập phương') {
-      s += '<polygon points="20,40 60,20 100,40 60,60" fill="' + toi + '"/>' +
+      s += '<polygon points="20,40 60,20 100,40 60,60" fill="' + sang + '"/>' +
            '<polygon points="20,40 60,60 60,100 20,80" fill="' + mau + '"/>' +
-           '<polygon points="100,40 60,60 60,100 100,80" fill="' + toi + '" opacity=".75"/>';
+           '<polygon points="100,40 60,60 60,100 100,80" fill="' + toi + '"/>';
     } else if (loai === 'khối hộp chữ nhật') {
-      s += '<polygon points="12,46 52,26 108,40 68,60" fill="' + toi + '"/>' +
+      s += '<polygon points="12,46 52,26 108,40 68,60" fill="' + sang + '"/>' +
            '<polygon points="12,46 68,60 68,96 12,82" fill="' + mau + '"/>' +
-           '<polygon points="108,40 68,60 68,96 108,76" fill="' + toi + '" opacity=".75"/>';
+           '<polygon points="108,40 68,60 68,96 108,76" fill="' + toi + '"/>';
     } else if (loai === 'khối trụ') {
       s += '<rect x="34" y="34" width="52" height="54" fill="' + mau + '"/>' +
-           '<ellipse cx="60" cy="88" rx="26" ry="11" fill="' + toi + '" opacity=".75"/>' +
-           '<ellipse cx="60" cy="34" rx="26" ry="11" fill="' + toi + '"/>';
+           '<path d="M34,88 a26,11 0 0 0 52,0" fill="' + toi + '"/>' +
+           '<ellipse cx="60" cy="34" rx="26" ry="11" fill="' + sang + '"/>';
     } else {
       s += '<circle cx="60" cy="60" r="38" fill="' + mau + '"/>' +
-           '<ellipse cx="48" cy="46" rx="13" ry="9" fill="#fff" opacity=".45"/>';
+           '<path d="M30,86 a38,38 0 0 0 60,-8 a38,38 0 0 1 -60,8" fill="' + toi + '" opacity=".55"/>' +
+           '<ellipse cx="47" cy="45" rx="13" ry="9" fill="#fff" opacity=".5" transform="rotate(-28 47 45)"/>';
     }
     return s + '</svg>';
   }
@@ -370,7 +382,7 @@
     var mau = chon(MAU_HINH);
     return {
       prompt: 'Đây là hình khối gì?',
-      art: veKhoi(loai, mau, mau),
+      art: veKhoi(loai, mau),
       answer: loai, choices: Q.shuffle(LOAI_KHOI.slice()), cols: 2, mach: 'Hình khối'
     };
   }
