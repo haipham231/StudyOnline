@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Màu sắc — Mầm non</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🎨</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>🎨 Màu sắc</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/quiz.js"></script>
+<script>
+  var MAU = [
+    { ten: 'màu đỏ',         ds: [['🍎','quả táo'], ['🍓','quả dâu'], ['🌹','bông hồng'], ['🚒','xe cứu hoả'], ['🍅','quả cà chua']] },
+    { ten: 'màu vàng',       ds: [['🍌','quả chuối'], ['🌻','hoa hướng dương'], ['⭐','ngôi sao'], ['🧀','phô mai'], ['🐥','gà con']] },
+    { ten: 'màu xanh lá',    ds: [['🥦','bông cải'], ['🌿','lá cây'], ['🐸','con ếch'], ['🥬','rau cải'], ['🥒','quả dưa chuột']] },
+    { ten: 'màu xanh dương', ds: [['💧','giọt nước'], ['🐳','cá voi'], ['🧊','viên đá'], ['💙','trái tim'], ['🫐','quả việt quất']] },
+    { ten: 'màu cam',        ds: [['🍊','quả cam'], ['🥕','củ cà rốt'], ['🦊','con cáo'], ['🎃','quả bí ngô'], ['🏀','quả bóng rổ']] },
+    { ten: 'màu tím',        ds: [['🍇','chùm nho'], ['🍆','quả cà tím'], ['💜','trái tim'], ['🔮','quả cầu']] }
+  ];
+
+  function cauHoi(soLuaChon) {
+    var dungMau = Quiz.pick(MAU);
+    var cacMauKhac = Quiz.shuffle(MAU.filter(function (m) { return m !== dungMau; }));
+
+    var dung = Quiz.pick(dungMau.ds);
+    var sai = cacMauKhac.slice(0, soLuaChon - 1).map(function (m) { return Quiz.pick(m.ds); });
+
+    var nut = function (x) { return x[0] + '<span class="nhan">' + x[1] + '</span>'; };
+
+    return {
+      prompt: 'Cái nào <b>' + dungMau.ten + '</b>?',
+      speak: 'Cái nào ' + dungMau.ten + '?',
+      answer: nut(dung),
+      choices: Quiz.shuffle([dung].concat(sai)).map(nut),
+      cols: soLuaChon === 2 ? 2 : 3
+    };
+  }
+
+  Quiz.init({
+    id: 'mn-mau-sac',
+    total: 8,
+    kids: true,
+    speak: true,
+    levels: [
+      { name: 'Dễ', hint: 'Chọn 1 trong 2', gen: function () { return cauHoi(2); } },
+      { name: 'Khó hơn', hint: 'Chọn 1 trong 3', gen: function () { return cauHoi(3); } }
+    ]
+  });
+</script>
+</body>
+</html>

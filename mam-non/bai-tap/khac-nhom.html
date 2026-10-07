@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cái nào khác nhóm — Mầm non</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧩</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>🧩 Cái nào khác nhóm</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/quiz.js"></script>
+<script src="../../js/con-vat.js"></script>
+<script>
+  var NHOM = [
+    { ten: 'con vật',   ds: ConVat.DS.map(function (c) { return [c.e, c.ten]; }) },
+    { ten: 'trái cây',  ds: [['🍎','quả táo'], ['🍌','quả chuối'], ['🍇','chùm nho'], ['🍓','quả dâu'], ['🍊','quả cam'], ['🍉','quả dưa hấu'], ['🍍','quả dứa']] },
+    { ten: 'xe cộ',     ds: [['🚗','ô tô'], ['🚌','xe buýt'], ['🚲','xe đạp'], ['✈️','máy bay'], ['🚂','tàu hoả'], ['🚢','con tàu']] },
+    { ten: 'đồ chơi',   ds: [['🧸','gấu bông'], ['🪀','con quay'], ['🎈','quả bóng bay'], ['🪁','con diều'], ['🎲','xúc xắc']] }
+  ];
+
+  function cauHoi() {
+    var tron = Quiz.shuffle(NHOM);
+    var chinh = tron[0], la = tron[1];
+
+    var ba = Quiz.shuffle(chinh.ds).slice(0, 3);
+    var mot = Quiz.pick(la.ds);
+    var nut = function (x) { return x[0] + '<span class="nhan">' + x[1] + '</span>'; };
+
+    return {
+      prompt: 'Cái nào <b>không phải</b> ' + chinh.ten + '?',
+      speak: 'Cái nào không phải ' + chinh.ten + '?',
+      answer: nut(mot),
+      choices: Quiz.shuffle(ba.concat([mot])).map(nut),
+      cols: 2
+    };
+  }
+
+  Quiz.init({
+    id: 'mn-khac-nhom',
+    total: 8,
+    kids: true,
+    speak: true,
+    levels: [
+      { name: 'Tìm cái khác nhóm', hint: 'Con vật, trái cây, xe cộ, đồ chơi', gen: cauHoi }
+    ]
+  });
+</script>
+</body>
+</html>

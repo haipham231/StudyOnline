@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Con vật ăn gì — Mầm non</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🍽️</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>🍽️ Con vật ăn gì</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/quiz.js"></script>
+<script src="../../js/con-vat.js"></script>
+<script>
+  function cauHoi(soLuaChon) {
+    var con = Quiz.pick(ConVat.DS);
+    var sai = ConVat.nhieu(ConVat.DS, soLuaChon - 1, function (c) { return c.an.e; }, con.an.e);
+
+    var dung = ConVat.nut(con.an.e, con.an.ten);
+    var luaChon = Quiz.shuffle([dung].concat(sai.map(function (c) {
+      return ConVat.nut(c.an.e, c.an.ten);
+    })));
+
+    return {
+      prompt: Quiz.pick(['Bạn nhỏ ơi, ', '', 'Đố bé, ']) + con.ten + ' thích ăn gì?',
+      speak: con.ten + ' thích ăn gì?',
+      art: '<span class="nhun">' + con.e + '</span>',
+      answer: dung,
+      choices: luaChon,
+      cols: soLuaChon === 2 ? 2 : 3
+    };
+  }
+
+  Quiz.init({
+    id: 'mn-con-vat-an-gi',
+    total: 8,
+    kids: true,
+    speak: true,
+    levels: [
+      { name: 'Dễ', hint: 'Chọn 1 trong 2 món', gen: function () { return cauHoi(2); } },
+      { name: 'Khó hơn', hint: 'Chọn 1 trong 3 món', gen: function () { return cauHoi(3); } }
+    ]
+  });
+</script>
+</body>
+</html>

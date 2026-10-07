@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mầm non 3–4 tuổi</title>
+<meta name="description" content="Bé mầm non làm quen con vật, con vật ăn gì, màu sắc và đếm số — có đọc to bằng tiếng Việt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧸</text></svg>">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="crumb"><a class="back" href="../index.html">← Chọn lứa tuổi</a></nav>
+
+  <header class="hero">
+    <div class="mascot">🧸</div>
+    <h1>Mầm non</h1>
+    <p id="loi-chao">Bé chọn một trò để chơi nhé!</p>
+  </header>
+
+  <main class="grid" id="list"></main>
+
+  <footer>
+    <p>🔊 Máy sẽ đọc câu hỏi cho bé nghe — bé chưa biết chữ vẫn chơi được.</p>
+  </footer>
+
+</div>
+
+<script src="../js/quiz.js"></script>
+<script>
+  var TRO_CHOI = [
+    { id: 'mn-con-vat-an-gi', emoji: '🍽️', mau: '#ff8fd0', ten: 'Con vật ăn gì',
+      mo_ta: 'Thỏ thích ăn gì? Mèo thích ăn gì?', href: 'bai-tap/con-vat-an-gi.html' },
+    { id: 'mn-con-vat-keu', emoji: '🔊', mau: '#8b7bf7', ten: 'Con gì kêu',
+      mo_ta: 'Gâu gâu, meo meo, cạp cạp…', href: 'bai-tap/con-vat-keu.html' },
+    { id: 'mn-con-vat-o-dau', emoji: '🏞️', mau: '#4aa8ff', ten: 'Sống ở đâu',
+      mo_ta: 'Dưới nước, trên cạn hay trên trời?', href: 'bai-tap/con-vat-o-dau.html' },
+    { id: 'mn-mau-sac', emoji: '🎨', mau: '#ffc93c', ten: 'Màu sắc',
+      mo_ta: 'Cái nào màu đỏ, màu vàng, màu xanh?', href: 'bai-tap/mau-sac.html' },
+    { id: 'mn-dem-den-5', emoji: '🖐️', mau: '#2fcf90', ten: 'Đếm cùng bé',
+      mo_ta: 'Có mấy con thỏ? Đếm từ 1 đến 10.', href: 'bai-tap/dem-den-5.html' },
+    { id: 'mn-khac-nhom', emoji: '🧩', mau: '#ff7a7a', ten: 'Cái nào khác nhóm',
+      mo_ta: 'Con vật, trái cây, xe cộ, đồ chơi.', href: 'bai-tap/khac-nhom.html' }
+  ];
+
+  var list = document.getElementById('list');
+  var tongSao = 0;
+
+  TRO_CHOI.forEach(function (tro) {
+    var best = Quiz.readBest(tro.id);
+    var sao = best ? Quiz.starsFor(best.correct, best.total) : 0;
+    tongSao += sao;
+
+    var card = document.createElement('a');
+    card.className = 'card';
+    card.href = tro.href;
+    card.style.setProperty('--tint', tro.mau);
+    card.innerHTML =
+      '<div class="emoji">' + tro.emoji + '</div>' +
+      '<h2>' + tro.ten + '</h2>' +
+      '<p>' + tro.mo_ta + '</p>' +
+      (best ? '<span class="best">' + '⭐'.repeat(sao) + '</span>' : '');
+    list.appendChild(card);
+  });
+
+  if (tongSao > 0) {
+    document.getElementById('loi-chao').innerHTML =
+      'Bé đã có <b>' + tongSao + ' ⭐</b> — giỏi quá!';
+  }
+</script>
+</body>
+</html>

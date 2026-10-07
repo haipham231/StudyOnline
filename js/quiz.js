@@ -81,6 +81,36 @@
     return m + ':' + (s < 10 ? '0' + s : s);
   }
 
+  /* ---------- đọc to bằng tiếng Việt ---------- */
+
+  var giongViet = null;
+
+  function timGiong() {
+    if (!global.speechSynthesis) return null;
+    var ds = global.speechSynthesis.getVoices() || [];
+    giongViet = ds.filter(function (v) { return /^vi/i.test(v.lang); })[0] || null;
+    return giongViet;
+  }
+
+  if (global.speechSynthesis) {
+    timGiong();
+    global.speechSynthesis.onvoiceschanged = timGiong;
+  }
+
+  function docTo(text) {
+    if (!global.speechSynthesis || !text) return;
+    try {
+      global.speechSynthesis.cancel();
+      var loi = new global.SpeechSynthesisUtterance(String(text));
+      loi.lang = 'vi-VN';
+      loi.rate = 0.88;          // chậm lại cho bé nghe kịp
+      if (giongViet || timGiong()) loi.voice = giongViet;
+      global.speechSynthesis.speak(loi);
+    } catch (e) {
+      /* máy không đọc được thì bé vẫn nhìn hình để chơi */
+    }
+  }
+
   function confetti() {
     var colors = ['#4aa8ff', '#8b7bf7', '#2fcf90', '#ffc93c', '#ff7a7a', '#ff8fd0'];
     var layer = el('div', 'confetti');
@@ -189,7 +219,7 @@
       root.innerHTML = '';
 
       var q = state.question;
-      var panel = el('div', 'panel');
+      var panel = el('div', 'panel' + (config.kids ? ' kids' : ''));
 
       var meta = el('div', 'meta');
       meta.appendChild(el('span', null, 'Câu ' + state.index + ' / ' + total));
@@ -203,8 +233,20 @@
       bar.appendChild(fill);
       panel.appendChild(bar);
 
-      if (q.prompt) panel.appendChild(el('p', 'prompt', q.prompt));
+      if (q.prompt) {
+        var dong = el('p', 'prompt', q.prompt);
+        if (config.speak) {
+          var loa = el('button', 'loa', '🔊');
+          loa.type = 'button';
+          loa.title = 'Nghe lại';
+          loa.setAttribute('aria-label', 'Nghe lại câu hỏi');
+          loa.addEventListener('click', function () { docTo(q.speak || q.prompt); });
+          dong.appendChild(loa);
+        }
+        panel.appendChild(dong);
+      }
       if (q.art) panel.appendChild(el('div', 'art', q.art));
+      if (config.speak) docTo(q.speak || q.prompt);
 
       var box = el('span', 'answer-box empty', '?');
       var line = el('div', 'question');
@@ -334,6 +376,7 @@
         state.correct += 1;
         if (state.scoreEl) state.scoreEl.textContent = '✅ ' + state.correct;
         feedback.textContent = pick(KHEN);
+        if (config.speak) docTo(feedback.textContent.replace(/[^\p{L}\s]/gu, '').trim());
       } else {
         state.misses.push({
           label: (q.prompt ? q.prompt + ' ' : '') + (q.text || '') ,
@@ -424,6 +467,7 @@
     choicesAround: choicesAround,
     repeatArt: repeatArt,
     readBest: readBest,
-    starsFor: starsFor
+    starsFor: starsFor,
+    docTo: docTo
   };
 })(window);

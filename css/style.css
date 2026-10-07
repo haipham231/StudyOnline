@@ -471,3 +471,99 @@ footer { text-align: center; margin-top: 40px; color: var(--muted); font-size: 1
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ===== Cổng chọn lứa tuổi ===== */
+
+.crumb { padding: 20px 0 0; }
+
+.chon-tuoi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 8px;
+}
+
+.the-tuoi {
+  display: block;
+  padding: 34px 26px;
+  border-radius: var(--r-lg);
+  background: var(--card);
+  box-shadow: var(--lift);
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.the-tuoi:hover { transform: translateY(-6px); box-shadow: 0 16px 0 rgba(43, 47, 85, 0.1); }
+.the-tuoi:active { transform: translateY(2px); box-shadow: 0 4px 0 rgba(43, 47, 85, 0.1); }
+
+.the-tuoi .anh {
+  display: grid;
+  place-items: center;
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 16px;
+  border-radius: 34px;
+  background: color-mix(in srgb, var(--tint) 16%, #fff);
+  font-size: 58px;
+}
+
+.the-tuoi h2 { margin: 0 0 4px; font-size: 26px; }
+.the-tuoi .tuoi { display: block; color: var(--tint); font-size: 16px; font-weight: 800; margin-bottom: 8px; }
+.the-tuoi p { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* ===== Chế độ mầm non — mọi thứ to và ít chữ ===== */
+
+.panel.kids .prompt {
+  font-size: clamp(20px, 5.4vw, 26px);
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.panel.kids .art { font-size: clamp(56px, 20vw, 110px); letter-spacing: 6px; margin: 6px 0 18px; }
+.panel.kids .art svg { width: clamp(90px, 26vw, 140px); height: auto; }
+
+.panel.kids .question { display: none; }          /* bé chưa cần ô đáp án dạng chữ */
+.panel.kids .feedback { font-size: 26px; min-height: 42px; }
+
+.panel.kids .choices { max-width: 560px; gap: 16px; }
+
+.panel.kids .choice {
+  padding: 22px 10px;
+  border-radius: 26px;
+  font-size: clamp(44px, 13vw, 64px);
+  line-height: 1.1;
+  box-shadow: 0 7px 0 var(--line);
+}
+
+.panel.kids .choice:active { transform: translateY(5px); box-shadow: 0 2px 0 var(--line); }
+.panel.kids .choice.is-ok { box-shadow: 0 7px 0 var(--mint-dark); }
+.panel.kids .choice.is-bad { box-shadow: 0 7px 0 var(--coral-dark); }
+.panel.kids .choice .nhan { display: block; font-size: 16px; font-weight: 700; margin-top: 4px; color: var(--muted); }
+.panel.kids .choice.is-ok .nhan, .panel.kids .choice.is-bad .nhan { color: #fff; }
+
+.panel.kids .meta { font-size: 17px; }
+.panel.kids .review { display: none; }            /* bé chưa đọc được phần xem lại */
+
+.loa {
+  margin-left: 10px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--soft);
+  box-shadow: 0 4px 0 var(--line);
+  font-size: 19px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.loa:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--line); }
+
+/* con vật nhún nhảy cho sinh động */
+.nhun { display: inline-block; animation: nhun 1.9s ease-in-out infinite; }
+
+@keyframes nhun {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-12px) rotate(2deg); }
+}

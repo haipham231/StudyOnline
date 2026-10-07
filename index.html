@@ -3,74 +3,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Học Toán Lớp 1</title>
-<meta name="description" content="Luyện toán lớp 1 vui vẻ: cộng trừ, toán đố, so sánh, đếm, xem giờ và nhận biết hình.">
+<title>Học cùng bé</title>
+<meta name="description" content="Trang học vui cho bé: mầm non 3–4 tuổi làm quen con vật, màu sắc; lớp 1 luyện toán.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧮</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🎈</text></svg>">
 </head>
 <body>
 <div class="wrap">
 
   <header class="hero">
-    <div class="mascot">🦊</div>
-    <h1>Học Toán Lớp 1</h1>
-    <p id="loi-chao">Chọn một bài để bắt đầu nhé!</p>
+    <div class="mascot">🎈</div>
+    <h1>Học cùng bé</h1>
+    <p>Bé mấy tuổi rồi? Chọn khu học của mình nhé!</p>
   </header>
 
-  <main class="grid" id="list"></main>
+  <main class="chon-tuoi">
+
+    <a class="the-tuoi" href="mam-non/index.html" style="--tint:#ff8fd0">
+      <div class="anh">🧸</div>
+      <h2>Mầm non</h2>
+      <span class="tuoi">3 – 4 tuổi</span>
+      <p>Con vật, con vật ăn gì, màu sắc, đếm số.<br>Có đọc to — bé chưa biết chữ vẫn chơi được.</p>
+    </a>
+
+    <a class="the-tuoi" href="lop-1/index.html" style="--tint:#4aa8ff">
+      <div class="anh">🎒</div>
+      <h2>Lớp 1</h2>
+      <span class="tuoi">6 – 7 tuổi</span>
+      <p>Cộng trừ, toán đố, so sánh, dãy số, xem giờ, nhận biết hình.</p>
+    </a>
+
+  </main>
 
   <footer>
     <p>Bài tập sinh ngẫu nhiên mỗi lần chơi · Điểm được lưu ngay trên máy của bé.</p>
   </footer>
 
 </div>
-
-<script src="js/quiz.js"></script>
-<script>
-  var BAI_TAP = [
-    { id: 'cong-tru',   emoji: '➕', mau: '#4aa8ff', ten: 'Cộng trừ',
-      mo_ta: 'Phạm vi 10, 20 và 100.', href: 'bai-tap/cong-tru.html' },
-    { id: 'toan-do',    emoji: '📖', mau: '#ff8fd0', ten: 'Toán đố',
-      mo_ta: 'Bài toán có lời văn: thêm, bớt, nhiều hơn, ít hơn.', href: 'bai-tap/toan-do.html' },
-    { id: 'dien-so',    emoji: '🧩', mau: '#8b7bf7', ten: 'Điền số còn thiếu',
-      mo_ta: 'Ví dụ: 3 + ? = 7', href: 'bai-tap/dien-so.html' },
-    { id: 'so-sanh',    emoji: '⚖️', mau: '#2fcf90', ten: 'So sánh số',
-      mo_ta: 'Điền dấu lớn hơn, bé hơn hoặc bằng.', href: 'bai-tap/so-sanh.html' },
-    { id: 'dem-day-so', emoji: '🔢', mau: '#ffc93c', ten: 'Đếm và dãy số',
-      mo_ta: 'Đếm hình, số liền trước liền sau, dãy số.', href: 'bai-tap/dem-day-so.html' },
-    { id: 'xem-gio',    emoji: '🕐', mau: '#ff7a7a', ten: 'Xem giờ',
-      mo_ta: 'Giờ đúng và giờ rưỡi trên đồng hồ kim.', href: 'bai-tap/xem-gio.html' },
-    { id: 'hinh-hoc',   emoji: '🔷', mau: '#4aa8ff', ten: 'Nhận biết hình',
-      mo_ta: 'Hình vuông, tròn, tam giác, chữ nhật.', href: 'bai-tap/hinh-hoc.html' }
-  ];
-
-  var list = document.getElementById('list');
-  var tongSao = 0;
-
-  BAI_TAP.forEach(function (bai) {
-    var best = Quiz.readBest(bai.id);
-    var sao = best ? Quiz.starsFor(best.correct, best.total) : 0;
-    tongSao += sao;
-
-    var card = document.createElement('a');
-    card.className = 'card';
-    card.href = bai.href;
-    card.style.setProperty('--tint', bai.mau);
-    card.innerHTML =
-      '<div class="emoji">' + bai.emoji + '</div>' +
-      '<h2>' + bai.ten + '</h2>' +
-      '<p>' + bai.mo_ta + '</p>' +
-      (best ? '<span class="best">' + '⭐'.repeat(sao) + ' ' + best.score + ' điểm</span>' : '');
-    list.appendChild(card);
-  });
-
-  if (tongSao > 0) {
-    document.getElementById('loi-chao').innerHTML =
-      'Bé đã sưu tầm được <b>' + tongSao + ' ⭐</b> — cố lên nào!';
-  }
-</script>
 </body>
 </html>
