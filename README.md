@@ -24,22 +24,62 @@ người lớn đọc cùng bé. Có nút 🔊 nghe lại.
 | 🎨 Màu sắc | Đỏ, vàng, xanh lá, xanh dương, cam, tím |
 | 🖐️ Đếm cùng bé | Đếm đến 3, 5 hoặc 10 |
 | 🧩 Cái nào khác nhóm | Con vật, trái cây, xe cộ, đồ chơi |
+| 📐 To nhỏ, dài ngắn | To hơn – nhỏ hơn, dài – ngắn, cao – thấp |
+| ⬜ Hình gì | Đâu là hình tròn, vuông, tam giác, chữ nhật |
+| ⚖️ Nhiều hơn, ít hơn | So sánh số lượng hai nhóm |
 
 Dữ liệu 22 con vật (emoji, thức ăn, nơi sống, tiếng kêu) nằm trong `js/con-vat.js`.
 
 ## 🎒 Khu Lớp 1 (6–7 tuổi)
 
-Bám chương trình Toán lớp 1 — **không có nhân chia**.
+Bám mạch kiến thức Toán 1 — Chương trình GDPT 2018. **Không có nhân chia.**
 
-| Bài | Nội dung | Mức độ |
+**Số và phép tính**
+
+| Bài | Nội dung |
+|---|---|
+| ➕ Cộng trừ | Phạm vi 10 (có hình) · 20 (có nhớ) · 100 (không nhớ) |
+| 🧱 Tách gộp số | Số 7 gồm 3 và mấy? · 3 và 4 gộp lại được mấy? |
+| 🔟 Chục và đơn vị | Cấu tạo số có hai chữ số, có hình bó chục |
+| 🧮 Tính dãy | Hai phép tính liền nhau: `3 + 2 + 4` |
+| 🧩 Điền số còn thiếu | `3 + ? = 7`, `? − 4 = 5`, số tròn chục |
+| ⚖️ So sánh số | Dấu `>`, `<`, `=` — số và cả phép tính |
+| 🥇 Lớn nhất, bé nhất | Tìm số lớn nhất / bé nhất trong ba số |
+| 🔢 Đếm và dãy số | Đếm hình, số liền trước/sau, dãy đếm thêm 1/2/5/10 |
+
+**Hình học và đo lường**
+
+| Bài | Nội dung |
+|---|---|
+| 🔷 Nhận biết hình | Vuông, tròn, tam giác, chữ nhật + đếm hình |
+| 🧊 Hình khối | Khối lập phương, hộp chữ nhật, khối trụ, khối cầu |
+| 📏 Đo độ dài | Thước kẻ vẽ bằng SVG, đọc số đo xăng-ti-mét |
+| 🕐 Xem giờ | Đồng hồ kim, giờ đúng và giờ rưỡi |
+
+**Giải toán có lời văn**
+
+| Bài | Nội dung |
+|---|---|
+| 📖 Toán đố | 8 dạng: thêm, bớt, gộp nhóm, nhiều hơn, ít hơn, rời khỏi, tìm số lúc đầu, hơn kém |
+
+### 📝 Bài kiểm tra
+
+Ba bộ đề theo ba mốc của năm học, mỗi đề **20 câu** rút theo ma trận cố định từ
+`js/toan-lop-1.js`, không trùng câu trong cùng một đề, thứ tự xáo trộn:
+
+| Đề | Phạm vi | Ma trận |
 |---|---|---|
-| ➕ Cộng trừ | Cộng trừ không âm | Phạm vi 10 (có hình) · 20 (có nhớ) · 100 (không nhớ) |
-| 📖 Toán đố | 8 dạng lời văn: thêm vào, bớt đi, gộp nhóm, nhiều hơn, ít hơn, rời khỏi, tìm số lúc đầu, hơn kém | Phạm vi 10 · 20 · Thử thách |
-| 🧩 Điền số còn thiếu | `3 + ? = 7`, `? − 4 = 5` | Phạm vi 10 · 20 · Số tròn chục |
-| ⚖️ So sánh số | Điền dấu `>`, `<`, `=` | Đến 10 · đến 100 · so sánh phép tính |
-| 🔢 Đếm và dãy số | Đếm hình, số liền trước/sau, dãy đếm thêm | Đếm · liền kề · dãy số |
-| 🕐 Xem giờ | Đồng hồ kim vẽ bằng SVG | Giờ đúng · giờ rưỡi |
-| 🔷 Nhận biết hình | Vuông, tròn, tam giác, chữ nhật | Nhận biết · đếm hình |
+| Giữa học kì 1 | Các số đến 10 | đếm 3 · thứ tự 2 · so sánh 4 · cộng trừ 4 · tách gộp 3 · điền số 2 · hình phẳng 2 |
+| Cuối học kì 1 | Các số đến 20 | cộng trừ 7 · tách gộp 3 · điền số 3 · so sánh 2 · tính dãy 2 · hình phẳng 2 · hình khối 1 |
+| Cuối năm học | Các số đến 100 | chục–đơn vị 3 · cộng trừ 7 · điền số 2 · so sánh 2 · dãy số 2 · toán đố 3 · xem giờ 1 · đo độ dài 1 · hình khối 1 |
+
+Khác với phần luyện tập, bài kiểm tra **không báo đúng/sai từng câu** — bé làm hết rồi
+máy mới chấm. Có đồng hồ đếm thời gian làm bài. Phiếu kết quả gồm:
+
+- Điểm **thang 10** và xếp loại theo Thông tư 27 (Hoàn thành tốt / Hoàn thành / Chưa hoàn thành)
+- **Biểu đồ theo từng mạch kiến thức** để biết bé còn yếu phần nào
+- Danh sách các câu cần xem lại, kèm đáp án đúng và nhãn mạch kiến thức
+- Lưu 5 lần làm bài gần nhất
 
 ## Cấu trúc
 
@@ -47,13 +87,15 @@ Bám chương trình Toán lớp 1 — **không có nhân chia**.
 ├── index.html            # cổng chọn lứa tuổi
 ├── css/style.css         # giao diện chung cho cả hai khu
 ├── js/
-│   ├── quiz.js           # engine dùng chung
+│   ├── quiz.js           # engine dùng chung (luyện tập + chế độ kiểm tra)
+│   ├── toan-lop-1.js     # bộ sinh đề lớp 1 — trang bài tập và trang kiểm tra dùng chung
 │   └── con-vat.js        # dữ liệu con vật (khu mầm non)
 ├── mam-non/
 │   ├── index.html
 │   └── bai-tap/*.html
 └── lop-1/
     ├── index.html
+    ├── kiem-tra.html     # ba bộ đề, chấm thang 10
     └── bai-tap/*.html
 ```
 
@@ -97,6 +139,7 @@ Tạo file trong `mam-non/bai-tap/` hoặc `lop-1/bai-tap/` rồi khai báo bộ
 | `choices` | Có giá trị → bé bấm chọn thay vì gõ số |
 | `cols` | Số cột của hàng nút chọn |
 | `small` | Ép cỡ chữ nhỏ cho đề dài |
+| `mach` | Tên mạch kiến thức — dùng để thống kê trong phiếu kết quả bài kiểm tra |
 
 Hàm hỗ trợ: `Quiz.randInt(min, max)`, `Quiz.pick(arr)`, `Quiz.shuffle(arr)`,
 `Quiz.choicesAround(answer, n, min, max)`, `Quiz.repeatArt(emoji, n)`, `Quiz.docTo(text)`.

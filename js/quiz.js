@@ -58,6 +58,30 @@
     }
   }
 
+  function readLichSu(id) {
+    try {
+      return JSON.parse(localStorage.getItem(STORE + 'lichsu:' + id) || '[]');
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function ghiLichSu(id, ban) {
+    try {
+      var ds = readLichSu(id);
+      ds.unshift(ban);
+      localStorage.setItem(STORE + 'lichsu:' + id, JSON.stringify(ds.slice(0, 5)));
+    } catch (e) { /* không lưu được cũng không sao */ }
+  }
+
+  // Đánh giá theo Thông tư 27 về đánh giá học sinh tiểu học
+  function xepLoai(diem) {
+    if (diem >= 9) return { ten: 'Hoàn thành tốt', mascot: '🏆', mau: 'tot' };
+    if (diem >= 6.5) return { ten: 'Hoàn thành', mascot: '🥳', mau: 'dat' };
+    if (diem >= 5) return { ten: 'Hoàn thành', mascot: '🙂', mau: 'dat' };
+    return { ten: 'Chưa hoàn thành', mascot: '🐣', mau: 'chua' };
+  }
+
   function starsFor(correct, total) {
     var ratio = correct / total;
     if (ratio >= 0.9) return 3;
@@ -151,8 +175,10 @@
       root.innerHTML = '';
 
       var panel = el('div', 'panel');
-      panel.appendChild(el('h2', null, 'Chọn mức độ'));
-      panel.appendChild(el('p', 'lead', 'Mỗi lượt chơi gồm ' + total + ' câu.'));
+      panel.appendChild(el('h2', null, config.exam ? 'Chọn đề kiểm tra' : 'Chọn mức độ'));
+      panel.appendChild(el('p', 'lead', config.exam
+        ? 'Bé làm hết các câu rồi máy chấm điểm nhé — trong lúc làm sẽ không báo đúng sai.'
+        : 'Mỗi lượt chơi gồm ' + total + ' câu.'));
 
       var chosen = 0;
       var list = el('div', 'levels');
@@ -175,14 +201,29 @@
       });
       panel.appendChild(list);
 
-      var best = readBest(config.id);
-      if (best) {
-        panel.appendChild(el('p', 'lead',
-          '🏆 Kỷ lục của bé: <b>' + best.score + ' điểm</b> — ' +
-          best.correct + '/' + best.total + ' câu đúng'));
+      if (config.exam) {
+        var ds = readLichSu(config.id);
+        if (ds.length) {
+          var ls = el('div', 'lich-su');
+          ls.appendChild(el('h3', null, '🗓️ Những lần làm gần đây'));
+          ds.forEach(function (ban) {
+            ls.appendChild(el('div', 'lan', 
+              '<b>' + ban.diem.toFixed(1).replace('.0', '') + '</b>' +
+              '<span>' + ban.de + '</span>' +
+              '<i>' + ban.ngay + '</i>'));
+          });
+          panel.appendChild(ls);
+        }
+      } else {
+        var best = readBest(config.id);
+        if (best) {
+          panel.appendChild(el('p', 'lead',
+            '🏆 Kỷ lục của bé: <b>' + best.score + ' điểm</b> — ' +
+            best.correct + '/' + best.total + ' câu đúng'));
+        }
       }
 
-      var go = el('button', 'btn go', '🚀 Bắt đầu');
+      var go = el('button', 'btn go', config.exam ? '📝 Bắt đầu làm bài' : '🚀 Bắt đầu');
       go.type = 'button';
       go.addEventListener('click', function () { startRound(chosen); });
       panel.appendChild(go);
@@ -193,22 +234,28 @@
     /* --- Làm bài --- */
 
     function startRound(levelIndex) {
+      var level = config.levels[levelIndex];
+      var deBai = level.taoDe ? level.taoDe() : null;   // đề kiểm tra dựng sẵn theo ma trận
+
       state = {
-        level: config.levels[levelIndex],
+        level: level,
+        deBai: deBai,
+        total: deBai ? deBai.length : total,
         index: 0,
         correct: 0,
         startedAt: Date.now(),
         typed: '',
         locked: false,
-        misses: []
+        misses: [],
+        theoMach: {}
       };
       nextQuestion();
     }
 
     function nextQuestion() {
       state.index += 1;
-      if (state.index > total) return showResult();
-      state.question = state.level.gen();
+      if (state.index > state.total) return showResult();
+      state.question = state.deBai ? state.deBai[state.index - 1] : state.level.gen();
       state.typed = '';
       state.locked = false;
       renderQuestion();
@@ -222,14 +269,18 @@
       var panel = el('div', 'panel' + (config.kids ? ' kids' : ''));
 
       var meta = el('div', 'meta');
-      meta.appendChild(el('span', null, 'Câu ' + state.index + ' / ' + total));
-      state.scoreEl = el('span', 'hits', '✅ ' + state.correct);
+      meta.appendChild(el('span', null, 'Câu ' + state.index + ' / ' + state.total));
+      state.scoreEl = el('span', config.exam ? 'dong-ho' : 'hits',
+        config.exam ? '⏱ ' + formatTime(Math.round((Date.now() - state.startedAt) / 1000))
+                    : '✅ ' + state.correct);
       meta.appendChild(state.scoreEl);
       panel.appendChild(meta);
 
+      if (config.exam) chayDongHo();
+
       var bar = el('div', 'bar');
       var fill = el('span');
-      fill.style.width = ((state.index - 1) / total * 100) + '%';
+      fill.style.width = ((state.index - 1) / state.total * 100) + '%';
       bar.appendChild(fill);
       panel.appendChild(bar);
 
@@ -360,6 +411,14 @@
       return pad;
     }
 
+    function chayDongHo() {
+      clearInterval(state.nhip);
+      state.nhip = setInterval(function () {
+        if (!state.scoreEl || !state.scoreEl.isConnected) return clearInterval(state.nhip);
+        state.scoreEl.textContent = '⏱ ' + formatTime(Math.round((Date.now() - state.startedAt) / 1000));
+      }, 1000);
+    }
+
     function detachKeyboard() {
       if (onKeyDown) {
         document.removeEventListener('keydown', onKeyDown);
@@ -370,6 +429,23 @@
     /* --- Chấm một câu --- */
 
     function judge(isCorrect, q, given, feedback) {
+      var mach = q.mach || 'Khác';
+      if (!state.theoMach[mach]) state.theoMach[mach] = { dung: 0, tong: 0 };
+      state.theoMach[mach].tong += 1;
+      if (isCorrect) state.theoMach[mach].dung += 1;
+
+      if (config.exam) {
+        // bài kiểm tra: không tiết lộ đúng sai, chấm hết ở cuối
+        if (isCorrect) state.correct += 1;
+        else state.misses.push({
+          label: (q.prompt ? q.prompt + ' ' : '') + (q.text || ''),
+          after: q.after, given: given, answer: q.answer, mach: mach
+        });
+        feedback.className = 'feedback';
+        feedback.innerHTML = '✔️ Đã ghi câu trả lời';
+        return setTimeout(nextQuestion, 320);
+      }
+
       feedback.className = 'feedback pop ' + (isCorrect ? 'ok' : 'bad');
 
       if (isCorrect) {
@@ -394,11 +470,15 @@
 
     function showResult() {
       detachKeyboard();
+      clearInterval(state.nhip);
       root.innerHTML = '';
 
       var seconds = Math.round((Date.now() - state.startedAt) / 1000);
+      var total = state.total;
       var score = Math.round(state.correct / total * 100);
       var stars = starsFor(state.correct, total);
+
+      if (config.exam) return showExamResult(seconds, total);
 
       var panel = el('div', 'panel');
       panel.appendChild(el('div', 'result-mascot',
@@ -456,6 +536,80 @@
       if (stars >= 2) confetti();
     }
 
+    function showExamResult(seconds, total) {
+      var diem = Math.round(state.correct / total * 100) / 10;   // thang 10, một chữ số thập phân
+      var loai = xepLoai(diem);
+
+      var panel = el('div', 'panel phieu');
+      panel.appendChild(el('div', 'result-mascot', loai.mascot));
+      panel.appendChild(el('h2', null, 'Phiếu kết quả'));
+      panel.appendChild(el('div', 'diem', diem.toFixed(1).replace('.0', '') +
+        '<span class="thang"> / 10</span>'));
+      panel.appendChild(el('div', 'xep-loai ' + loai.mau, loai.ten));
+
+      var summary = el('div', 'summary');
+      summary.appendChild(el('div', null, '<b>' + state.correct + '/' + total + '</b>câu đúng'));
+      summary.appendChild(el('div', null, '<b>' + formatTime(seconds) + '</b>thời gian làm bài'));
+      panel.appendChild(summary);
+
+      // Bảng kết quả theo từng mạch kiến thức
+      var bang = el('div', 'bang-mach');
+      bang.appendChild(el('h3', null, '📊 Kết quả theo từng phần'));
+      Object.keys(state.theoMach).forEach(function (mach) {
+        var o = state.theoMach[mach];
+        var pct = Math.round(o.dung / o.tong * 100);
+        var hang = el('div', 'hang-mach');
+        hang.innerHTML =
+          '<span class="ten">' + mach + '</span>' +
+          '<span class="thanh"><i style="width:' + pct + '%;background:' +
+            (pct >= 80 ? 'var(--mint)' : pct >= 50 ? 'var(--sun)' : 'var(--coral)') + '"></i></span>' +
+          '<span class="ty-le">' + o.dung + '/' + o.tong + '</span>';
+        bang.appendChild(hang);
+      });
+      panel.appendChild(bang);
+
+      var actions = el('div', 'actions');
+      var again = el('button', 'btn go', '📝 Làm đề khác');
+      again.type = 'button';
+      again.addEventListener('click', showStart);
+      actions.appendChild(again);
+      var home = el('a', 'btn ghost', '🏠 Trang chủ');
+      home.href = '../index.html';
+      actions.appendChild(home);
+      panel.appendChild(actions);
+
+      if (state.misses.length) {
+        var review = el('div', 'review');
+        review.appendChild(el('h3', null, '📝 Các câu cần xem lại (' + state.misses.length + ' câu)'));
+        var ul = el('ul');
+        state.misses.forEach(function (m) {
+          ul.appendChild(el('li', null,
+            '<span class="mach">' + m.mach + '</span>' + m.label +
+            ' <span class="yours">' + m.given + '</span>' +
+            '<span class="right">' + m.answer + '</span>' + (m.after ? ' ' + m.after : '')));
+        });
+        review.appendChild(ul);
+        panel.appendChild(review);
+      }
+
+      ghiLichSu(config.id, {
+        diem: diem, dung: state.correct, tong: total, giay: seconds,
+        de: state.level.name, ngay: new Date().toISOString().slice(0, 10)
+      });
+
+      var best = readBest(config.id);
+      var score = Math.round(state.correct / total * 100);
+      if (!best || score > best.score) {
+        writeBest(config.id, {
+          score: score, correct: state.correct, total: total,
+          seconds: seconds, date: new Date().toISOString().slice(0, 10)
+        });
+      }
+
+      root.appendChild(panel);
+      if (diem >= 8) confetti();
+    }
+
     showStart();
   }
 
@@ -468,6 +622,8 @@
     repeatArt: repeatArt,
     readBest: readBest,
     starsFor: starsFor,
-    docTo: docTo
+    docTo: docTo,
+    readLichSu: readLichSu,
+    xepLoai: xepLoai
   };
 })(window);

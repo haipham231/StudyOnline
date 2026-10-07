@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nhiều hơn ít hơn — Mầm non</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>⚖️</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>⚖️ Nhiều hơn, ít hơn</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/quiz.js"></script>
+<script src="../../js/con-vat.js"></script>
+<script>
+  function cauHoi(toiDa) {
+    var con = Quiz.pick(ConVat.DS);
+    var nhieu = Quiz.randInt(3, toiDa);
+    var it = Quiz.randInt(1, nhieu - 1);
+    var hoiNhieu = Math.random() < 0.5;
+
+    var nhom = function (n) {
+      return '<span style="font-size:.5em;line-height:1.2;display:inline-block">' +
+             Quiz.repeatArt(con.e, n) + '</span><span class="nhan">' + n + ' ' + con.ten + '</span>';
+    };
+
+    var ben1 = nhom(nhieu), ben2 = nhom(it);
+    return {
+      prompt: 'Bên nào <b>' + (hoiNhieu ? 'nhiều hơn' : 'ít hơn') + '</b>?',
+      speak: 'Bên nào ' + (hoiNhieu ? 'nhiều hơn' : 'ít hơn') + '?',
+      answer: hoiNhieu ? ben1 : ben2,
+      choices: Quiz.shuffle([ben1, ben2]),
+      cols: 2
+    };
+  }
+
+  Quiz.init({
+    id: 'mn-nhieu-it',
+    total: 8,
+    kids: true,
+    speak: true,
+    levels: [
+      { name: 'Đến 5', gen: function () { return cauHoi(5); } },
+      { name: 'Đến 8', gen: function () { return cauHoi(8); } }
+    ]
+  });
+</script>
+</body>
+</html>

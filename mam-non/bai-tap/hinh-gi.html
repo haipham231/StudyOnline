@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hình gì — Mầm non</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>⬜</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>⬜ Hình gì</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/quiz.js"></script>
+<script>
+  var MAU = ['#4aa8ff', '#8b7bf7', '#2fcf90', '#ffc93c', '#ff7a7a', '#ff8fd0'];
+
+  function ve(loai, mau) {
+    var o = '<svg viewBox="0 0 100 100" width="80" height="80">';
+    if (loai === 'hình vuông')        o += '<rect x="14" y="14" width="72" height="72" rx="7" fill="' + mau + '"/>';
+    else if (loai === 'hình tròn')    o += '<circle cx="50" cy="50" r="38" fill="' + mau + '"/>';
+    else if (loai === 'hình tam giác') o += '<polygon points="50,12 88,86 12,86" fill="' + mau + '"/>';
+    else                              o += '<rect x="4" y="30" width="92" height="40" rx="7" fill="' + mau + '"/>';
+    return o + '</svg><span class="nhan">' + loai.replace('hình ', '') + '</span>';
+  }
+
+  function cauHoi(ds) {
+    var hoi = Quiz.pick(ds);
+    var mau = Quiz.pick(MAU);
+    return {
+      prompt: 'Đâu là <b>' + hoi + '</b>?',
+      speak: 'Đâu là ' + hoi + '?',
+      answer: ve(hoi, mau),
+      choices: Quiz.shuffle(ds.slice()).map(function (l) { return ve(l, mau); }),
+      cols: ds.length
+    };
+  }
+
+  var BA = ['hình tròn', 'hình vuông', 'hình tam giác'];
+  var BON = BA.concat(['hình chữ nhật']);
+
+  Quiz.init({
+    id: 'mn-hinh-gi',
+    total: 8,
+    kids: true,
+    speak: true,
+    levels: [
+      { name: 'Ba hình cơ bản', hint: 'Tròn, vuông, tam giác', gen: function () { return cauHoi(BA); } },
+      { name: 'Thêm hình chữ nhật', gen: function () { return cauHoi(BON); } }
+    ]
+  });
+</script>
+</body>
+</html>

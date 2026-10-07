@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>To nhỏ, dài ngắn — Mầm non</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>📐</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>📐 To nhỏ, dài ngắn</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/quiz.js"></script>
+<script src="../../js/con-vat.js"></script>
+<script>
+  var MAU = ['#4aa8ff', '#8b7bf7', '#2fcf90', '#ffc93c', '#ff7a7a', '#ff8fd0'];
+
+  function co(emoji, ti, nhan) {
+    return '<span style="font-size:' + ti + 'em;display:inline-block">' + emoji + '</span>' +
+           '<span class="nhan">' + nhan + '</span>';
+  }
+
+  function thanhNgang(dai, mau, nhan) {
+    return '<svg viewBox="0 0 120 40" width="110" height="38">' +
+           '<rect x="4" y="12" width="' + dai + '" height="17" rx="8" fill="' + mau + '"/></svg>' +
+           '<span class="nhan">' + nhan + '</span>';
+  }
+
+  function thanhDung(cao, mau, nhan) {
+    return '<svg viewBox="0 0 50 110" width="46" height="100">' +
+           '<rect x="13" y="' + (104 - cao) + '" width="24" height="' + cao + '" rx="8" fill="' + mau + '"/>' +
+           '<rect x="2" y="104" width="46" height="5" rx="2" fill="#c3cbec"/></svg>' +
+           '<span class="nhan">' + nhan + '</span>';
+  }
+
+  // to — nhỏ
+  function toNho() {
+    var con = Quiz.pick(ConVat.DS);
+    var hoiTo = Math.random() < 0.5;
+    var to = co(con.e, 1.5, 'to'), nho = co(con.e, 0.62, 'nhỏ');
+    return {
+      prompt: con.ten + ' nào <b>' + (hoiTo ? 'to hơn' : 'nhỏ hơn') + '</b>?',
+      speak: con.ten + ' nào ' + (hoiTo ? 'to hơn' : 'nhỏ hơn') + '?',
+      answer: hoiTo ? to : nho,
+      choices: Quiz.shuffle([to, nho]),
+      cols: 2
+    };
+  }
+
+  // dài — ngắn
+  function daiNgan() {
+    var mau = Quiz.pick(MAU);
+    var hoiDai = Math.random() < 0.5;
+    var dai = thanhNgang(Quiz.randInt(90, 112), mau, 'dài');
+    var ngan = thanhNgang(Quiz.randInt(28, 48), mau, 'ngắn');
+    return {
+      prompt: 'Cái nào <b>' + (hoiDai ? 'dài hơn' : 'ngắn hơn') + '</b>?',
+      speak: 'Cái nào ' + (hoiDai ? 'dài hơn' : 'ngắn hơn') + '?',
+      answer: hoiDai ? dai : ngan,
+      choices: Quiz.shuffle([dai, ngan]),
+      cols: 2
+    };
+  }
+
+  // cao — thấp
+  function caoThap() {
+    var mau = Quiz.pick(MAU);
+    var hoiCao = Math.random() < 0.5;
+    var cao = thanhDung(Quiz.randInt(78, 96), mau, 'cao');
+    var thap = thanhDung(Quiz.randInt(26, 44), mau, 'thấp');
+    return {
+      prompt: 'Cái nào <b>' + (hoiCao ? 'cao hơn' : 'thấp hơn') + '</b>?',
+      speak: 'Cái nào ' + (hoiCao ? 'cao hơn' : 'thấp hơn') + '?',
+      answer: hoiCao ? cao : thap,
+      choices: Quiz.shuffle([cao, thap]),
+      cols: 2
+    };
+  }
+
+  Quiz.init({
+    id: 'mn-to-nho',
+    total: 8,
+    kids: true,
+    speak: true,
+    levels: [
+      { name: 'To hơn — nhỏ hơn', gen: toNho },
+      { name: 'Dài hơn — ngắn hơn', gen: daiNgan },
+      { name: 'Cao hơn — thấp hơn', gen: caoThap },
+      { name: 'Trộn cả ba', gen: function () { return Quiz.pick([toNho, daiNgan, caoThap])(); } }
+    ]
+  });
+</script>
+</body>
+</html>

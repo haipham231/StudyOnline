@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Học Toán Lớp 1</title>
-<meta name="description" content="Luyện toán lớp 1 vui vẻ: cộng trừ, toán đố, so sánh, đếm, xem giờ và nhận biết hình.">
+<meta name="description" content="Luyện toán lớp 1 theo chương trình GDPT 2018: số và phép tính, hình học và đo lường, giải toán có lời văn, kèm bộ đề kiểm tra.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
@@ -22,51 +22,101 @@
     <p id="loi-chao">Chọn một bài để bắt đầu nhé!</p>
   </header>
 
-  <main class="grid" id="list"></main>
+  <main id="noi-dung"></main>
 
   <footer>
-    <p>Bài tập sinh ngẫu nhiên mỗi lần chơi · Điểm được lưu ngay trên máy của bé.</p>
+    <p>Bám chương trình Toán 1 (GDPT 2018) · Đề sinh ngẫu nhiên mỗi lần chơi.</p>
   </footer>
 
 </div>
 
 <script src="../js/quiz.js"></script>
 <script>
-  var BAI_TAP = [
-    { id: 'cong-tru',   emoji: '➕', mau: '#4aa8ff', ten: 'Cộng trừ',
-      mo_ta: 'Phạm vi 10, 20 và 100.', href: 'bai-tap/cong-tru.html' },
-    { id: 'toan-do',    emoji: '📖', mau: '#ff8fd0', ten: 'Toán đố',
-      mo_ta: 'Bài toán có lời văn: thêm, bớt, nhiều hơn, ít hơn.', href: 'bai-tap/toan-do.html' },
-    { id: 'dien-so',    emoji: '🧩', mau: '#8b7bf7', ten: 'Điền số còn thiếu',
-      mo_ta: 'Ví dụ: 3 + ? = 7', href: 'bai-tap/dien-so.html' },
-    { id: 'so-sanh',    emoji: '⚖️', mau: '#2fcf90', ten: 'So sánh số',
-      mo_ta: 'Điền dấu lớn hơn, bé hơn hoặc bằng.', href: 'bai-tap/so-sanh.html' },
-    { id: 'dem-day-so', emoji: '🔢', mau: '#ffc93c', ten: 'Đếm và dãy số',
-      mo_ta: 'Đếm hình, số liền trước liền sau, dãy số.', href: 'bai-tap/dem-day-so.html' },
-    { id: 'xem-gio',    emoji: '🕐', mau: '#ff7a7a', ten: 'Xem giờ',
-      mo_ta: 'Giờ đúng và giờ rưỡi trên đồng hồ kim.', href: 'bai-tap/xem-gio.html' },
-    { id: 'hinh-hoc',   emoji: '🔷', mau: '#4aa8ff', ten: 'Nhận biết hình',
-      mo_ta: 'Hình vuông, tròn, tam giác, chữ nhật.', href: 'bai-tap/hinh-hoc.html' }
+  var KIEM_TRA = {
+    id: 'kiem-tra', emoji: '📝', mau: '#8b7bf7', ten: 'Bài kiểm tra',
+    mo_ta: 'Ba bộ đề theo giữa kì 1, cuối kì 1 và cuối năm. Máy chấm điểm thang 10 và chỉ ra bé còn yếu phần nào.',
+    href: 'kiem-tra.html'
+  };
+
+  var NHOM = [
+    { ten: 'Số và phép tính', bai: [
+      { id: 'cong-tru',    emoji: '➕', mau: '#4aa8ff', ten: 'Cộng trừ',
+        mo_ta: 'Phạm vi 10, 20 và 100.' },
+      { id: 'tach-gop',    emoji: '🧱', mau: '#ff8fd0', ten: 'Tách gộp số',
+        mo_ta: 'Số 7 gồm 3 và mấy?' },
+      { id: 'chuc-don-vi', emoji: '🔟', mau: '#2fcf90', ten: 'Chục và đơn vị',
+        mo_ta: 'Cấu tạo số có hai chữ số.' },
+      { id: 'tinh-day',    emoji: '🧮', mau: '#ffc93c', ten: 'Tính dãy',
+        mo_ta: 'Hai phép tính liền nhau: 3 + 2 + 4.' },
+      { id: 'dien-so',     emoji: '🧩', mau: '#8b7bf7', ten: 'Điền số còn thiếu',
+        mo_ta: 'Ví dụ: 3 + ? = 7' },
+      { id: 'so-sanh',     emoji: '⚖️', mau: '#2fcf90', ten: 'So sánh số',
+        mo_ta: 'Điền dấu lớn hơn, bé hơn hoặc bằng.' },
+      { id: 'lon-be',      emoji: '🥇', mau: '#ff7a7a', ten: 'Lớn nhất, bé nhất',
+        mo_ta: 'Tìm số lớn nhất hoặc bé nhất.' },
+      { id: 'dem-day-so',  emoji: '🔢', mau: '#ffc93c', ten: 'Đếm và dãy số',
+        mo_ta: 'Đếm hình, số liền trước liền sau, dãy số.' }
+    ] },
+    { ten: 'Hình học và đo lường', bai: [
+      { id: 'hinh-hoc',   emoji: '🔷', mau: '#4aa8ff', ten: 'Nhận biết hình',
+        mo_ta: 'Hình vuông, tròn, tam giác, chữ nhật.' },
+      { id: 'hinh-khoi',  emoji: '🧊', mau: '#8b7bf7', ten: 'Hình khối',
+        mo_ta: 'Khối lập phương, hộp chữ nhật, trụ, cầu.' },
+      { id: 'do-do-dai',  emoji: '📏', mau: '#2fcf90', ten: 'Đo độ dài',
+        mo_ta: 'Nhìn thước và đọc số đo xăng-ti-mét.' },
+      { id: 'xem-gio',    emoji: '🕐', mau: '#ff7a7a', ten: 'Xem giờ',
+        mo_ta: 'Giờ đúng và giờ rưỡi trên đồng hồ kim.' }
+    ] },
+    { ten: 'Giải toán có lời văn', bai: [
+      { id: 'toan-do', emoji: '📖', mau: '#ff8fd0', ten: 'Toán đố',
+        mo_ta: 'Thêm, bớt, nhiều hơn, ít hơn, tìm số lúc đầu.' }
+    ] }
   ];
 
-  var list = document.getElementById('list');
+  var goc = document.getElementById('noi-dung');
   var tongSao = 0;
 
-  BAI_TAP.forEach(function (bai) {
+  function taoThe(bai, noiBat) {
     var best = Quiz.readBest(bai.id);
     var sao = best ? Quiz.starsFor(best.correct, best.total) : 0;
-    tongSao += sao;
+    if (!noiBat) tongSao += sao;
 
     var card = document.createElement('a');
-    card.className = 'card';
-    card.href = bai.href;
+    card.className = 'card' + (noiBat ? ' noi-bat' : '');
+    card.href = bai.href || ('bai-tap/' + bai.id + '.html');
     card.style.setProperty('--tint', bai.mau);
+
+    var huy = '';
+    if (noiBat) {
+      var ds = Quiz.readLichSu('kiem-tra');
+      if (ds.length) huy = '<span class="best">Lần gần nhất: ' + ds[0].diem + '/10 — ' + ds[0].de + '</span>';
+    } else if (best) {
+      huy = '<span class="best">' + '⭐'.repeat(sao) + ' ' + best.score + ' điểm</span>';
+    }
+
     card.innerHTML =
       '<div class="emoji">' + bai.emoji + '</div>' +
       '<h2>' + bai.ten + '</h2>' +
-      '<p>' + bai.mo_ta + '</p>' +
-      (best ? '<span class="best">' + '⭐'.repeat(sao) + ' ' + best.score + ' điểm</span>' : '');
-    list.appendChild(card);
+      '<p>' + bai.mo_ta + '</p>' + huy;
+    return card;
+  }
+
+  // Thẻ bài kiểm tra đặt lên đầu
+  var luoiKT = document.createElement('div');
+  luoiKT.className = 'grid';
+  luoiKT.appendChild(taoThe(KIEM_TRA, true));
+  goc.appendChild(luoiKT);
+
+  NHOM.forEach(function (nhom) {
+    var tieu = document.createElement('h2');
+    tieu.className = 'nhom';
+    tieu.textContent = nhom.ten;
+    goc.appendChild(tieu);
+
+    var luoi = document.createElement('div');
+    luoi.className = 'grid';
+    nhom.bai.forEach(function (bai) { luoi.appendChild(taoThe(bai, false)); });
+    goc.appendChild(luoi);
   });
 
   if (tongSao > 0) {

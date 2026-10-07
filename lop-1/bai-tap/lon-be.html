@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cộng trừ — Toán lớp 1</title>
+<title>Lớn nhất, bé nhất — Toán lớp 1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../css/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>➕</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🥇</text></svg>">
 </head>
 <body>
 <header class="topbar">
   <a class="back" href="../index.html">← Trang chủ</a>
-  <h1>➕ Cộng trừ</h1>
+  <h1>🥇 Lớn nhất, bé nhất</h1>
 </header>
 
 <main id="quiz" class="quiz"></main>
@@ -24,15 +24,11 @@
   var T = ToanL1;
 
   Quiz.init({
-    id: 'cong-tru',
+    id: 'lon-be',
     total: 10,
     levels: [
-      { name: 'Phạm vi 10', hint: 'Có hình minh hoạ để bé dễ đếm',
-        gen: function () { return T.congTru(10, true); } },
-      { name: 'Phạm vi 20', hint: 'Cộng trừ có nhớ',
-        gen: function () { return T.congTru(20, false); } },
-      { name: 'Phạm vi 100', hint: 'Số có hai chữ số, không nhớ',
-        gen: T.congTruKhongNho }
+      { name: 'Các số đến 20', gen: function () { return T.lonNhatBeNhat(20); } },
+      { name: 'Các số đến 100', gen: function () { return T.lonNhatBeNhat(100); } }
     ]
   });
 </script>

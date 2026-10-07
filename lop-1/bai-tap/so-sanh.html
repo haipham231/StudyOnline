@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>So sánh số — Học Toán Lớp 1</title>
+<title>So sánh số — Toán lớp 1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
@@ -19,39 +19,17 @@
 <main id="quiz" class="quiz"></main>
 
 <script src="../../js/quiz.js"></script>
+<script src="../../js/toan-lop-1.js"></script>
 <script>
-  var r = Quiz.randInt;
-  var DAU = ['>', '<', '='];
-
-  function dau(x, y) { return x > y ? '>' : x < y ? '<' : '='; }
-
-  function soSanhSo(max) {
-    var a = r(1, max);
-    var b = Math.random() < 0.25 ? a : r(1, max);   // chừa phần cho đáp án "="
-    return { text: String(a), after: String(b), answer: dau(a, b), choices: DAU };
-  }
-
-  function soSanhPhepTinh() {
-    var a = r(1, 9), b = r(1, 10 - a);
-    var c = r(1, 9), d = r(1, 10 - c);
-    if (Math.random() < 0.25) { c = a; d = b; }
-    return {
-      prompt: 'Tính hai vế rồi điền dấu thích hợp nhé!',
-      text: a + ' + ' + b,
-      after: c + ' + ' + d,
-      answer: dau(a + b, c + d),
-      choices: DAU,
-      small: true
-    };
-  }
+  var T = ToanL1;
 
   Quiz.init({
     id: 'so-sanh',
     total: 10,
     levels: [
-      { name: 'Các số đến 10', gen: function () { return soSanhSo(10); } },
-      { name: 'Các số đến 100', gen: function () { return soSanhSo(100); } },
-      { name: 'So sánh phép tính', hint: 'Ví dụ: 3 + 4 … 2 + 6', gen: soSanhPhepTinh }
+      { name: 'Các số đến 10', gen: function () { return T.soSanh(10); } },
+      { name: 'Các số đến 100', gen: function () { return T.soSanh(100); } },
+      { name: 'So sánh phép tính', hint: 'Ví dụ: 3 + 4 … 2 + 6', gen: T.soSanhPhepTinh }
     ]
   });
 </script>

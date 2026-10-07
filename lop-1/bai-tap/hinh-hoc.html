@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nhận biết hình — Học Toán Lớp 1</title>
+<title>Nhận biết hình — Toán lớp 1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
@@ -19,57 +19,16 @@
 <main id="quiz" class="quiz"></main>
 
 <script src="../../js/quiz.js"></script>
+<script src="../../js/toan-lop-1.js"></script>
 <script>
-  var r = Quiz.randInt, chon = Quiz.pick;
-
-  var MAU = ['#4aa8ff', '#8b7bf7', '#2fcf90', '#ffc93c', '#ff7a7a', '#ff8fd0'];
-  var LOAI = ['hình vuông', 'hình tròn', 'hình tam giác', 'hình chữ nhật'];
-
-  function veHinh(loai, canh, mau) {
-    var o = '<svg viewBox="0 0 100 100" width="' + canh + '" height="' + canh + '">';
-    if (loai === 'hình vuông')      o += '<rect x="14" y="14" width="72" height="72" rx="6" fill="' + mau + '"/>';
-    else if (loai === 'hình tròn')  o += '<circle cx="50" cy="50" r="38" fill="' + mau + '"/>';
-    else if (loai === 'hình tam giác') o += '<polygon points="50,12 88,86 12,86" fill="' + mau + '"/>';
-    else                            o += '<rect x="6" y="28" width="88" height="44" rx="6" fill="' + mau + '"/>';
-    return o + '</svg>';
-  }
-
-  // Mức 1 — đây là hình gì?
-  function nhanBiet() {
-    var loai = chon(LOAI);
-    return {
-      prompt: 'Đây là hình gì?',
-      art: veHinh(loai, 120, chon(MAU)),
-      answer: loai,
-      choices: Quiz.shuffle(LOAI.slice()),
-      cols: 2
-    };
-  }
-
-  // Mức 2 — đếm số hình của một loại
-  function demHinh() {
-    var hoi = chon(LOAI);
-    var soCanDem = r(2, 5);
-    var ds = [];
-
-    for (var i = 0; i < soCanDem; i++) ds.push(hoi);
-    var conLai = LOAI.filter(function (l) { return l !== hoi; });
-    var themVao = r(3, 6);
-    for (var j = 0; j < themVao; j++) ds.push(chon(conLai));
-
-    var art = Quiz.shuffle(ds).map(function (l) {
-      return '<span style="display:inline-block;margin:5px">' + veHinh(l, 52, chon(MAU)) + '</span>';
-    }).join('');
-
-    return { prompt: 'Có bao nhiêu ' + hoi + '?', art: art, answer: soCanDem };
-  }
+  var T = ToanL1;
 
   Quiz.init({
     id: 'hinh-hoc',
     total: 8,
     levels: [
-      { name: 'Đây là hình gì?', hint: 'Vuông, tròn, tam giác, chữ nhật', gen: nhanBiet },
-      { name: 'Đếm hình', hint: 'Đếm số hình cùng loại trong tranh', gen: demHinh }
+      { name: 'Đây là hình gì?', hint: 'Vuông, tròn, tam giác, chữ nhật', gen: T.nhanBietHinh },
+      { name: 'Đếm hình', hint: 'Đếm số hình cùng loại trong tranh', gen: T.demHinhHoc }
     ]
   });
 </script>
