@@ -19,7 +19,7 @@
   var AI = [
     { ten: 'Cổng Bí Ngô', hinh: 'bi-ngo', emoji: '🎃', mau: '#ff8f3c', soCau: 6,
       mota: 'Cộng trừ phạm vi 10 · chữ cái và thanh điệu',
-      toan: function () { return T.congTru(10, true); },
+      toan: function () { return T.congTru(10); },
       tviet: mix(V.chuHoaThuong, V.timThanh) },
 
     { ten: 'Lối Mòn Ma Trơi', hinh: 'ma', emoji: '👻', mau: '#8b7bf7', soCau: 6,
@@ -29,7 +29,7 @@
 
     { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
       mota: 'Cộng trừ phạm vi 20 · quy tắc chính tả',
-      toan: function () { return T.congTru(20, false); },
+      toan: function () { return T.congTru(20); },
       tviet: mix(V.quyTacChinhTa, V.timVan) },
 
     { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,

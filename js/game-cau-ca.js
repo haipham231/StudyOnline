@@ -20,7 +20,7 @@
       dan: ['cau-ca/ca-nho', 'cau-ca/cua'], coCa: 48,
       mota: 'Cá nhỏ hiền lành · cộng trừ trong 10, đếm, chữ cái',
       de: mix(
-        function () { return T.congTru(10, true); },
+        function () { return T.congTru(10); },
         function () { return T.demHinh(10); },
         function () { return T.soSanh(10); },
         T.nhanBietHinh,
@@ -32,7 +32,7 @@
       dan: ['cau-ca/ca-vua', 'cau-ca/bach-tuoc', 'cau-ca/cua'], coCa: 66,
       mota: 'Cá to hơn · phạm vi 20, tách gộp, xem giờ, ghép vần',
       de: mix(
-        function () { return T.congTru(20, false); },
+        function () { return T.congTru(20); },
         function () { return T.tachGop(10); },
         function () { return T.dienSo(20); },
         function () { return T.xemGio(false); },

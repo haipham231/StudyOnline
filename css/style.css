@@ -1833,28 +1833,48 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 
 /* --- hồ cá: giữ mặt nước nằm trong vùng còn nhìn thấy --- */
 .panel.man-choi .ho-ca-canh {
-  background-color: #7cc0f0;
-  background-image: linear-gradient(180deg, #e8f4ff 0%, var(--nen) 52%, #bfe0ff 52%, #7cc0f0 100%);
-  background-repeat: no-repeat;
-  background-size: 100% calc(100% - var(--day));
+  /* --mat: mặt nước, tính từ mép trên khung xuống. Bình thường là 52% vùng
+     cảnh, nhưng không bao giờ cao hơn 176px — phía trên mặt nước còn phải đủ
+     chỗ cho cậu bé đứng, không thì đầu cậu chui vào hàng "Câu 1/10". */
+  --mat: max((100% - var(--day)) * 0.52, 176px);
+  background-color: #6fb6ec;
+  background-image:
+    linear-gradient(180deg, #bfe0ff, #2f7fc4),
+    linear-gradient(180deg, #e8f4ff, var(--nen));
+  background-repeat: no-repeat, no-repeat;
+  background-position: left bottom, left top;
+  background-size: 100% 100%, 100% var(--mat);
 }
 
-.panel.man-choi .ho-ca-canh .mat-nuoc { top: calc((100% - var(--day)) * 0.52); }
+/* Cậu bé không phóng to 1,25 như mấy nhân vật khác mà thu lại 0,9. Cậu đứng
+   trong dải trời phía trên mặt nước, mà câu hỏi dài thì dải đó chỉ còn chừng
+   176px — to hơn là đầu cậu chui vào thanh trạng thái. */
+.panel.man-choi .ho-ca-canh .nguoi-cau .hoat { min-height: calc(var(--cao) * 0.9); }
 
+.panel.man-choi .ho-ca-canh .nguoi-cau .hoat dotlottie-wc {
+  width: calc(var(--cao) * 0.9) !important;
+  height: calc(var(--cao) * 0.9) !important;
+}
+
+.panel.man-choi .ho-ca-canh .mat-nuoc { top: var(--mat); }
+
+/* cậu bé và cái xô đứng ngay trên mặt nước */
 .panel.man-choi .ho-ca-canh .nguoi-cau {
-  bottom: calc((100% - var(--day)) * 0.48 + var(--day));
+  bottom: calc(100% - var(--mat));
 }
 
-/* 0.12 chứ không hơn: cao hơn nữa là con cá nhô lên khỏi mặt nước */
+/* 16px trên mép dưới vùng cảnh: con to nhất (100px) vừa đúng chạm mặt nước ở
+   trường hợp chật nhất, nên nó luôn nằm dưới nước mà vẫn cao nhất có thể —
+   càng cao càng ít bị lớp phủ của ô đề bài làm mờ */
 .panel.man-choi .ho-ca-canh .con-ca {
-  bottom: calc((100% - var(--day)) * 0.12 + var(--day));
+  bottom: calc(var(--day) + 16px);
 }
 
 /* cái xô dời lên cạnh cậu bé, chỗ cũ ở đáy giờ nằm sau ô đề bài */
 .panel.man-choi .ho-ca-canh .cai-xo {
   right: auto;
   left: 124px;
-  bottom: calc((100% - var(--day)) * 0.48 + var(--day));
+  bottom: calc(100% - var(--mat));
 }
 
 /* --- đường đi (cứu công chúa, Halloween) --- */

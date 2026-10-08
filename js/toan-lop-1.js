@@ -10,21 +10,15 @@
 
   /* ================= SỐ VÀ PHÉP TÍNH ================= */
 
-  var HINH_DEM = ['🍎', '🍊', '🌸', '⭐', '🐥', '🎈', '🍬'];
-
-  // Cộng hoặc trừ trong phạm vi max, kết quả không âm
-  function congTru(max, veHinh) {
+  // Cộng hoặc trừ trong phạm vi max, kết quả không âm.
+  // Trước đây câu cộng phạm vi 10 có kèm một hàng hình để bé đếm; bỏ rồi, vì
+  // nó cao cả trăm px mà bé lớp 1 đã tính nhẩm được trong phạm vi đó.
+  function congTru(max) {
     var a = r(1, max - 1);
     var b = r(1, max - a);
 
     if (Math.random() < 0.5) return { text: (a + b) + ' − ' + b + ' =', answer: a, mach: 'Cộng trừ' };
-
-    var q = { text: a + ' + ' + b + ' =', answer: a + b, mach: 'Cộng trừ' };
-    if (veHinh) {
-      var e = chon(HINH_DEM);
-      q.art = Q.repeatArt(e, a) + ' &nbsp;+&nbsp; ' + Q.repeatArt(e, b);
-    }
-    return q;
+    return { text: a + ' + ' + b + ' =', answer: a + b, mach: 'Cộng trừ' };
   }
 
   // Số có hai chữ số, cộng trừ không nhớ trong phạm vi 100

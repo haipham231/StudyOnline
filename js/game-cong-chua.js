@@ -11,7 +11,7 @@
   var MAN = [
     { ten: 'Rừng Xanh', emoji: '🌳', mau: '#2fcf90', nen: '#e4f9f0', hinh: 'canh/rung',
       mota: 'Cộng trừ trong phạm vi 10', soCau: 5,
-      de: [function () { return T.congTru(10, true); }] },
+      de: [function () { return T.congTru(10); }] },
 
     { ten: 'Dòng Sông', emoji: '🏞️', mau: '#4aa8ff', nen: '#e3f1ff', hinh: 'canh/song',
       mota: 'Tách gộp số và điền số còn thiếu', soCau: 5,
@@ -19,7 +19,7 @@
 
     { ten: 'Núi Đá', emoji: '⛰️', mau: '#8b7bf7', nen: '#efeaff', hinh: 'canh/nui',
       mota: 'Cộng trừ trong phạm vi 20', soCau: 6,
-      de: [function () { return T.congTru(20, false); }, function () { return T.tinhDay(10); }] },
+      de: [function () { return T.congTru(20); }, function () { return T.tinhDay(10); }] },
 
     { ten: 'Sa Mạc', emoji: '🏜️', mau: '#ffc93c', nen: '#fff6dd', hinh: 'canh/sa-mac',
       mota: 'So sánh số và dãy số', soCau: 6,
