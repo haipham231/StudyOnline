@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<title>Xem thử hoạt hình</title>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
+<style>body{background:#1b1f45;color:#fff;font:13px system-ui;margin:0;padding:10px}
+.g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.o{border:1px solid #444;border-radius:10px;padding:6px;text-align:center}</style>
+</head><body>
+<div class="g" id="g"></div>
+<script>
+  var ds = ['phi-hanh-gia-2', 'phi-hanh-gia-3', 'sao-tho-1', 'sao-tho-2', 'sao-tho-4', 'dia-bay'];
+  document.getElementById('g').innerHTML = ds.map(function (t) {
+    return '<div class="o"><dotlottie-wc src="assets/lottie/thu/' + t +
+      '.lottie" autoplay loop style="width:130px;height:130px;margin:auto"></dotlottie-wc><div>' + t + '</div></div>';
+  }).join('');
+</script>
+</body></html>
