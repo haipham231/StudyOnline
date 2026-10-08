@@ -33,6 +33,20 @@
     // chuyển cảnh — nếu không, bé bấm thêm được và câu bị tính hai lần
     var khoa = !!tuyChon.khoaSan, daGo = '', nghePhim = null;
 
+    // boc: gói đề bài và phím vào một ô riêng, để màn chơi đè được cả cụm lên
+    // hình nền. Trang bài tập không truyền boc nên vẫn gắn thẳng vào khung.
+    var noi = khung;
+    if (tuyChon.boc) { noi = el('div', tuyChon.boc); khung.appendChild(noi); }
+
+    // Màn chơi đè ô này lên hình nền, nên cảnh cần biết nó cao bao nhiêu thì
+    // mới đặt nhân vật đứng trên mép nó được. Câu có hình vẽ cao hơn câu
+    // thường cả trăm px nên không đặt sẵn một con số được.
+    function baoChieuCao() {
+      if (noi === khung) return;
+      var mep = 120;  // đoạn trên cùng của ô còn trong suốt, xem .o-hoi
+      khung.style.setProperty('--day', Math.max(0, noi.offsetHeight - mep) + 'px');
+    }
+
     /* --- đề bài --- */
 
     if (cau.prompt) {
@@ -45,9 +59,9 @@
         loa.addEventListener('click', function () { tuyChon.doc(cau.speak || cau.prompt); });
         dong.appendChild(loa);
       }
-      khung.appendChild(dong);
+      noi.appendChild(dong);
     }
-    if (cau.art) khung.appendChild(el('div', 'art', cau.art));
+    if (cau.art) noi.appendChild(el('div', 'art', cau.art));
 
     var o = el('span', 'answer-box empty', '?');
     var hang = el('div', 'question');
@@ -57,10 +71,10 @@
 
     var doDai = ((cau.text || '') + (cau.after || '')).replace(/&nbsp;/g, ' ').length;
     if (cau.small || doDai > 12) hang.classList.add('sm');
-    khung.appendChild(hang);
+    noi.appendChild(hang);
 
     var phanHoi = el('div', 'feedback', '&nbsp;');
-    khung.appendChild(phanHoi);
+    noi.appendChild(phanHoi);
 
     function traLoi(dung, daNhap) {
       khoa = true;
@@ -92,7 +106,8 @@
         boc.appendChild(nut);
       });
 
-      khung.appendChild(boc);
+      noi.appendChild(boc);
+      requestAnimationFrame(baoChieuCao);
       return { huy: thaoPhim, oPhanHoi: phanHoi };
     }
 
@@ -191,7 +206,8 @@
     document.addEventListener('keydown', nghePhim);
 
     veLai();
-    khung.appendChild(pad);
+    noi.appendChild(pad);
+    requestAnimationFrame(baoChieuCao);
     return { huy: thaoPhim, oPhanHoi: phanHoi };
   }
 

@@ -224,6 +224,7 @@
 
     van.oTraLoi = global.OTraLoi.ve(khung, van.cau, {
       nhanNop: '🍬 Trả lời',
+      boc: 'o-hoi',
       khoaSan: van.dangChuyen,
       coLoa: van.cau.mon === 'Tiếng Việt',
       doc: Q.docTo,

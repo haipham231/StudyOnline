@@ -223,6 +223,7 @@
 
     van.oTraLoi = global.OTraLoi.ve(khung, van.cau, {
       nhanNop: '🚀 Phóng',
+      boc: 'o-hoi',
       khoaSan: van.dangChuyen,
       khiTraLoi: function (dung, _daNhap, phanHoi) { cham(dung, van.cau, phanHoi); }
     });

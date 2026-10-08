@@ -255,6 +255,7 @@
   function veCauHoi(khung, q) {
     van.oTraLoi = global.OTraLoi.ve(khung, q, {
       nhanNop: '⚔️ Tấn công',
+      boc: 'o-hoi',
       khoaSan: van.dangChuyen,
       khiTraLoi: function (dung, _daNhap, phanHoi) { cham(dung, q, phanHoi); }
     });

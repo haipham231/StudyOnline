@@ -184,7 +184,8 @@
     troi.appendChild(el('div', 'dich-tren', hinh(chang.hinh, chang.dinh ? 86 : 74)));
 
     var bay = el('div', 'nguoi-bay' + (hieuUng === 'len' ? ' vut-len' : ''), hinh('troi/ky-lan', 82));
-    bay.style.bottom = (6 + van.buoc / chang.soCau * 56) + '%';
+    // tỉ lệ 0–1, CSS quy ra chỗ đứng (xem .bau-troi .nguoi-bay)
+    bay.style.setProperty('--len', (0.06 + van.buoc / chang.soCau * 0.56).toFixed(3));
     troi.appendChild(bay);
 
     var nac = el('div', 'nac-thang');
@@ -195,6 +196,7 @@
     khung.appendChild(troi);
 
     van.oTraLoi = global.OTraLoi.ve(khung, van.cau, {
+      boc: 'o-hoi',
       khoaSan: van.dangChuyen,
       coLoa: true,
       doc: Q.docTo,
