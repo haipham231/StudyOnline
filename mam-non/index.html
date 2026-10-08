@@ -152,8 +152,13 @@
         huy = '<span class="best">' + (tt.len ? '🦄 Đã tới Lâu Đài Mây · ' : 'Đang ở chặng ' + tt.mo + ' · ') +
               '⭐ ' + (tt.ngoiSao || 0) + '</span>';
       }
+      var tieuG = document.createElement('h2');
+      tieuG.className = 'nhom';
+      tieuG.textContent = 'Trò chơi';
+      goc.appendChild(tieuG);
+
       var theG = document.createElement('a');
-      theG.className = 'card noi-bat';
+      theG.className = 'card';
       theG.href = GAME.href;
       theG.style.setProperty('--tint', GAME.mau);
       theG.innerHTML = '<div class="emoji">' + GAME.emoji + '</div><h2>' + GAME.ten + '</h2>' +

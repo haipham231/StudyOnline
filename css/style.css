@@ -664,10 +664,8 @@ footer { text-align: center; margin-top: 40px; color: var(--muted); font-size: 1
 
 .review li { line-height: 1.7; }
 
-/* thẻ Kiểm tra nổi bật trên trang chủ lớp 1 */
-.card.noi-bat { grid-column: 1 / -1; background: linear-gradient(120deg, #fff, color-mix(in srgb, var(--tint) 10%, #fff)); }
-.card.noi-bat .emoji { width: 70px; height: 70px; font-size: 36px; }
-.card.noi-bat h2 { font-size: 24px; }
+/* thẻ trò chơi: cùng cỡ các mục khác, chỉ nhấn bằng nền nhạt màu */
+.card.tro-choi { background: linear-gradient(120deg, #fff, color-mix(in srgb, var(--tint) 9%, #fff)); }
 
 h2.nhom {
   margin: 34px 0 14px;
@@ -1398,4 +1396,13 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 
 @media (max-width: 430px) {
   .ho-ca-canh { height: 150px; }
+}
+
+/* đàn thuỷ quái bơi trong thẻ chọn hồ */
+.chang .dan-ca { display: flex; gap: 2px; margin-top: 6px; }
+.chang .dan-ca i { display: block; animation: ca-vay 2.6s ease-in-out infinite; }
+
+@keyframes ca-vay {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%      { transform: translateY(-5px) rotate(3deg); }
 }

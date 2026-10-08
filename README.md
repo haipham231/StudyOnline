@@ -120,13 +120,15 @@ Chọn một trong **ba hồ** theo độ khó, mỗi lượt trả lời **10 c
 Đúng thì câu được cá bỏ vào xô, sai thì cá bơi mất. Không có màn thua — bé luôn đi hết
 mười câu, cuối cùng khoe xô có đúng số cá câu được.
 
-| Hồ | Độ khó | Cá | Kiến thức |
+| Hồ | Độ khó | Thuỷ quái | Kiến thức |
 |---|---|---|---|
-| 🪣 Ao Nhỏ | Dễ | cá nhỏ | Cộng trừ trong 10, đếm, so sánh, nhận hình, chữ cái, thanh điệu |
-| 🏞️ Sông Lớn | Vừa | cá cỡ lớn | Phạm vi 20, tách gộp, điền số, xem giờ, ghép vần, quy tắc chính tả, từ loại |
-| 🌊 Biển Sâu | Khó | cá mập | Phạm vi 100, chục–đơn vị, tính dãy, đo độ dài, toán đố, sắp xếp câu, đọc hiểu |
+| 🪣 Ao Nhỏ | Dễ | cá nhỏ, cua | Cộng trừ trong 10, đếm, so sánh, nhận hình, chữ cái, thanh điệu |
+| 🏞️ Sông Lớn | Vừa | cá lớn, bạch tuộc, cua | Phạm vi 20, tách gộp, điền số, xem giờ, ghép vần, quy tắc chính tả, từ loại |
+| 🌊 Biển Sâu | Khó | cá mập, cá voi, sứa, bạch tuộc | Phạm vi 100, chục–đơn vị, tính dãy, đo độ dài, toán đố, sắp xếp câu, đọc hiểu |
 
-Cá to dần theo độ khó (44 → 64 → 76 px). Bộ kiểm thử đo độ khó thật chứ không tin vào nhãn:
+**Mỗi câu một con khác nhau** — rút từ đàn của hồ đó, không bao giờ trùng con vừa hiện.
+Hồ càng khó thì thuỷ quái càng to (48 → 66 → 80 px) và càng nhiều loài. Màn chọn hồ cho cả
+đàn bơi ngay trong thẻ. Bộ kiểm thử đo độ khó thật chứ không tin vào nhãn:
 đáp án lớn nhất phải tăng dần giữa ba hồ (10 → 20 → 99) và hồ Khó phải có nhiều câu lời văn
 dài hơn hồ Dễ.
 

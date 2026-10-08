@@ -17,7 +17,7 @@
 
   var HO = [
     { id: 'ao', ten: 'Ao Nhỏ', mucDo: 'Dễ', emoji: '🪣', mau: '#2fcf90', nen: '#e4f9f0',
-      ca: 'cau-ca/ca-nho', coCa: 44,
+      dan: ['cau-ca/ca-nho', 'cau-ca/cua'], coCa: 48,
       mota: 'Cá nhỏ hiền lành · cộng trừ trong 10, đếm, chữ cái',
       de: mix(
         function () { return T.congTru(10, true); },
@@ -29,7 +29,7 @@
       ) },
 
     { id: 'song', ten: 'Sông Lớn', mucDo: 'Vừa', emoji: '🏞️', mau: '#4aa8ff', nen: '#e3f1ff',
-      ca: 'cau-ca/ca-vua', coCa: 64,
+      dan: ['cau-ca/ca-vua', 'cau-ca/bach-tuoc', 'cau-ca/cua'], coCa: 66,
       mota: 'Cá to hơn · phạm vi 20, tách gộp, xem giờ, ghép vần',
       de: mix(
         function () { return T.congTru(20, false); },
@@ -42,7 +42,7 @@
       ) },
 
     { id: 'bien', ten: 'Biển Sâu', mucDo: 'Khó', emoji: '🌊', mau: '#6a58e0', nen: '#ece8ff',
-      ca: 'cau-ca/ca-map', coCa: 76,
+      dan: ['cau-ca/ca-map', 'cau-ca/ca-voi', 'cau-ca/sua', 'cau-ca/bach-tuoc'], coCa: 80,
       mota: 'Cá mập cỡ lớn · phạm vi 100, toán đố, đo độ dài, đọc hiểu',
       de: mix(
         T.congTruKhongNho,
@@ -117,7 +117,7 @@
       hinh('cau-ca/nguoi-cau', 104) +
       '<p>Bé xách cần đi câu nào! Chọn một hồ rồi trả lời <b>' + SO_CAU + ' câu hỏi</b>. ' +
       'Mỗi câu đúng câu được một con cá bỏ vào xô, trả lời sai thì cá bơi mất. ' +
-      '<b>Hồ càng khó thì cá càng to</b>.</p>'));
+      '<b>Hồ càng khó thì thuỷ quái càng to</b>.</p>'));
 
     khung.appendChild(el('p', 'lead', '🐟 Tổng cộng đã câu được <b>' + (tt.tongCa || 0) + ' con cá</b>'));
 
@@ -129,7 +129,10 @@
       nut.style.setProperty('--mau', ho.mau);
       nut.innerHTML =
         '<span class="so">' + ho.emoji + '</span>' +
-        '<span class="chi-tiet"><b>' + ho.ten + ' · ' + ho.mucDo + '</b><small>' + ho.mota + '</small></span>' +
+        '<span class="chi-tiet"><b>' + ho.ten + ' · ' + ho.mucDo + '</b><small>' + ho.mota + '</small>' +
+          '<span class="dan-ca">' + ho.dan.map(function (c, k) {
+            return '<i style="animation-delay:' + (k * 0.5).toFixed(1) + 's">' + hinh(c, 40) + '</i>';
+          }).join('') + '</span></span>' +
         '<span class="sao">' + (tot ? '🐟 ' + tot + '/' + SO_CAU : '') + '</span>';
       nut.addEventListener('click', function () { batDauCau(i); });
       ds.appendChild(nut);
@@ -141,7 +144,7 @@
   /* ---------- Câu cá ---------- */
 
   function batDauCau(i) {
-    van = { ho: HO[i], chiSo: i, cau: 0, duoc: 0, daRa: {} };
+    van = { ho: HO[i], chiSo: i, cau: 0, duoc: 0, daRa: {}, conCa: null };
     raCauHoi();
   }
 
@@ -161,7 +164,16 @@
     van.cau += 1;
     if (van.cau > SO_CAU) return xong();
     van.deBai = sinhCau();
+    van.conCa = conTiepTheo();
     ve();
+  }
+
+  // mỗi câu một con khác nhau: rút từ đàn đã bỏ con vừa hiện ra
+  function conTiepTheo() {
+    var dan = van.ho.dan;
+    if (dan.length === 1) return dan[0];
+    var khac = dan.filter(function (c) { return c !== van.conCa; });
+    return Q.pick(khac.length ? khac : dan);
   }
 
   function ve(hieuUng) {
@@ -183,7 +195,7 @@
     canh.appendChild(el('div', 'mat-nuoc'));
 
     var conCa = el('div', 'con-ca' + (hieuUng === 'cau-duoc' ? ' nhay-len' : hieuUng === 'mat' ? ' boi-mat' : ''),
-      hinh(ho.ca, ho.coCa));
+      hinh(van.conCa || ho.dan[0], ho.coCa));
     canh.appendChild(conCa);
 
     var xo = el('div', 'cai-xo', hinh('cau-ca/xo', 66) +
@@ -273,6 +285,7 @@
 
   global.GameCauCa = {
     HO: HO, SO_CAU: SO_CAU,
+    _conTiepTheo: function () { van.conCa = conTiepTheo(); return van.conCa; },
     batDau: function (idGoc) {
       goc = document.getElementById(idGoc || 'game');
       chonHo();

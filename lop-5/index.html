@@ -89,7 +89,7 @@
     if (!noiBat) tongSao += sao;
 
     var card = document.createElement('a');
-    card.className = 'card' + (noiBat ? ' noi-bat' : '');
+    card.className = 'card';
     card.href = bai.href || ('bai-tap/' + bai.id + '.html');
     card.style.setProperty('--tint', bai.mau);
 
@@ -113,6 +113,11 @@
                      '<p>' + bai.mo_ta + '</p>' + huy;
     return card;
   }
+
+  var tieuTro = document.createElement('h2');
+  tieuTro.className = 'nhom';
+  tieuTro.textContent = 'Trò chơi và kiểm tra';
+  goc.appendChild(tieuTro);
 
   var luoiTren = document.createElement('div');
   luoiTren.className = 'grid';

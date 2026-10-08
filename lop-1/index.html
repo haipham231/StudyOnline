@@ -112,7 +112,7 @@
     if (!noiBat) tongSao += sao;
 
     var card = document.createElement('a');
-    card.className = 'card' + (noiBat ? ' noi-bat' : '');
+    card.className = 'card';
     card.href = bai.href || ((laTiengViet ? 'tieng-viet/' : 'bai-tap/') + bai.id + '.html');
     card.style.setProperty('--tint', bai.mau);
 
@@ -147,12 +147,17 @@
   }
 
   // Game và bài kiểm tra đặt lên đầu
+  // Trò chơi và bài kiểm tra: thẻ cùng cỡ với các mục khác
+  var tieuTro = document.createElement('h2');
+  tieuTro.className = 'nhom';
+  tieuTro.textContent = 'Trò chơi và kiểm tra';
+  goc.appendChild(tieuTro);
+
   var luoiTren = document.createElement('div');
   luoiTren.className = 'grid';
-  luoiTren.appendChild(taoThe(GAME_CAU_CA, true));
-  luoiTren.appendChild(taoThe(GAME_HALLOWEEN, true));
-  luoiTren.appendChild(taoThe(GAME, true));
-  luoiTren.appendChild(taoThe(KIEM_TRA, true));
+  [GAME_CAU_CA, GAME_HALLOWEEN, GAME, KIEM_TRA].forEach(function (b) {
+    luoiTren.appendChild(taoThe(b, true));
+  });
   goc.appendChild(luoiTren);
 
   NHOM.forEach(function (nhom) {
