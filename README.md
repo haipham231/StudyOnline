@@ -114,6 +114,22 @@ Bám mạch kiến thức Toán 1 — Chương trình GDPT 2018. **Không có nh
 |---|---|
 | 📖 Toán đố | 8 dạng: thêm, bớt, gộp nhóm, nhiều hơn, ít hơn, rời khỏi, tìm số lúc đầu, hơn kém |
 
+### 🎣 Câu cá cùng bé
+
+Chọn một trong **ba hồ** theo độ khó, mỗi lượt trả lời **10 câu** trộn Toán và Tiếng Việt.
+Đúng thì câu được cá bỏ vào xô, sai thì cá bơi mất. Không có màn thua — bé luôn đi hết
+mười câu, cuối cùng khoe xô có đúng số cá câu được.
+
+| Hồ | Độ khó | Cá | Kiến thức |
+|---|---|---|---|
+| 🪣 Ao Nhỏ | Dễ | cá nhỏ | Cộng trừ trong 10, đếm, so sánh, nhận hình, chữ cái, thanh điệu |
+| 🏞️ Sông Lớn | Vừa | cá cỡ lớn | Phạm vi 20, tách gộp, điền số, xem giờ, ghép vần, quy tắc chính tả, từ loại |
+| 🌊 Biển Sâu | Khó | cá mập | Phạm vi 100, chục–đơn vị, tính dãy, đo độ dài, toán đố, sắp xếp câu, đọc hiểu |
+
+Cá to dần theo độ khó (44 → 64 → 76 px). Bộ kiểm thử đo độ khó thật chứ không tin vào nhãn:
+đáp án lớn nhất phải tăng dần giữa ba hồ (10 → 20 → 99) và hồ Khó phải có nhiều câu lời văn
+dài hơn hồ Dễ.
+
 ### 🎃 Đêm Halloween
 
 Phù thuỷ giấu hết kẹo của cả xóm. Bé vượt **6 ải**, mỗi ải **xen kẽ một câu Toán và một
@@ -288,6 +304,7 @@ xây chỉ là nét đứt mờ — bé thấy rõ mình còn cách đích bao x
 │   ├── toan-lop-5.js     # bộ sinh đề lớp 5
 │   ├── game-cong-chua.js # engine game Giải cứu công chúa (lớp 1)
 │   ├── game-halloween.js # engine game Đêm Halloween (lớp 1)
+│   ├── game-cau-ca.js    # engine game Câu cá cùng bé (lớp 1)
 │   ├── game-ky-lan.js    # engine game Bay cùng kỳ lân (mầm non)
 │   ├── hoat-hinh.js      # bọc trình phát Lottie, có đường lui SVG
 │   ├── danh-hieu.js      # danh hiệu, suy ra từ kết quả đã lưu
@@ -302,6 +319,7 @@ xây chỉ là nét đứt mờ — bé thấy rõ mình còn cách đích bao x
 │   ├── index.html
 │   ├── cuu-cong-chua.html # game 6 chặng
 │   ├── halloween.html     # game 6 ải, toán xen tiếng Việt
+│   ├── cau-ca.html        # game câu cá, ba mức khó
 │   ├── kiem-tra.html      # ba bộ đề, chấm thang 10
 │   ├── bai-tap/*.html     # Toán
 │   └── tieng-viet/*.html  # Tiếng Việt

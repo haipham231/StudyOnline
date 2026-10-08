@@ -55,6 +55,13 @@
       dat: function () { return !!game('game-halloween').thang; } },
     { id: 'tho-san-keo', e: '🍬', ten: 'Thợ Săn Kẹo', mo: 'Gom được 60 viên kẹo', khu: 'lop-1',
       dat: function () { return (game('game-halloween').keo || 0) >= 60; } },
+    { id: 'can-thu', e: '🎣', ten: 'Cần Thủ Nhí', mo: 'Câu đủ 10 con cá ở một hồ bất kì', khu: 'lop-1',
+      dat: function () {
+        var t = game('game-cau-ca').totNhat || {};
+        return Object.keys(t).some(function (k) { return t[k] >= 10; });
+      } },
+    { id: 'vua-bien-sau', e: '🦈', ten: 'Vua Biển Sâu', mo: 'Câu đủ 10 con cá ở hồ Biển Sâu', khu: 'lop-1',
+      dat: function () { return (game('game-cau-ca').totNhat || {}).bien >= 10; } },
     { id: 'hoc-sinh-gioi-1', e: '🏅', ten: 'Học Sinh Giỏi', mo: 'Đạt từ 9 điểm một bài kiểm tra', khu: 'lop-1',
       dat: function () { return diemKiemTra('kiem-tra') >= 9; } },
 

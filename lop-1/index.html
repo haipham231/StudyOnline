@@ -46,6 +46,12 @@
     href: 'halloween.html'
   };
 
+  var GAME_CAU_CA = {
+    id: 'game-cau-ca', emoji: '🎣', mau: '#4aa8ff', ten: 'Câu cá cùng bé',
+    mo_ta: 'Chọn hồ dễ, vừa hay khó rồi trả lời 10 câu Toán và Tiếng Việt. Đúng thì câu được cá bỏ vào xô!',
+    href: 'cau-ca.html'
+  };
+
   var KIEM_TRA = {
     id: 'kiem-tra', emoji: '📝', mau: '#8b7bf7', ten: 'Bài kiểm tra',
     mo_ta: 'Ba bộ đề theo giữa kì 1, cuối kì 1 và cuối năm. Máy chấm điểm thang 10 và chỉ ra bé còn yếu phần nào.',
@@ -111,7 +117,11 @@
     card.style.setProperty('--tint', bai.mau);
 
     var huy = '';
-    if (bai.id === 'game-cong-chua' || bai.id === 'game-halloween') {
+    if (bai.id === 'game-cau-ca') {
+      var tc = null;
+      try { tc = JSON.parse(localStorage.getItem('studyonline:game-cau-ca') || 'null'); } catch (e) {}
+      if (tc && tc.tongCa) huy = '<span class="best">🐟 Đã câu được ' + tc.tongCa + ' con cá</span>';
+    } else if (bai.id === 'game-cong-chua' || bai.id === 'game-halloween') {
       var tt = null;
       try { tt = JSON.parse(localStorage.getItem('studyonline:' + bai.id) || 'null'); } catch (e) {}
       if (tt) {
@@ -139,6 +149,7 @@
   // Game và bài kiểm tra đặt lên đầu
   var luoiTren = document.createElement('div');
   luoiTren.className = 'grid';
+  luoiTren.appendChild(taoThe(GAME_CAU_CA, true));
   luoiTren.appendChild(taoThe(GAME_HALLOWEEN, true));
   luoiTren.appendChild(taoThe(GAME, true));
   luoiTren.appendChild(taoThe(KIEM_TRA, true));

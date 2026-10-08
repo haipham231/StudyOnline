@@ -1298,3 +1298,104 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 }
 
 .canh .long-cuoi { position: absolute; right: 4px; bottom: 16px; opacity: 0.9; }
+
+/* ===== Game Câu cá ===== */
+
+.chang.ho-ca { cursor: pointer; }
+
+.ho-ca-canh {
+  position: relative;
+  height: 172px;
+  margin-bottom: 16px;
+  border-radius: var(--r-md);
+  background: linear-gradient(180deg, #e8f4ff 0%, var(--nen) 42%, #bfe0ff 42%, #7cc0f0 100%);
+  overflow: hidden;
+}
+
+.ho-ca-canh .mat-nuoc {
+  position: absolute;
+  left: 0; right: 0; top: 42%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.ho-ca-canh .nguoi-cau { position: absolute; left: 10px; bottom: 54%; }
+
+.ho-ca-canh .con-ca {
+  position: absolute;
+  left: 42%;
+  bottom: 8%;
+  animation: ca-boi 3.4s ease-in-out infinite;
+}
+
+@keyframes ca-boi {
+  0%, 100% { transform: translateX(0) rotate(-2deg); }
+  50%      { transform: translateX(26px) rotate(3deg); }
+}
+
+.ho-ca-canh .con-ca.nhay-len { animation: ca-nhay 0.9s ease forwards; }
+.ho-ca-canh .con-ca.boi-mat { animation: ca-chay 0.9s ease forwards; }
+
+@keyframes ca-nhay {
+  0%   { transform: translate(0, 0) rotate(0); }
+  55%  { transform: translate(60px, -78px) rotate(-22deg); }
+  100% { transform: translate(110px, -34px) rotate(14deg); opacity: 0; }
+}
+
+@keyframes ca-chay {
+  0%   { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(-150px); opacity: 0; }
+}
+
+.ho-ca-canh .cai-xo { position: absolute; right: 12px; bottom: 8px; }
+
+.ho-ca-canh .dem-ca {
+  position: absolute;
+  right: -4px;
+  top: -6px;
+  min-width: 24px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--mint);
+  color: #fff;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.khoe-xo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.khoe-xo .xo-to { position: relative; }
+
+.khoe-xo .ca-trong-xo {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  width: 78px;
+  font-size: 15px;
+  line-height: 1.15;
+  text-align: center;
+  word-break: break-all;
+}
+
+.so-ca {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 54px;
+  font-weight: 700;
+  color: var(--sky-dark);
+  line-height: 1.1;
+}
+
+.so-ca .tren { font-size: 20px; color: var(--muted); margin-left: 6px; }
+
+@media (max-width: 430px) {
+  .ho-ca-canh { height: 150px; }
+}
