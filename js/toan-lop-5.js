@@ -290,14 +290,16 @@
     };
   }
 
+  // viewBox rộng 190 chứ không phải 160: nhãn "r = 20 cm" đặt ở x=126 dài gần
+  // 80 đơn vị, khung 160 là chữ bị cắt mất đuôi
   function veHinhTron(nhan, gt, an) {
-    return '<svg viewBox="0 0 160 160" width="190" style="max-width:100%">' +
-      '<circle cx="80" cy="80" r="62" fill="#efeaff" stroke="#8b7bf7" stroke-width="3"/>' +
-      '<circle cx="80" cy="80" r="4" fill="#8b7bf7"/>' +
+    return '<svg viewBox="0 0 190 170" width="200" style="max-width:100%">' +
+      '<circle cx="95" cy="88" r="62" fill="#efeaff" stroke="#8b7bf7" stroke-width="3"/>' +
+      '<circle cx="95" cy="88" r="4" fill="#8b7bf7"/>' +
       (nhan === 'r'
-        ? '<line x1="80" y1="80" x2="142" y2="80" stroke="#ff7a7a" stroke-width="3"/>'
-        : '<line x1="18" y1="80" x2="142" y2="80" stroke="#ff7a7a" stroke-width="3"/>') +
-      '<text x="' + (nhan === 'r' ? 110 : 80) + '" y="72" text-anchor="middle" font-family="Nunito" ' +
+        ? '<line x1="95" y1="88" x2="157" y2="88" stroke="#ff7a7a" stroke-width="3"/>'
+        : '<line x1="33" y1="88" x2="157" y2="88" stroke="#ff7a7a" stroke-width="3"/>') +
+      '<text x="' + (nhan === 'r' ? 126 : 95) + '" y="80" text-anchor="middle" font-family="Nunito" ' +
       'font-size="15" font-weight="800" fill="#e05454">' + nhan + ' = ' + (an ? '?' : sv(gt) + ' cm') + '</text>' +
       '</svg>';
   }

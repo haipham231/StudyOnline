@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nghe và chọn — Tiếng Anh cho bé</title>
+<meta name="description" content="Game tiếng Anh cho bé: nghe từ rồi chọn đúng hình, hoặc nhìn hình chọn đúng từ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🎧</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="index.html">← Quay lại</a>
+  <h1>🎧 Nghe và chọn</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../js/o-tra-loi.js"></script>
+<script src="../js/quiz.js"></script>
+<script src="../js/tieng-viet-mam-non.js"></script>
+<script src="../js/tieng-anh.js"></script>
+<script>
+  var A = TiengAnh;
+  Quiz.init({
+    id: 'ta-nghe-chon',
+    total: 10,
+    kids: true,
+    speak: true,
+    levels: [
+      { name: 'Con vật', gen: A.tron('con vật') },
+      { name: 'Trái cây', gen: A.tron('trái cây') },
+      { name: 'Màu sắc', gen: A.tron('màu sắc') },
+      { name: 'Số đếm', gen: A.tron('số đếm') },
+      { name: 'Trộn tất cả', gen: A.tron(null) }
+    ]
+  });
+</script>
+</body>
+</html>

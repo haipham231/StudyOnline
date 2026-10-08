@@ -1006,6 +1006,29 @@ h2.nhom::before {
 /* chữ trong hình vẽ không chịu letter-spacing của khối .art */
 .art svg text { letter-spacing: normal; }
 
+/* Nhãn số đo nằm sát mép viewBox; mặc định SVG cắt phăng phần thò ra, bé thấy
+   chữ cụt đuôi. Cho vẽ tràn ra ngoài — khung bài còn thừa lề hai bên. */
+.art svg { overflow: visible; }
+
+/* ===================================================================
+   Chặn tràn khung
+   Ô trong lưới mặc định min-width:auto, nghĩa là nó không chịu hẹp hơn chữ
+   bên trong. Một từ dài như "watermelon" đủ để đẩy cột rộng ra và cả hàng
+   văng khỏi màn hình. Cho phép co lại và cho chữ xuống dòng.
+   =================================================================== */
+
+.choices > .choice,
+.pad > .key,
+.grid > .card,
+.huy-hieu > .hh {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* chữ trong hình vẽ và trong đề bài cũng phải chịu xuống dòng */
+.prompt, .question, .feedback, .nhan { overflow-wrap: break-word; }
+
+
 /* ===== Hoạt hình Lottie ===== */
 
 .hoat {
@@ -2038,4 +2061,98 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
   .panel.man-choi .key { padding: 8px 0; font-size: 21px; }
   .panel.man-choi .key.wide { padding: 9px 0; font-size: 17px; }
   .panel.man-choi .choice { padding: 10px 8px; font-size: clamp(17px, 2vw, 21px); }
+}
+
+/* ===================================================================
+   Khu tiếng Anh — thẻ từ lật được và các ô chọn có hình
+   =================================================================== */
+
+.the-khung { padding: 20px 16px 22px; }
+
+.dem-the {
+  color: var(--muted);
+  font-size: 14.5px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+/* Thẻ lật: hai mặt chồng lên nhau, mặt sau quay sẵn 180°, cả khối xoay khi
+   bấm. preserve-3d phải đặt ở khối ngoài, không thì hai mặt bẹt vào nhau. */
+.the-tu {
+  position: relative;
+  height: 300px;
+  margin: 0 auto 18px;
+  max-width: 420px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.3, 1.2, 0.5, 1);
+}
+
+.the-tu.da-lat { transform: rotateY(180deg); }
+
+.the-tu .mat {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: var(--r-lg);
+  backface-visibility: hidden;
+  box-shadow: 0 10px 26px rgba(43, 47, 85, 0.16);
+}
+
+.the-tu .truoc { background: linear-gradient(160deg, #eef4ff, #dfe9ff); }
+
+.the-tu .sau {
+  transform: rotateY(180deg);
+  background: linear-gradient(160deg, var(--grape), #5b4bd6);
+  color: #fff;
+}
+
+.the-tu .anh-the { font-size: 120px; line-height: 1; }
+.the-tu .goi-y { color: var(--muted); font-size: 14.5px; font-weight: 800; }
+
+.the-tu .tu-anh-to {
+  font-family: "Baloo 2", sans-serif;
+  font-size: clamp(36px, 10vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.the-tu .nghia-viet { font-size: 19px; color: rgba(255, 255, 255, 0.9); }
+.the-tu .anh-nho { font-size: 52px; line-height: 1; margin-top: 4px; }
+
+.hang-nut {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.btn.phu {
+  background: var(--soft);
+  color: var(--ink);
+  box-shadow: 0 5px 0 var(--line);
+}
+
+.btn.loa-to { background: var(--sky); box-shadow: 0 5px 0 var(--sky-dark); }
+.btn.tron-lai { margin-top: 12px; background: var(--soft); color: var(--ink); box-shadow: 0 5px 0 var(--line); }
+
+/* hình trong câu hỏi và trong ô chọn */
+.anh-to { font-size: clamp(84px, 22vw, 128px); line-height: 1.05; }
+.choice .anh-tu { display: block; font-size: clamp(38px, 11vw, 52px); line-height: 1.15; }
+
+/* nhãn tiếng Anh dưới hình: ba cột trên khổ 360px chỉ còn ~100px mỗi ô nên
+   chữ phải nhỏ và được phép xuống dòng */
+.choice .nhan { font-size: clamp(12px, 3.4vw, 15px); line-height: 1.25; hyphens: auto; }
+.prompt .tu-anh { color: var(--grape-dark); }
+
+@media (max-width: 480px) {
+  .the-tu { height: 248px; }
+  .the-tu .anh-the { font-size: 96px; }
+  .the-khung { padding: 16px 12px 18px; }
+  .hang-nut .btn { padding: 12px 16px; font-size: 16px; }
 }

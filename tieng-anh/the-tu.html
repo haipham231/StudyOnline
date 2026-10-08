@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thẻ từ — Tiếng Anh cho bé</title>
+<meta name="description" content="Thẻ từ tiếng Anh cho bé: nhìn hình đoán từ, bấm để lật thẻ xem nghĩa và nghe đọc.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🃏</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="index.html">← Quay lại</a>
+  <h1>🃏 Thẻ từ</h1>
+</header>
+
+<main class="quiz" id="noi-dung"></main>
+
+<script src="../js/quiz.js"></script>
+<script src="../js/tieng-viet-mam-non.js"></script>
+<script src="../js/tieng-anh.js"></script>
+<script>
+  var goc = document.getElementById('noi-dung');
+  var cd = decodeURIComponent((location.search.match(/[?&]cd=([^&]*)/) || [])[1] || '');
+  var bo = Quiz.shuffle(TiengAnh.tuCua(cd).slice());
+  var i = 0, datLat = false;
+
+  document.querySelector('.topbar h1').textContent =
+    '🃏 ' + (cd && TiengAnh.CHU_DE[cd] ? cd.charAt(0).toUpperCase() + cd.slice(1) : 'Tất cả các từ');
+
+  function ve() {
+    var t = bo[i];
+    goc.innerHTML =
+      '<div class="panel the-khung">' +
+        '<div class="dem-the">' + (i + 1) + ' / ' + bo.length + '</div>' +
+        '<div class="the-tu' + (datLat ? ' da-lat' : '') + '" id="the" role="button" tabindex="0"' +
+             ' aria-label="Bấm để lật thẻ">' +
+          '<div class="mat truoc"><span class="anh-the">' + t.e + '</span>' +
+            '<span class="goi-y">Bấm để lật</span></div>' +
+          '<div class="mat sau"><span class="tu-anh-to">' + t.en + '</span>' +
+            '<span class="nghia-viet">' + t.vi + '</span>' +
+            '<span class="anh-nho">' + t.e + '</span></div>' +
+        '</div>' +
+        '<div class="hang-nut">' +
+          '<button class="btn phu" id="truoc" type="button">← Trước</button>' +
+          '<button class="btn loa-to" id="nghe" type="button">🔊 Nghe</button>' +
+          '<button class="btn phu" id="sau" type="button">Sau →</button>' +
+        '</div>' +
+        '<button class="btn tron-lai" id="tron" type="button">🔀 Xáo lại bộ thẻ</button>' +
+      '</div>';
+
+    var the = document.getElementById('the');
+    function lat() {
+      datLat = !datLat;
+      the.classList.toggle('da-lat', datLat);
+      if (datLat) Quiz.docTo(t.en, 'en');
+    }
+    the.addEventListener('click', lat);
+    the.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lat(); }
+    });
+
+    document.getElementById('nghe').addEventListener('click', function () { Quiz.docTo(t.en, 'en'); });
+    document.getElementById('truoc').addEventListener('click', function () {
+      i = (i - 1 + bo.length) % bo.length; datLat = false; ve();
+    });
+    document.getElementById('sau').addEventListener('click', function () {
+      i = (i + 1) % bo.length; datLat = false; ve();
+    });
+    document.getElementById('tron').addEventListener('click', function () {
+      bo = Quiz.shuffle(bo.slice()); i = 0; datLat = false; ve();
+    });
+  }
+
+  ve();
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') document.getElementById('truoc').click();
+    else if (e.key === 'ArrowRight') document.getElementById('sau').click();
+  });
+</script>
+</body>
+</html>

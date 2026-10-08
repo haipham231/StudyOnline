@@ -105,15 +105,23 @@
     return m + ':' + (s < 10 ? '0' + s : s);
   }
 
-  /* ---------- đọc to bằng tiếng Việt ---------- */
+  /* ---------- đọc to ---------- */
 
-  var giongViet = null;
+  var TIENG = {
+    vi: { ma: 'vi-VN', tim: /^vi/i, nhanh: 0.88 },
+    // tiếng Anh đọc chậm hơn nữa: bé Việt mới làm quen, nghe tốc độ thường
+    // là trôi mất cả từ
+    en: { ma: 'en-US', tim: /^en/i, nhanh: 0.78 }
+  };
+
+  var giong = { vi: null, en: null };
 
   function timGiong() {
-    if (!global.speechSynthesis) return null;
+    if (!global.speechSynthesis) return;
     var ds = global.speechSynthesis.getVoices() || [];
-    giongViet = ds.filter(function (v) { return /^vi/i.test(v.lang); })[0] || null;
-    return giongViet;
+    Object.keys(TIENG).forEach(function (k) {
+      giong[k] = ds.filter(function (v) { return TIENG[k].tim.test(v.lang); })[0] || null;
+    });
   }
 
   if (global.speechSynthesis) {
@@ -121,14 +129,17 @@
     global.speechSynthesis.onvoiceschanged = timGiong;
   }
 
-  function docTo(text) {
+  function docTo(text, ma) {
     if (!global.speechSynthesis || !text) return;
+    var t = TIENG[ma === 'en' ? 'en' : 'vi'];
     try {
       global.speechSynthesis.cancel();
       var loi = new global.SpeechSynthesisUtterance(String(text));
-      loi.lang = 'vi-VN';
-      loi.rate = 0.88;          // chậm lại cho bé nghe kịp
-      if (giongViet || timGiong()) loi.voice = giongViet;
+      loi.lang = t.ma;
+      loi.rate = t.nhanh;
+      if (!giong[ma === 'en' ? 'en' : 'vi']) timGiong();
+      var g = giong[ma === 'en' ? 'en' : 'vi'];
+      if (g) loi.voice = g;
       global.speechSynthesis.speak(loi);
     } catch (e) {
       /* máy không đọc được thì bé vẫn nhìn hình để chơi */
@@ -283,11 +294,12 @@
       bar.appendChild(fill);
       panel.appendChild(bar);
 
-      if (config.speak) docTo(q.speak || q.prompt);
+      // q.tieng: câu nào cần đọc bằng tiếng Anh thì tự khai, mặc định tiếng Việt
+      if (config.speak) docTo(q.speak || q.prompt, q.tieng);
 
       state.oTraLoi = global.OTraLoi.ve(panel, q, {
         coLoa: config.speak,
-        doc: docTo,
+        doc: function (t) { docTo(t, q.tieng); },
         khiTraLoi: function (dung, daNhap, phanHoi) { judge(dung, q, daNhap, phanHoi); }
       });
 

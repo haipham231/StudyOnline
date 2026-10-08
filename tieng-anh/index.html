@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiếng Anh cho bé</title>
+<meta name="description" content="Học tiếng Anh cho bé bằng thẻ từ có hình và game nghe chọn: con vật, trái cây, màu sắc, số đếm.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🔤</text></svg>">
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <a class="back" href="../index.html">← Chọn lứa tuổi</a>
+  </header>
+
+  <div class="hero">
+    <div class="mascot">🔤</div>
+    <h1>Tiếng Anh cho bé</h1>
+    <p id="loi-chao">Nhìn hình, nghe đọc rồi nhớ từ — chưa cần biết đọc chữ.</p>
+  </div>
+
+  <main id="noi-dung"></main>
+</div>
+
+<script src="../js/quiz.js"></script>
+<script src="../js/tieng-viet-mam-non.js"></script>
+<script src="../js/tieng-anh.js"></script>
+<script>
+  var goc = document.getElementById('noi-dung');
+
+  // Hình đại diện mỗi chủ đề lấy luôn từ đầu danh sách, khỏi phải chọn tay
+  var MAU = ['#4aa8ff', '#2fcf90', '#ff8fd0', '#ffc93c', '#8b7bf7', '#ff7a7a'];
+
+  function veNhom(ten, kieu, the) {
+    var tieu = document.createElement('h2');
+    tieu.className = 'nhom';
+    tieu.textContent = ten;
+    goc.appendChild(tieu);
+
+    var luoi = document.createElement('div');
+    luoi.className = 'grid ' + kieu;
+    the.forEach(function (t) { luoi.appendChild(t); });
+    goc.appendChild(luoi);
+  }
+
+  function taoThe(href, emoji, ten, moTa, mau) {
+    var a = document.createElement('a');
+    a.className = 'card';
+    a.href = href;
+    a.style.setProperty('--tint', mau);
+    a.innerHTML = '<div class="emoji">' + emoji + '</div><h2>' + ten + '</h2><p>' + moTa + '</p>';
+    return a;
+  }
+
+  veNhom('Trò chơi', 'kieu-keo', [
+    taoThe('nghe-chon.html', '🎧', 'Nghe và chọn',
+      'Nghe từ rồi chọn đúng hình, hoặc nhìn hình chọn đúng từ. Mười câu một lượt.', '#4aa8ff')
+  ]);
+
+  var dsThe = [taoThe('the-tu.html', '🃏', 'Tất cả các từ',
+    'Trộn hết mọi chủ đề, bấm vào thẻ để lật xem nghĩa.', '#8b7bf7')];
+
+  Object.keys(TiengAnh.CHU_DE).forEach(function (ten, k) {
+    var tu = TiengAnh.CHU_DE[ten];
+    dsThe.push(taoThe('the-tu.html?cd=' + encodeURIComponent(ten), tu[0].e,
+      ten.charAt(0).toUpperCase() + ten.slice(1), tu.length + ' từ', MAU[k % MAU.length]));
+  });
+
+  veNhom('Thẻ từ theo chủ đề', 'kieu-hinh', dsThe);
+</script>
+</body>
+</html>
