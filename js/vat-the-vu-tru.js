@@ -5,7 +5,7 @@
 (function (global) {
   'use strict';
 
-  var TAC_GIA = { phiThuyen: 'Sokol Laliçi', hanhTinh: 'Muhammad Talha' };
+  var TAC_GIA = { phiThuyen: 'Marco Cagnina', hanhTinh: 'Muhammad Talha' };
 
   function phiThuyenSVG(rong) {
     return '<svg viewBox="0 0 80 120" width="' + (rong || 62) + '" aria-hidden="true">' +

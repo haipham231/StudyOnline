@@ -18,7 +18,7 @@
   }
 
   var CHANG = [
-    { ten: 'Sao Phân Số', emoji: '🪐', mau: '#ff8fd0', toi: '#c2558f', vanh: true, soCau: 6, hinh: 'hanh-tinh',
+    { ten: 'Sao Phân Số', emoji: '🪐', mau: '#ff8fd0', toi: '#c2558f', vanh: true, soCau: 6, hinh: 'troi/sao-tho',
       mota: 'Rút gọn, quy đồng, cộng trừ nhân chia phân số',
       de: mix(T.rutGon, T.quyDongMauSo, T.congTruPhanSo, T.nhanChiaPhanSo, T.soSanhPhanSo) },
 
