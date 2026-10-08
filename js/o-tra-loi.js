@@ -43,17 +43,38 @@
     // thường cả trăm px nên không đặt sẵn một con số được.
     function baoChieuCao() {
       if (noi === khung) return;
-      // mep: chỗ nhân vật đứng, tính từ mép trên của ô xuống. Lớp phủ của ô
-      // mờ dần từ 0 ở mép trên tới 0,86 ở 124px (xem .o-hoi), nên đứng ở 120
-      // là coi như bị xoá — phải đứng cao hơn thế nhiều.
-      var mep = 60;
-      // chừa ít nhất chừng này cho cảnh, kẻo câu đố dài đẩy nhân vật lên sát
-      // thanh trạng thái
-      var choCanh = 300;
+      noi.style.transform = '';
+
+      var caoKhung = khung.getBoundingClientRect().height;
+      var caoGoc = noi.getBoundingClientRect().height;
+
+      // Ô đề bài không được chiếm quá 62% khung, không thì cảnh chẳng còn chỗ
+      // và nhân vật bị đẩy lên sau thanh trạng thái. Câu dài kèm hình vẽ trên
+      // màn thấp từng chiếm tới 81%.
+      var tran = caoKhung * 0.62;
+      var tiLe = caoGoc > tran ? Math.max(0.68, tran / caoGoc) : 1;
+      if (tiLe < 1) noi.style.transform = 'scale(' + tiLe.toFixed(3) + ')';
+
+      // Tính chứ không đo lại: transform không đổi ô trong luồng, mà đo lại
+      // sau khi thu thì mỗi trình duyệt trả về một kiểu.
+      var cao = caoGoc * tiLe;
+
+      // mep: chỗ nhân vật đứng, tính từ mép trên của ô xuống. Lớp phủ của ô mờ
+      // dần từ 0 ở mép trên tới 0,86 ở quãng 0,94 lần đoạn nhoà, nên đứng sâu
+      // quá là nhân vật bị xoá. Lấy 0,45 đoạn nhoà, và nhân theo tỉ lệ đã thu.
+      var lan = parseFloat(getComputedStyle(noi).paddingTop) || 120;
+      var mep = lan * 0.45 * tiLe;
+
+      // chừa ít nhất chừng này cho cảnh
+      var choCanh = caoKhung * 0.36;
+
       khung.style.setProperty('--day', Math.round(Math.min(
-        Math.max(0, noi.offsetHeight - mep),
-        Math.max(0, khung.offsetHeight - choCanh)
+        Math.max(0, cao - mep),
+        Math.max(0, caoKhung - choCanh)
       )) + 'px');
+      // Chiều cao thật của ô. Cảnh cần biết mép trên của ô nằm đâu để không
+      // bao giờ đặt nhân vật xuống dưới mép đó.
+      khung.style.setProperty('--cao-o', Math.round(cao) + 'px');
     }
 
     /* --- đề bài --- */
