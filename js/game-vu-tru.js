@@ -18,24 +18,24 @@
   }
 
   var CHANG = [
-    { ten: 'Sao Phân Số', emoji: '🪐', mau: '#ff8fd0', toi: '#c2558f', vanh: true, soCau: 6,
+    { ten: 'Sao Phân Số', emoji: '🪐', mau: '#ff8fd0', toi: '#c2558f', vanh: true, soCau: 6, hinh: 'hanh-tinh',
       mota: 'Rút gọn, quy đồng, cộng trừ nhân chia phân số',
       de: mix(T.rutGon, T.quyDongMauSo, T.congTruPhanSo, T.nhanChiaPhanSo, T.soSanhPhanSo) },
 
-    { ten: 'Sao Thập Phân', emoji: '💧', mau: '#4aa8ff', toi: '#1f5f9e', vanh: false, soCau: 6,
+    { ten: 'Sao Thập Phân', emoji: '💧', mau: '#4aa8ff', toi: '#1f5f9e', vanh: false, soCau: 6, hinh: 'troi/may',
       mota: 'Bốn phép tính với số thập phân',
       de: mix(T.congTruThapPhan, T.nhanHaiThapPhan, T.chiaThapPhanChoThapPhan, T.lamTron) },
 
-    { ten: 'Sao Phần Trăm', emoji: '🔆', mau: '#ffc93c', toi: '#b07f00', vanh: false, soCau: 6,
+    { ten: 'Sao Phần Trăm', emoji: '🔆', mau: '#ffc93c', toi: '#b07f00', vanh: false, soCau: 6, hinh: 'troi/ngoi-sao',
       mota: 'Ba dạng bài về tỉ số phần trăm',
       de: mix(T.giaTriPhanTram, T.timSoBanDau, T.tiSoPhanTram, T.phanTramThucTe) },
 
-    { ten: 'Sao Hình Học', emoji: '🧊', mau: '#2fcf90', toi: '#167a52', vanh: true, soCau: 7,
+    { ten: 'Sao Hình Học', emoji: '🧊', mau: '#2fcf90', toi: '#167a52', vanh: true, soCau: 7, hinh: 'troi/cau-vong',
       mota: 'Diện tích, thể tích và hình tròn',
       de: mix(T.dienTichTamGiac, T.dienTichHinhThang, T.dienTichBinhHanh, T.hinhTron,
               T.theTich, T.dienTichXungQuanh) },
 
-    { ten: 'Sao Đo Lường', emoji: '⏳', mau: '#8b7bf7', toi: '#4b3bb0', vanh: false, soCau: 7,
+    { ten: 'Sao Đo Lường', emoji: '⏳', mau: '#8b7bf7', toi: '#4b3bb0', vanh: false, soCau: 7, hinh: 'troi/mat-trang',
       mota: 'Đổi đơn vị đo và số đo thời gian',
       de: mix(T.doiDonVi, T.thoiGian, T.timX) },
 
@@ -209,8 +209,11 @@
     thuyen.style.left = (van.buoc / chang.soCau * 74) + '%';
     troi.appendChild(thuyen);
 
-    var dich = el('div', 'hanh-tinh-dich',
-      chang.dich ? V.tram(90) : V.hanhTinh(chang.mau, chang.toi, chang.vanh, 86));
+    var dich = el('div', 'hanh-tinh-dich', chang.dich
+      ? V.tram(90)
+      : (chang.hinh && chang.hinh !== 'hanh-tinh'
+          ? global.HoatHinh.ve(chang.hinh, 92, null)
+          : V.hanhTinh(chang.mau, chang.toi, chang.vanh, 86)));
     troi.appendChild(dich);
     khung.appendChild(troi);
 
@@ -275,7 +278,9 @@
     var khung = el('div', 'panel');
     khung.appendChild(el('div', 'doi-nhan-vat', cuoi
       ? global.HoatHinh.ve('cup', 110, null) + V.tram(90)
-      : V.phiThuyen(64) + V.hanhTinh(van.chang.mau, van.chang.toi, van.chang.vanh, 76)));
+      : V.phiThuyen(64) + (van.chang.hinh && van.chang.hinh !== 'hanh-tinh'
+          ? global.HoatHinh.ve(van.chang.hinh, 80, null)
+          : V.hanhTinh(van.chang.mau, van.chang.toi, van.chang.vanh, 76))));
 
     khung.appendChild(el('h2', null, cuoi
       ? '🏅 Đã tới Trạm Thiên Hà!'

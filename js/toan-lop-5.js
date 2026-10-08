@@ -22,11 +22,36 @@
     return '<span class="ps"><i>' + tu + '</i><b>' + mau + '</b></span>';
   }
 
-  // tạo n lựa chọn gồm đáp án đúng và các phương án nhiễu khác nhau
+  // Giá trị thật của một lựa chọn, để không bao giờ có hai phương án bằng nhau.
+  // Nhận cả phân số, hỗn số và cặp phân số của bài quy đồng.
+  function giaTriCua(html) {
+    var s = String(html);
+
+    var hon = s.match(/<span class="hs">(\d+)<span class="ps"><i>(\d+)<\/i><b>(\d+)<\/b>/);
+    if (hon) return 'v' + (Number(hon[1]) + Number(hon[2]) / Number(hon[3]));
+
+    var ps_ = s.match(/<i>(-?\d+)<\/i><b>(\d+)<\/b>/g);
+    if (ps_ && ps_.length) {
+      return 'v' + ps_.map(function (x) {
+        var m = x.match(/<i>(-?\d+)<\/i><b>(\d+)<\/b>/);
+        return Number(m[1]) / Number(m[2]);
+      }).join('|');
+    }
+    return s;
+  }
+
+  // tạo n lựa chọn: đáp án đúng cộng các phương án nhiễu, không phương án nào
+  // được bằng giá trị của phương án khác (ví dụ 1/10 và 4/40 là một)
   function tron(dung, cacSai, n) {
     var set = [dung];
+    var daCo = [giaTriCua(dung)];
+
     Q.shuffle(cacSai).forEach(function (v) {
-      if (set.length < n && set.indexOf(v) === -1) set.push(v);
+      if (set.length >= n) return;
+      var g = giaTriCua(v);
+      if (daCo.indexOf(g) !== -1) return;
+      daCo.push(g);
+      set.push(v);
     });
     return Q.shuffle(set);
   }
@@ -218,13 +243,16 @@
 
   /* ================= HÌNH HỌC ================= */
 
-  function veTamGiac(a, h) {
+  // an: tên số đo cần tìm — hình chỉ ghi dấu hỏi, không ghi sẵn đáp án
+  function veTamGiac(a, h, an) {
+    var nhan = function (ten, gt) { return an === ten ? ten + ' = ?' : ten + ' = ' + sv(gt) + ' cm'; };
     return '<svg viewBox="0 0 200 130" width="230" style="max-width:100%">' +
       '<polygon points="30,105 170,105 108,20" fill="#cfe6ff" stroke="#4aa8ff" stroke-width="3"/>' +
       '<line x1="108" y1="20" x2="108" y2="105" stroke="#ff7a7a" stroke-width="3" stroke-dasharray="6 5"/>' +
       '<rect x="98" y="95" width="10" height="10" fill="none" stroke="#ff7a7a" stroke-width="2"/>' +
-      '<text x="100" y="124" text-anchor="middle" font-family="Nunito" font-size="15" font-weight="800" fill="#2b2f55">' + sv(a) + ' cm</text>' +
-      '<text x="120" y="66" font-family="Nunito" font-size="15" font-weight="800" fill="#e05454">h = ' + sv(h) + ' cm</text>' +
+      '<text x="100" y="124" text-anchor="middle" font-family="Nunito" font-size="15" font-weight="800" fill="#2b2f55">' +
+        (an === 'a' ? 'a = ?' : sv(a) + ' cm') + '</text>' +
+      '<text x="120" y="66" font-family="Nunito" font-size="15" font-weight="800" fill="#e05454">' + nhan('h', h) + '</text>' +
       '</svg>';
   }
 
@@ -239,13 +267,14 @@
     };
   }
 
-  function veHinhThang(a, b, h) {
+  function veHinhThang(a, b, h, an) {
+    var nhan = function (ten, gt) { return an === ten ? ten + ' = ?' : ten + ' = ' + sv(gt) + ' cm'; };
     return '<svg viewBox="0 0 220 130" width="240" style="max-width:100%">' +
       '<polygon points="60,25 160,25 190,105 30,105" fill="#dff7ec" stroke="#2fcf90" stroke-width="3"/>' +
       '<line x1="110" y1="25" x2="110" y2="105" stroke="#ff7a7a" stroke-width="3" stroke-dasharray="6 5"/>' +
-      '<text x="110" y="18" text-anchor="middle" font-family="Nunito" font-size="14" font-weight="800" fill="#2b2f55">a = ' + sv(a) + ' cm</text>' +
-      '<text x="110" y="124" text-anchor="middle" font-family="Nunito" font-size="14" font-weight="800" fill="#2b2f55">b = ' + sv(b) + ' cm</text>' +
-      '<text x="118" y="70" font-family="Nunito" font-size="14" font-weight="800" fill="#e05454">h = ' + sv(h) + ' cm</text>' +
+      '<text x="110" y="18" text-anchor="middle" font-family="Nunito" font-size="14" font-weight="800" fill="#2b2f55">' + nhan('a', a) + '</text>' +
+      '<text x="110" y="124" text-anchor="middle" font-family="Nunito" font-size="14" font-weight="800" fill="#2b2f55">' + nhan('b', b) + '</text>' +
+      '<text x="118" y="70" font-family="Nunito" font-size="14" font-weight="800" fill="#e05454">' + nhan('h', h) + '</text>' +
       '</svg>';
   }
 
@@ -261,7 +290,7 @@
     };
   }
 
-  function veHinhTron(nhan, gt) {
+  function veHinhTron(nhan, gt, an) {
     return '<svg viewBox="0 0 160 160" width="190" style="max-width:100%">' +
       '<circle cx="80" cy="80" r="62" fill="#efeaff" stroke="#8b7bf7" stroke-width="3"/>' +
       '<circle cx="80" cy="80" r="4" fill="#8b7bf7"/>' +
@@ -269,7 +298,7 @@
         ? '<line x1="80" y1="80" x2="142" y2="80" stroke="#ff7a7a" stroke-width="3"/>'
         : '<line x1="18" y1="80" x2="142" y2="80" stroke="#ff7a7a" stroke-width="3"/>') +
       '<text x="' + (nhan === 'r' ? 110 : 80) + '" y="72" text-anchor="middle" font-family="Nunito" ' +
-      'font-size="15" font-weight="800" fill="#e05454">' + nhan + ' = ' + sv(gt) + ' cm</text>' +
+      'font-size="15" font-weight="800" fill="#e05454">' + nhan + ' = ' + (an ? '?' : sv(gt) + ' cm') + '</text>' +
       '</svg>';
   }
 
@@ -734,7 +763,7 @@
       prompt: 'Hình tam giác có diện tích <b>' + sv(S) + ' cm²</b> và độ dài đáy <b>' + a +
               ' cm</b>. Tính chiều cao.',
       speak: 'Hình tam giác có diện tích ' + sv(S) + ' xăng ti mét vuông, đáy ' + a + '. Tính chiều cao.',
-      art: veTamGiac(a, h),
+      art: veTamGiac(a, h, 'h'),
       after: 'cm', answer: sv(h), thapPhan: true, soChuSo: 5,
       mach: 'Tính ngược hình học', kq: h
     };
@@ -747,7 +776,7 @@
       prompt: 'Hình thang có diện tích <b>' + sv(S) + ' cm²</b>, chiều cao <b>' + h +
               ' cm</b>, đáy bé <b>' + a + ' cm</b>. Tính đáy lớn.',
       speak: 'Hình thang có diện tích ' + sv(S) + ', chiều cao ' + h + ', đáy bé ' + a + '. Tính đáy lớn.',
-      art: veHinhThang(a, b, h),
+      art: veHinhThang(a, b, h, 'b'),
       after: 'cm', answer: sv(b), thapPhan: true, soChuSo: 5,
       mach: 'Tính ngược hình học', kq: b
     };
@@ -760,7 +789,7 @@
       prompt: 'Hình tròn có chu vi <b>' + sv(C) + ' cm</b>. Tính bán kính.' +
               '<br><small>Lấy số pi bằng 3,14</small>',
       speak: 'Hình tròn có chu vi ' + sv(C) + ' xăng ti mét. Tính bán kính.',
-      art: veHinhTron('r', r_),
+      art: veHinhTron('r', r_, true),
       after: 'cm', answer: sv(r_), thapPhan: true, soChuSo: 5,
       mach: 'Tính ngược hình học', kq: r_
     };
