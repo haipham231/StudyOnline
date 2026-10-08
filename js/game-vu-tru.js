@@ -223,6 +223,7 @@
 
     van.oTraLoi = global.OTraLoi.ve(khung, van.cau, {
       nhanNop: '🚀 Phóng',
+      khoaSan: van.dangChuyen,
       khiTraLoi: function (dung, _daNhap, phanHoi) { cham(dung, van.cau, phanHoi); }
     });
 
@@ -243,7 +244,7 @@
 
       setTimeout(function () {
         if (van.buoc >= van.chang.soCau) return toiNoi();
-        ve('tien');
+        van.dangChuyen = true; ve('tien'); van.dangChuyen = false;
         setTimeout(raCauHoi, 520);
       }, 720);
       return;
@@ -256,7 +257,7 @@
 
     setTimeout(function () {
       if (van.nhienLieu <= 0) return canNhienLieu();
-      ve();
+      van.dangChuyen = true; ve(); van.dangChuyen = false;
       setTimeout(raCauHoi, 300);
     }, 2200);
   }

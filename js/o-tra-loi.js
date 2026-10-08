@@ -29,7 +29,9 @@
    */
   function ve(khung, cau, tuyChon) {
     tuyChon = tuyChon || {};
-    var khoa = false, daGo = '', nghePhim = null;
+    // khoaSan: vẽ sẵn ở trạng thái đã khoá, dùng khi màn đang chạy hoạt ảnh
+    // chuyển cảnh — nếu không, bé bấm thêm được và câu bị tính hai lần
+    var khoa = !!tuyChon.khoaSan, daGo = '', nghePhim = null;
 
     /* --- đề bài --- */
 

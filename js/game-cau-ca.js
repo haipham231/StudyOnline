@@ -197,6 +197,7 @@
 
     van.oTraLoi = global.OTraLoi.ve(khung, van.deBai, {
       nhanNop: '🎣 Giật cần',
+      khoaSan: van.dangChuyen,
       khiTraLoi: function (dung, _n, phanHoi) { cham(dung, van.deBai, phanHoi); }
     });
 
@@ -210,14 +211,14 @@
       van.duoc += 1;
       phanHoi.className = 'feedback pop ok';
       phanHoi.innerHTML = Q.pick(['🎣 Câu được rồi!', '🐟 Cá vào xô!', '⭐ Giỏi quá!', '🙌 Trúng mánh!']);
-      setTimeout(function () { ve('cau-duoc'); setTimeout(raCauHoi, 620); }, 740);
+      setTimeout(function () { van.dangChuyen = true; ve('cau-duoc'); van.dangChuyen = false; setTimeout(raCauHoi, 620); }, 740);
       return;
     }
 
     phanHoi.className = 'feedback pop bad';
     phanHoi.innerHTML = '🫧 Cá bơi mất rồi — đáp án là <b>' +
       String(q.answer).replace(/<[^>]+>/g, ' ').trim() + '</b>' + (q.after ? ' ' + q.after : '');
-    setTimeout(function () { ve('mat'); setTimeout(raCauHoi, 620); }, 2000);
+    setTimeout(function () { van.dangChuyen = true; ve('mat'); van.dangChuyen = false; setTimeout(raCauHoi, 620); }, 2000);
   }
 
   /* ---------- Khoe xô cá ---------- */

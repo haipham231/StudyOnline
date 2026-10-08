@@ -224,6 +224,7 @@
 
     van.oTraLoi = global.OTraLoi.ve(khung, van.cau, {
       nhanNop: '🍬 Trả lời',
+      khoaSan: van.dangChuyen,
       coLoa: van.cau.mon === 'Tiếng Việt',
       doc: Q.docTo,
       khiTraLoi: function (dung, _n, phanHoi) { cham(dung, van.cau, phanHoi); }
@@ -250,7 +251,7 @@
 
       setTimeout(function () {
         if (van.buoc >= van.ai.soCau) return thangAi();
-        ve('tien');
+        van.dangChuyen = true; ve('tien'); van.dangChuyen = false;
         setTimeout(raCauHoi, 520);
       }, 760);
       return;
@@ -263,7 +264,7 @@
 
     setTimeout(function () {
       if (van.bi <= 0) return thuaAi();
-      ve();
+      van.dangChuyen = true; ve(); van.dangChuyen = false;
       setTimeout(raCauHoi, 300);
     }, 2100);
   }

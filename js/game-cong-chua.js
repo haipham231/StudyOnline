@@ -255,6 +255,7 @@
   function veCauHoi(khung, q) {
     van.oTraLoi = global.OTraLoi.ve(khung, q, {
       nhanNop: '⚔️ Tấn công',
+      khoaSan: van.dangChuyen,
       khiTraLoi: function (dung, _daNhap, phanHoi) { cham(dung, q, phanHoi); }
     });
   }
@@ -273,7 +274,7 @@
 
       setTimeout(function () {
         if (van.buoc >= van.man.soCau) return thangMan();
-        ve(van.man.boss ? 'danh' : 'tien');
+        van.dangChuyen = true; ve(van.man.boss ? 'danh' : 'tien'); van.dangChuyen = false;
         setTimeout(raCauHoi, 520);
       }, 700);
       return;

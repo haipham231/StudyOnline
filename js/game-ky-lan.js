@@ -195,6 +195,7 @@
     khung.appendChild(troi);
 
     van.oTraLoi = global.OTraLoi.ve(khung, van.cau, {
+      khoaSan: van.dangChuyen,
       coLoa: true,
       doc: Q.docTo,
       khiTraLoi: function (dung, _n, phanHoi) { cham(dung, van.cau, phanHoi); }
@@ -216,7 +217,7 @@
 
       setTimeout(function () {
         if (van.buoc >= van.chang.soCau) return len();
-        ve('len');
+        van.dangChuyen = true; ve('len'); van.dangChuyen = false;
         setTimeout(raCauHoi, 520);
       }, 760);
       return;
