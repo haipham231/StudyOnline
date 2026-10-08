@@ -1522,7 +1522,8 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 .kieu-tien-do .thanh-the {
   height: 9px;
   border-radius: 999px;
-  background: var(--soft);
+  /* rãnh phải đậm hơn nền thẻ trắng, nếu không thì lúc 0% nhìn như không có */
+  background: color-mix(in srgb, var(--tint) 20%, #e6e9f5);
   overflow: hidden;
   margin-bottom: 7px;
 }
