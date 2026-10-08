@@ -2156,3 +2156,14 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
   .the-khung { padding: 16px 12px 18px; }
   .hang-nut .btn { padding: 12px 16px; font-size: 16px; }
 }
+
+/* mặt trước thẻ của từ không có hình: hiện nghĩa tiếng Việt thật to */
+.the-tu .chu-the {
+  font-family: "Baloo 2", sans-serif;
+  font-size: clamp(26px, 7.5vw, 38px);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  padding: 0 18px;
+  color: var(--grape-dark);
+}

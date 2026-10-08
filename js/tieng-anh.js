@@ -8,46 +8,48 @@
   var Q = global.Quiz;
   var chon = Q.pick;
 
-  // Chủ đề riêng của khu tiếng Anh. Số đếm viết sẵn cả chữ lẫn hình cho bé
-  // vừa nhận mặt chữ vừa đếm được.
-  var RIENG = {
-    'số đếm': [
-      { vi: 'một', en: 'one', e: '1️⃣' }, { vi: 'hai', en: 'two', e: '2️⃣' },
-      { vi: 'ba', en: 'three', e: '3️⃣' }, { vi: 'bốn', en: 'four', e: '4️⃣' },
-      { vi: 'năm', en: 'five', e: '5️⃣' }, { vi: 'sáu', en: 'six', e: '6️⃣' },
-      { vi: 'bảy', en: 'seven', e: '7️⃣' }, { vi: 'tám', en: 'eight', e: '8️⃣' },
-      { vi: 'chín', en: 'nine', e: '9️⃣' }, { vi: 'mười', en: 'ten', e: '🔟' }
-    ],
-    // Không có mặt trời và đám mây ở đây: chủ đề "thời tiết" đã dùng ☀️ và ☁️.
-    // Một hình chỉ được ứng với một từ, không thì bé chọn đúng mà bị chấm sai.
-    'thiên nhiên': [
-      { vi: 'mặt trăng', en: 'moon', e: '🌙' }, { vi: 'ngôi sao', en: 'star', e: '⭐' },
-      { vi: 'cái cây', en: 'tree', e: '🌳' }, { vi: 'bông hoa', en: 'flower', e: '🌼' },
-      { vi: 'ngọn núi', en: 'mountain', e: '⛰️' }, { vi: 'biển', en: 'sea', e: '🌊' },
-      { vi: 'chiếc lá', en: 'leaf', e: '🍃' }, { vi: 'ngọn lửa', en: 'fire', e: '🔥' }
-    ],
-    'con vật to': [
-      { vi: 'sư tử', en: 'lion', e: '🦁' }, { vi: 'con hổ', en: 'tiger', e: '🐯' },
-      { vi: 'con khỉ', en: 'monkey', e: '🐵' }, { vi: 'con gấu', en: 'bear', e: '🐻' },
-      { vi: 'con ngựa', en: 'horse', e: '🐴' }, { vi: 'con hươu cao cổ', en: 'giraffe', e: '🦒' },
-      { vi: 'con cá sấu', en: 'crocodile', e: '🐊' }, { vi: 'con cá heo', en: 'dolphin', e: '🐬' }
-    ]
-  };
-
-  function tatCaChuDe() {
-    var goc = (global.TiengVietMN && global.TiengVietMN.CHU_DE) || {};
+  // Vốn từ ghép từ ba nguồn, xem js/tu-vung-anh.js
+  function gop() {
     var ds = {};
+    var goc = (global.TiengVietMN && global.TiengVietMN.CHU_DE) || {};
+    var kho = global.TuVungAnh || { CO_HINH: {}, CHU: {} };
     Object.keys(goc).forEach(function (k) { ds[k] = goc[k]; });
-    Object.keys(RIENG).forEach(function (k) { ds[k] = RIENG[k]; });
+    Object.keys(kho.CO_HINH).forEach(function (k) { ds[k] = kho.CO_HINH[k]; });
     return ds;
   }
 
-  var CHU_DE = tatCaChuDe();
+  var CHU_DE = gop();                                   // từ có hình
+  var CHU_DE_CHU = (global.TuVungAnh || {}).CHU || {};   // từ chỉ có chữ
 
+  // Từ tiếng Anh nào ứng với hai nghĩa Việt khác nhau (như "orange" vừa là quả
+  // cam vừa là màu cam) thì không hỏi nghĩa, vì cả hai đáp án đều đúng.
+  var NHAP_NHANG = (function () {
+    var dem = {}, tap = {};
+    [CHU_DE, CHU_DE_CHU].forEach(function (o) {
+      Object.keys(o).forEach(function (k) {
+        o[k].forEach(function (t) { dem[t.en] = (dem[t.en] || 0) + 1; });
+      });
+    });
+    Object.keys(dem).forEach(function (k) { if (dem[k] > 1) tap[k] = true; });
+    return tap;
+  })();
+
+  // tuCua('con vật') → đúng chủ đề đó; tuCua() → trộn hết từ có hình
   function tuCua(ten) {
+    if (ten && CHU_DE[ten]) return CHU_DE[ten];
+    if (ten && CHU_DE_CHU[ten]) return CHU_DE_CHU[ten];
+    var het = [];
+    Object.keys(CHU_DE).forEach(function (k) { het = het.concat(CHU_DE[k]); });
+    return het;
+  }
+
+  // Gồm cả từ chỉ có chữ — dùng cho câu hỏi nghĩa và thẻ từ kiểu chữ
+  function tuCuaCaChu(ten) {
+    if (ten && CHU_DE_CHU[ten]) return CHU_DE_CHU[ten];
     if (ten && CHU_DE[ten]) return CHU_DE[ten];
     var het = [];
     Object.keys(CHU_DE).forEach(function (k) { het = het.concat(CHU_DE[k]); });
+    Object.keys(CHU_DE_CHU).forEach(function (k) { het = het.concat(CHU_DE_CHU[k]); });
     return het;
   }
 
@@ -104,7 +106,7 @@
   /* --- từ tiếng Anh này nghĩa là gì --- */
 
   function nghiaViet(ten) {
-    var ds = tuCua(ten);
+    var ds = tuCuaCaChu(ten).filter(function (t) { return !NHAP_NHANG[t.en]; });
     var dung = chon(ds);
     var sai = khac(ds, 2, dung);
     return {
@@ -129,7 +131,9 @@
 
   global.TiengAnh = {
     CHU_DE: CHU_DE,
+    CHU_DE_CHU: CHU_DE_CHU,
     tuCua: tuCua,
+    tuCuaCaChu: tuCuaCaChu,
     nhinChon: nhinChon,
     ngheChon: ngheChon,
     nghiaViet: nghiaViet,

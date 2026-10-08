@@ -28,6 +28,7 @@
 
 <script src="../js/quiz.js"></script>
 <script src="../js/tieng-viet-mam-non.js"></script>
+<script src="../js/tu-vung-anh.js"></script>
 <script src="../js/tieng-anh.js"></script>
 <script>
   var goc = document.getElementById('noi-dung');
@@ -70,7 +71,17 @@
       ten.charAt(0).toUpperCase() + ten.slice(1), tu.length + ' từ', MAU[k % MAU.length]));
   });
 
-  veNhom('Thẻ từ theo chủ đề', 'kieu-hinh', dsThe);
+  veNhom('Thẻ từ có hình', 'kieu-hinh', dsThe);
+
+  // Từ không có hình nào tả đúng (động từ, tính từ, mẫu câu) để riêng một nhóm,
+  // thẻ của chúng hiện chữ thay cho hình.
+  var dsChu = [];
+  Object.keys(TiengAnh.CHU_DE_CHU).forEach(function (ten, k) {
+    var tu = TiengAnh.CHU_DE_CHU[ten];
+    dsChu.push(taoThe('the-tu.html?cd=' + encodeURIComponent(ten), '🔡',
+      ten.charAt(0).toUpperCase() + ten.slice(1), tu.length + ' từ', MAU[(k + 2) % MAU.length]));
+  });
+  veNhom('Thẻ từ chữ — động từ, tính từ, mẫu câu', 'kieu-sticker', dsChu);
 </script>
 </body>
 </html>
