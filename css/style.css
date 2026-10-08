@@ -1546,3 +1546,178 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 
 .kieu-tien-do .duoi-the b { color: var(--ink); font-size: 13.5px; }
 .kieu-tien-do .card .best { display: none; }
+
+/* ===================================================================
+   Điện thoại — xếp thẻ dày hơn và nhường màn hình cho phần chơi
+   =================================================================== */
+
+/* --- trang chọn bài: hai cột, thẻ lấy hình làm chính --- */
+
+@media (max-width: 480px) {
+  .hero { padding: 24px 0 14px; }
+  .hero .mascot { font-size: 44px; }
+  .hero h1 { margin: 6px 0 2px; }
+  .hero p { font-size: 14.5px; }
+
+  h2.nhom { margin: 22px 0 10px; font-size: 16px; }
+
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 11px; }
+
+  .card { padding: 12px 10px 13px; text-align: center; }
+
+  /* hình kéo rộng hết thẻ — bé chưa đọc được chữ thì nhận bài qua hình */
+  .card .emoji {
+    width: 100%;
+    height: 68px;
+    margin: 0 0 8px;
+    border-radius: 15px;
+    font-size: 42px;
+  }
+
+  /* bỏ dòng mô tả: trên điện thoại nó ăn hơn nửa thẻ mà bé không đọc,
+     bố mẹ cần thì xem ở màn hình to */
+  .card p { display: none; }
+
+  .card h2 { font-size: 15px; line-height: 1.3; }
+
+  .card .best,
+  .card .tuoi-nhan { margin-top: 7px; padding: 2px 9px; font-size: 11.5px; }
+
+  .kieu-hinh .card {
+    min-height: 0;
+    justify-content: flex-start;
+    padding: 12px 10px 13px;
+  }
+
+  .kieu-hinh .card .emoji {
+    position: static;
+    width: 100%;
+    height: 74px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.16);
+    font-size: 54px;
+  }
+
+  .kieu-hinh .card h2 { font-size: 15px; }
+
+  .kieu-sticker .card {
+    padding: 12px 10px 13px;
+    border-width: 2px;
+    border-radius: 18px;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .kieu-sticker .card .emoji {
+    width: 100%;
+    height: 68px;
+    border-width: 2px;
+    border-radius: 15px;
+  }
+
+  .kieu-tien-do .card { padding: 12px 10px 13px; }
+
+  .kieu-tien-do .card .dau-the {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 9px;
+  }
+
+  .kieu-tien-do .card .emoji { width: 100%; height: 68px; margin-bottom: 8px; font-size: 38px; }
+  .kieu-tien-do .card h2 { font-size: 15px; }
+  .kieu-tien-do .duoi-the { font-size: 12px; }
+
+  /* nhóm chỉ có một bài thì trải ngang cho đỡ trống nửa hàng */
+  .grid > .card:only-child { grid-column: span 2; }
+  .grid > .card:only-child .emoji { height: 88px; font-size: 54px; }
+  .kieu-hinh .card:only-child .emoji { font-size: 66px; }
+
+  .huy-hieu { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+
+/* --- màn chơi: cảnh to nhất có thể, phím gọn lại --- */
+
+@media (max-width: 560px) {
+  .topbar { padding: 14px 0 10px; }
+
+  /* khung màn chơi cao bằng màn hình, nhờ vậy phần ghi công tác giả
+     luôn nằm dưới mép dưới — muốn đọc thì phải cuộn */
+  .panel.man-choi {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 72px);
+    min-height: calc(100svh - 72px);
+    padding: 14px 12px 16px;
+  }
+
+  /* trang nào có thanh công tắc phía trên thì trừ thêm chiều cao của nó,
+     không thì khung bị đẩy quá một màn và nút trả lời tụt xuống dưới mép */
+  .cong-tac ~ .quiz .panel.man-choi {
+    min-height: calc(100vh - 118px);
+    min-height: calc(100svh - 118px);
+  }
+
+  /* cảnh ăn hết chỗ còn thừa; hết chỗ thì co lại chứ không đẩy phím xuống */
+  .panel.man-choi .ho-ca-canh,
+  .panel.man-choi .canh,
+  .panel.man-choi .bau-troi,
+  .panel.man-choi .vu-tru {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 150px;
+    max-height: 52vh;
+    margin-bottom: 10px;
+  }
+
+  /* cảnh cao gần gấp đôi thì nhân vật phải to theo, không thì hồ nhìn trống.
+     Cần !important vì chiều cao hoạt hình là style nội tuyến do HoatHinh.ve đặt. */
+  .panel.man-choi .ho-ca-canh .hoat,
+  .panel.man-choi .canh .hoat,
+  .panel.man-choi .bau-troi .hoat { min-height: calc(var(--cao) * 1.25); }
+
+  .panel.man-choi .ho-ca-canh .hoat dotlottie-wc,
+  .panel.man-choi .canh .hoat dotlottie-wc,
+  .panel.man-choi .bau-troi .hoat dotlottie-wc {
+    width: calc(var(--cao) * 1.25) !important;
+    height: calc(var(--cao) * 1.25) !important;
+  }
+
+  .panel.man-choi .thanh-tren { margin-bottom: 8px; }
+  .panel.man-choi .meta { margin: 0 0 6px; font-size: 13px; }
+  .panel.man-choi .prompt { margin: 2px auto 8px; font-size: 16px; }
+  .panel.man-choi .question { margin: 2px 0 8px; font-size: clamp(26px, 8.5vw, 38px); line-height: 1.2; }
+  .panel.man-choi .question.sm { font-size: clamp(19px, 5vw, 24px); }
+  .panel.man-choi .feedback { min-height: 24px; margin: 2px 0 8px; font-size: 17px; }
+  .panel.man-choi .art { font-size: clamp(21px, 5.4vw, 28px); margin-bottom: 6px; }
+
+  .ghi-cong { margin-top: 34px; }
+
+  /* bàn phím số nhỏ lại — nó là thứ chiếm chỗ nhiều nhất sau cảnh */
+  .pad { gap: 7px; max-width: 274px; }
+
+  .key {
+    padding: 8px 0;
+    border-radius: 14px;
+    box-shadow: 0 4px 0 var(--line);
+    font-size: 22px;
+    /* line-height 1.55 của body làm mỗi phím cao thêm 10px — năm hàng là mất
+       nửa cái cảnh, nên ép sát lại */
+    line-height: 1.15;
+  }
+
+  .key:active { transform: translateY(3px); }
+  .key.fn { font-size: 18px; }
+
+  .key.wide {
+    padding: 11px 0;
+    box-shadow: 0 4px 0 var(--mint-dark);
+    font-size: 18px;
+    line-height: 1.25;
+  }
+
+  .choices { gap: 9px; }
+  .choice { padding: 13px 6px; box-shadow: 0 4px 0 var(--line); }
+  .choice:active { transform: translateY(3px); }
+  .choice.is-ok { box-shadow: 0 4px 0 var(--mint-dark); }
+  .choice.is-bad { box-shadow: 0 4px 0 var(--coral-dark); }
+}
