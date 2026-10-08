@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<title>Xem thử cảnh</title>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
+<style>body{background:#eef4ff;color:#2b2f55;font:12px system-ui;margin:0;padding:8px}
+.g{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.o{border:1px solid #ccd;border-radius:10px;padding:4px;text-align:center;background:#fff}</style>
+</head><body>
+<div class="g" id="g"></div>
+<script>
+  var ds = ['rung-1','rung-2','nui-1','nui-2','xuong-rong-1','xuong-rong-2',
+            'lua-1','lua-2','doi-1','doi-2','nuoc-1','lau-dai-2'];
+  document.getElementById('g').innerHTML = ds.map(function (t) {
+    return '<div class="o"><dotlottie-wc src="assets/lottie/thu/' + t +
+      '.lottie" autoplay loop style="width:105px;height:105px;margin:auto"></dotlottie-wc><div><b>' + t + '</b></div></div>';
+  }).join('');
+</script>
+</body></html>
