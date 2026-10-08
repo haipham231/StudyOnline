@@ -12,7 +12,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧑‍🚀</text></svg>">
 <script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
 </head>
-<body>
+<body class="kieu-tien-do">
 <div class="wrap">
 
   <nav class="crumb"><a class="back" href="../index.html">← Chọn lứa tuổi</a></nav>
@@ -109,8 +109,17 @@
       huy = '<span class="best">' + '⭐'.repeat(sao) + ' ' + best.score + ' điểm</span>';
     }
 
-    card.innerHTML = '<div class="emoji">' + bai.emoji + '</div><h2>' + bai.ten + '</h2>' +
-                     '<p>' + bai.mo_ta + '</p>' + huy;
+    // phần trăm hoàn thành: lấy từ kỷ lục đã lưu
+    var phanTram = best ? Math.round(best.correct / best.total * 100) : 0;
+    var nhan = noiBat
+      ? (huy ? huy.replace(/<[^>]+>/g, '') : 'Chưa chơi')
+      : (best ? '⭐'.repeat(sao) + '<span class="mo-sao">' + '⭐'.repeat(3 - sao) + '</span>' : 'Chưa làm');
+
+    card.innerHTML =
+      '<div class="dau-the"><div class="emoji">' + bai.emoji + '</div>' +
+      '<div><h2>' + bai.ten + '</h2><p>' + bai.mo_ta + '</p></div></div>' +
+      '<div class="thanh-the"><i style="width:' + phanTram + '%"></i></div>' +
+      '<div class="duoi-the"><span>' + nhan + '</span><b>' + phanTram + '%</b></div>' + huy;
     return card;
   }
 

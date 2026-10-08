@@ -1406,3 +1406,142 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
   0%, 100% { transform: translateY(0) rotate(-3deg); }
   50%      { transform: translateY(-5px) rotate(3deg); }
 }
+
+/* ===================================================================
+   Ba kiểu thẻ theo khu — đặt class trên <body>
+   kieu-hinh    (mầm non) · hình to, nền màu đậm, chữ trắng
+   kieu-sticker (lớp 1)   · viền đậm, bóng cứng lệch
+   kieu-tien-do (lớp 5)   · gọn gàng, có thanh tiến độ
+   =================================================================== */
+
+/* ---------- Mầm non: thẻ hình lớn ---------- */
+
+.kieu-hinh .card {
+  position: relative;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 18px;
+  color: #fff;
+  background: linear-gradient(160deg, var(--tint), color-mix(in srgb, var(--tint) 55%, #2b2f55));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--tint) 35%, transparent);
+  overflow: hidden;
+}
+
+.kieu-hinh .card::before { display: none; }
+
+.kieu-hinh .card .emoji {
+  position: absolute;
+  right: 4px;
+  top: 2px;
+  width: auto;
+  height: auto;
+  background: none;
+  border-radius: 0;
+  font-size: 76px;
+  line-height: 1;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.22));
+}
+
+.kieu-hinh .card h2 { position: relative; font-size: 21px; }
+.kieu-hinh .card p { position: relative; color: rgba(255, 255, 255, 0.92); }
+.kieu-hinh .card .best,
+.kieu-hinh .card .tuoi-nhan {
+  position: relative;
+  background: rgba(255, 255, 255, 0.24);
+  color: #fff;
+}
+
+.kieu-hinh .card:hover { transform: translateY(-5px); box-shadow: 0 16px 30px color-mix(in srgb, var(--tint) 42%, transparent); }
+
+/* ---------- Lớp 1: sticker viền đậm ---------- */
+
+.kieu-sticker .card {
+  background: color-mix(in srgb, var(--tint) 14%, #fff);
+  border: 3px solid var(--ink);
+  border-radius: 24px;
+  box-shadow: 5px 5px 0 var(--ink);
+  padding: 20px;
+}
+
+.kieu-sticker .card::before { display: none; }
+
+.kieu-sticker .card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--ink);
+}
+
+.kieu-sticker .card:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.kieu-sticker .card .emoji {
+  background: #fff;
+  border: 3px solid var(--ink);
+  border-radius: 17px;
+  width: 60px;
+  height: 60px;
+}
+
+.kieu-sticker .card p { color: var(--ink); font-weight: 700; }
+
+.kieu-sticker .card .best,
+.kieu-sticker .card .tuoi-nhan {
+  background: var(--ink);
+  color: #fff;
+}
+
+/* ---------- Lớp 5: bảng tiến độ ---------- */
+
+.kieu-tien-do .card {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  box-shadow: none;
+}
+
+.kieu-tien-do .card::before { display: none; }
+.kieu-tien-do .card:hover { transform: translateY(-3px); box-shadow: var(--lift); }
+
+.kieu-tien-do .card .dau-the { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+
+.kieu-tien-do .card .emoji {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  font-size: 24px;
+  margin-bottom: 0;
+  flex: none;
+}
+
+.kieu-tien-do .card h2 { font-size: 18px; }
+.kieu-tien-do .card p { font-size: 13px; }
+
+.kieu-tien-do .thanh-the {
+  height: 9px;
+  border-radius: 999px;
+  background: var(--soft);
+  overflow: hidden;
+  margin-bottom: 7px;
+}
+
+.kieu-tien-do .thanh-the i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--tint);
+  transition: width 0.4s ease;
+}
+
+.kieu-tien-do .duoi-the {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.kieu-tien-do .duoi-the b { color: var(--ink); font-size: 13.5px; }
+.kieu-tien-do .card .best { display: none; }
