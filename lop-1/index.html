@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧮</text></svg>">
 </head>
-<body class="kieu-sticker">
+<body>
 <div class="wrap">
 
   <nav class="crumb"><a class="back" href="../index.html">← Chọn lứa tuổi</a></nav>
@@ -59,7 +59,7 @@
   };
 
   var NHOM = [
-    { ten: 'Số và phép tính', bai: [
+    { ten: 'Số và phép tính', kieu: 'kieu-sticker', bai: [
       { id: 'cong-tru',    emoji: '➕', mau: '#4aa8ff', ten: 'Cộng trừ',
         mo_ta: 'Phạm vi 10, 20 và 100.' },
       { id: 'tach-gop',    emoji: '🧱', mau: '#ff8fd0', ten: 'Tách gộp số',
@@ -77,7 +77,7 @@
       { id: 'dem-day-so',  emoji: '🔢', mau: '#ffc93c', ten: 'Đếm và dãy số',
         mo_ta: 'Đếm hình, số liền trước liền sau, dãy số.' }
     ] },
-    { ten: 'Hình học và đo lường', bai: [
+    { ten: 'Hình học và đo lường', kieu: 'kieu-sticker', bai: [
       { id: 'hinh-hoc',   emoji: '🔷', mau: '#4aa8ff', ten: 'Nhận biết hình',
         mo_ta: 'Hình vuông, tròn, tam giác, chữ nhật.' },
       { id: 'hinh-khoi',  emoji: '🧊', mau: '#8b7bf7', ten: 'Hình khối',
@@ -87,11 +87,11 @@
       { id: 'xem-gio',    emoji: '🕐', mau: '#ff7a7a', ten: 'Xem giờ',
         mo_ta: 'Giờ đúng và giờ rưỡi trên đồng hồ kim.' }
     ] },
-    { ten: 'Giải toán có lời văn', bai: [
+    { ten: 'Giải toán có lời văn', kieu: 'kieu-sticker', bai: [
       { id: 'toan-do', emoji: '📖', mau: '#ff8fd0', ten: 'Toán đố',
         mo_ta: 'Thêm, bớt, nhiều hơn, ít hơn, tìm số lúc đầu.' }
     ] },
-    { ten: 'Tiếng Việt', tv: true, bai: [
+    { ten: 'Tiếng Việt', tv: true, kieu: 'kieu-hinh', bai: [
       { id: 'chu-cai',    emoji: '🔤', mau: '#4aa8ff', ten: 'Chữ cái', mo_ta: 'Chữ hoa, chữ thường, âm đầu.' },
       { id: 'ghep-van',   emoji: '🧩', mau: '#8b7bf7', ten: 'Ghép vần', mo_ta: 'Âm đầu + vần + thanh thành tiếng.' },
       { id: 'thanh-dieu', emoji: '🎵', mau: '#ffc93c', ten: 'Thanh điệu', mo_ta: 'Ngang, huyền, sắc, hỏi, ngã, nặng.' },
@@ -106,7 +106,7 @@
   var goc = document.getElementById('noi-dung');
   var tongSao = 0;
 
-  function taoThe(bai, noiBat, laTiengViet) {
+  function taoThe(bai, noiBat, laTiengViet, kieu) {
     var best = Quiz.readBest(laTiengViet ? 'tv-' + bai.id : bai.id);
     var sao = best ? Quiz.starsFor(best.correct, best.total) : 0;
     if (!noiBat) tongSao += sao;
@@ -116,7 +116,7 @@
     card.href = bai.href || ((laTiengViet ? 'tieng-viet/' : 'bai-tap/') + bai.id + '.html');
     card.style.setProperty('--tint', bai.mau);
 
-    var huy = '';
+    var huy = '', ptDe = null;
     if (bai.id === 'game-cau-ca') {
       var tc = null;
       try { tc = JSON.parse(localStorage.getItem('studyonline:game-cau-ca') || 'null'); } catch (e) {}
@@ -132,11 +132,29 @@
           : (tt.daCuu ? '👑 Đã cứu được công chúa · ' : 'Đang ở chặng ' + tt.mo + ' · ');
         huy = '<span class="best">' + xong + sao + '/18 ⭐</span>';
       }
-    } else if (noiBat) {
+    } else if (bai.id === 'kiem-tra') {
       var ds = Quiz.readLichSu('kiem-tra');
-      if (ds.length) huy = '<span class="best">Lần gần nhất: ' + ds[0].diem + '/10 — ' + ds[0].de + '</span>';
+      if (ds.length) {
+        huy = '<span class="best">Lần gần nhất: ' + ds[0].diem + '/10 — ' + ds[0].de + '</span>';
+        ptDe = ds[0].diem * 10;
+      }
     } else if (best) {
       huy = '<span class="best">' + '⭐'.repeat(sao) + ' ' + best.score + ' điểm</span>';
+    }
+
+    // Kiểu bảng tiến độ cần thêm thanh phần trăm và hàng chân; ba kiểu còn
+    // lại dùng chung một thân thẻ.
+    if (kieu === 'kieu-tien-do') {
+      var phanTram = ptDe != null ? ptDe : (best ? Math.round(best.correct / best.total * 100) : 0);
+      var nhan = best || ptDe != null
+        ? '⭐'.repeat(sao) + '<span class="mo-sao">' + '⭐'.repeat(3 - sao) + '</span>'
+        : 'Chưa làm';
+      card.innerHTML =
+        '<div class="dau-the"><div class="emoji">' + bai.emoji + '</div>' +
+        '<div><h2>' + bai.ten + '</h2><p>' + bai.mo_ta + '</p></div></div>' +
+        '<div class="thanh-the"><i style="width:' + phanTram + '%"></i></div>' +
+        '<div class="duoi-the"><span>' + nhan + '</span><b>' + phanTram + '%</b></div>' + huy;
+      return card;
     }
 
     card.innerHTML =
@@ -146,30 +164,25 @@
     return card;
   }
 
-  // Game và bài kiểm tra đặt lên đầu
-  // Trò chơi và bài kiểm tra: thẻ cùng cỡ với các mục khác
-  var tieuTro = document.createElement('h2');
-  tieuTro.className = 'nhom';
-  tieuTro.textContent = 'Trò chơi và kiểm tra';
-  goc.appendChild(tieuTro);
-
-  var luoiTren = document.createElement('div');
-  luoiTren.className = 'grid';
-  [GAME_CAU_CA, GAME_HALLOWEEN, GAME, KIEM_TRA].forEach(function (b) {
-    luoiTren.appendChild(taoThe(b, true));
-  });
-  goc.appendChild(luoiTren);
-
-  NHOM.forEach(function (nhom) {
+  // Trò chơi và bài kiểm tra tách thành hai nhóm vì mỗi bên một kiểu thẻ:
+  // chơi thì kẹo ngọt, thi thì bảng tiến độ có phần trăm.
+  function veNhom(ten, kieu, ds, noiBat, tv) {
     var tieu = document.createElement('h2');
     tieu.className = 'nhom';
-    tieu.textContent = nhom.ten;
+    tieu.textContent = ten;
     goc.appendChild(tieu);
 
     var luoi = document.createElement('div');
-    luoi.className = 'grid';
-    nhom.bai.forEach(function (bai) { luoi.appendChild(taoThe(bai, false, nhom.tv)); });
+    luoi.className = 'grid ' + kieu;
+    ds.forEach(function (b) { luoi.appendChild(taoThe(b, noiBat, tv, kieu)); });
     goc.appendChild(luoi);
+  }
+
+  veNhom('Trò chơi', 'kieu-keo', [GAME_CAU_CA, GAME_HALLOWEEN, GAME], true, false);
+  veNhom('Bài kiểm tra', 'kieu-tien-do', [KIEM_TRA], true, false);
+
+  NHOM.forEach(function (nhom) {
+    veNhom(nhom.ten, nhom.kieu, nhom.bai, false, nhom.tv);
   });
 
   if (tongSao > 0) {

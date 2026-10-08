@@ -1410,10 +1410,14 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 }
 
 /* ===================================================================
-   Ba kiểu thẻ theo khu — đặt class trên <body>
-   kieu-hinh    (mầm non) · hình to, nền màu đậm, chữ trắng
-   kieu-sticker (lớp 1)   · viền đậm, bóng cứng lệch
-   kieu-tien-do (lớp 5)   · gọn gàng, có thanh tiến độ
+   Bốn kiểu thẻ — đặt class lên từng lưới .grid, nên mỗi nhóm trong cùng
+   một trang có thể một kiểu khác nhau.
+   kieu-keo     · kẹo ngọt: pastel nhẹ, bo tròn, bóng đổ dày — cho trò chơi.
+                  Đây chính là kiểu gốc của .card nên không cần ghi đè gì;
+                  để tên lớp trong HTML cho dễ đọc.
+   kieu-hinh    · hình to, nền màu đậm, chữ trắng — cho nhóm học bằng hình
+   kieu-sticker · viền đậm, bóng cứng lệch — cho nhóm luyện tập số và chữ
+   kieu-tien-do · gọn gàng, có thanh tiến độ — cho nhóm có chấm điểm
    =================================================================== */
 
 /* ---------- Mầm non: thẻ hình lớn ---------- */

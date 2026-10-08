@@ -12,7 +12,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧑‍🚀</text></svg>">
 <script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
 </head>
-<body class="kieu-tien-do">
+<body>
 <div class="wrap">
 
   <nav class="crumb"><a class="back" href="../index.html">← Chọn lứa tuổi</a></nav>
@@ -45,24 +45,24 @@
   ];
 
   var NHOM = [
-    { ten: 'Phân số', bai: [
+    { ten: 'Phân số', kieu: 'kieu-tien-do', bai: [
       { id: 'rut-gon-quy-dong',  emoji: '🍰', mau: '#ff8fd0', ten: 'Rút gọn và quy đồng', mo_ta: 'Rút gọn, quy đồng mẫu số.' },
       { id: 'cong-tru-phan-so',  emoji: '➕', mau: '#4aa8ff', ten: 'Cộng trừ phân số', mo_ta: 'Cùng mẫu và khác mẫu.' },
       { id: 'nhan-chia-phan-so', emoji: '✖️', mau: '#8b7bf7', ten: 'Nhân chia phân số', mo_ta: 'Có cả biểu thức hỗn hợp.' },
       { id: 'so-sanh-phan-so',   emoji: '⚖️', mau: '#2fcf90', ten: 'So sánh phân số', mo_ta: 'Điền dấu, tìm lớn nhất bé nhất.' },
       { id: 'hon-so',            emoji: '🔢', mau: '#ffc93c', ten: 'Hỗn số', mo_ta: 'Đổi hỗn số và phân số.' }
     ] },
-    { ten: 'Số thập phân', bai: [
+    { ten: 'Số thập phân', kieu: 'kieu-tien-do', bai: [
       { id: 'cong-tru-thap-phan',     emoji: '➕', mau: '#4aa8ff', ten: 'Cộng trừ số thập phân', mo_ta: 'Có cả bài tính thuận tiện.' },
       { id: 'nhan-chia-thap-phan',    emoji: '✖️', mau: '#8b7bf7', ten: 'Nhân chia số thập phân', mo_ta: 'Với 10, 100 và với số thập phân.' },
       { id: 'lam-tron',               emoji: '🎯', mau: '#ff7a7a', ten: 'Làm tròn, giá trị chữ số', mo_ta: 'So sánh, làm tròn, hàng phần mười.' },
       { id: 'doi-phan-so-thap-phan',  emoji: '🔄', mau: '#2fcf90', ten: 'Phân số và số thập phân', mo_ta: 'Đổi qua lại giữa hai dạng.' },
       { id: 'tim-x',                  emoji: '❓', mau: '#ffc93c', ten: 'Tìm x', mo_ta: 'Bốn phép tính với số thập phân.' }
     ] },
-    { ten: 'Tỉ số phần trăm', bai: [
+    { ten: 'Tỉ số phần trăm', kieu: 'kieu-tien-do', bai: [
       { id: 'ti-so-phan-tram', emoji: '💯', mau: '#ff8fd0', ten: 'Tỉ số phần trăm', mo_ta: 'Ba dạng cơ bản của phần trăm.' }
     ] },
-    { ten: 'Hình học và đo lường', bai: [
+    { ten: 'Hình học và đo lường', kieu: 'kieu-tien-do', bai: [
       { id: 'dien-tich-hinh-phang', emoji: '📐', mau: '#4aa8ff', ten: 'Diện tích hình phẳng', mo_ta: 'Tam giác, hình thang, bình hành.' },
       { id: 'hinh-tron',            emoji: '⭕', mau: '#8b7bf7', ten: 'Hình tròn', mo_ta: 'Chu vi và diện tích, pi = 3,14.' },
       { id: 'hinh-hop',             emoji: '🧊', mau: '#ffc93c', ten: 'Hình hộp', mo_ta: 'Thể tích, diện tích xung quanh và toàn phần.' },
@@ -70,7 +70,7 @@
       { id: 'doi-don-vi',           emoji: '📏', mau: '#2fcf90', ten: 'Đổi đơn vị đo', mo_ta: 'Độ dài, khối lượng, diện tích, thể tích.' },
       { id: 'so-do-thoi-gian',      emoji: '⏱️', mau: '#4aa8ff', ten: 'Số đo thời gian', mo_ta: 'Cộng trừ giờ và phút.' }
     ] },
-    { ten: 'Chuyển động và giải toán', bai: [
+    { ten: 'Chuyển động và giải toán', kieu: 'kieu-tien-do', bai: [
       { id: 'chuyen-dong', emoji: '🚗', mau: '#8b7bf7', ten: 'Chuyển động đều', mo_ta: 'Quãng đường, vận tốc, thời gian.' },
       { id: 'toan-do',     emoji: '📖', mau: '#ff8fd0', ten: 'Toán có lời văn', mo_ta: 'Trung bình cộng, tỉ lệ, tổng - tỉ, phần trăm.' }
     ] }
@@ -82,7 +82,7 @@
   var goc = document.getElementById('noi-dung');
   var tongSao = 0;
 
-  function taoThe(bai, noiBat) {
+  function taoThe(bai, noiBat, kieu) {
     var id = noiBat ? bai.id : 'l5-' + bai.id;
     var best = Quiz.readBest(id);
     var sao = best ? Quiz.starsFor(best.correct, best.total) : 0;
@@ -93,7 +93,7 @@
     card.href = bai.href || ('bai-tap/' + bai.id + '.html');
     card.style.setProperty('--tint', bai.mau);
 
-    var huy = '';
+    var huy = '', ptDe = null;
     if (bai.id === 'l5-game-vu-tru') {
       var tt = null;
       try { tt = JSON.parse(localStorage.getItem('studyonline:game-vu-tru') || 'null'); } catch (e) {}
@@ -104,45 +104,55 @@
       }
     } else if (bai.id === 'l5-kiem-tra') {
       var ds = Quiz.readLichSu('l5-kiem-tra');
-      if (ds.length) huy = '<span class="best">Lần gần nhất: ' + ds[0].diem + '/10 — ' + ds[0].de + '</span>';
+      if (ds.length) {
+        huy = '<span class="best">Lần gần nhất: ' + ds[0].diem + '/10 — ' + ds[0].de + '</span>';
+        ptDe = ds[0].diem * 10;
+      }
     } else if (best) {
       huy = '<span class="best">' + '⭐'.repeat(sao) + ' ' + best.score + ' điểm</span>';
     }
 
-    // phần trăm hoàn thành: lấy từ kỷ lục đã lưu
-    var phanTram = best ? Math.round(best.correct / best.total * 100) : 0;
-    var nhan = noiBat
-      ? (huy ? huy.replace(/<[^>]+>/g, '') : 'Chưa chơi')
-      : (best ? '⭐'.repeat(sao) + '<span class="mo-sao">' + '⭐'.repeat(3 - sao) + '</span>' : 'Chưa làm');
+    // Chỉ kiểu bảng tiến độ mới có thanh phần trăm và hàng chân; thẻ trò chơi
+    // dùng kiểu kẹo ngọt nên giữ thân thẻ gọn như các khu khác.
+    if (kieu === 'kieu-tien-do') {
+      // phần trăm hoàn thành: bài tập lấy từ kỷ lục, bài kiểm tra lấy từ điểm lần gần nhất
+      var phanTram = ptDe != null ? ptDe : (best ? Math.round(best.correct / best.total * 100) : 0);
+      var nhan = best || ptDe != null
+        ? '⭐'.repeat(sao) + '<span class="mo-sao">' + '⭐'.repeat(3 - sao) + '</span>'
+        : 'Chưa làm';
+      card.innerHTML =
+        '<div class="dau-the"><div class="emoji">' + bai.emoji + '</div>' +
+        '<div><h2>' + bai.ten + '</h2><p>' + bai.mo_ta + '</p></div></div>' +
+        '<div class="thanh-the"><i style="width:' + phanTram + '%"></i></div>' +
+        '<div class="duoi-the"><span>' + nhan + '</span><b>' + phanTram + '%</b></div>' + huy;
+      return card;
+    }
 
     card.innerHTML =
-      '<div class="dau-the"><div class="emoji">' + bai.emoji + '</div>' +
-      '<div><h2>' + bai.ten + '</h2><p>' + bai.mo_ta + '</p></div></div>' +
-      '<div class="thanh-the"><i style="width:' + phanTram + '%"></i></div>' +
-      '<div class="duoi-the"><span>' + nhan + '</span><b>' + phanTram + '%</b></div>' + huy;
+      '<div class="emoji">' + bai.emoji + '</div>' +
+      '<h2>' + bai.ten + '</h2>' +
+      '<p>' + bai.mo_ta + '</p>' + huy;
     return card;
   }
 
-  var tieuTro = document.createElement('h2');
-  tieuTro.className = 'nhom';
-  tieuTro.textContent = 'Trò chơi và kiểm tra';
-  goc.appendChild(tieuTro);
-
-  var luoiTren = document.createElement('div');
-  luoiTren.className = 'grid';
-  NOI_BAT.forEach(function (b) { luoiTren.appendChild(taoThe(b, true)); });
-  goc.appendChild(luoiTren);
-
-  NHOM.forEach(function (nhom) {
+  // Trò chơi và bài kiểm tra tách thành hai nhóm vì mỗi bên một kiểu thẻ.
+  function veNhom(ten, kieu, ds, noiBat) {
     var tieu = document.createElement('h2');
     tieu.className = 'nhom';
-    tieu.textContent = nhom.ten;
+    tieu.textContent = ten;
     goc.appendChild(tieu);
 
     var luoi = document.createElement('div');
-    luoi.className = 'grid';
-    nhom.bai.forEach(function (bai) { luoi.appendChild(taoThe(bai, false)); });
+    luoi.className = 'grid ' + kieu;
+    ds.forEach(function (b) { luoi.appendChild(taoThe(b, noiBat, kieu)); });
     goc.appendChild(luoi);
+  }
+
+  veNhom('Trò chơi', 'kieu-keo', [NOI_BAT[0]], true);
+  veNhom('Bài kiểm tra', 'kieu-tien-do', [NOI_BAT[1]], true);
+
+  NHOM.forEach(function (nhom) {
+    veNhom(nhom.ten, nhom.kieu, nhom.bai, false);
   });
 
   if (tongSao > 0) {

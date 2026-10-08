@@ -12,7 +12,7 @@
 <script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧸</text></svg>">
 </head>
-<body class="kieu-hinh">
+<body>
 <div class="wrap">
 
   <nav class="crumb"><a class="back" href="../index.html">← Chọn lứa tuổi</a></nav>
@@ -48,7 +48,7 @@
 
   /* tuoi: những độ tuổi mà bài này phù hợp */
   var NHOM = [
-    { ten: 'Làm quen và nhận thức', bai: [
+    { ten: 'Làm quen và nhận thức', kieu: 'kieu-hinh', bai: [
       { id: 'mn-con-vat-an-gi', emoji: '🍽️', mau: '#ff8fd0', ten: 'Con vật ăn gì',
         mo_ta: 'Thỏ thích ăn gì? Mèo thích ăn gì?', href: 'bai-tap/con-vat-an-gi.html', tuoi: [3, 4, 5] },
       { id: 'mn-con-vat-keu', emoji: '🔊', mau: '#8b7bf7', ten: 'Con gì kêu',
@@ -64,7 +64,7 @@
       { id: 'mn-hinh-gi', emoji: '⬜', mau: '#4aa8ff', ten: 'Hình gì',
         mo_ta: 'Đâu là hình tròn, hình vuông, tam giác?', href: 'bai-tap/hinh-gi.html', tuoi: [3, 4, 5] }
     ] },
-    { ten: 'Toán sớm', bai: [
+    { ten: 'Toán sớm', kieu: 'kieu-sticker', bai: [
       { id: 'mn-dem-den-5', emoji: '🖐️', mau: '#2fcf90', ten: 'Đếm cùng bé',
         mo_ta: 'Có mấy con thỏ? Đếm từ 1 đến 10.', href: 'bai-tap/dem-den-5.html', tuoi: [3, 4, 5] },
       { id: 'mn-nhieu-it', emoji: '⚖️', mau: '#2fcf90', ten: 'Nhiều hơn, ít hơn',
@@ -72,7 +72,7 @@
       { id: 'mn-tv-dem-tieng-viet', emoji: '🔢', mau: '#ffc93c', ten: 'Đếm bằng tiếng Việt',
         mo_ta: 'Một, hai, ba… đến mười.', href: 'tieng-viet/dem-tieng-viet.html', tuoi: [3, 4, 5] }
     ] },
-    { ten: 'Tiếng Việt — tập nói và từ vựng', bai: [
+    { ten: 'Tiếng Việt — tập nói và từ vựng', kieu: 'kieu-hinh', bai: [
       { id: 'mn-tv-be-2-tuoi', emoji: '🍼', mau: '#ff8fd0', ten: 'Bé tập nói',
         mo_ta: 'Chỉ 2 lựa chọn, từ quen thuộc nhất.', href: 'tieng-viet/be-2-tuoi.html', tuoi: [2] },
       { id: 'mn-tv-tu-vung', emoji: '🗣️', mau: '#4aa8ff', ten: 'Từ vựng',
@@ -96,7 +96,7 @@
       { id: 'mn-tv-chao-hoi', emoji: '🙏', mau: '#ff7a7a', ten: 'Chào hỏi lễ phép',
         mo_ta: 'Con chào, con cảm ơn, con xin lỗi ạ.', href: 'tieng-viet/chao-hoi.html', tuoi: [3, 4, 5] }
     ] },
-    { ten: 'Chuẩn bị vào lớp 1', bai: [
+    { ten: 'Chuẩn bị vào lớp 1', kieu: 'kieu-sticker', bai: [
       { id: 'mn-tv-chu-cai', emoji: '🔤', mau: '#4aa8ff', ten: 'Làm quen chữ cái',
         mo_ta: 'Nhận mặt chữ và chữ đầu của từ.', href: 'tieng-viet/chu-cai.html', tuoi: [4, 5] },
       { id: 'mn-tv-ghep-am', emoji: '🧩', mau: '#8b7bf7', ten: 'Ghép âm thành tiếng',
@@ -106,7 +106,7 @@
       { id: 'mn-tv-tach-tieng', emoji: '✂️', mau: '#2fcf90', ten: 'Tách tiếng trong câu',
         mo_ta: 'Câu này có mấy tiếng?', href: 'tieng-viet/tach-tieng.html', tuoi: [5] }
     ] },
-    { ten: 'Dành cho bé Việt kiều', vietKieu: true, bai: [
+    { ten: 'Dành cho bé Việt kiều', vietKieu: true, kieu: 'kieu-hinh', bai: [
       { id: 'mn-tv-xung-ho', emoji: '👨‍👩‍👧‍👦', mau: '#ff8fd0', ten: 'Xưng hô trong gia đình',
         mo_ta: 'Con hay cháu? Chú, bác, cậu, dì khác nhau thế nào?', href: 'tieng-viet/xung-ho.html', tuoi: [4, 5] },
       { id: 'mn-tv-mau-cau', emoji: '💬', mau: '#4aa8ff', ten: 'Mẫu câu hằng ngày',
@@ -142,7 +142,7 @@
     // thẻ game đặt lên đầu
     if (!tuoi || GAME.tuoi.indexOf(tuoi) !== -1) {
       var luoiG = document.createElement('div');
-      luoiG.className = 'grid';
+      luoiG.className = 'grid kieu-keo';
       var tt = null;
       try { tt = JSON.parse(localStorage.getItem('studyonline:game-ky-lan') || 'null'); } catch (e) {}
       var huy = '';
@@ -185,7 +185,7 @@
       }
 
       var luoi = document.createElement('div');
-      luoi.className = 'grid';
+      luoi.className = 'grid ' + nhom.kieu;
       bai.forEach(function (b) {
         var best = Quiz.readBest(b.id);
         var sao = best ? Quiz.starsFor(best.correct, best.total) : 0;
