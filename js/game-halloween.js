@@ -27,7 +27,7 @@
       toan: function () { return T.tachGop(10); },
       tviet: mix(V.ghepVan, V.timAmDau) },
 
-    { ten: 'Rừng Dơi Đen', hinh: 'ma', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
+    { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
       mota: 'Cộng trừ phạm vi 20 · quy tắc chính tả',
       toan: function () { return T.congTru(20, false); },
       tviet: mix(V.quyTacChinhTa, V.timVan) },

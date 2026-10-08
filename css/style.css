@@ -1296,3 +1296,5 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 @media (max-width: 430px) {
   .bau-troi { height: 164px; }
 }
+
+.canh .long-cuoi { position: absolute; right: 4px; bottom: 16px; opacity: 0.9; }
