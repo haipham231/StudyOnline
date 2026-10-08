@@ -1821,13 +1821,23 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
   /* câu quá dài thì o-tra-loi.js thu ô lại; neo mép dưới để nó thu lên trên,
      chừa chỗ cho cảnh chứ không hụt mất bàn phím */
   transform-origin: bottom center;
-  padding: 132px 12px 14px;
+  /* --lan: đoạn trên cùng còn nhoà vào cảnh. Các mốc màu tính theo nó, nên
+     đổi --lan là cả vệt nhoà co giãn theo, chữ vẫn nằm trên nền đã kín. */
+  --lan: 100px;
+  padding: var(--lan) 12px 14px;
   background: linear-gradient(180deg,
-    rgba(var(--phu), 0) 0px,
-    rgba(var(--phu), 0.42) 74px,
-    rgba(var(--phu), 0.86) 124px,
-    rgba(var(--phu), 0.97) 164px,
+    rgba(var(--phu), 0) 0,
+    rgba(var(--phu), 0.45) calc(var(--lan) * 0.5),
+    rgba(var(--phu), 0.88) calc(var(--lan) * 0.84),
+    rgba(var(--phu), 0.98) calc(var(--lan) * 1.1),
     rgba(var(--phu), 1) 100%);
+}
+
+/* Khoảng dành cho đề bài. Câu nào dài hơn thì o-tra-loi.js thu chữ lại cho
+   vừa, thay vì đẩy ô cao lên — nhờ vậy bàn phím luôn ở một chỗ. */
+.panel.man-choi .o-de {
+  --tran-de: 140px;
+  transform-origin: top center;
 }
 
 .panel.man-choi .o-hoi .prompt,
@@ -1975,7 +1985,8 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 
   /* Chữ trong màn chơi nhỏ hơn trang bài tập. Ở đây cỡ chữ mặc định làm ô đề
      bài cao tới 728px trên khung 900px — cảnh chẳng còn gì để nhìn. */
-  .panel.man-choi .o-hoi { padding: 104px 16px 18px; }
+  .panel.man-choi .o-hoi { --lan: 92px; padding: var(--lan) 16px 18px; }
+  .panel.man-choi .o-de { --tran-de: 168px; }
   .panel.man-choi .prompt { margin: 2px auto 6px; font-size: 17px; }
 
   .panel.man-choi .question {
@@ -2018,7 +2029,8 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 }
 
 @media (min-width: 561px) and (max-height: 820px) {
-  .panel.man-choi .o-hoi { padding: 96px 16px 14px; }
+  .panel.man-choi .o-hoi { --lan: 78px; padding: var(--lan) 16px 14px; }
+  .panel.man-choi .o-de { --tran-de: 124px; }
   .panel.man-choi .prompt { margin: 2px auto 4px; font-size: 16px; }
   .panel.man-choi .question { margin: 2px 0 6px; font-size: clamp(25px, 3.4vw, 31px); }
   .panel.man-choi .feedback { min-height: 22px; margin: 2px 0 6px; font-size: 17px; }

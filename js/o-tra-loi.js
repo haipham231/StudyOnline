@@ -36,22 +36,42 @@
     // boc: gói đề bài và phím vào một ô riêng, để màn chơi đè được cả cụm lên
     // hình nền. Trang bài tập không truyền boc nên vẫn gắn thẳng vào khung.
     var noi = khung;
-    if (tuyChon.boc) { noi = el('div', tuyChon.boc); khung.appendChild(noi); }
+    var de = khung;   // riêng phần đề bài, thu nhỏ được mà không đụng bàn phím
+    if (tuyChon.boc) {
+      noi = el('div', tuyChon.boc);
+      khung.appendChild(noi);
+      de = el('div', 'o-de');
+      noi.appendChild(de);
+    }
 
     // Màn chơi đè ô này lên hình nền, nên cảnh cần biết nó cao bao nhiêu thì
     // mới đặt nhân vật đứng trên mép nó được. Câu có hình vẽ cao hơn câu
     // thường cả trăm px nên không đặt sẵn một con số được.
     function baoChieuCao() {
       if (noi === khung) return;
+      // 1. Đề bài dài thì thu chữ lại cho vừa khoảng dành cho nó, nhờ vậy ô
+      //    cao gần như nhau ở mọi câu và bàn phím không nhảy chỗ.
+      de.style.transform = '';
+      de.style.marginBottom = '';
+      var tranDe = parseFloat(getComputedStyle(de).getPropertyValue('--tran-de')) || 0;
+      var caoDe = de.getBoundingClientRect().height;
+      if (tranDe && caoDe > tranDe) {
+        // không thu quá 0,8: dưới mức đó chữ bé lớp 1 đọc không ra, thà để ô
+        // cao thêm chút rồi để chốt chặn bên dưới lo
+        var tDe = Math.max(0.8, tranDe / caoDe);
+        de.style.transform = 'scale(' + tDe.toFixed(3) + ')';
+        // bù lại phần chiều cao đã thu, nếu không ô vẫn chừa chỗ như cũ
+        de.style.marginBottom = '-' + Math.round(caoDe * (1 - tDe)) + 'px';
+      }
+
       noi.style.transform = '';
 
       var caoKhung = khung.getBoundingClientRect().height;
       var caoGoc = noi.getBoundingClientRect().height;
 
-      // Ô đề bài không được chiếm quá 62% khung, không thì cảnh chẳng còn chỗ
-      // và nhân vật bị đẩy lên sau thanh trạng thái. Câu dài kèm hình vẽ trên
-      // màn thấp từng chiếm tới 81%.
-      var tran = caoKhung * 0.62;
+      // 2. Chốt chặn: thu chữ rồi mà ô vẫn chiếm quá 62% khung thì thu cả ô.
+      //    Hiếm khi tới đây, nhưng có nó thì mọi kiểu câu đều an toàn.
+      var tran = caoKhung * 0.68;
       var tiLe = caoGoc > tran ? Math.max(0.68, tran / caoGoc) : 1;
       if (tiLe < 1) noi.style.transform = 'scale(' + tiLe.toFixed(3) + ')';
 
@@ -89,9 +109,9 @@
         loa.addEventListener('click', function () { tuyChon.doc(cau.speak || cau.prompt); });
         dong.appendChild(loa);
       }
-      noi.appendChild(dong);
+      de.appendChild(dong);
     }
-    if (cau.art) noi.appendChild(el('div', 'art', cau.art));
+    if (cau.art) de.appendChild(el('div', 'art', cau.art));
 
     var o = el('span', 'answer-box empty', '?');
     var hang = el('div', 'question');
@@ -101,10 +121,10 @@
 
     var doDai = ((cau.text || '') + (cau.after || '')).replace(/&nbsp;/g, ' ').length;
     if (cau.small || doDai > 12) hang.classList.add('sm');
-    noi.appendChild(hang);
+    de.appendChild(hang);
 
     var phanHoi = el('div', 'feedback', '&nbsp;');
-    noi.appendChild(phanHoi);
+    de.appendChild(phanHoi);
 
     function traLoi(dung, daNhap) {
       khoa = true;
