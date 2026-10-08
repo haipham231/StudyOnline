@@ -1642,46 +1642,11 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 @media (max-width: 560px) {
   .topbar { padding: 14px 0 10px; }
 
-  /* khung màn chơi cao bằng màn hình, nhờ vậy phần ghi công tác giả
-     luôn nằm dưới mép dưới — muốn đọc thì phải cuộn */
-  .panel.man-choi {
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100vh - 72px);
-    min-height: calc(100svh - 72px);
-    padding: 14px 12px 16px;
-  }
-
   /* trang nào có thanh công tắc phía trên thì trừ thêm chiều cao của nó,
      không thì khung bị đẩy quá một màn và nút trả lời tụt xuống dưới mép */
   .cong-tac ~ .quiz .panel.man-choi {
     min-height: calc(100vh - 118px);
     min-height: calc(100svh - 118px);
-  }
-
-  /* cảnh ăn hết chỗ còn thừa; hết chỗ thì co lại chứ không đẩy phím xuống */
-  .panel.man-choi .ho-ca-canh,
-  .panel.man-choi .canh,
-  .panel.man-choi .bau-troi,
-  .panel.man-choi .vu-tru {
-    flex: 1 1 auto;
-    height: auto;
-    min-height: 150px;
-    max-height: 52vh;
-    margin-bottom: 10px;
-  }
-
-  /* cảnh cao gần gấp đôi thì nhân vật phải to theo, không thì hồ nhìn trống.
-     Cần !important vì chiều cao hoạt hình là style nội tuyến do HoatHinh.ve đặt. */
-  .panel.man-choi .ho-ca-canh .hoat,
-  .panel.man-choi .canh .hoat,
-  .panel.man-choi .bau-troi .hoat { min-height: calc(var(--cao) * 1.25); }
-
-  .panel.man-choi .ho-ca-canh .hoat dotlottie-wc,
-  .panel.man-choi .canh .hoat dotlottie-wc,
-  .panel.man-choi .bau-troi .hoat dotlottie-wc {
-    width: calc(var(--cao) * 1.25) !important;
-    height: calc(var(--cao) * 1.25) !important;
   }
 
   .panel.man-choi .thanh-tren { margin-bottom: 8px; }
@@ -1726,181 +1691,244 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 
 /* ===================================================================
    Màn chơi kiểu đè — hình chiếm trọn khung, đề bài và phím nổi lên trên.
-   Chỉ bật trên điện thoại: ở màn to bàn phím cao gần 380px, đè lên thì
-   chẳng còn hình, nên màn to vẫn giữ kiểu cảnh trên — câu hỏi dưới.
+   Dùng cho mọi khổ màn hình; chiều cao khung và cỡ bàn phím thì mỗi khổ
+   một khác, xem hai khối @media ở cuối phần này.
    =================================================================== */
+
+/* cảnh trải kín khung thì nhân vật phải to theo, không thì hồ nhìn trống.
+   Cần !important vì chiều cao hoạt hình là style nội tuyến do HoatHinh.ve đặt. */
+.panel.man-choi .ho-ca-canh .hoat,
+.panel.man-choi .canh .hoat,
+.panel.man-choi .bau-troi .hoat { min-height: calc(var(--cao) * 1.25); }
+
+.panel.man-choi .ho-ca-canh .hoat dotlottie-wc,
+.panel.man-choi .canh .hoat dotlottie-wc,
+.panel.man-choi .bau-troi .hoat dotlottie-wc {
+  width: calc(var(--cao) * 1.25) !important;
+  height: calc(var(--cao) * 1.25) !important;
+}
+
+.panel.man-choi {
+  /* dải đáy bị ô đề bài phủ — nhân vật trong cảnh phải đứng trên mức này */
+  --day: 268px;
+  /* màu lớp phủ: sáng cho cảnh ban ngày, tối cho cảnh đêm */
+  --phu: 255, 255, 255;
+  --chu: #2b2f55;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  overflow: hidden;
+  color: var(--chu);
+}
+
+.panel.man-choi.dem-halloween,
+.panel.man-choi:has(.vu-tru) { --phu: 22, 20, 52; --chu: #fff; }
+
+/* cảnh trải kín khung, nằm dưới cùng */
+.panel.man-choi .ho-ca-canh,
+.panel.man-choi .canh,
+.panel.man-choi .bau-troi,
+.panel.man-choi .vu-tru {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  margin: 0;
+  border-radius: var(--r-lg);
+}
+
+/* lớp phủ mờ trên cùng, để thanh trạng thái đọc được trên mọi cảnh */
+.panel.man-choi::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 124px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(var(--phu), 0.8) 0%, rgba(var(--phu), 0.34) 55%, rgba(var(--phu), 0) 100%);
+}
+
+/* thanh trạng thái thành một viên thuốc nổi trên cảnh */
+.panel.man-choi .thanh-tren {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 10px;
+  z-index: 3;
+  margin: 0;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 3px 10px rgba(43, 47, 85, 0.14);
+  color: var(--ink);
+  font-size: 13.5px;
+}
+
+/* tên màn dài ("Chặng 1 · Sao Phân Số") làm viên thuốc cao gấp đôi */
+.panel.man-choi .thanh-tren .ten-man {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.panel.man-choi .meta {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 52px;
+  z-index: 3;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+}
+
+/* hàng này nằm đè lên nhân vật nên mỗi vế phải có nền riêng mới đọc được */
+.panel.man-choi .meta > span {
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  backdrop-filter: blur(4px);
+  color: var(--muted);
+}
+
+.panel.man-choi.dem-halloween .meta > span,
+.panel.man-choi:has(.vu-tru) .meta > span {
+  background: rgba(28, 26, 62, 0.62);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+/* ô đề bài + phím: tự cao theo nội dung, mép trên nhoà dần vào cảnh.
+   Các điểm dừng tính bằng px chứ không bằng %, để câu dài hay câu ngắn
+   thì đoạn trong suốt phía trên vẫn đúng bấy nhiêu. */
+.panel.man-choi .o-hoi {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding: 132px 12px 14px;
+  background: linear-gradient(180deg,
+    rgba(var(--phu), 0) 0px,
+    rgba(var(--phu), 0.42) 74px,
+    rgba(var(--phu), 0.86) 124px,
+    rgba(var(--phu), 0.97) 164px,
+    rgba(var(--phu), 1) 100%);
+}
+
+.panel.man-choi .o-hoi .prompt,
+.panel.man-choi .o-hoi .question,
+.panel.man-choi .o-hoi .feedback { color: var(--chu); }
+
+/* --- hồ cá: giữ mặt nước nằm trong vùng còn nhìn thấy --- */
+.panel.man-choi .ho-ca-canh {
+  background-color: #7cc0f0;
+  background-image: linear-gradient(180deg, #e8f4ff 0%, var(--nen) 52%, #bfe0ff 52%, #7cc0f0 100%);
+  background-repeat: no-repeat;
+  background-size: 100% calc(100% - var(--day));
+}
+
+.panel.man-choi .ho-ca-canh .mat-nuoc { top: calc((100% - var(--day)) * 0.52); }
+
+.panel.man-choi .ho-ca-canh .nguoi-cau {
+  bottom: calc((100% - var(--day)) * 0.48 + var(--day));
+}
+
+/* 0.18 chứ không hơn: cao hơn nữa là con cá nhô lên khỏi mặt nước */
+.panel.man-choi .ho-ca-canh .con-ca {
+  bottom: calc((100% - var(--day)) * 0.18 + var(--day));
+}
+
+/* cái xô dời lên cạnh cậu bé, chỗ cũ ở đáy giờ nằm sau ô đề bài */
+.panel.man-choi .ho-ca-canh .cai-xo {
+  right: auto;
+  left: 124px;
+  bottom: calc((100% - var(--day)) * 0.48 + var(--day));
+}
+
+/* --- đường đi (cứu công chúa, Halloween) --- */
+.panel.man-choi .canh .duong { bottom: calc(var(--day) + 10px); }
+.panel.man-choi .canh .nguoi-choi { bottom: calc(var(--day) + 22px); }
+.panel.man-choi .canh .dich { bottom: calc(var(--day) + 20px); }
+.panel.man-choi .canh .long-cuoi { bottom: calc(var(--day) + 18px); }
+.panel.man-choi .canh .trang-tri span { top: 96px; }
+.panel.man-choi .canh .trang-tri span:nth-child(even) { top: 124px; }
+
+/* --- bầu trời (kỳ lân) --- */
+.panel.man-choi .bau-troi .dich-tren { top: 92px; }
+.panel.man-choi .bau-troi .nac-thang { bottom: calc(var(--day) + 14px); }
+
+.panel.man-choi .bau-troi .nguoi-bay {
+  bottom: calc((100% - var(--day)) * var(--len, 0.06) + var(--day));
+}
+
+/* --- vũ trụ --- */
+.panel.man-choi .vu-tru .quy-dao { bottom: calc(var(--day) + 18px); }
+.panel.man-choi .vu-tru .phi-thuyen-bay { bottom: calc(var(--day) + 26px); }
+.panel.man-choi .vu-tru .hanh-tinh-dich { top: calc((100% - var(--day)) * 0.52); }
+
+/* cảnh đêm: chữ sáng nên thanh trạng thái cũng phải đổi theo */
+.panel.man-choi.dem-halloween .thanh-tren,
+.panel.man-choi:has(.vu-tru) .thanh-tren {
+  background: rgba(28, 26, 62, 0.72);
+  color: #fff;
+}
+
+.panel.man-choi.dem-halloween .thanh-tren .ten-man,
+.panel.man-choi:has(.vu-tru) .thanh-tren .ten-man { color: #fff; }
+
+/* --- điện thoại: khung cao bằng màn hình, nhờ vậy phần ghi công tác giả
+       luôn phải cuộn mới thấy --- */
 
 @media (max-width: 560px) {
   .panel.man-choi {
-    /* dải đáy bị ô đề bài phủ — nhân vật trong cảnh phải đứng trên mức này */
-    --day: 268px;
-    /* màu lớp phủ: sáng cho cảnh ban ngày, tối cho cảnh đêm */
-    --phu: 255, 255, 255;
-    --chu: #2b2f55;
-    position: relative;
-    justify-content: flex-end;
-    padding: 0;
-    background: none;
-    box-shadow: none;
-    overflow: hidden;
-    color: var(--chu);
+    min-height: calc(100vh - 72px);
+    min-height: calc(100svh - 72px);
+  }
+}
+
+/* --- iPad và web: khung chặn trong một khoảng chứ không bám màn hình,
+       vì màn ngang thấp mà cao quá thì chẳng còn chỗ cho hình --- */
+
+@media (min-width: 561px) {
+  .panel.man-choi {
+    min-height: clamp(600px, calc(100vh - 120px), 900px);
+    min-height: clamp(600px, calc(100svh - 120px), 900px);
   }
 
-  .panel.man-choi.dem-halloween,
-  .panel.man-choi:has(.vu-tru) { --phu: 22, 20, 52; --chu: #fff; }
+  /* line-height 1.55 của trang làm mỗi phím cao 66px — năm hàng mất 380px,
+     hơn nửa khung chơi. Chỉ ép trong màn chơi, trang bài tập giữ nguyên. */
+  /* màn rộng thì bày phím thành 5 cột: ba hàng thay vì năm, ô đề bài thấp
+     đi hơn 100px và chỗ đó trả lại cho hình. Hàng cuối vẫn đủ chỗ cho nút
+     nộp vì nó chiếm 3 ô (hoặc 2 ô ở bàn phím có dấu phẩy). */
+  .panel.man-choi .pad {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 9px;
+    max-width: 430px;
+  }
+  .panel.man-choi .key { padding: 11px 0; font-size: 24px; line-height: 1.15; }
+  .panel.man-choi .key.wide { padding: 13px 0; font-size: 20px; line-height: 1.2; }
 
-  /* cảnh trải kín khung, nằm dưới cùng */
-  .panel.man-choi .ho-ca-canh,
-  .panel.man-choi .canh,
-  .panel.man-choi .bau-troi,
-  .panel.man-choi .vu-tru {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    height: auto;
-    min-height: 0;
-    max-height: none;
-    margin: 0;
-    border-radius: var(--r-lg);
+  /* khung ở đây cao 600–900px nên nhân vật phải to hơn nữa mới cân */
+  .panel.man-choi .ho-ca-canh .hoat,
+  .panel.man-choi .canh .hoat,
+  .panel.man-choi .bau-troi .hoat { min-height: calc(var(--cao) * 1.6); }
+
+  .panel.man-choi .ho-ca-canh .hoat dotlottie-wc,
+  .panel.man-choi .canh .hoat dotlottie-wc,
+  .panel.man-choi .bau-troi .hoat dotlottie-wc {
+    width: calc(var(--cao) * 1.6) !important;
+    height: calc(var(--cao) * 1.6) !important;
   }
 
-  /* lớp phủ mờ trên cùng, để thanh trạng thái đọc được trên mọi cảnh */
-  .panel.man-choi::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 124px;
-    z-index: 1;
-    pointer-events: none;
-    background: linear-gradient(180deg, rgba(var(--phu), 0.8) 0%, rgba(var(--phu), 0.34) 55%, rgba(var(--phu), 0) 100%);
-  }
-
-  /* thanh trạng thái thành một viên thuốc nổi trên cảnh */
-  .panel.man-choi .thanh-tren {
-    position: absolute;
-    left: 10px;
-    right: 10px;
-    top: 10px;
-    z-index: 3;
-    margin: 0;
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.84);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 3px 10px rgba(43, 47, 85, 0.14);
-    color: var(--ink);
-    font-size: 13.5px;
-  }
-
-  /* tên màn dài ("Chặng 1 · Sao Phân Số") làm viên thuốc cao gấp đôi */
-  .panel.man-choi .thanh-tren .ten-man {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
-  .panel.man-choi .meta {
-    position: absolute;
-    left: 16px;
-    right: 16px;
-    top: 52px;
-    z-index: 3;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-    font-size: 12.5px;
-  }
-
-  /* hàng này nằm đè lên nhân vật nên mỗi vế phải có nền riêng mới đọc được */
-  .panel.man-choi .meta > span {
-    padding: 1px 9px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.74);
-    backdrop-filter: blur(4px);
-    color: var(--muted);
-  }
-
-  .panel.man-choi.dem-halloween .meta > span,
-  .panel.man-choi:has(.vu-tru) .meta > span {
-    background: rgba(28, 26, 62, 0.62);
-    color: rgba(255, 255, 255, 0.86);
-  }
-
-  /* ô đề bài + phím: tự cao theo nội dung, mép trên nhoà dần vào cảnh.
-     Các điểm dừng tính bằng px chứ không bằng %, để câu dài hay câu ngắn
-     thì đoạn trong suốt phía trên vẫn đúng bấy nhiêu. */
-  .panel.man-choi .o-hoi {
-    position: relative;
-    z-index: 2;
-    margin-top: auto;
-    padding: 132px 12px 14px;
-    background: linear-gradient(180deg,
-      rgba(var(--phu), 0) 0px,
-      rgba(var(--phu), 0.42) 74px,
-      rgba(var(--phu), 0.86) 124px,
-      rgba(var(--phu), 0.97) 164px,
-      rgba(var(--phu), 1) 100%);
-  }
-
-  .panel.man-choi .o-hoi .prompt,
-  .panel.man-choi .o-hoi .question,
-  .panel.man-choi .o-hoi .feedback { color: var(--chu); }
-
-  /* --- hồ cá: giữ mặt nước nằm trong vùng còn nhìn thấy --- */
-  .panel.man-choi .ho-ca-canh {
-    background-color: #7cc0f0;
-    background-image: linear-gradient(180deg, #e8f4ff 0%, var(--nen) 52%, #bfe0ff 52%, #7cc0f0 100%);
-    background-repeat: no-repeat;
-    background-size: 100% calc(100% - var(--day));
-  }
-
-  .panel.man-choi .ho-ca-canh .mat-nuoc { top: calc((100% - var(--day)) * 0.52); }
-
-  .panel.man-choi .ho-ca-canh .nguoi-cau {
-    bottom: calc((100% - var(--day)) * 0.48 + var(--day));
-  }
-
-  .panel.man-choi .ho-ca-canh .con-ca {
-    bottom: calc((100% - var(--day)) * 0.26 + var(--day));
-  }
-
-  /* cái xô dời lên cạnh cậu bé, chỗ cũ ở đáy giờ nằm sau ô đề bài */
-  .panel.man-choi .ho-ca-canh .cai-xo {
-    right: auto;
-    left: 124px;
-    bottom: calc((100% - var(--day)) * 0.48 + var(--day));
-  }
-
-  /* --- đường đi (cứu công chúa, Halloween) --- */
-  .panel.man-choi .canh .duong { bottom: calc(var(--day) + 10px); }
-  .panel.man-choi .canh .nguoi-choi { bottom: calc(var(--day) + 22px); }
-  .panel.man-choi .canh .dich { bottom: calc(var(--day) + 20px); }
-  .panel.man-choi .canh .long-cuoi { bottom: calc(var(--day) + 18px); }
-  .panel.man-choi .canh .trang-tri span { top: 96px; }
-  .panel.man-choi .canh .trang-tri span:nth-child(even) { top: 124px; }
-
-  /* --- bầu trời (kỳ lân) --- */
-  .panel.man-choi .bau-troi .dich-tren { top: 92px; }
-  .panel.man-choi .bau-troi .nac-thang { bottom: calc(var(--day) + 14px); }
-
-  .panel.man-choi .bau-troi .nguoi-bay {
-    bottom: calc((100% - var(--day)) * var(--len, 0.06) + var(--day));
-  }
-
-  /* --- vũ trụ --- */
-  .panel.man-choi .vu-tru .quy-dao { bottom: calc(var(--day) + 18px); }
-  .panel.man-choi .vu-tru .phi-thuyen-bay { bottom: calc(var(--day) + 26px); }
-  .panel.man-choi .vu-tru .hanh-tinh-dich { top: calc((100% - var(--day)) * 0.52); }
-
-  /* cảnh đêm: chữ sáng nên thanh trạng thái cũng phải đổi theo */
-  .panel.man-choi.dem-halloween .thanh-tren,
-  .panel.man-choi:has(.vu-tru) .thanh-tren {
-    background: rgba(28, 26, 62, 0.72);
-    color: #fff;
-  }
-
-  .panel.man-choi.dem-halloween .thanh-tren .ten-man,
-  .panel.man-choi:has(.vu-tru) .thanh-tren .ten-man { color: #fff; }
+  .panel.man-choi .thanh-tren { padding: 8px 18px; font-size: 15px; }
+  .panel.man-choi .meta { top: 60px; font-size: 13.5px; }
+  .panel.man-choi .o-hoi { padding-bottom: 18px; }
 }
