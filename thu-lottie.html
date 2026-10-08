@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><title>Xem thử thuỷ quái</title>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
+<style>body{background:#cfe8ff;color:#2b2f55;font:12px system-ui;margin:0;padding:8px}
+.g{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.o{border:1px solid #9bc;border-radius:10px;padding:4px;text-align:center;background:#fff}</style>
+</head><body><div class="g" id="g"></div>
+<script>
+  var ds = ['bach-tuoc-1','bach-tuoc-2','sua-1','sua-2','cua-1','cua-2','rua-bien',
+            'ca-voi-1','ca-voi-2','ca-heo-1','ca-heo-2'];
+  document.getElementById('g').innerHTML = ds.map(function (t) {
+    return '<div class="o"><dotlottie-wc src="assets/lottie/thu/' + t +
+      '.lottie" autoplay loop style="width:105px;height:105px;margin:auto"></dotlottie-wc><div><b>' + t + '</b></div></div>';
+  }).join('');
+</script></body></html>
