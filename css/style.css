@@ -1845,9 +1845,9 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
   bottom: calc((100% - var(--day)) * 0.48 + var(--day));
 }
 
-/* 0.18 chứ không hơn: cao hơn nữa là con cá nhô lên khỏi mặt nước */
+/* 0.12 chứ không hơn: cao hơn nữa là con cá nhô lên khỏi mặt nước */
 .panel.man-choi .ho-ca-canh .con-ca {
-  bottom: calc((100% - var(--day)) * 0.18 + var(--day));
+  bottom: calc((100% - var(--day)) * 0.12 + var(--day));
 }
 
 /* cái xô dời lên cạnh cậu bé, chỗ cũ ở đáy giờ nằm sau ô đề bài */

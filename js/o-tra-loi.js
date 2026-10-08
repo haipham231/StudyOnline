@@ -43,13 +43,16 @@
     // thường cả trăm px nên không đặt sẵn một con số được.
     function baoChieuCao() {
       if (noi === khung) return;
-      var mep = 120;   // đoạn trên cùng của ô còn trong suốt, xem .o-hoi
-      var toiDa = 0.5; // câu đố dài có thể chiếm hơn nửa khung; quá mức này thì
-                       // thà để nhân vật chìm một chút vào đoạn trong suốt còn
-                       // hơn dồn hết lên sát thanh trạng thái
+      // mep: chỗ nhân vật đứng, tính từ mép trên của ô xuống. Lớp phủ của ô
+      // mờ dần từ 0 ở mép trên tới 0,86 ở 124px (xem .o-hoi), nên đứng ở 120
+      // là coi như bị xoá — phải đứng cao hơn thế nhiều.
+      var mep = 60;
+      // chừa ít nhất chừng này cho cảnh, kẻo câu đố dài đẩy nhân vật lên sát
+      // thanh trạng thái
+      var choCanh = 300;
       khung.style.setProperty('--day', Math.round(Math.min(
         Math.max(0, noi.offsetHeight - mep),
-        khung.offsetHeight * toiDa
+        Math.max(0, khung.offsetHeight - choCanh)
       )) + 'px');
     }
 
