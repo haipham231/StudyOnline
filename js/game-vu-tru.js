@@ -1,4 +1,4 @@
-/* ===== Game "Du hành vũ trụ" — lớp 5 =====
+/* ===== Game "Du hành vũ trụ" =====
    Bay qua sáu hành tinh. Giải đúng được tiếp nhiên liệu và tiến một chặng,
    sai thì hụt nhiên liệu; hết nhiên liệu là phải bay lại hành tinh đó.
 */
@@ -17,7 +17,11 @@
     return function () { return Q.pick(ds)(); };
   }
 
-  var CHANG = [
+  /* Bộ chặng mặc định của lớp 5. Dựng muộn, vì trang lớp khác không nạp
+     ToanL5 — gọi sớm là cả mô-đun vỡ lúc nạp. */
+  function boDeMacDinh() {
+    var T = global.ToanL5;
+    return [
     { ten: 'Sao Phân Số', emoji: '🪐', mau: '#ff8fd0', toi: '#c2558f', vanh: true, soCau: 6, hinh: 'troi/sao-tho',
       mota: 'Rút gọn, quy đồng, cộng trừ nhân chia phân số',
       de: mix(T.rutGon, T.quyDongMauSo, T.congTruPhanSo, T.nhanChiaPhanSo, T.soSanhPhanSo) },
@@ -43,7 +47,10 @@
       mota: 'Chặng cuối — trộn toàn bộ chương trình, có cả tính ngược',
       de: mix(T.chuyenDong, T.trungBinhCong, T.tinhNguocTamGiac, T.tinhNguocHinhThang,
               T.banKinhTuChuVi, T.dienTichPhanToMau, T.beNuoc, T.tongTi) }
-  ];
+    ];
+  }
+
+  var CHANG = T ? boDeMacDinh() : [];
 
   /* ---------- lưu tiến độ ---------- */
 
@@ -330,7 +337,11 @@
 
   global.GameVuTru = {
     CHANG: CHANG,
-    batDau: function (idGoc) {
+    /* Mỗi lớp truyền bộ chặng và khoá lưu riêng; để trống thì là lớp 5. */
+    batDau: function (idGoc, cauHinh) {
+      if (cauHinh && cauHinh.chang) { CHANG = cauHinh.chang; this.CHANG = CHANG; }
+      if (!CHANG.length) { CHANG = boDeMacDinh(); this.CHANG = CHANG; }
+      if (cauHinh && cauHinh.khoa) STORE = cauHinh.khoa;
       goc = document.getElementById(idGoc || 'game');
       veBanDo();
     },

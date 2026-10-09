@@ -83,6 +83,19 @@
     mo_ta: 'Dạng khó hơn hẳn. Chấm xong, trợ lý giải lại từng câu sai theo từng bước.',
     href: 'nang-cao.html' };
 
+  var TRO_CHOI = [
+    NOI_BAT[0],
+    { id: 'l5-game-cau-ca', emoji: '🎣', mau: '#4aa8ff', ten: 'Câu cá cùng bé',
+      mo_ta: 'Chọn hồ dễ, vừa hay khó rồi trả lời 10 câu. Mỗi câu đúng kéo cá gần bờ thêm một nấc.',
+      href: 'cau-ca.html' },
+    { id: 'l5-game-cong-chua', emoji: '🗡️', mau: '#ff8fd0', ten: 'Giải cứu công chúa',
+      mo_ta: 'Rồng bắt mất công chúa rồi! Vượt 5 chặng, giải đúng bài toán để tiến bước.',
+      href: 'cuu-cong-chua.html' },
+    { id: 'l5-game-halloween', emoji: '🎃', mau: '#ff8f3c', ten: 'Đêm Halloween',
+      mo_ta: 'Phù thuỷ giấu hết kẹo! Vượt 5 ải, nhảy lên húc đúng ô đáp án để đòi lại kẹo.',
+      href: 'halloween.html' }
+  ];
+
   var goc = document.getElementById('noi-dung');
   var tongSao = 0;
 
@@ -152,7 +165,7 @@
     goc.appendChild(luoi);
   }
 
-  veNhom('Trò chơi', 'kieu-keo', [NOI_BAT[0]], true);
+  veNhom('Trò chơi', 'kieu-keo', TRO_CHOI, true);
   veNhom('Bài kiểm tra và nâng cao', 'kieu-tien-do', [NOI_BAT[1], NANG_CAO], true);
 
   NHOM.forEach(function (nhom) {

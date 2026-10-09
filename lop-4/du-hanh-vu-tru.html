@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Du hành vũ trụ — Toán lớp 4</title>
+<meta name="description" content="Game toán lớp 4: bay qua 6 hành tinh, giải đúng được tiếp nhiên liệu, tới Trạm Thiên Hà.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🚀</text></svg>">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="index.html">← Trang chủ</a>
+  <h1>🚀 Du hành vũ trụ</h1>
+</header>
+
+<main id="game" class="quiz"></main>
+
+<footer class="ghi-cong">
+  <p>Hoạt hình trên LottieFiles: Astronaut Illustration của Marco Cagnina ·
+     saturn của Maria Jimenez · Planet Orbit của Muhammad Talha ·
+     Clouds và Star của Animo Arts · Rainbow wave của Eugene ·
+     Clear Night Moon của Akhil Atluri · Trophy của Mahendra.
+     Trạm vũ trụ do trang này tự vẽ.</p>
+</footer>
+
+<script src="../js/hoat-hinh.js"></script>
+<script src="../js/o-tra-loi.js"></script>
+<script src="../js/quiz.js"></script>
+<script src="../js/danh-hieu.js"></script>
+<script src="../js/toan-lop-4.js"></script>
+<script src="../js/vat-the-vu-tru.js"></script>
+<script src="../js/dap-an-nhieu.js"></script>
+<script src="../js/man-ban.js"></script>
+<script src="../js/man-lai.js"></script>
+<script src="../js/game-vu-tru.js"></script>
+<script>
+  var T = ToanL4;
+  function mix() {
+    var ds = Array.prototype.slice.call(arguments);
+    return function () { return Quiz.pick(ds)(); };
+  }
+
+  GameVuTru.batDau('game', {
+    khoa: 'studyonline:game-vu-tru-l4',
+    chang: [
+    { ten: 'Sao Số Lớn', emoji: '🪐', mau: '#ff8fd0', toi: '#c2558f', vanh: true, soCau: 6, hinh: 'troi/sao-tho',
+      mota: 'Hàng và lớp, làm tròn, dấu hiệu chia hết',
+      de: mix(T.hangCuaChuSo, T.giaTriChuSo, T.lamTronL4, T.dauHieuChiaHet) },
+
+    { ten: 'Sao Nhân Chia', emoji: '💧', mau: '#4aa8ff', toi: '#1f5f9e', vanh: false, soCau: 6, hinh: 'troi/may',
+      mota: 'Nhân chia số có nhiều chữ số và tính nhanh',
+      de: mix(T.nhanHaiChuSo, T.chiaHaiChuSo, T.congTruLonL4, T.tinhNhanhL4) },
+
+    { ten: 'Sao Phân Số', emoji: '🔆', mau: '#ffc93c', toi: '#b07f00', vanh: false, soCau: 6, hinh: 'troi/ngoi-sao',
+      mota: 'Rút gọn, so sánh, cộng phân số',
+      de: mix(T.rutGonPS, T.soSanhPS, T.congPSCungMau, T.phanSoCuaSoL4) },
+
+    { ten: 'Sao Tổng Hiệu', emoji: '🧊', mau: '#2fcf90', toi: '#167a52', vanh: true, soCau: 6, hinh: 'troi/cau-vong',
+      mota: 'Tổng hiệu, tổng tỉ và trung bình cộng',
+      de: mix(T.tongHieu, T.tongTi, T.trungBinhCong) },
+
+    { ten: 'Sao Hình Học', emoji: '⏳', mau: '#8b7bf7', toi: '#4b3bb0', vanh: false, soCau: 7, hinh: 'troi/mat-trang',
+      mota: 'Góc, chu vi, diện tích và đổi đơn vị',
+      de: mix(T.nhanBietGoc, T.chuViDienTichL4, T.dienTichBinhHanh, T.dienTichHinhThoi, T.doiDonViL4) },
+
+    { ten: 'Trạm Thiên Hà', emoji: '🌌', mau: '#ff7a7a', toi: '#a33', vanh: true, soCau: 8, dich: true,
+      mota: 'Chặng cuối — toán đố trung bình cộng, mua hàng, diện tích đất',
+      de: mix(T.doTrungBinh, T.doTongHieu, T.doMuaHang, T.doDienTichDat) }
+    ]
+  });
+</script>
+</body>
+</html>

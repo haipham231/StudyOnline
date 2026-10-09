@@ -46,6 +46,12 @@
     href: 'halloween.html'
   };
 
+  var GAME_VU_TRU = {
+    id: 'game-vu-tru', emoji: '🚀', mau: '#8b7bf7', ten: 'Du hành vũ trụ',
+    mo_ta: 'Bay qua 6 hành tinh: bắn tên lửa vào quái vật giữ đáp án đúng, rồi lái phi thuyền qua cổng.',
+    href: 'du-hanh-vu-tru.html'
+  };
+
   var GAME_CAU_CA = {
     id: 'game-cau-ca', emoji: '🎣', mau: '#4aa8ff', ten: 'Câu cá cùng bé',
     mo_ta: 'Chọn hồ dễ, vừa hay khó rồi trả lời 10 câu Toán và Tiếng Việt. Đúng thì câu được cá bỏ vào xô!',
@@ -182,7 +188,7 @@
     goc.appendChild(luoi);
   }
 
-  veNhom('Trò chơi', 'kieu-keo', [GAME_CAU_CA, GAME_HALLOWEEN, GAME], true, false);
+  veNhom('Trò chơi', 'kieu-keo', [GAME_CAU_CA, GAME_HALLOWEEN, GAME, GAME_VU_TRU], true, false);
   veNhom('Bài kiểm tra và nâng cao', 'kieu-tien-do', [KIEM_TRA, NANG_CAO], true, false);
 
   NHOM.forEach(function (nhom) {

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giải cứu công chúa — Toán lớp 5</title>
+<meta name="description" content="Game Toán lớp 5: vượt 5 chặng, giải đúng bài toán để tiến bước và đánh bại rồng.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🗡️</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="index.html">← Trang chủ</a>
+  <h1>🗡️ Giải cứu công chúa</h1>
+</header>
+
+<main id="game" class="quiz"></main>
+
+<footer class="ghi-cong">
+  <p>Hoạt hình trên LottieFiles: Running Boy của Ravi Sharma · Dragon của Hoang Nguyen ·
+     Princess của Mary Jane · các cảnh nền của Animo Arts.</p>
+</footer>
+
+<script src="../js/hoat-hinh.js"></script>
+<script src="../js/nhan-vat.js"></script>
+<script src="../js/o-tra-loi.js"></script>
+<script src="../js/quiz.js"></script>
+<script src="../js/danh-hieu.js"></script>
+<script src="../js/toan-lop-5.js"></script>
+<script src="../js/game-cong-chua.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
+<script>
+  var T = ToanL5;
+
+  GameCongChua.batDau('game', {
+    khoa: 'studyonline:game-cong-chua-l5',
+    man: [
+    { ten: 'Rừng Xanh', emoji: '🌳', mau: '#2fcf90', nen: '#e4f9f0', hinh: 'canh/rung',
+      mota: 'Phân số — rút gọn, quy đồng, bốn phép tính', soCau: 5,
+      de: [T.rutGon, T.quyDongMauSo, T.congTruPhanSo, T.nhanChiaPhanSo,
+        T.soSanhPhanSo, T.honSo] },
+
+    { ten: 'Dòng Sông', emoji: '🏞️', mau: '#4aa8ff', nen: '#e3f1ff', hinh: 'canh/song',
+      mota: 'Số thập phân và làm tròn', soCau: 5,
+      de: [T.congTruThapPhan, T.nhanHaiThapPhan, T.chiaThapPhanChoThapPhan,
+        T.soSanhThapPhan, T.lamTron, T.phanSoSangThapPhan] },
+
+    { ten: 'Núi Đá', emoji: '⛰️', mau: '#8b7bf7', nen: '#efeaff', hinh: 'canh/nui',
+      mota: 'Ba dạng bài về tỉ số phần trăm', soCau: 6,
+      de: [T.giaTriPhanTram, T.timSoBanDau, T.tiSoPhanTram, T.phanTramThucTe] },
+
+    { ten: 'Sa Mạc', emoji: '🏜️', mau: '#ffc93c', nen: '#fff6dd', hinh: 'canh/sa-mac',
+      mota: 'Diện tích, thể tích và hình tròn', soCau: 6,
+      de: [T.dienTichTamGiac, T.dienTichHinhThang, T.dienTichBinhHanh, T.hinhTron,
+        T.theTich, T.dienTichXungQuanh, T.dienTichToanPhan] },
+
+    { ten: 'Hang Lửa', emoji: '🌋', mau: '#ff7a7a', nen: '#ffe9e9', hinh: 'canh/lua',
+      mota: 'Đo lường, chuyển động và toán có lời văn', soCau: 6, boss: true,
+      de: [T.doiDonVi, T.thoiGian, T.chuyenDong, T.trungBinhCong, T.tiLeThuan,
+        T.tongTi, T.beNuoc] }
+    ]
+  });
+</script>
+</body>
+</html>

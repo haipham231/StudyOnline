@@ -118,8 +118,9 @@
     khung.appendChild(el('div', 'cot-truyen',
       hinh('phu-thuy', 96) +
       '<p>Đêm Halloween, phù thuỷ giấu hết kẹo của cả xóm trong lâu đài! ' +
-      'Hãy vượt <b>' + AI.length + ' ải</b>, mỗi ải xen kẽ một câu <b>Toán</b> và một câu ' +
-      '<b>Tiếng Việt</b>, để giành lại kẹo và trở thành <b>Vua Halloween</b>.</p>'));
+      'Hãy vượt <b>' + AI.length + ' ải</b>, mỗi ải xen kẽ một câu <b>' + TEN_MON[0] +
+      '</b> và một câu <b>' + TEN_MON[1] + '</b>, để giành lại kẹo và trở thành ' +
+      '<b>Vua Halloween</b>.</p>'));
 
     var tongSao = 0;
     Object.keys(tt.sao).forEach(function (k) { tongSao += tt.sao[k]; });
