@@ -2594,41 +2594,60 @@ body.khoa-cuon { overflow: hidden; }
 
 @keyframes hop-nhay-nhe { 50% { transform: translateY(-5px); } }
 
-/* ---- nhân vật ---- */
+/* ---- nhân vật: cậu bé ma cà rồng, bốn dáng xếp chồng ---- */
 
 .be-choi {
   position: absolute;
   bottom: 14px;
   left: 0;
-  width: 42px;
-  height: 56px;
+  width: 48px;
+  height: 74px;
   will-change: transform;
 }
 
-.be-choi .than {
+.be-choi .anh-be {
   position: absolute;
   bottom: 0;
-  left: 0;
-  font-size: 38px;
-  line-height: 1;
+  left: 50%;
+  display: none;
+  height: 86px;
+  width: auto;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.45));
+  pointer-events: none;
+  user-select: none;
 }
 
-.be-choi .mu {
-  position: absolute;
-  top: -2px;
-  left: 4px;
-  font-size: 26px;
-  line-height: 1;
+.be-choi.dang-di .anh-di,
+.be-choi.dang-nhay .anh-nhay,
+.be-choi.dang-dung-dau .anh-dung-dau,
+.be-choi.dang-te .anh-te { display: block; }
+
+/* ảnh vẽ nhìn sang trái; đi sang phải thì lật cả cụm */
+.be-choi.quay .anh-be { transform: translateX(-50%) scaleX(-1); }
+
+/* nhảy thì vươn cao hơn một chút cho ra đà */
+.be-choi.dang-nhay .anh-be { height: 90px; }
+.be-choi.dang-dung-dau .anh-be { height: 90px; }
+
+/* té thì nằm bệt, ảnh nằm ngang nên thấp và rộng */
+.be-choi.dang-te .anh-be { height: 64px; }
+
+/* cú rơi sau khi đụng đầu: vòng lặp đã dừng nên cho CSS lo đoạn rơi */
+.be-choi.roi { transition: transform 0.3s cubic-bezier(0.4, 0, 1, 1); }
+
+/* bước chân: nhún nhẹ cho có nhịp đi */
+.be-choi.buoc .anh-di { animation: buoc-di 0.36s ease-in-out infinite; }
+
+@keyframes buoc-di {
+  50% { transform: translateX(-50%) translateY(-3px); }
 }
 
-.be-choi.quay { transform-origin: center; }
-.be-choi.quay .than, .be-choi.quay .mu { transform: scaleX(-1); }
-.be-choi.bay .than { transform: translateY(-2px) rotate(-6deg); }
-.be-choi.so { animation: run-so 0.5s ease 3; }
+.be-choi.quay.buoc .anh-di { animation-name: buoc-di-nguoc; }
 
-@keyframes run-so {
-  25% { transform: translate3d(var(--tx, 0), 0, 0) rotate(-9deg); }
-  75% { transform: translate3d(var(--tx, 0), 0, 0) rotate(9deg); }
+@keyframes buoc-di-nguoc {
+  0%, 100% { transform: translateX(-50%) scaleX(-1); }
+  50% { transform: translateX(-50%) scaleX(-1) translateY(-3px); }
 }
 
 /* ---- trái tim và con ma bay ra ---- */

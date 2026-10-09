@@ -11,6 +11,18 @@
 
   var Q = global.Quiz;
 
+  // tự suy ra thư mục ảnh từ vị trí của chính tệp script này
+  var GOC = (function () {
+    var ds = document.getElementsByTagName('script');
+    for (var i = ds.length - 1; i >= 0; i--) {
+      var src = ds[i].src || '';
+      if (/man-nhay\.js(\?|$)/.test(src)) return src.replace(/js\/man-nhay\.js.*$/, '');
+    }
+    return '';
+  })();
+
+  var DANG_BE = ['di', 'nhay', 'dung-dau', 'te'];
+
   function el(tag, cls, html) {
     var n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -84,8 +96,8 @@
 
   /* ---------- Màn chơi ---------- */
 
-  var CAO_BE = 56;            // chiều cao nhân vật, px
-  var RONG_BE = 42;
+  var CAO_BE = 74;            // chiều cao khung va chạm của nhân vật, px
+  var RONG_BE = 48;
 
   function ve(khung, cau, tuyChon) {
     tuyChon = tuyChon || {};
@@ -136,7 +148,10 @@
     var daiNhat = nhanDS.reduce(function (m, n) { return Math.max(m, String(n).length); }, 0);
     if (daiNhat >= 8) dau.classList.add('nhan-dai');
 
-    var be = el('div', 'be-choi', '<span class="than">🧒</span><span class="mu">🎃</span>');
+    var be = el('div', 'be-choi dang-di', DANG_BE.map(function (d) {
+      return '<img class="anh-be anh-' + d + '" src="' + GOC + 'assets/ma-ca-rong/' + d +
+        '.png" alt="" draggable="false">';
+    }).join(''));
     dau.appendChild(be);
     dau.appendChild(el('div', 'mat-dat'));
     san.appendChild(dau);
@@ -213,9 +228,18 @@
       return true;
     }
 
+    var dangHienTai = 'di';
+    function doiDang(d) {
+      if (d === dangHienTai) return;
+      be.classList.remove('dang-' + dangHienTai);
+      be.classList.add('dang-' + d);
+      dangHienTai = d;
+    }
+
     function datChoBe() {
       be.style.transform = 'translate3d(' + Math.round(x) + 'px,' + Math.round(-y) + 'px,0)';
-      be.classList.toggle('bay', !duoiDat);
+      if (dangHienTai !== 'dung-dau' && dangHienTai !== 'te') doiDang(duoiDat ? 'di' : 'nhay');
+      be.classList.toggle('buoc', duoiDat && (sangTrai || sangPhai));
     }
 
     var truoc = 0, batDau = 0;
@@ -272,14 +296,29 @@
       bay.style.bottom = (yHop + h.offsetHeight) + 'px';
       dau.appendChild(bay);
 
-      if (!dung) {
-        be.classList.add('so');
-        var o = h.querySelector('.nhan-dap');
-        if (o) o.textContent = nhan;
+      if (dung) {
+        doiDang('nhay');
+      } else {
+        // Đụng đầu một nhịp rồi rơi xuống nằm, sao bay quanh đầu.
+        // Không gác bằng cờ xong: game dọn màn chơi ngay trong khiTraLoi,
+        // gác vậy thì cú té không bao giờ diễn ra. Gác bằng "ảnh còn trên
+        // trang hay không" mới đúng.
+        doiDang('dung-dau');
+        setTimeout(function () {
+          if (!be.isConnected) return;
+          doiDang('te');
+          be.classList.add('roi');
+          y = 0; vy = 0; duoiDat = true;
+          // ảnh nằm ngang rộng hơn khung va chạm nhiều, đứng sát mép là lòi
+          // ra ngoài sân — kéo vào trong một chút cho gọn
+          var loi = 26;
+          x = Math.min(Math.max(x, loi), Math.max(loi, rong - RONG_BE - loi));
+          datChoBe();
+        }, 420);
       }
 
       var oDung = hopDS.filter(function (z) { return z.dataset.nhan === String(cau.answer); })[0];
-      if (!dung && oDung) setTimeout(function () { oDung.classList.add('chi-ra'); }, 650);
+      if (!dung && oDung) setTimeout(function () { oDung.classList.add('chi-ra'); }, 700);
 
       thaoPhim();
       if (tuyChon.khiTraLoi) tuyChon.khiTraLoi(dung, nhan, phanHoi);
@@ -292,9 +331,10 @@
         nut.addEventListener(s, function () { tat(); });
       });
     }
-    giu(nutTrai, function () { sangTrai = true; be.classList.add('quay'); },
+    // ảnh vẽ cậu bé nhìn sang trái, nên đi sang phải mới phải lật
+    giu(nutTrai, function () { sangTrai = true; be.classList.remove('quay'); },
                  function () { sangTrai = false; });
-    giu(nutPhai, function () { sangPhai = true; be.classList.remove('quay'); },
+    giu(nutPhai, function () { sangPhai = true; be.classList.add('quay'); },
                  function () { sangPhai = false; });
     nutNhay.addEventListener('pointerdown', function (ev) { ev.preventDefault(); nhay(); });
 
@@ -307,8 +347,8 @@
     var nghePhim = function (ev) {
       if (khoa) return;
       var k = ev.key;
-      if (k === 'ArrowLeft' || k === 'a' || k === 'A') { sangTrai = true; be.classList.add('quay'); ev.preventDefault(); }
-      else if (k === 'ArrowRight' || k === 'd' || k === 'D') { sangPhai = true; be.classList.remove('quay'); ev.preventDefault(); }
+      if (k === 'ArrowLeft' || k === 'a' || k === 'A') { sangTrai = true; be.classList.remove('quay'); ev.preventDefault(); }
+      else if (k === 'ArrowRight' || k === 'd' || k === 'D') { sangPhai = true; be.classList.add('quay'); ev.preventDefault(); }
       else if (k === ' ' || k === 'ArrowUp' || k === 'w' || k === 'W' || k === 'Enter') { nhay(); ev.preventDefault(); }
     };
     var thaPhim = function (ev) {
