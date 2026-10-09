@@ -168,11 +168,13 @@
 
   var TEN_CO = 'Cô Nhi — AI';
 
-  // Mười hai dáng cô giáo cắt sẵn. Mỗi bài giảng đổi một dáng cho đỡ chán.
+  // Mười một dáng cô giáo cắt sẵn. Mỗi bài giảng đổi một dáng cho đỡ chán.
+  // Tấm sticker gốc có mười hai dáng; bỏ dáng giơ nắm tay vì lúc gỡ bóng nói
+  // rỗng đã mài sứt mất một mảng tóc.
   var DANG = [
     '1-thuoc-sach', '2-bang-den', '3-om-sach', '4-gio-tay',
     '5-giang-bai', '6-nghi-ngoi', '7-bang-trang', '8-chi-sach',
-    '9-may-tinh', '10-co-len', '11-xoa-dau', '12-tam-biet'
+    '9-may-tinh', '11-xoa-dau', '12-tam-biet'
   ];
   var dangTruoc = -1;
 
