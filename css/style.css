@@ -2191,3 +2191,107 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
   padding: 0 18px;
   color: var(--grape-dark);
 }
+
+/* ===================================================================
+   Trợ lý giải bài — hiện sau khi chấm điểm bài nâng cao
+   =================================================================== */
+
+.tro-ly {
+  margin-top: 26px;
+  padding: 18px 16px 14px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(160deg, #f3f0ff, #eaf3ff);
+  text-align: left;
+}
+
+.tro-ly h3 { margin: 0 0 4px; font-size: 19px; }
+.tro-ly-dan { margin: 0 0 14px; color: var(--muted); font-size: 14.5px; }
+
+.bai-sai {
+  margin-bottom: 10px;
+  padding: 12px 14px;
+  border-radius: var(--r-md);
+  background: #fff;
+  box-shadow: 0 3px 0 rgba(43, 47, 85, 0.07);
+}
+
+.bai-sai summary {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  cursor: pointer;
+  font-weight: 800;
+  list-style: none;
+}
+
+.bai-sai summary::-webkit-details-marker { display: none; }
+
+.bai-sai summary::after {
+  content: '▾';
+  margin-left: auto;
+  color: var(--muted);
+  transition: transform 0.2s ease;
+}
+
+.bai-sai[open] summary::after { transform: rotate(180deg); }
+
+.bai-sai .so {
+  flex: none;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--soft);
+  color: var(--grape-dark);
+  font-size: 13px;
+}
+
+.bai-sai .tomtat {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bai-sai .de-lai { margin: 12px 0 10px; font-size: 15.5px; line-height: 1.6; }
+
+.bai-sai .so-sanh-dap { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+
+.bai-sai .so-sanh-dap span {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.bai-sai .so-sanh-dap .sai { background: #ffe9e9; color: var(--coral-dark); }
+.bai-sai .so-sanh-dap .dung { background: #dcf8ec; color: var(--mint-dark); }
+
+.bai-sai .loi-giai { font-size: 15px; margin-bottom: 4px; }
+
+.bai-sai .cac-buoc {
+  margin: 0;
+  padding-left: 22px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.bai-sai .cac-buoc li { margin-bottom: 5px; }
+
+/* đoạn văn trong bài đọc hiểu: tách khỏi câu hỏi cho dễ đọc */
+.doan-van {
+  display: block;
+  margin-bottom: 10px;
+  padding: 12px 14px;
+  border-radius: var(--r-md);
+  background: var(--soft);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.7;
+  text-align: left;
+}
+
+@media (max-width: 480px) {
+  .tro-ly { padding: 14px 12px 12px; }
+  .bai-sai .de-lai, .bai-sai .cac-buoc { font-size: 14.5px; }
+}

@@ -103,6 +103,10 @@
     ] }
   ];
 
+  var NANG_CAO = { id: 'l1-nang-cao', emoji: '🚀', mau: '#ff7a7a', ten: 'Bài tập nâng cao',
+    mo_ta: 'Dạng khó hơn hẳn. Chấm xong, trợ lý giải lại từng câu sai theo từng bước.',
+    href: 'nang-cao.html' };
+
   var goc = document.getElementById('noi-dung');
   var tongSao = 0;
 
@@ -179,7 +183,7 @@
   }
 
   veNhom('Trò chơi', 'kieu-keo', [GAME_CAU_CA, GAME_HALLOWEEN, GAME], true, false);
-  veNhom('Bài kiểm tra', 'kieu-tien-do', [KIEM_TRA], true, false);
+  veNhom('Bài kiểm tra và nâng cao', 'kieu-tien-do', [KIEM_TRA, NANG_CAO], true, false);
 
   NHOM.forEach(function (nhom) {
     veNhom(nhom.ten, nhom.kieu, nhom.bai, false, nhom.tv);

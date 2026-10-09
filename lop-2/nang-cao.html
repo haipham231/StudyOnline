@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài tập nâng cao — Toán lớp 2</title>
+<meta name="description" content="Bài tập Toán nâng cao lớp 2. Chấm điểm xong, trợ lý giải lại từng câu sai theo từng bước.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🚀</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="index.html">← Quay lại</a>
+  <h1>🚀 Bài tập nâng cao</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../js/o-tra-loi.js"></script>
+<script src="../js/quiz.js"></script>
+<script src="../js/tro-ly.js"></script>
+<script src="../js/toan-lop-2.js"></script>
+<script src="../js/nang-cao.js"></script>
+<script>
+  var N = NangCao;
+
+  // chấm điểm như bài kiểm tra (không báo đúng sai từng câu), xong thì trợ lý giải từng câu sai
+  function taoDe(soCau) {
+    var de = [], daCo = {};
+    var sinh = N.tron(2);
+    for (var i = 0; i < soCau; i++) {
+      var q, khoa, lan = 0;
+      do { q = sinh(); khoa = (q.prompt || '') + (q.text || '') + q.answer; lan++; }
+      while (daCo[khoa] && lan < 30);
+      daCo[khoa] = true;
+      de.push(q);
+    }
+    return Quiz.shuffle(de);
+  }
+
+  Quiz.init({
+    id: 'l2-nang-cao',
+    exam: true,
+    troLy: true,
+    levels: [
+      { name: 'Nâng cao · 6 câu', hint: 'Làm quen · Toán đố hai bước, tìm x qua hai chặng, gấp rồi thêm.',
+        taoDe: function () { return taoDe(6); } },
+      { name: 'Nâng cao · 10 câu', hint: 'Thử sức · cùng các dạng, dài hơn',
+        taoDe: function () { return taoDe(10); } },
+      { name: 'Nâng cao · 15 câu', hint: 'Bài dài · dành cho bé đã vững',
+        taoDe: function () { return taoDe(15); } }
+    ]
+  });
+</script>
+</body>
+</html>

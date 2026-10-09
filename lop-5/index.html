@@ -79,6 +79,10 @@
   var mascot = document.getElementById('mascot');
   if (window.HoatHinh) mascot.innerHTML = window.HoatHinh.ve('phi-hanh-gia', 128, null);
 
+  var NANG_CAO = { id: 'l5-nang-cao', emoji: '🚀', mau: '#ff7a7a', ten: 'Bài tập nâng cao',
+    mo_ta: 'Dạng khó hơn hẳn. Chấm xong, trợ lý giải lại từng câu sai theo từng bước.',
+    href: 'nang-cao.html' };
+
   var goc = document.getElementById('noi-dung');
   var tongSao = 0;
 
@@ -149,7 +153,7 @@
   }
 
   veNhom('Trò chơi', 'kieu-keo', [NOI_BAT[0]], true);
-  veNhom('Bài kiểm tra', 'kieu-tien-do', [NOI_BAT[1]], true);
+  veNhom('Bài kiểm tra và nâng cao', 'kieu-tien-do', [NOI_BAT[1], NANG_CAO], true);
 
   NHOM.forEach(function (nhom) {
     veNhom(nhom.ten, nhom.kieu, nhom.bai, false);

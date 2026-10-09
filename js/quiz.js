@@ -329,9 +329,10 @@
       if (config.exam) {
         // bài kiểm tra: không tiết lộ đúng sai, chấm hết ở cuối
         if (isCorrect) state.correct += 1;
+        // giữ cả câu hỏi để trợ lý giải thích được từng bài sai
         else state.misses.push({
           label: (q.prompt ? q.prompt + ' ' : '') + (q.text || ''),
-          after: q.after, given: given, answer: q.answer, mach: mach
+          after: q.after, given: given, answer: q.answer, mach: mach, cau: q
         });
         feedback.className = 'feedback';
         feedback.innerHTML = '✔️ Đã ghi câu trả lời';
@@ -482,6 +483,11 @@
         });
         review.appendChild(ul);
         panel.appendChild(review);
+
+        // Bài nâng cao bật trợ lý: giải thích cặn kẽ từng câu sai
+        if (config.troLy && global.TroLy) {
+          panel.appendChild(global.TroLy.veBang(state.misses));
+        }
       }
 
       ghiLichSu(config.id, {
