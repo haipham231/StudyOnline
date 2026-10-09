@@ -149,10 +149,7 @@
 
   /* ---------- Câu cá ---------- */
 
-  function batDauCau(i) {
-    van = { ho: HO[i], chiSo: i, cau: 0, duoc: 0, daRa: {}, conCa: null };
-    raCauHoi();
-  }
+  /* ---------- Rút đề, tránh ra trùng ---------- */
 
   function sinhCau() {
     var q, khoa, lan = 0;
@@ -165,16 +162,7 @@
     return q;
   }
 
-  function raCauHoi() {
-    thaoPhim();
-    van.cau += 1;
-    if (van.cau > SO_CAU) return xong();
-    van.deBai = sinhCau();
-    van.conCa = conTiepTheo();
-    ve();
-  }
-
-  // mỗi câu một con khác nhau: rút từ đàn đã bỏ con vừa hiện ra
+  // mỗi lần một con Lottie khác nhau cho đàn cá bơi nền
   function conTiepTheo() {
     var dan = van.ho.dan;
     if (dan.length === 1) return dan[0];
@@ -182,36 +170,129 @@
     return Q.pick(khac.length ? khac : dan);
   }
 
-  function ve(hieuUng) {
+  /* ---------- Nghệ thuật theo cấp độ ---------- */
+
+  var SO_NAC = 6;                 // sáu nấc: quăng → kéo → gần → lên → giật → bắt được
+
+  // Cấp độ lấy theo thứ tự hồ, nên trang nào tự truyền bộ hồ riêng vẫn chạy
+  function cap(i) { return Math.min(i, 2); }
+  function tenCa(i) { return ['ca-vang', 'ca-chep', 'ca-map'][cap(i)]; }
+  function tenQuai(i) { return ['cua', 'luon', 'bach-tuoc'][cap(i)]; }
+  function tenTranh(i) { return ['canh-ao', 'canh-song', 'canh-bien'][cap(i)]; }
+  function tenOm(i) { return ['om-ca-vang', 'om-ca-chep', 'om-ca-map'][cap(i)]; }
+  function loaiCa(i) { return ['cá vàng', 'cá chép', 'cá mập con'][cap(i)]; }
+
+  var GOC_ANH = (function () {
+    var ds = document.getElementsByTagName('script');
+    for (var i = ds.length - 1; i >= 0; i--) {
+      var src = ds[i].src || '';
+      if (/game-cau-ca\.js(\?|$)/.test(src)) return src.replace(/js\/game-cau-ca\.js.*$/, '');
+    }
+    return '';
+  })();
+
+  function anhCauCa(ten, cls, duoi) {
+    return '<img class="' + cls + '" src="' + GOC_ANH + 'assets/cau-ca/' + ten +
+      '.' + (duoi || 'png') + '" alt="" draggable="false">';
+  }
+
+  /* ---------- Vào một hồ ---------- */
+
+  function batDauCau(i) {
+    van = { ho: HO[i], chiSo: i, cau: 0, nac: 0, truot: 0, daRa: {}, conCa: null };
+    moMan();
+  }
+
+  // Cắt cảnh mở màn: khoe phong cảnh hồ rồi mới thả cần
+  function moMan() {
+    thaoPhim();
+    goc.innerHTML = '';
     var ho = van.ho;
+    var khung = el('div', 'panel cat-canh');
+    khung.style.setProperty('--mau', ho.mau);
+    khung.innerHTML =
+      anhCauCa(tenTranh(van.chiSo), 'tranh-canh', 'jpg') +
+      '<h2>' + ho.emoji + ' ' + ho.ten + '</h2>' +
+      '<p class="lead">' + ho.mota + '<br><small>Mức <b>' + ho.mucDo + '</b> · hôm nay mình rình con <b>' +
+      loaiCa(van.chiSo) + '</b></small></p>' +
+      '<p class="luat">Trả lời đúng thì kéo cá gần thêm một nấc. Đủ <b>' + SO_NAC +
+      ' nấc</b> là bắt được. Sai thì thuỷ quái quậy, cá tuột lại một nấc.</p>';
+    var nut = el('button', 'btn go', '🎣 Thả cần!');
+    nut.type = 'button';
+    nut.addEventListener('click', raCauHoi);
+    var hang = el('div', 'actions');
+    hang.appendChild(nut);
+    khung.appendChild(hang);
+    goc.appendChild(khung);
+  }
+
+  function raCauHoi() {
+    thaoPhim();
+    van.loiNhan = null;
+    van.cau += 1;
+    if (van.cau > SO_CAU) return xong();
+    van.deBai = sinhCau();
+    ve();
+  }
+
+  /* ---------- Vẽ màn chơi ---------- */
+
+  function ve(hieuUng) {
+    var ho = van.ho, nac = van.nac;
     goc.innerHTML = '';
 
-    var khung = el('div', 'panel man-choi');
+    var khung = el('div', 'panel man-choi man-cau');
     khung.style.setProperty('--mau', ho.mau);
 
     var tren = el('div', 'thanh-tren');
     tren.appendChild(el('span', 'ten-man', ho.emoji + ' ' + ho.ten + ' · ' + ho.mucDo));
-    tren.appendChild(el('span', 'tim', '🐟 ' + van.duoc + '/' + SO_CAU));
+    var chuoi = '';
+    for (var k = 0; k < SO_NAC; k++) chuoi += k < nac ? '🐟' : '<span class="mat">·</span>';
+    tren.appendChild(el('span', 'tim', chuoi));
     khung.appendChild(tren);
 
-    // cảnh hồ: bé câu bên trái, cá bơi dưới nước, xô bên phải
-    var canh = el('div', 'ho-ca-canh');
+    /* --- cảnh hồ --- */
+    var canh = el('div', 'ho-ca-canh canh-moi');
     canh.style.setProperty('--nen', ho.nen);
-    canh.appendChild(el('div', 'nguoi-cau', hinh('cau-ca/nguoi-cau', 92)));
+    canh.innerHTML = anhCauCa(tenTranh(van.chiSo), 'tranh-nen', 'jpg');
+
+    // cá Lottie cũ bơi lởn vởn làm nền cho sinh động
+    var dan = el('div', 'dan-boi');
+    ho.dan.slice(0, 3).forEach(function (c, j) {
+      var o = el('span', 'ca-nen ca-nen-' + j, hinh(c, 34 + j * 6));
+      dan.appendChild(o);
+    });
+    canh.appendChild(dan);
     canh.appendChild(el('div', 'mat-nuoc'));
 
-    var conCa = el('div', 'con-ca' + (hieuUng === 'cau-duoc' ? ' nhay-len' : hieuUng === 'mat' ? ' boi-mat' : ''),
-      hinh(van.conCa || ho.dan[0], ho.coCa));
-    canh.appendChild(conCa);
+    // bé câu: khung nào tuỳ nấc đang tới đâu
+    var khungBe = Math.min(nac + 1, SO_NAC);
+    var TEN_KHUNG = ['cau-1-quang', 'cau-2-keo', 'cau-3-gan', 'cau-4-len', 'cau-5-giat', 'cau-6-duoc'];
+    canh.appendChild(el('div', 'be-cau' + (hieuUng === 'keo' ? ' gang' : ''),
+      anhCauCa(TEN_KHUNG[khungBe - 1], 'be-hinh')));
 
-    var xo = el('div', 'cai-xo', hinh('cau-ca/xo', 66) +
-      (van.duoc ? '<span class="dem-ca">' + van.duoc + '</span>' : ''));
-    canh.appendChild(xo);
+    // con cá: càng nhiều nấc càng gần bờ, càng nổi cao, càng to
+    var tren4 = nac >= 4;
+    var ca = el('div', 'ca-dang-cau' + (hieuUng === 'keo' ? ' giut' : '') + (tren4 ? ' khoi-nuoc' : ''),
+      anhCauCa(tenCa(van.chiSo) + (tren4 ? '-giay' : '-boi'), 'ca-hinh'));
+    ca.style.setProperty('--gan', nac);
+    canh.appendChild(ca);
+
+    // thuỷ quái ló lên khi vừa trả lời sai
+    if (hieuUng === 'quai') {
+      canh.appendChild(el('div', 'quai-nuoc',
+        anhCauCa(tenQuai(van.chiSo) + '-hu', 'quai-hinh')));
+    } else if (hieuUng === 'quai-chay') {
+      canh.appendChild(el('div', 'quai-nuoc di-mat',
+        anhCauCa(tenQuai(van.chiSo) + '-chay', 'quai-hinh')));
+    }
+
+    canh.appendChild(el('div', 'cai-xo', hinh('cau-ca/xo', 58)));
     khung.appendChild(canh);
 
     khung.appendChild(el('div', 'meta',
       '<span>Câu ' + van.cau + ' / ' + SO_CAU + '</span>' +
-      '<span class="hits">🪣 Trong xô: ' + van.duoc + '</span>'));
+      '<span class="hits">🎣 Nấc ' + nac + '/' + SO_NAC + '</span>'));
 
     van.oTraLoi = global.OTraLoi.ve(khung, van.deBai, {
       nhanNop: '🎣 Giật cần',
@@ -220,78 +301,135 @@
       khiTraLoi: function (dung, _n, phanHoi) { cham(dung, van.deBai, phanHoi); }
     });
 
+    // Vẽ lại cảnh là dựng lại cả ô trả lời, lời nhắn vừa hiện bị xoá sạch —
+    // mà đó là chỗ báo đáp án đúng, bé cần đọc. Chép lại vào ô mới.
+    if (van.loiNhan && van.oTraLoi.oPhanHoi) {
+      van.oTraLoi.oPhanHoi.className = van.loiNhan.lop;
+      van.oTraLoi.oPhanHoi.innerHTML = van.loiNhan.chu;
+    }
+
     goc.appendChild(khung);
   }
+
+  /* ---------- Chấm một câu ---------- */
+
+  var LOI_NAC = [
+    '🎣 Cắn câu rồi! Giữ chặt nhé.',
+    '💪 Bắt đầu kéo nào!',
+    '🌊 Cá đang lại gần hơn!',
+    '🐟 Thấy cá rồi, kéo nữa!',
+    '🙌 Cá sắp lên bờ rồi!'
+  ];
 
   function cham(dung, q, phanHoi) {
     thaoPhim();
 
     if (dung) {
-      van.duoc += 1;
+      van.nac += 1;
       phanHoi.className = 'feedback pop ok';
-      phanHoi.innerHTML = Q.pick(['🎣 Câu được rồi!', '🐟 Cá vào xô!', '⭐ Giỏi quá!', '🙌 Trúng mánh!']);
-      setTimeout(function () { van.dangChuyen = true; ve('cau-duoc'); van.dangChuyen = false; setTimeout(raCauHoi, 620); }, 740);
+      phanHoi.innerHTML = van.nac >= SO_NAC ? '🎉 Bắt được rồi!' : LOI_NAC[van.nac - 1];
+      van.loiNhan = { lop: phanHoi.className, chu: phanHoi.innerHTML };
+      setTimeout(function () {
+        if (van.nac >= SO_NAC) return batDuoc();
+        van.dangChuyen = true; ve('keo'); van.dangChuyen = false;
+        setTimeout(raCauHoi, 640);
+      }, 820);
       return;
     }
 
+    van.truot += 1;
+    var tut = van.nac > 0;
+    if (tut) van.nac -= 1;
     phanHoi.className = 'feedback pop bad';
-    phanHoi.innerHTML = '🫧 Cá bơi mất rồi — đáp án là <b>' +
-      String(q.answer).replace(/<[^>]+>/g, ' ').trim() + '</b>' + (q.after ? ' ' + q.after : '');
-    setTimeout(function () { van.dangChuyen = true; ve('mat'); van.dangChuyen = false; setTimeout(raCauHoi, 620); }, 2000);
+    phanHoi.innerHTML = '🫧 Chưa đúng — đáp án là <b>' +
+      String(q.answer).replace(/<[^>]+>/g, ' ').trim() + '</b>' + (q.after ? ' ' + q.after : '') +
+      '<br><small>' + (tut ? 'Thuỷ quái quậy, cá tuột lại một nấc!' : 'Thuỷ quái quậy, may mà cá chưa cắn câu.') + '</small>';
+    van.loiNhan = { lop: phanHoi.className, chu: phanHoi.innerHTML };
+
+    setTimeout(function () { van.dangChuyen = true; ve('quai'); van.dangChuyen = false; }, 120);
+    setTimeout(function () { van.dangChuyen = true; ve('quai-chay'); van.dangChuyen = false; }, 1200);
+    setTimeout(raCauHoi, 2300);
   }
 
-  /* ---------- Khoe xô cá ---------- */
+  /* ---------- Bắt được cá: cắt cảnh kết ---------- */
 
-  function xong() {
+  function batDuoc() {
     thaoPhim();
+    var sao = van.truot === 0 ? 3 : van.truot <= 2 ? 2 : 1;
+
     tt = doc();
-    if ((tt.totNhat[van.ho.id] || 0) < van.duoc) tt.totNhat[van.ho.id] = van.duoc;
-    tt.tongCa = (tt.tongCa || 0) + van.duoc;
+    if ((tt.totNhat[van.ho.id] || 0) < sao) tt.totNhat[van.ho.id] = sao;
+    tt.tongCa = (tt.tongCa || 0) + 1;
     ghi(tt);
 
     goc.innerHTML = '';
-    var khung = el('div', 'panel');
-
-    // bé cầm xô, trong xô là đúng số cá câu được
-    var khoe = el('div', 'khoe-xo');
-    khoe.innerHTML = hinh('cau-ca/nguoi-cau', 104) +
-      '<div class="xo-to">' + hinh('cau-ca/xo', 112) +
-      '<div class="ca-trong-xo">' + new Array(van.duoc + 1).join('🐟') + '</div></div>';
-    khung.appendChild(khoe);
-
-    var loi = van.duoc === SO_CAU ? 'Tuyệt vời, bé câu được hết cả hồ!'
-            : van.duoc >= SO_CAU * 0.7 ? 'Giỏi lắm, xô cá đầy rồi!'
-            : van.duoc >= SO_CAU * 0.4 ? 'Khá lắm, lần sau câu được nhiều hơn nhé!'
-            : 'Cá hồ này khó câu đấy — mình thử lại nhé!';
-
-    khung.appendChild(el('h2', null, '🪣 Đã hoàn thành!'));
-    khung.appendChild(el('div', 'so-ca', van.duoc + '<span class="tren">/' + SO_CAU + ' con cá</span>'));
-    khung.appendChild(el('p', 'lead', loi + '<br><small>' + van.ho.emoji + ' ' + van.ho.ten +
-      ' · mức ' + van.ho.mucDo + '</small>'));
+    var khung = el('div', 'panel cat-canh ket-man');
+    khung.style.setProperty('--mau', van.ho.mau);
+    khung.innerHTML =
+      anhCauCa(tenTranh(van.chiSo), 'tranh-canh', 'jpg') +
+      '<div class="om-ca">' + anhCauCa(tenOm(van.chiSo), 'om-hinh') + '</div>' +
+      '<h2>🎉 Bắt được ' + loaiCa(van.chiSo) + ' rồi!</h2>' +
+      '<div class="sao-to">' + '⭐'.repeat(sao) + '<span class="mo-sao">' + '⭐'.repeat(3 - sao) + '</span></div>' +
+      '<p class="lead">' + (van.truot === 0
+        ? 'Không trượt câu nào — tay câu cừ khôi!'
+        : 'Trượt ' + van.truot + ' câu thôi. Lần sau chắc tay hơn nhé!') + '</p>';
 
     var actions = el('div', 'actions');
-    var lai = el('button', 'btn go', '🎣 Câu lại hồ này');
+    var lai = el('button', 'btn go', '🎣 Câu con nữa');
     lai.type = 'button';
     lai.addEventListener('click', function () { batDauCau(van.chiSo); });
     actions.appendChild(lai);
 
-    var doi = el('button', 'btn ghost', '🏞️ Đổi hồ khác');
+    if (van.chiSo + 1 < HO.length) {
+      var tiep = el('button', 'btn ghost', '➡️ Sang hồ sâu hơn');
+      tiep.type = 'button';
+      tiep.addEventListener('click', function () { batDauCau(van.chiSo + 1); });
+      actions.appendChild(tiep);
+    }
+
+    var doi = el('button', 'btn ghost', '🏞️ Chọn hồ');
     doi.type = 'button';
     doi.addEventListener('click', chonHo);
     actions.appendChild(doi);
+    khung.appendChild(actions);
 
+    goc.appendChild(khung);
+    confetti();
+    if (global.DanhHieu) global.DanhHieu.baoMoiDat();
+  }
+
+  /* ---------- Hết câu mà chưa kéo được: cá sổng ---------- */
+
+  function xong() {
+    thaoPhim();
+    goc.innerHTML = '';
+    var khung = el('div', 'panel cat-canh');
+    khung.style.setProperty('--mau', van.ho.mau);
+    khung.innerHTML =
+      anhCauCa(tenTranh(van.chiSo), 'tranh-canh', 'jpg') +
+      '<div class="om-ca">' + anhCauCa(tenQuai(van.chiSo) + '-hu', 'om-hinh') + '</div>' +
+      '<h2>🫧 Cá sổng mất rồi!</h2>' +
+      '<p class="lead">Mới kéo được <b>' + van.nac + '/' + SO_NAC + ' nấc</b> thì hết lượt. ' +
+      'Thuỷ quái cười khoái chí lắm — mình câu lại cho nó biết tay nhé!</p>';
+
+    var actions = el('div', 'actions');
+    var lai = el('button', 'btn go', '🎣 Câu lại');
+    lai.type = 'button';
+    lai.addEventListener('click', function () { batDauCau(van.chiSo); });
+    actions.appendChild(lai);
+    var doi = el('button', 'btn ghost', '🏞️ Đổi hồ dễ hơn');
+    doi.type = 'button';
+    doi.addEventListener('click', chonHo);
+    actions.appendChild(doi);
     var ve_ = el('a', 'btn ghost', '🏠 Trang chủ');
     ve_.href = 'index.html';
     actions.appendChild(ve_);
     khung.appendChild(actions);
-
     goc.appendChild(khung);
-    if (van.duoc >= SO_CAU * 0.7) confetti();
-    if (global.DanhHieu) global.DanhHieu.baoMoiDat();
   }
 
   global.GameCauCa = {
-    HO: HO, SO_CAU: SO_CAU,
+    HO: HO, SO_CAU: SO_CAU, SO_NAC: SO_NAC,
     /* Lớp 2, 3, 4 dùng chung bộ máy game này, chỉ thay bộ hồ và khoá lưu.
        Không truyền gì thì vẫn là bộ hồ của lớp 1. */
     _conTiepTheo: function () { van.conCa = conTiepTheo(); return van.conCa; },
@@ -302,7 +440,7 @@
       goc = document.getElementById(idGoc || 'game');
       chonHo();
     },
-    _moVan: function (i) { van = { ho: HO[i], chiSo: i, cau: 0, duoc: 0, daRa: {} }; },
+    _moVan: function (i) { van = { ho: HO[i], chiSo: i, cau: 0, nac: 0, truot: 0, daRa: {} }; },
     _cauTiep: function () { return sinhCau(); }
   };
 })(window);

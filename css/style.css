@@ -3081,3 +3081,204 @@ body.khoa-cuon { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .san-sao .sao-nen i, .con-quai.chi-ra, .cong-dap.chi-ra { animation: none; }
 }
+
+/* ===================================================================
+   Game câu cá: cắt cảnh và màn chơi sáu nấc
+   =================================================================== */
+
+/* ---- trang cắt cảnh mở màn và kết màn ---- */
+
+.panel.cat-canh { overflow: hidden; text-align: center; }
+
+.cat-canh .tranh-canh {
+  display: block;
+  width: calc(100% + 36px);
+  margin: -20px -18px 14px;
+  height: auto;
+  border-radius: var(--r-lg) var(--r-lg) 18px 18px;
+}
+
+.cat-canh h2 { margin: 6px 0 4px; }
+.cat-canh .lead { margin: 0 0 10px; }
+
+.cat-canh .luat {
+  margin: 0 auto 14px;
+  max-width: 420px;
+  padding: 10px 14px;
+  border-radius: var(--r-md);
+  background: var(--soft);
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.cat-canh .om-ca { margin: -46px 0 2px; }
+
+.cat-canh .om-hinh {
+  height: 180px;
+  width: auto;
+  filter: drop-shadow(0 6px 10px rgba(43, 47, 85, 0.3));
+  animation: om-khoe 0.6s cubic-bezier(0.22, 1.3, 0.4, 1);
+}
+
+@keyframes om-khoe {
+  from { opacity: 0; transform: translateY(26px) scale(0.8); }
+  to { opacity: 1; transform: none; }
+}
+
+.cat-canh .sao-to { font-size: 30px; letter-spacing: 3px; margin-bottom: 6px; }
+.cat-canh .sao-to .mo-sao { opacity: 0.25; }
+
+/* ---- màn chơi ---- */
+
+/* Cảnh câu đi theo hệ bố cục đè: cảnh phủ kín khung, ô đề bài nổi lên trên.
+   Biến --mat là mép nước (tính từ đỉnh khung xuống), --day là chiều cao ô đề
+   bài. Mọi thứ trong cảnh bám theo hai biến đó nên câu hỏi dài mấy thì cậu bé
+   vẫn đứng trên mặt nước, không bị ô đề nuốt mất. */
+
+.canh-moi .tranh-nen {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: var(--mat);
+  width: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.canh-moi .mat-nuoc {
+  position: absolute;
+  top: var(--mat);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  height: auto;
+  background: linear-gradient(180deg, rgba(120, 198, 255, 0.9), rgba(28, 86, 164, 0.95));
+  box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* đàn cá Lottie cũ bơi lởn vởn dưới nước cho sinh động */
+.canh-moi .dan-boi {
+  position: absolute;
+  top: var(--mat);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.canh-moi .ca-nen {
+  position: absolute;
+  opacity: 0.45;
+  animation: ca-boi-qua 12s linear infinite;
+}
+
+.canh-moi .ca-nen-0 { top: 16%; animation-duration: 14s; }
+.canh-moi .ca-nen-1 { top: 44%; animation-duration: 10s; animation-delay: -4s; }
+.canh-moi .ca-nen-2 { top: 68%; animation-duration: 16s; animation-delay: -9s; }
+
+@keyframes ca-boi-qua {
+  from { left: -18%; transform: scaleX(-1); }
+  to { left: 106%; transform: scaleX(-1); }
+}
+
+/* cậu bé đứng ngay trên mép nước */
+.canh-moi .be-cau {
+  position: absolute;
+  bottom: calc(100% - var(--mat) - 4px);
+  left: 2px;
+  z-index: 4;
+}
+
+.canh-moi .be-hinh {
+  display: block;
+  /* --mat là một biểu thức max() nên nhân chia trong clamp() không tính được,
+     ảnh rơi về cỡ gốc 210px và trùm lên cả thanh trạng thái. Đặt số cố định. */
+  height: 104px;
+  width: auto;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
+}
+
+.canh-moi .be-cau.gang .be-hinh { animation: be-gang 0.5s ease; }
+
+@keyframes be-gang {
+  30% { transform: translateX(-5px) rotate(-3deg); }
+  70% { transform: translateX(2px) rotate(1deg); }
+}
+
+/* Con cá: --gan chạy 0..5. Càng nhiều nấc càng dịch về phía cậu bé và càng
+   nổi lên; tới nấc 4 thì vượt hẳn mép nước, bay lên trời. */
+.canh-moi .ca-dang-cau {
+  position: absolute;
+  z-index: 2;
+  right: calc(9% + var(--gan) * 7%);
+  top: calc(var(--mat) + 46px - var(--gan) * 17px);
+  transition: right 0.5s ease, top 0.5s ease, transform 0.5s ease;
+  transform: scale(calc(0.66 + var(--gan) * 0.09));
+}
+
+.canh-moi .ca-hinh {
+  display: block;
+  height: 58px;
+  width: auto;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
+}
+
+.canh-moi .ca-dang-cau.khoi-nuoc { z-index: 5; }
+.canh-moi .ca-dang-cau.giut .ca-hinh { animation: ca-giut 0.5s ease; }
+
+@keyframes ca-giut {
+  25% { transform: rotate(-16deg) translateY(-7px); }
+  65% { transform: rotate(12deg) translateY(2px); }
+}
+
+/* thuỷ quái ló lên quậy, ngay dưới mép nước */
+.canh-moi .quai-nuoc {
+  position: absolute;
+  right: 10%;
+  top: calc(var(--mat) + 2px);
+  z-index: 6;
+  animation: quai-loi 0.45s cubic-bezier(0.22, 1.3, 0.4, 1);
+}
+
+.canh-moi .quai-hinh {
+  display: block;
+  height: 72px;
+  width: auto;
+  filter: drop-shadow(0 4px 7px rgba(0, 0, 0, 0.45));
+}
+
+@keyframes quai-loi {
+  from { opacity: 0; transform: translateY(44px) scale(0.6); }
+  to { opacity: 1; transform: none; }
+}
+
+.canh-moi .quai-nuoc.di-mat { animation: quai-lui 0.9s ease forwards; }
+
+@keyframes quai-lui {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translate(26px, 40px) scale(0.7); }
+}
+
+.canh-moi .cai-xo {
+  position: absolute;
+  right: 6px;
+  bottom: calc(100% - var(--mat) - 2px);
+  z-index: 3;
+}
+
+@media (max-width: 480px) {
+  .canh-moi .be-hinh { height: 88px; }
+  .canh-moi .ca-hinh { height: 50px; }
+  .canh-moi .quai-hinh { height: 62px; }
+  .cat-canh .om-hinh { height: 150px; }
+  .cat-canh .luat { font-size: 13.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canh-moi .ca-nen { animation: none; }
+}
