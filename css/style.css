@@ -2650,6 +2650,43 @@ body.khoa-cuon { overflow: hidden; }
   50% { transform: translateX(-50%) scaleX(-1) translateY(-3px); }
 }
 
+/* ---- con quái canh ải: lơ lửng góc trên bên phải, hai dáng xếp chồng ---- */
+
+.quai-ai {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 78px;
+  height: 78px;
+  pointer-events: none;
+  animation: quai-lo-lung 2.8s ease-in-out infinite;
+}
+
+.quai-ai .anh-quai {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: none;
+  height: 78px;
+  width: auto;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
+  user-select: none;
+}
+
+.quai-ai.dang-hu .anh-hu,
+.quai-ai.dang-xiu .anh-xiu { display: block; }
+
+/* xỉu thì ngồi bệt nên ảnh thấp và rộng hơn */
+.quai-ai.dang-xiu .anh-quai { height: 66px; }
+
+@keyframes quai-lo-lung {
+  50% { transform: translateY(-7px); }
+}
+
+/* đội trúng ô sai: con này nhảy xuống ô nên góc phải trống một lúc */
+.quai-ai.an { visibility: hidden; }
+
 /* ---- trái tim và con ma bay ra ---- */
 
 .bay-tim, .bay-ma {
@@ -2661,7 +2698,14 @@ body.khoa-cuon { overflow: hidden; }
 
 .bay-tim { font-size: 24px; animation: tim-bay 1.3s ease-out forwards; }
 .bay-ma { animation: ma-hu 1.5s ease-out forwards; }
-.bay-ma:not(:has(.hoat)) { font-size: 46px; }
+.bay-ma:not(:has(.hoat, .anh-hu-to)) { font-size: 46px; }
+
+.bay-ma .anh-hu-to {
+  display: block;
+  height: 76px;
+  width: auto;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.55));
+}
 
 @keyframes tim-bay {
   0% { opacity: 0; transform: translate(-50%, 10px) scale(0.5); }
@@ -2732,7 +2776,7 @@ body.khoa-cuon { overflow: hidden; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .san-dau .nen-ma span, .hop-dap.chi-ra { animation: none; }
+  .san-dau .nen-ma span, .hop-dap.chi-ra, .quai-ai { animation: none; }
 }
 
 /* dải tiến độ gọn của game Halloween: thay cho con đường cũ */

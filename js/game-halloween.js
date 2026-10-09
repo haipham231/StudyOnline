@@ -22,33 +22,33 @@
      ToanL1 và TiengVietL1 — gọi sớm là cả mô-đun vỡ lúc nạp. */
   function boDeMacDinh() {
     return [
-      { ten: 'Cổng Bí Ngô', hinh: 'bi-ngo', emoji: '🎃', mau: '#ff8f3c', soCau: 6,
+      { ten: 'Cổng Bí Ngô', hinh: 'bi-ngo', quai: 'bi-ngo', emoji: '🎃', mau: '#ff8f3c', soCau: 6,
         mota: 'Cộng trừ phạm vi 10 · chữ cái và thanh điệu',
         toan: function () { return T.congTru(10); },
         tviet: mix(V.chuHoaThuong, V.timThanh) },
 
-      { ten: 'Lối Mòn Ma Trơi', hinh: 'ma', emoji: '👻', mau: '#8b7bf7', soCau: 6,
+      { ten: 'Lối Mòn Ma Trơi', hinh: 'ma', quai: 'ma', emoji: '👻', mau: '#8b7bf7', soCau: 6,
         mota: 'Tách gộp số · ghép vần',
         toan: function () { return T.tachGop(10); },
         tviet: mix(V.ghepVan, V.timAmDau) },
 
-      { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
+      { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', quai: 'doi', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
         mota: 'Cộng trừ phạm vi 20 · quy tắc chính tả',
         toan: function () { return T.congTru(20); },
         tviet: mix(V.quyTacChinhTa, V.timVan) },
 
-      { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
+      { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', quai: 'meo-den', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
         mota: 'So sánh và dãy số · chính tả dễ lẫn',
         toan: mix(function () { return T.soSanh(20); }, function () { return T.lonNhatBeNhat(20); }),
         tviet: V.vietDung },
 
-      { ten: 'Hang Rồng Lửa', hinh: 'rong', emoji: '🐉', mau: '#ff7a7a', soCau: 7,
+      { ten: 'Hang Rồng Lửa', hinh: 'rong', quai: 'than-chet', emoji: '🐉', mau: '#ff7a7a', soCau: 7,
         mota: 'Toán đố · từ ngữ và câu',
         toan: mix(function () { return T.choThem(20, false); }, function () { return T.choDi(20, false); },
                   function () { return T.roiKhoi(20); }),
         tviet: mix(V.timTuLoai, V.traiNghia, V.demTieng) },
 
-      { ten: 'Lâu Đài Phù Thuỷ', hinh: 'phu-thuy', emoji: '🧙‍♀️', mau: '#6a58e0', soCau: 8, trum: true,
+      { ten: 'Lâu Đài Phù Thuỷ', hinh: 'phu-thuy', quai: 'phu-thuy', emoji: '🧙‍♀️', mau: '#6a58e0', soCau: 8, trum: true,
         mota: 'Ải cuối — trộn toàn bộ toán và tiếng Việt',
         toan: mix(T.congTruKhongNho, T.chucDonVi, function () { return T.dienSo(20); },
                   function () { return T.honKem(20); }),
@@ -222,6 +222,7 @@
 
     van.oTraLoi = global.ManNhay.ve(khung, van.cau, {
       khoaSan: van.dangChuyen,
+      quai: ai.quai,
       coLoa: van.cau.mon === TEN_MON[1] && TEN_MON[1] === 'Tiếng Việt',
       doc: Q.docTo,
       khiTraLoi: function (dung, _n, phanHoi) { cham(dung, van.cau, phanHoi); }

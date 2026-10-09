@@ -41,27 +41,27 @@
     khoa: 'studyonline:game-halloween-l2',
     mon: ['Tính', 'Đố'],
     ai: [
-    { ten: 'Cổng Bí Ngô', hinh: 'bi-ngo', emoji: '🎃', mau: '#ff8f3c', soCau: 6,
+    { ten: 'Cổng Bí Ngô', hinh: 'bi-ngo', quai: 'bi-ngo', emoji: '🎃', mau: '#ff8f3c', soCau: 6,
       mota: 'Cộng trừ trong 100 · tên gọi thành phần',
       toan: function () { return T.congTru100(false); },
       tviet: T.tenThanhPhan },
 
-    { ten: 'Lối Mòn Ma Trơi', hinh: 'ma', emoji: '👻', mau: '#8b7bf7', soCau: 6,
+    { ten: 'Lối Mòn Ma Trơi', hinh: 'ma', quai: 'xac-uop', emoji: '👻', mau: '#8b7bf7', soCau: 6,
       mota: 'Bảng nhân chia · tìm x',
       toan: function () { return Quiz.pick([T.nhanBang, T.chiaBang])(); },
       tviet: T.timX },
 
-    { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
+    { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', quai: 'nguoi-soi', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
       mota: 'Cộng trừ có nhớ · số có ba chữ số',
       toan: function () { return T.congTru100(true); },
       tviet: function () { return Quiz.pick([T.cauTaoSo, T.soSanh3CS])(); } },
 
-    { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
+    { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', quai: 'nhen', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
       mota: 'Phạm vi 1000 · đo lường',
       toan: T.congTru1000,
       tviet: function () { return Quiz.pick([T.doDoDai2, T.canNang])(); } },
 
-    { ten: 'Lâu Đài Phù Thuỷ', hinh: 'phu-thuy', emoji: '🧙', mau: '#6a58e0', soCau: 7, trum: true,
+    { ten: 'Lâu Đài Phù Thuỷ', hinh: 'phu-thuy', quai: 'phu-thuy', emoji: '🧙', mau: '#6a58e0', soCau: 7, trum: true,
       mota: 'Trộn tất cả · toán đố',
       toan: function () { return Quiz.pick([T.congTru1000, T.nhanBang, T.chiaBang, T.timX])(); },
       tviet: function () { return Quiz.pick([T.doNhieuHon, T.doGapSoLan, T.doChiaDeu, T.duongGapKhuc])(); } }

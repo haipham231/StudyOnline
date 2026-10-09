@@ -41,27 +41,27 @@
     khoa: 'studyonline:game-halloween-l3',
     mon: ['Tính', 'Đố'],
     ai: [
-    { ten: 'Cổng Bí Ngô', hinh: 'bi-ngo', emoji: '🎃', mau: '#ff8f3c', soCau: 6,
+    { ten: 'Cổng Bí Ngô', hinh: 'bi-ngo', quai: 'bi-ngo', emoji: '🎃', mau: '#ff8f3c', soCau: 6,
       mota: 'Bảng nhân chia · gấp giảm',
       toan: function () { return Quiz.pick([T.bangNhan, T.bangChia])(); },
       tviet: T.gapGiam },
 
-    { ten: 'Lối Mòn Ma Trơi', hinh: 'ma', emoji: '👻', mau: '#8b7bf7', soCau: 6,
+    { ten: 'Lối Mòn Ma Trơi', hinh: 'ma', quai: 'ma', emoji: '👻', mau: '#8b7bf7', soCau: 6,
       mota: 'Nhân ngoài bảng · tìm x',
       toan: function () { return T.nhanNgoaiBang(2); },
       tviet: T.timXNhanChia },
 
-    { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
+    { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', quai: 'frankenstein', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
       mota: 'Chia có dư · biểu thức',
       toan: T.chiaCoDu,
       tviet: function () { return Quiz.pick([T.bieuThuc, T.bieuThucNgoac])(); } },
 
-    { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
+    { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', quai: 'doi', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
       mota: 'Cộng trừ số lớn · chu vi diện tích',
       toan: function () { return T.congTruLon(10000); },
       tviet: function () { return Quiz.pick([T.chuViChuNhat, T.dienTichChuNhat, T.hinhVuongL3])(); } },
 
-    { ten: 'Lâu Đài Phù Thuỷ', hinh: 'phu-thuy', emoji: '🧙', mau: '#6a58e0', soCau: 7, trum: true,
+    { ten: 'Lâu Đài Phù Thuỷ', hinh: 'phu-thuy', quai: 'phu-thuy', emoji: '🧙', mau: '#6a58e0', soCau: 7, trum: true,
       mota: 'Trộn tất cả · toán đố',
       toan: function () { return Quiz.pick([T.chiaCoDu, T.bieuThucNgoac, T.doiDonViL3, T.timXNhanChia])(); },
       tviet: function () { return Quiz.pick([T.doHaiBuoc, T.doTimPhan, T.doGapLan])(); } }

@@ -40,6 +40,17 @@
 
   /* ---------- Màn chơi ---------- */
 
+  /* Mười con quái canh ải, mỗi con hai dáng: hù và xỉu. Trang của từng lớp
+     chọn bộ riêng qua tuyChon.quai nên chơi lớp này xong sang lớp khác
+     không gặp lại y hệt. */
+  var QUAI = ['bi-ngo', 'ma', 'nguoi-soi', 'xac-uop', 'meo-den',
+              'phu-thuy', 'frankenstein', 'than-chet', 'nhen', 'doi'];
+
+  function anhQuai(ten, dang, cls) {
+    return '<img class="' + cls + '" src="' + GOC + 'assets/halloween/' + ten + '-' +
+      dang + '.png" alt="" draggable="false">';
+  }
+
   var CAO_BE = 74;            // chiều cao khung va chạm của nhân vật, px
   var RONG_BE = 48;
 
@@ -76,7 +87,7 @@
     var dau = el('div', 'san-dau');
     dau.innerHTML = '<div class="nen-ma">' +
       ['🦇', '🕸️', '🌙', '🕷️'].map(function (e, k) {
-        return '<span style="left:' + (8 + k * 26) + '%">' + e + '</span>';
+        return '<span style="left:' + (6 + k * 19) + '%">' + e + '</span>';
       }).join('') + '</div>';
 
     var hopDS = nhanDS.map(function (nhan) {
@@ -96,6 +107,13 @@
       return '<img class="anh-be anh-' + d + '" src="' + GOC + 'assets/ma-ca-rong/' + d +
         '.png" alt="" draggable="false">';
     }).join(''));
+    // con quái canh ải đứng lơ lửng góc trên bên phải, nhìn xuống sân
+    var tenQuai = QUAI.indexOf(tuyChon.quai) >= 0 ? tuyChon.quai : QUAI[0];
+    var quai = el('div', 'quai-ai dang-hu',
+      anhQuai(tenQuai, 'hu', 'anh-quai anh-hu') +
+      anhQuai(tenQuai, 'xiu', 'anh-quai anh-xiu'));
+    dau.appendChild(quai);
+
     dau.appendChild(be);
     dau.appendChild(el('div', 'mat-dat'));
     san.appendChild(dau);
@@ -235,19 +253,33 @@
       h.classList.add('bi-doi', dung ? 'trung' : 'truot');
 
       var bay = el('div', dung ? 'bay-tim' : 'bay-ma',
-        dung ? '💖💖💖' : global.HoatHinh ? global.HoatHinh.ve('ma', 64) : '👻');
+        dung ? '💖💖💖' : anhQuai(tenQuai, 'hu', 'anh-hu-to'));
       bay.style.left = h.offsetLeft + h.offsetWidth / 2 + 'px';
       bay.style.bottom = (yHop + h.offsetHeight) + 'px';
       dau.appendChild(bay);
 
       if (dung) {
         doiDang('nhay');
+        // đội trúng ô đúng thì con quái canh ải xỉu một lúc
+        quai.classList.remove('dang-hu');
+        quai.classList.add('dang-xiu');
+        setTimeout(function () {
+          if (!quai.isConnected) return;
+          quai.classList.remove('dang-xiu');
+          quai.classList.add('dang-hu');
+        }, 1400);
       } else {
         // Đụng đầu một nhịp rồi rơi xuống nằm, sao bay quanh đầu.
         // Không gác bằng cờ xong: game dọn màn chơi ngay trong khiTraLoi,
         // gác vậy thì cú té không bao giờ diễn ra. Gác bằng "ảnh còn trên
         // trang hay không" mới đúng.
         doiDang('dung-dau');
+        // chính con ở góc vừa nhảy ra khỏi ô sai, nên giấu nó đi một lúc
+        // kẻo thành hai con y hệt đứng cùng lúc
+        quai.classList.add('an');
+        setTimeout(function () {
+          if (quai.isConnected) quai.classList.remove('an');
+        }, 1500);
         setTimeout(function () {
           if (!be.isConnected) return;
           doiDang('te');
