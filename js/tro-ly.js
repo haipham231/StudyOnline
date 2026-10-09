@@ -232,7 +232,13 @@
   /* Gõ chữ ra từ từ cho giống đang nói, và nếu bật tiếng thì thầy đọc luôn
      từng câu. Câu sau chỉ bắt đầu khi câu trước vừa gõ xong vừa đọc xong.
      Trả về hàm tua nhanh tới hết. */
+  // dòng có số thứ tự bước thì xếp theo cột, chữ xuống dòng vẫn thẳng hàng
+  function lopDongChung(html) {
+    return 'cau' + (/^<span class="buoc">/.test(html) ? ' co-buoc' : '');
+  }
+
   function goChu(oChua, cacCau, xong, coTieng) {
+    var lopDong = lopDongChung;
     var i = 0, huy = false, hen = null, dong = null, chuoi = null, vt = 0;
     var goXong = false, noiXong = false, daSang = false;
 
@@ -289,11 +295,6 @@
     function lan() {
       // luôn giữ dòng mới nhất trong tầm mắt
       oChua.scrollTop = oChua.scrollHeight;
-    }
-
-    // dòng có số thứ tự bước thì xếp theo cột, chữ xuống dòng vẫn thẳng hàng
-    function lopDong(html) {
-      return 'cau' + (/^<span class="buoc">/.test(html) ? ' co-buoc' : '');
     }
 
     cauSau();
@@ -368,6 +369,22 @@
     chan.appendChild(nutHieu);
     hop.appendChild(chan);
 
+    /* Ướm thử cả bài giảng một lượt để chọn cỡ chữ vừa khung, rồi mới cho
+       thầy nói. Làm vậy chữ không nhảy cỡ giữa chừng, mà bài dài tới đâu
+       màn hình điện thoại vẫn chứa trọn một bài. */
+    function chonCoChu(cacCau) {
+      var co = 16;
+      loi.style.fontSize = co + 'px';
+      loi.innerHTML = cacCau.map(function (c) {
+        return '<p class="' + lopDongChung(c) + '">' + c + '</p>';
+      }).join('');
+      while (co > 12.5 && bong.scrollHeight > bong.clientHeight) {
+        co -= 0.5;
+        loi.style.fontSize = co + 'px';
+      }
+      loi.innerHTML = '';
+    }
+
     function ve() {
       if (dangGo) dangGo.dung();
       loi.innerHTML = '';
@@ -377,7 +394,9 @@
       nutTua.disabled = false;
       hop.classList.add('dang-noi');
       thoiNoi();
-      dangGo = goChu(loi, loiGiang(cacSai[k], k + 1, cacSai.length), function () {
+      var cacCau = loiGiang(cacSai[k], k + 1, cacSai.length);
+      chonCoChu(cacCau);
+      dangGo = goChu(loi, cacCau, function () {
         nutTua.disabled = true;
         hop.classList.remove('dang-noi');
       }, dangBatTieng());

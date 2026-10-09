@@ -2332,7 +2332,7 @@ body.khoa-cuon { overflow: hidden; }
   min-height: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 16px 16px 14px;
+  padding: 14px 15px 13px;
   border-radius: var(--r-md);
   background: #fff;
   box-shadow: 0 4px 0 rgba(43, 47, 85, 0.08);
@@ -2348,8 +2348,8 @@ body.khoa-cuon { overflow: hidden; }
   border-bottom-color: #fff;
 }
 
-.thay-loi { font-size: 16px; line-height: 1.68; color: var(--ink); }
-.thay-loi .cau { margin: 0 0 11px; }
+.thay-loi { font-size: 16px; line-height: 1.58; color: var(--ink); }
+.thay-loi .cau { margin: 0 0 9px; }
 .thay-loi .cau:last-child { margin-bottom: 0; }
 .thay-loi b.sai { color: var(--coral-dark); }
 .thay-loi b.dung { color: var(--mint-dark); }
@@ -2401,8 +2401,7 @@ body.khoa-cuon { overflow: hidden; }
 @media (max-width: 480px) {
   .nen-thay { padding: 8px; }
   .hop-thay { height: 96svh; }
-  .thay-anh { height: 104px; }
-  .thay-loi { font-size: 15.5px; }
+  .thay-anh { height: 96px; }
   .thay-chan .btn { font-size: 15px; padding-left: 14px; padding-right: 14px; }
 }
 
