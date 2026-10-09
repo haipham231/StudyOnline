@@ -90,6 +90,12 @@
 
   function taoThe(bai, noiBat, kieu) {
     var best = Quiz.readBest(noiBat ? bai.id : 'l6-' + bai.id);
+    // Kỷ lục bài tập và tiến độ trò chơi nằm chung một kho localStorage, mà
+    // thẻ trò chơi lớp 1 lại trùng tên khoá với chính game đó. Đọc trúng gói
+    // tiến độ {mo, sao} thì best.score là undefined, thẻ hiện "undefined điểm".
+    // Chỉ nhận gói nào thật sự là kỷ lục bài tập.
+    if (best && typeof best.score !== 'number') best = null;
+
     var sao = best ? Quiz.starsFor(best.correct, best.total) : 0;
     if (!noiBat) tongSao += sao;
 

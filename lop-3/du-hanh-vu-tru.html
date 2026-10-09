@@ -48,28 +48,28 @@
   GameVuTru.batDau('game', {
     khoa: 'studyonline:game-vu-tru-l3',
     chang: [
-    { ten: 'Sao Bảng Nhân Chia', emoji: '🪐', mau: '#ff8fd0', toi: '#c2558f', vanh: true, soCau: 6, hinh: 'troi/sao-tho',
+    { ten: 'Sao Bảng Nhân Chia', emoji: '🪐', mau: '#ff8fd0', hanhTinh: 'nam', nen: 'hanh-tinh-khi', soCau: 6, hinh: 'troi/sao-tho',
       mota: 'Bảng nhân chia từ 2 đến 9',
       de: mix(T.bangNhan, T.bangChia) },
 
-    { ten: 'Sao Nhân Chia Lớn', emoji: '💧', mau: '#4aa8ff', toi: '#1f5f9e', vanh: false, soCau: 6, hinh: 'troi/may',
+    { ten: 'Sao Nhân Chia Lớn', emoji: '💧', mau: '#4aa8ff', hanhTinh: 'banh-rang', nen: 'dung-nham', soCau: 6, hinh: 'troi/may',
       mota: 'Nhân chia ngoài bảng và chia có dư',
       de: mix(function () { return T.nhanNgoaiBang(2); }, function () { return T.nhanNgoaiBang(3); },
               T.chiaNgoaiBang, T.chiaCoDu) },
 
-    { ten: 'Sao Biểu Thức', emoji: '🔆', mau: '#ffc93c', toi: '#b07f00', vanh: false, soCau: 6, hinh: 'troi/ngoi-sao',
+    { ten: 'Sao Biểu Thức', emoji: '🔆', mau: '#ffc93c', hanhTinh: 'may', nen: 'thien-ha', soCau: 6, hinh: 'troi/ngoi-sao',
       mota: 'Biểu thức, biểu thức có ngoặc và tìm x',
       de: mix(T.bieuThuc, T.bieuThucNgoac, T.timXNhanChia) },
 
-    { ten: 'Sao Số Lớn', emoji: '🧊', mau: '#2fcf90', toi: '#167a52', vanh: true, soCau: 6, hinh: 'troi/cau-vong',
+    { ten: 'Sao Số Lớn', emoji: '🧊', mau: '#2fcf90', hanhTinh: 'bang-gia', nen: 'vung-sau', soCau: 6, hinh: 'troi/cau-vong',
       mota: 'Cộng trừ số lớn, so sánh, làm tròn, gấp giảm',
       de: mix(T.congTruLon, T.soSanhLon, T.lamTronL3, T.gapGiam, T.gapMayLan) },
 
-    { ten: 'Sao Đo Lường', emoji: '⏳', mau: '#8b7bf7', toi: '#4b3bb0', vanh: false, soCau: 7, hinh: 'troi/mat-trang',
+    { ten: 'Sao Đo Lường', emoji: '⏳', mau: '#8b7bf7', hanhTinh: 'dung-nham', nen: 'tinh-van', soCau: 7, hinh: 'troi/mat-trang',
       mota: 'Chu vi, diện tích, đổi đơn vị, tiền Việt, xem giờ',
       de: mix(T.chuViChuNhat, T.dienTichChuNhat, T.hinhVuongL3, T.doiDonViL3, T.tienViet, T.xemGioPhut) },
 
-    { ten: 'Trạm Thiên Hà', emoji: '🌌', mau: '#ff7a7a', toi: '#a33', vanh: true, soCau: 8, dich: true,
+    { ten: 'Trạm Thiên Hà', emoji: '🌌', mau: '#ff7a7a', hanhTinh: 'vanh-bang', nen: 'vanh-da', soCau: 8, dich: true,
       mota: 'Chặng cuối — toán đố hai bước và tìm một phần',
       de: mix(T.doHaiBuoc, T.doChiaDeuL3, T.doGapLan, T.doTimPhan, T.phanSoCuaSo) }
     ]

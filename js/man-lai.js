@@ -61,12 +61,40 @@
 
     /* --- bầu trời --- */
     var dau = el('div', 'san-dau san-sao');
+    // bốn khung cổng là ảnh, đưa đường dẫn vào biến CSS cho gọn
+    if (V) {
+      ['thuong', 'mo', 'chan', 'vang'].forEach(function (k) {
+        dau.style.setProperty('--cong-' + k,
+          'url(' + V.GOC + 'assets/vu-tru/thuyen/cong-' + k + '.png)');
+      });
+    }
     var sao = '';
     for (var s = 0; s < 34; s++) {
       sao += '<i style="left:' + (Math.random() * 99).toFixed(1) + '%;top:' +
         (Math.random() * 96).toFixed(1) + '%;animation-delay:' + (Math.random() * 3).toFixed(1) + 's"></i>';
     }
     dau.appendChild(el('div', 'sao-nen', sao));
+
+    // Nền trời và mấy thứ trôi nổi do chặng quyết định, nên chặng nào cũng
+    // một bầu trời khác. Sao chấm trắng vẫn giữ cho có cái lấp lánh.
+    if (V && tuyChon.nen) {
+      dau.classList.add('co-anh-nen');
+      dau.style.backgroundImage = 'url(' + V.duongNen(tuyChon.nen) + ')';
+    }
+    if (V && tuyChon.vat && tuyChon.vat.length) {
+      var troi = el('div', 'vat-troi');
+      tuyChon.vat.forEach(function (tv, k) {
+        var v = el('img', 'mot-vat');
+        v.src = V.duongVat(tv);
+        v.alt = '';
+        v.style.left = (6 + k * 23) + '%';
+        v.style.top = (10 + (k % 3) * 26) + '%';
+        v.style.animationDelay = (k * 1.7).toFixed(1) + 's';
+        v.style.animationDuration = (9 + k * 2.5).toFixed(1) + 's';
+        troi.appendChild(v);
+      });
+      dau.appendChild(troi);
+    }
 
     var congDS = nhanDS.map(function (nhan) {
       var c = el('div', 'cong-dap');
@@ -76,7 +104,20 @@
       return c;
     });
 
-    var thuyen = el('div', 'phi-thuyen-lai', V ? V.phiThuyen(52) : '🚀');
+    var DANG_TH = ['thang', 'len', 'xuong', 'trung'];
+    var thuyen = el('div', 'phi-thuyen-lai dang-thang', V
+      ? DANG_TH.map(function (d) {
+          return '<img class="anh-th anh-' + d + '" src="' + V.GOC +
+            'assets/vu-tru/thuyen/thuyen-' + d + '.png" alt="" draggable="false">';
+        }).join('')
+      : '🚀');
+    var dangTh = 'thang';
+    function doiDangThuyen(d) {
+      if (d === dangTh) return;
+      thuyen.classList.remove('dang-' + dangTh);
+      thuyen.classList.add('dang-' + d);
+      dangTh = d;
+    }
     dau.appendChild(thuyen);
     san.appendChild(dau);
 
@@ -118,8 +159,10 @@
       // bay ngang hay quệt nhầm cổng khác, bé ức chế; thẳng hàng thì chỉ cần
       // canh đúng độ cao rồi lao sang phải — đúng cái kỹ năng mình muốn rèn.
       var n = congDS.length;
-      var rongCong = Math.max(62, Math.min(96, rong * 0.26));
-      var caoCong = Math.max(34, Math.min(52, (cao - 16 - (n - 1) * 16) / n));
+      // khung cổng vẽ đứng (cao hơn rộng) nên phải xếp theo đúng tỉ lệ ảnh,
+      // kéo bẹt ra là trông méo ngay
+      var caoCong = Math.max(42, Math.min(84, (cao - 16 - (n - 1) * 12) / n));
+      var rongCong = Math.min(Math.max(44, caoCong * 0.8), rong * 0.3);
       var khoang = n > 1 ? (cao - 16 - n * caoCong) / (n - 1) : 0;
       congDS.forEach(function (c, i) {
         c.style.width = Math.round(rongCong) + 'px';
@@ -152,6 +195,7 @@
         x = Math.min(Math.max(x, 2), rong - RONG_TH - 2);
         y = Math.min(Math.max(y, 2), cao - CAO_TH - 2);
         thuyen.classList.toggle('vut-ga', di.trai || di.phai || di.len || di.xuong);
+        doiDangThuyen(di.len ? 'len' : di.xuong ? 'xuong' : 'thang');
 
         // chừa nửa giây đầu, tránh ăn nhầm lúc màn hình đang xếp chỗ
         if (t - batDau > 400) {
@@ -185,6 +229,7 @@
         dau.appendChild(tim);
       } else {
         thuyen.classList.add('va-cham');
+        doiDangThuyen('trung');
         var no = el('img', 'vu-no');
         no.src = GOC + 'assets/vu-tru/no.png';
         no.alt = '';

@@ -737,6 +737,15 @@ h2.nhom::before {
   font-size: 24px;
 }
 
+/* ô biểu tượng vốn để chứa một emoji; hành tinh là ảnh nên phải ép vừa khung */
+.chang .so img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto !important;
+  width: auto;
+  object-fit: contain;
+}
+
 .chang .chi-tiet { flex: 1; }
 .chang .chi-tiet b { display: block; font-size: 16px; }
 .chang .chi-tiet small { color: var(--muted); font-size: 13.5px; }
@@ -2840,6 +2849,30 @@ body.khoa-cuon { overflow: hidden; }
   box-shadow: inset 0 0 0 2px rgba(122, 162, 255, 0.25);
 }
 
+/* nền trời riêng từng chặng; sao chấm trắng vẫn chạy đè lên cho lấp lánh */
+.san-dau.co-anh-nen {
+  background-size: cover;
+  background-position: center;
+}
+
+.vat-troi { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+
+.vat-troi .mot-vat {
+  position: absolute;
+  height: 34px;
+  width: auto;
+  opacity: 0.85;
+  animation: vat-troi-qua 12s linear infinite;
+}
+
+.vat-troi .mot-vat:nth-child(even) { height: 26px; opacity: 0.7; }
+
+@keyframes vat-troi-qua {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(14px, -18px) rotate(180deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
 .san-sao .sao-nen { position: absolute; inset: 0; pointer-events: none; }
 
 .san-sao .sao-nen i {
@@ -3042,11 +3075,10 @@ body.khoa-cuon { overflow: hidden; }
   align-items: center;
   justify-content: center;
   padding: 0 4px;
-  border: 2px solid rgba(122, 162, 255, 0.75);
-  border-radius: 12px;
-  background: linear-gradient(180deg, rgba(74, 168, 255, 0.3), rgba(122, 90, 255, 0.3));
-  box-shadow: inset 0 0 14px rgba(122, 162, 255, 0.4);
-  color: #fff;
+  background-image: var(--cong-thuong);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  color: #15306b;
   font-family: "Baloo 2", sans-serif;
   font-size: 19px;
   font-weight: 700;
@@ -3055,8 +3087,12 @@ body.khoa-cuon { overflow: hidden; }
 }
 
 .cong-dap .cong-nhan { display: block; }
-.cong-dap.mo-ra { border-color: #2fcf90; background: rgba(47, 207, 144, 0.45); }
-.cong-dap.chan-lai { border-color: #ff6b6b; background: rgba(255, 107, 107, 0.4); }
+.cong-dap.mo-ra { background-image: var(--cong-mo); }
+.cong-dap.chan-lai { background-image: var(--cong-chan); }
+.cong-dap.chi-ra { background-image: var(--cong-vang); }
+
+/* lòng cổng màu nhạt nên số phải đậm mới đọc được */
+.cong-dap .cong-nhan { text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65); }
 
 .cong-dap.chi-ra {
   border-color: #2fcf90;
@@ -3078,7 +3114,25 @@ body.khoa-cuon { overflow: hidden; }
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
 }
 
-.phi-thuyen-lai svg { width: 52px; height: auto; }
+.phi-thuyen-lai .anh-th {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+  height: 44px;
+  width: auto;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  user-select: none;
+}
+
+.phi-thuyen-lai.dang-thang .anh-thang,
+.phi-thuyen-lai.dang-len .anh-len,
+.phi-thuyen-lai.dang-xuong .anh-xuong,
+.phi-thuyen-lai.dang-trung .anh-trung { display: block; }
+
+/* dáng chúc lên vẽ chéo nên ảnh cao hơn */
+.phi-thuyen-lai.dang-len .anh-th { height: 52px; }
 .phi-thuyen-lai.vut-ga { filter: drop-shadow(0 0 10px rgba(255, 180, 60, 0.8)); }
 .phi-thuyen-lai.va-cham { animation: thuyen-rung 0.45s ease 2; }
 

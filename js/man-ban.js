@@ -10,7 +10,7 @@
 (function (global) {
   'use strict';
 
-  var Q = global.Quiz;
+  var Q = global.Quiz, V = global.VatTheVuTru;
 
   var GOC = (function () {
     var ds = document.getElementsByTagName('script');
@@ -81,6 +81,27 @@
         (Math.random() * 86).toFixed(1) + '%;animation-delay:' + (Math.random() * 3).toFixed(1) + 's"></i>';
     }
     dau.appendChild(el('div', 'sao-nen', sao));
+
+    // Nền trời và mấy thứ trôi nổi do chặng quyết định, nên chặng nào cũng
+    // một bầu trời khác. Sao chấm trắng vẫn giữ cho có cái lấp lánh.
+    if (V && tuyChon.nen) {
+      dau.classList.add('co-anh-nen');
+      dau.style.backgroundImage = 'url(' + V.duongNen(tuyChon.nen) + ')';
+    }
+    if (V && tuyChon.vat && tuyChon.vat.length) {
+      var troi = el('div', 'vat-troi');
+      tuyChon.vat.forEach(function (tv, k) {
+        var v = el('img', 'mot-vat');
+        v.src = V.duongVat(tv);
+        v.alt = '';
+        v.style.left = (6 + k * 23) + '%';
+        v.style.top = (10 + (k % 3) * 26) + '%';
+        v.style.animationDelay = (k * 1.7).toFixed(1) + 's';
+        v.style.animationDuration = (9 + k * 2.5).toFixed(1) + 's';
+        troi.appendChild(v);
+      });
+      dau.appendChild(troi);
+    }
 
     var quaiDS = nhanDS.map(function (nhan, i) {
       var o = el('div', 'con-quai');

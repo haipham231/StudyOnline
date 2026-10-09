@@ -48,32 +48,32 @@
   GameVuTru.batDau('game', {
     khoa: 'studyonline:game-vu-tru-l1',
     chang: [
-    { ten: 'Sao Cộng Trừ', emoji: '🪐', mau: '#ff8fd0', toi: '#c2558f', vanh: true, soCau: 6, hinh: 'troi/sao-tho',
+    { ten: 'Sao Cộng Trừ', emoji: '🪐', mau: '#ff8fd0', hanhTinh: 'keo', nen: 'tinh-van', soCau: 6, hinh: 'troi/sao-tho',
       mota: 'Cộng trừ trong phạm vi 10',
       de: mix(function () { return T.congTru(10); }, function () { return T.dienSo(10); },
               T.soSanhPhepTinh) },
 
-    { ten: 'Sao Tách Gộp', emoji: '💧', mau: '#4aa8ff', toi: '#1f5f9e', vanh: false, soCau: 6, hinh: 'troi/may',
+    { ten: 'Sao Tách Gộp', emoji: '💧', mau: '#4aa8ff', hanhTinh: 'may', nen: 'vanh-da', soCau: 6, hinh: 'troi/may',
       mota: 'Tách gộp số và chục đơn vị',
       de: mix(function () { return T.tachGop(10); }, function () { return T.tachGopTrucQuan(10); },
               T.chucDonVi, T.dienSoTronChuc) },
 
-    { ten: 'Sao Hai Mươi', emoji: '🔆', mau: '#ffc93c', toi: '#b07f00', vanh: false, soCau: 6, hinh: 'troi/ngoi-sao',
+    { ten: 'Sao Hai Mươi', emoji: '🔆', mau: '#ffc93c', hanhTinh: 'nam', nen: 'hanh-tinh-khi', soCau: 6, hinh: 'troi/ngoi-sao',
       mota: 'Cộng trừ trong phạm vi 20',
       de: mix(function () { return T.congTru(20); }, function () { return T.tinhDay(20); },
               function () { return T.dienSo(20); }, function () { return T.soSanh(20); }) },
 
-    { ten: 'Sao Hình Khối', emoji: '🧊', mau: '#2fcf90', toi: '#167a52', vanh: true, soCau: 6, hinh: 'troi/cau-vong',
+    { ten: 'Sao Hình Khối', emoji: '🧊', mau: '#2fcf90', hanhTinh: 'dai-duong', nen: 'dung-nham', soCau: 6, hinh: 'troi/cau-vong',
       mota: 'Nhận biết hình phẳng và hình khối',
       de: mix(T.nhanBietHinh, T.demHinhHoc, T.hinhKhoi, function () { return T.demHinh(10); }) },
 
-    { ten: 'Sao Đo Đếm', emoji: '⏳', mau: '#8b7bf7', toi: '#4b3bb0', vanh: false, soCau: 7, hinh: 'troi/mat-trang',
+    { ten: 'Sao Đo Đếm', emoji: '⏳', mau: '#8b7bf7', hanhTinh: 'banh-vong', nen: 'thien-ha', soCau: 7, hinh: 'troi/mat-trang',
       mota: 'Đo độ dài, xem giờ, cân thăng bằng, dãy số',
       de: mix(T.doDoDai, function () { return T.xemGio(false); },
               function () { return T.canThangBang(10); }, function () { return T.lienKe(100); },
               function () { return T.daySo(1, 100); }) },
 
-    { ten: 'Trạm Thiên Hà', emoji: '🌌', mau: '#ff7a7a', toi: '#a33', vanh: true, soCau: 8, dich: true,
+    { ten: 'Trạm Thiên Hà', emoji: '🌌', mau: '#ff7a7a', hanhTinh: 'vanh-bang', nen: 'vung-sau', soCau: 8, dich: true,
       mota: 'Chặng cuối — toán đố và số có hai chữ số',
       de: mix(function () { return T.choThem(20, false); }, function () { return T.choDi(20, false); },
               function () { return T.nhieuHon(20); }, function () { return T.itHon(20); },
