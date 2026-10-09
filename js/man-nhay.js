@@ -32,66 +32,10 @@
 
   /* ---------- Dựng bốn đáp án ---------- */
 
-  // "3,5" → { so: 3.5, le: 1 }; "12" → { so: 12, le: 0 }; không phải số → null
-  function docSo(s) {
-    var t = String(s).trim().replace(',', '.');
-    if (!/^\d+(\.\d+)?$/.test(t)) return null;
-    var cham = t.indexOf('.');
-    return { so: Number(t), le: cham === -1 ? 0 : t.length - cham - 1 };
-  }
-
-  function vietSo(n, le) {
-    return n.toFixed(le).replace('.', ',');
-  }
-
-  // Đáp án sai phải trông "có lý": cùng độ lớn, cùng số chữ số thập phân.
-  function nhieuGan(dung) {
-    var o = docSo(dung);
-    if (!o) return [];
-    var n = o.so, le = o.le, don = Math.pow(10, -le);
-    var buoc;
-    if (le > 0) buoc = [don, -don, 2 * don, -2 * don, 1, -1];
-    else if (n >= 1000) buoc = [1, -1, 10, -10, 100, -100, 1000];
-    else if (n >= 100) buoc = [1, -1, 10, -10, 100, -100];
-    else if (n >= 20) buoc = [1, -1, 2, -2, 10, -10];
-    else buoc = [1, -1, 2, -2, 3, -3];
-
-    var ra = [];
-    buoc.forEach(function (b) {
-      var v = Math.round((n + b) * Math.pow(10, le)) / Math.pow(10, le);
-      if (v >= 0 && v !== n) ra.push(vietSo(v, le));
-    });
-    if (n >= 4) ra.push(vietSo(n * 2, le));
-    if (le === 0 && n >= 6 && n % 2 === 0) ra.push(vietSo(n / 2, le));
-
-    // Đáp án sai dài ngắn khác hẳn đáp án đúng là bé đoán ra ngay, nên xếp
-    // số cùng số chữ số lên trước.
-    var daiDung = vietSo(n, le).length;
-    ra.sort(function (a, b) {
-      return Math.abs(a.length - daiDung) - Math.abs(b.length - daiDung);
-    });
-    return ra;
-  }
-
-  /**
-   * Từ hai đến bốn nhãn cho các hộp, luôn có đáp án đúng, không trùng nhau.
-   * Câu nào sẵn lựa chọn thì lấy lựa chọn đó, thiếu thì bù bằng số gần đúng.
-   * Không bù được nữa thì bày ít hộp thôi — thà ba hộp thật còn hơn một hộp
-   * ghi dấu hỏi cho đủ bốn.
-   */
+  // Phần nặn đáp án nhiễu dùng chung với các màn chơi khác, nằm ở
+  // js/dap-an-nhieu.js. Giữ lại tên cũ cho chỗ nào đang gọi.
   function bonDapAn(cau) {
-    var dung = String(cau.answer);
-    var ds = [dung];
-
-    (cau.choices || []).forEach(function (c) {
-      if (ds.length < 4 && ds.indexOf(String(c)) === -1) ds.push(String(c));
-    });
-
-    Q.shuffle(nhieuGan(dung)).forEach(function (c) {
-      if (ds.length < 4 && ds.indexOf(c) === -1) ds.push(c);
-    });
-
-    return Q.shuffle(ds);
+    return global.DapAnNhieu.tao(cau, 4);
   }
 
   /* ---------- Màn chơi ---------- */
@@ -381,5 +325,5 @@
     };
   }
 
-  global.ManNhay = { ve: ve, bonDapAn: bonDapAn, _nhieuGan: nhieuGan };
+  global.ManNhay = { ve: ve, bonDapAn: bonDapAn };
 })(window);

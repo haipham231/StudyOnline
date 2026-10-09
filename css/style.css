@@ -2753,3 +2753,276 @@ body.khoa-cuon { overflow: hidden; }
 
 .duong-gon .moc.qua { background: var(--mau); box-shadow: 0 0 8px var(--mau); }
 .duong-gon .trum { flex: none; margin-left: 2px; font-size: 20px; line-height: 1; }
+
+/* ===================================================================
+   Hai màn chơi của game phi hành gia: bắn tên lửa và lái phi thuyền
+   =================================================================== */
+
+.panel.san-vu-tru {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 12px 14px;
+  min-height: min(680px, calc(100svh - 150px));
+  overflow: hidden;
+  background: linear-gradient(170deg, #0d1030, #1b1b4a 55%, #2a1f52);
+  color: #fff;
+}
+
+.panel.san-vu-tru .thanh-tren { color: rgba(255, 255, 255, 0.85); }
+.panel.san-vu-tru .meta { color: rgba(255, 255, 255, 0.78); }
+.panel.san-vu-tru .meta > span { background: rgba(255, 255, 255, 0.1); }
+.panel.san-vu-tru .feedback.ok { color: #7df0bd; }
+.panel.san-vu-tru .feedback.bad { color: #ff9a9a; }
+.panel.san-vu-tru .nhien-lieu { color: rgba(255, 255, 255, 0.9); }
+
+.san-ban, .san-lai {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* ---- nền sao ---- */
+
+.san-dau.san-sao {
+  /* vũ trụ thì cho sân rộng hơn sân Halloween, còn chỗ mà bay */
+  max-height: 540px;
+  background: radial-gradient(ellipse at 50% 120%, #3a2a6b 0%, #141337 60%, #0b0c24 100%);
+  box-shadow: inset 0 0 0 2px rgba(122, 162, 255, 0.25);
+}
+
+.san-sao .sao-nen { position: absolute; inset: 0; pointer-events: none; }
+
+.san-sao .sao-nen i {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.8;
+  animation: sao-nhay 2.6s ease-in-out infinite;
+}
+
+@keyframes sao-nhay { 50% { opacity: 0.18; } }
+
+/* ---- con quái ---- */
+
+.con-quai {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.18s ease;
+}
+
+.con-quai .quai-hinh {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+}
+
+.con-quai .hinh-chet { display: none; }
+.con-quai.da-chet .hinh-song { display: none; }
+.con-quai.da-chet .hinh-chet { display: block; }
+
+.con-quai .quai-nhan {
+  margin-top: -6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.35);
+  color: #2b2f55;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.con-quai.bi-ngam { transform: translateY(-5px) scale(1.06); }
+
+.con-quai.bi-ngam .quai-nhan {
+  background: #ffc93c;
+  box-shadow: 0 3px 0 #c9780f, 0 0 0 3px rgba(255, 201, 60, 0.4);
+}
+
+.con-quai.nhon-nhao { animation: quai-cuoi 0.42s ease 3; }
+
+@keyframes quai-cuoi {
+  25% { transform: translateY(-7px) rotate(-6deg); }
+  75% { transform: translateY(-7px) rotate(6deg); }
+}
+
+.con-quai.chi-ra .quai-nhan {
+  background: #2fcf90;
+  box-shadow: 0 3px 0 #1b9c68, 0 0 0 4px rgba(47, 207, 144, 0.4);
+  color: #fff;
+}
+
+.con-quai.chi-ra { animation: quai-chi 0.9s ease infinite; }
+
+@keyframes quai-chi { 50% { transform: translateY(-6px); } }
+
+/* ---- phi hành gia ---- */
+
+.phi-hanh-gia {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 56px;
+  height: 72px;
+  will-change: transform;
+}
+
+.phi-hanh-gia .phg-hinh {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
+}
+
+.phi-hanh-gia .phg-lua {
+  position: absolute;
+  bottom: 30%;
+  left: 86%;
+  height: 34px;
+  width: auto;
+  opacity: 0;
+  transform-origin: left center;
+}
+
+.phi-hanh-gia.dang-ban .phg-lua { animation: loe-lua 0.26s ease-out; }
+
+@keyframes loe-lua {
+  0% { opacity: 0; transform: scale(0.4); }
+  35% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0; transform: scale(1.3); }
+}
+
+/* ---- tên lửa và vụ nổ ---- */
+
+.ten-lua-bay {
+  position: absolute;
+  z-index: 3;
+  height: 56px;
+  width: auto;
+  pointer-events: none;
+}
+
+.vu-no {
+  position: absolute;
+  z-index: 4;
+  height: 118px;
+  width: auto;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: no-bung 0.7s ease-out forwards;
+}
+
+@keyframes no-bung {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.25); }
+  25% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.35); }
+}
+
+/* ---- cổng đáp án của màn lái ---- */
+
+.cong-dap {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border: 2px solid rgba(122, 162, 255, 0.75);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(74, 168, 255, 0.3), rgba(122, 90, 255, 0.3));
+  box-shadow: inset 0 0 14px rgba(122, 162, 255, 0.4);
+  color: #fff;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.cong-dap .cong-nhan { display: block; }
+.cong-dap.mo-ra { border-color: #2fcf90; background: rgba(47, 207, 144, 0.45); }
+.cong-dap.chan-lai { border-color: #ff6b6b; background: rgba(255, 107, 107, 0.4); }
+
+.cong-dap.chi-ra {
+  border-color: #2fcf90;
+  background: rgba(47, 207, 144, 0.4);
+  animation: cong-nhay 0.9s ease infinite;
+}
+
+@keyframes cong-nhay { 50% { transform: scale(1.06); } }
+
+/* ---- phi thuyền ---- */
+
+.phi-thuyen-lai {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 52px;
+  height: 40px;
+  will-change: transform;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
+}
+
+.phi-thuyen-lai svg { width: 52px; height: auto; }
+.phi-thuyen-lai.vut-ga { filter: drop-shadow(0 0 10px rgba(255, 180, 60, 0.8)); }
+.phi-thuyen-lai.va-cham { animation: thuyen-rung 0.45s ease 2; }
+
+@keyframes thuyen-rung {
+  25% { transform: translate3d(var(--tx, 0), var(--ty, 0), 0) rotate(-10deg); }
+  75% { transform: translate3d(var(--tx, 0), var(--ty, 0), 0) rotate(10deg); }
+}
+
+/* ---- tay lái bốn hướng ---- */
+
+.tay-lai.bon-huong {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: '. len .' 'trai xuong phai';
+  gap: 8px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.tay-lai.bon-huong .nut-len { grid-area: len; }
+.tay-lai.bon-huong .nut-trai { grid-area: trai; }
+.tay-lai.bon-huong .nut-xuong { grid-area: xuong; }
+.tay-lai.bon-huong .nut-phai { grid-area: phai; }
+.tay-lai.bon-huong .nut-lai { min-height: 50px; font-size: 21px; }
+
+.nut-lai.nut-ban {
+  flex: 1.5;
+  background: linear-gradient(180deg, #ff8f6b, #ff5e3a);
+  box-shadow: 0 5px 0 #c3341a;
+  color: #fff;
+  font-size: 19px;
+}
+
+.nut-lai.nut-ban:active { box-shadow: 0 1px 0 #c3341a; }
+
+@media (max-width: 480px) {
+  .panel.san-vu-tru { padding: 10px 10px 12px; min-height: calc(100svh - 128px); }
+  .con-quai .quai-nhan { font-size: 15px; padding: 2px 8px; }
+  .cong-dap { font-size: 17px; }
+  .vu-no { height: 96px; }
+  .ten-lua-bay { height: 46px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .san-sao .sao-nen i, .con-quai.chi-ra, .cong-dap.chi-ra { animation: none; }
+}

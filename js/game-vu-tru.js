@@ -179,53 +179,41 @@
 
   /* ---------- Vẽ màn chơi ---------- */
 
+  // Chặng lẻ bắn tên lửa, chặng chẵn lái phi thuyền — xen kẽ cho đỡ chán.
+  function kieuMan(i) { return i % 2 === 0 ? 'ban' : 'lai'; }
+
   function ve(hieuUng) {
     var chang = van.chang;
     goc.innerHTML = '';
 
-    var khung = el('div', 'panel man-choi');
+    var khung = el('div', 'panel san-vu-tru');
     khung.style.setProperty('--mau', chang.mau);
 
     var tren = el('div', 'thanh-tren');
     tren.appendChild(el('span', 'ten-man', chang.emoji + ' Chặng ' + (van.chiSo + 1) + ' · ' + chang.ten));
 
     var mucNL = Math.max(0, van.nhienLieu);
-    var oNL = el('span', 'nhien-lieu' + (mucNL <= 40 ? ' can' : ''),
-      '⛽ <span class="thanh"><i style="width:' + mucNL + '%"></i></span> ' + mucNL + '%');
-    tren.appendChild(oNL);
+    tren.appendChild(el('span', 'nhien-lieu' + (mucNL <= 40 ? ' can' : ''),
+      '⛽ <span class="thanh"><i style="width:' + mucNL + '%"></i></span> ' + mucNL + '%'));
     khung.appendChild(tren);
 
-    // bầu trời sao
-    var troi = el('div', 'vu-tru');
-    troi.innerHTML = '<div class="sao-nen">' + saoNen(26) + '</div>';
-
-    var quyDao = el('div', 'quy-dao');
+    var quyDao = el('div', 'duong-gon');
     for (var b = 0; b < chang.soCau; b++) {
       quyDao.appendChild(el('i', 'moc' + (b < van.buoc ? ' qua' : '')));
     }
-    troi.appendChild(quyDao);
+    quyDao.appendChild(el('span', 'trum', chang.emoji));
+    khung.appendChild(quyDao);
 
-    var thuyen = el('div', 'phi-thuyen-bay' + (hieuUng === 'tien' ? ' vut' : ''), V.phiThuyen(56));
-    thuyen.style.left = (van.buoc / chang.soCau * 74) + '%';
-    troi.appendChild(thuyen);
-
-    var dich = el('div', 'hanh-tinh-dich', chang.dich
-      ? V.tram(90)
-      : (chang.hinh && chang.hinh !== 'hanh-tinh'
-          ? global.HoatHinh.ve(chang.hinh, 92, null)
-          : V.hanhTinh(chang.mau, chang.toi, chang.vanh, 86)));
-    troi.appendChild(dich);
-    khung.appendChild(troi);
-
+    var kieu = kieuMan(van.chiSo);
     khung.appendChild(el('div', 'meta',
-      '<span>Câu ' + Math.min(van.buoc + 1, chang.soCau) + ' / ' + chang.soCau + '</span>' +
-      '<span class="hits">🛰️ Đã bay ' + van.buoc + '/' + chang.soCau + '</span>'));
+      '<span>' + (kieu === 'ban' ? '🚀 Bắn quái' : '🛸 Lái phi thuyền') +
+      ' · Câu ' + Math.min(van.buoc + 1, chang.soCau) + ' / ' + chang.soCau + '</span>' +
+      '<span class="hits">🛰️ ' + van.buoc + '/' + chang.soCau + '</span>'));
 
-    van.oTraLoi = global.OTraLoi.ve(khung, van.cau, {
-      nhanNop: '🚀 Phóng',
-      boc: 'o-hoi',
+    var man = kieu === 'ban' ? global.ManBan : global.ManLai;
+    van.oTraLoi = man.ve(khung, van.cau, {
       khoaSan: van.dangChuyen,
-      khiTraLoi: function (dung, _daNhap, phanHoi) { cham(dung, van.cau, phanHoi); }
+      khiTraLoi: function (dung, _daChon, phanHoi) { cham(dung, van.cau, phanHoi); }
     });
 
     goc.appendChild(khung);
@@ -245,7 +233,7 @@
 
       setTimeout(function () {
         if (van.buoc >= van.chang.soCau) return toiNoi();
-        van.dangChuyen = true; ve('tien'); van.dangChuyen = false;
+        van.dangChuyen = true; ve(); van.dangChuyen = false;
         setTimeout(raCauHoi, 520);
       }, 720);
       return;
