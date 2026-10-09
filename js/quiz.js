@@ -114,13 +114,25 @@
     en: { ma: 'en-US', tim: /^en/i, nhanh: 0.78 }
   };
 
+  // Máy nào có sẵn giọng nam thì dùng, không thì hạ cao độ giọng đang có
+  // xuống cho ra chất đàn ông. Tên giọng mỗi hệ điều hành một kiểu nên phải
+  // dò bằng danh sách tên thay vì một thuộc tính chuẩn — Web Speech API
+  // không hề cho biết giọng là nam hay nữ.
+  var TEN_NAM = /\b(nam|male|man|an|minh|quang|b[aắ]c|tu[aấ]n|h[uùu]ng|khanh|eddy|grandpa|reed|rocko|ralph|bruce|junior|daniel|alex|fred|george|james|david|mark|guy|eric|ryan|aaron|arthur|gordon|oliver|rishi|nathan|lee)\b/i;
+  var TEN_NU  = /\b(linh|mai|lan|ng[oọ]c|thu|hoai|hoài|my|mỹ|ha|hà|nu|female|woman|samantha|victoria|karen|moira|tessa|zira|hazel|aria|jenny|google ti[eế]ng vi[eệ]t)\b/i;
+
   var giong = { vi: null, en: null };
+  var giongNam = { vi: null, en: null };
 
   function timGiong() {
     if (!global.speechSynthesis) return;
     var ds = global.speechSynthesis.getVoices() || [];
     Object.keys(TIENG).forEach(function (k) {
-      giong[k] = ds.filter(function (v) { return TIENG[k].tim.test(v.lang); })[0] || null;
+      var hop = ds.filter(function (v) { return TIENG[k].tim.test(v.lang); });
+      giong[k] = hop[0] || null;
+      giongNam[k] =
+        hop.filter(function (v) { return TEN_NAM.test(v.name) && !TEN_NU.test(v.name); })[0] ||
+        hop.filter(function (v) { return !TEN_NU.test(v.name); })[0] || null;
     });
   }
 
@@ -129,20 +141,73 @@
     global.speechSynthesis.onvoiceschanged = timGiong;
   }
 
-  function docTo(text, ma) {
-    if (!global.speechSynthesis || !text) return;
-    var t = TIENG[ma === 'en' ? 'en' : 'vi'];
+  /* Chuyển chữ trên màn hình thành câu đọc được: bỏ thẻ HTML và đổi ký hiệu
+     toán sang lời nói, nếu không máy đọc "3 × 4" thành "ba bốn". */
+  var KY_HIEU = [
+    [/<sup>([^<]*)<\/sup>/g, ' mũ $1 '],
+    [/<span class="ps"><i>([^<]*)<\/i><b>([^<]*)<\/b><\/span>/g, ' $1 phần $2 '],
+    [/<[^>]+>/g, ' '],
+    [/&nbsp;/g, ' '], [/&lt;/g, ' bé hơn '], [/&gt;/g, ' lớn hơn '], [/&amp;/g, ' và '],
+    [/(\d)\s*\/\s*(\d)/g, '$1 phần $2'],
+    [/²/g, ' bình phương '], [/³/g, ' lập phương '],
+    [/[×·]/g, ' nhân '], [/÷/g, ' chia '],
+    [/(\d)\s*:\s*(\d)/g, '$1 chia $2'],
+    [/[−–—]/g, ' trừ '], [/(\d)\s*-\s*(\d)/g, '$1 trừ $2'],
+    [/\+/g, ' cộng '], [/=/g, ' bằng '],
+    [/</g, ' bé hơn '], [/>/g, ' lớn hơn '],
+    [/%/g, ' phần trăm '], [/°/g, ' độ '],
+    [/[“”"]/g, ' '], [/\s+/g, ' ']
+  ];
+
+  function locLoiDoc(html) {
+    var t = String(html == null ? '' : html);
+    KY_HIEU.forEach(function (c) { t = t.replace(c[0], c[1]); });
+    return t.trim();
+  }
+
+  // Câu toàn chữ không dấu, không có ký tự riêng của tiếng Việt thì coi là
+  // câu tiếng Anh — đọc bằng giọng Anh nghe mới ra tiếng.
+  function doanTieng(cau) {
+    return /[ăâđêôơưàáạảãèéẹẻẽìíịỉĩòóọỏõùúụủũỳýỵỷỹ]/i.test(cau) ? 'vi' : 'en';
+  }
+
+  /**
+   * docTo(text, ma, tuyChon)
+   *   ma      : 'vi' | 'en' — bỏ trống thì đoán theo chữ
+   *   tuyChon : { nam, cao, nhanh, noiTiep, xong }
+   *     nam     — ưu tiên giọng nam, không có thì hạ cao độ xuống
+   *     noiTiep — không cắt câu đang đọc dở, nối vào sau
+   */
+  function docTo(text, ma, tuyChon) {
+    tuyChon = tuyChon || {};
+    var loiDoc = locLoiDoc(text);
+    if (!global.speechSynthesis || !loiDoc) { if (tuyChon.xong) tuyChon.xong(); return; }
+    var khoa = ma === 'en' || ma === 'vi' ? ma : doanTieng(loiDoc);
+    var t = TIENG[khoa];
     try {
-      global.speechSynthesis.cancel();
-      var loi = new global.SpeechSynthesisUtterance(String(text));
+      if (!tuyChon.noiTiep) global.speechSynthesis.cancel();
+      var loi = new global.SpeechSynthesisUtterance(loiDoc);
       loi.lang = t.ma;
-      loi.rate = t.nhanh;
-      if (!giong[ma === 'en' ? 'en' : 'vi']) timGiong();
-      var g = giong[ma === 'en' ? 'en' : 'vi'];
+      // thầy giáo giảng bài thì nói nhanh hơn chút so với lúc đọc đề cho bé
+      loi.rate = tuyChon.nhanh || (tuyChon.nam ? Math.min(1, t.nhanh + 0.07) : t.nhanh);
+      if (!giong[khoa]) timGiong();
+      var g = (tuyChon.nam ? giongNam[khoa] : null) || giong[khoa];
       if (g) loi.voice = g;
+      // không kiếm được giọng nam thật thì trầm giọng hiện có xuống
+      if (tuyChon.nam) loi.pitch = tuyChon.cao || (giongNam[khoa] ? 0.92 : 0.7);
+      else if (tuyChon.cao) loi.pitch = tuyChon.cao;
+      if (tuyChon.xong) {
+        var daGoi = false;
+        var goi = function () { if (!daGoi) { daGoi = true; tuyChon.xong(); } };
+        loi.onend = goi;
+        loi.onerror = goi;
+        // vài trình duyệt nuốt mất onend, nên chốt thêm hẹn giờ phòng hờ
+        setTimeout(goi, 1200 + loiDoc.length * 95);
+      }
       global.speechSynthesis.speak(loi);
     } catch (e) {
       /* máy không đọc được thì bé vẫn nhìn hình để chơi */
+      if (tuyChon.xong) tuyChon.xong();
     }
   }
 
@@ -521,6 +586,7 @@
     readBest: readBest,
     starsFor: starsFor,
     docTo: docTo,
+    locLoiDoc: locLoiDoc,
     readLichSu: readLichSu,
     xepLoai: xepLoai
   };

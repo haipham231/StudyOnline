@@ -32,12 +32,21 @@
     total: 10,
     speak: true,
     levels: [
-      { name: 'Hiện tại đơn', hint: 'Thói quen và sự thật',
+      { name: 'Động từ to be', hint: 'am, is, are',
+        gen: V.dongTuToBe },
+      { name: 'Hiện tại đơn', hint: 'Thói quen, sự thật',
         gen: V.hienTaiDon },
-      { name: 'Hiện tại tiếp diễn', hint: 'Việc đang xảy ra',
+      { name: 'Hiện tại tiếp diễn', hint: 'Đang xảy ra lúc nói',
         gen: V.hienTaiTiepDien },
-      { name: 'Quá khứ đơn', hint: 'Việc đã xảy ra',
-        gen: V.quaKhuDon }
+      { name: 'Quá khứ đơn', hint: 'Việc đã xong trong quá khứ',
+        gen: V.quaKhuDon },
+      { name: 'Tương lai gần', hint: 'be going to — dự định sắp tới',
+        gen: V.tuongLaiGan },
+      { name: 'Trộn tất cả các thì', hint: 'Nhìn dấu hiệu để chọn thì',
+        gen: function () {
+          return Quiz.pick([V.dongTuToBe, V.hienTaiDon, V.hienTaiTiepDien,
+            V.quaKhuDon, V.tuongLaiGan])();
+        } }
     ]
   });
 </script>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tập hợp, ước và bội — Toán lớp 6</title>
+<meta name="description" content="Đếm phần tử của tập hợp, dấu thuộc và không thuộc, tìm ước và bội. Bài tập Toán lớp 6 sinh ngẫu nhiên mỗi lần chơi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🗂️</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>🗂️ Tập hợp, ước và bội</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/o-tra-loi.js"></script>
+<script src="../../js/quiz.js"></script>
+<script src="../../js/toan-lop-6.js"></script>
+<script>
+  var T = ToanL6;
+
+  Quiz.init({
+    id: 'l6-tap-hop',
+    total: 10,
+    levels: [
+      { name: 'Phần tử của tập hợp', hint: 'Đếm xem tập hợp có bao nhiêu số',
+        gen: T.tapHopPhanTu },
+      { name: 'Thuộc hay không thuộc', hint: 'Dấu ∈ và dấu ∉',
+        gen: T.phanTuThuocTapHop },
+      { name: 'Ước của một số', hint: 'Đếm tất cả các ước',
+        gen: T.demUoc },
+      { name: 'Bội của một số', hint: 'Tìm bội nhỏ nhất thoả điều kiện',
+        gen: T.boiNhoNhat },
+      { name: 'Trộn cả bốn phần', hint: 'Mỗi câu một kiểu',
+        gen: function () { return Quiz.pick([T.tapHopPhanTu, T.phanTuThuocTapHop, T.demUoc, T.boiNhoNhat])(); } }
+    ]
+  });
+</script>
+</body>
+</html>

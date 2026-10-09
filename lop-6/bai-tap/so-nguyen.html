@@ -33,8 +33,19 @@
         gen: T.congSoNguyen },
       { name: 'Nhân số nguyên', hint: 'Quy tắc dấu',
         gen: T.nhanSoNguyen },
+      { name: 'Trừ số nguyên', hint: 'Trừ là cộng với số đối',
+        gen: T.truSoNguyen },
+      { name: 'Chia số nguyên', hint: 'Quy tắc dấu khi chia',
+        gen: T.chiaSoNguyen },
+      { name: 'Giá trị tuyệt đối', hint: 'Khoảng cách tới số 0',
+        gen: T.giaTriTuyetDoi },
       { name: 'So sánh', hint: 'Số nào lớn hơn trên trục số',
-        gen: T.soSanhSoNguyen }
+        gen: T.soSanhSoNguyen },
+      { name: 'Trộn tất cả', hint: 'Cộng, trừ, nhân, chia, so sánh',
+        gen: function () {
+          return Quiz.pick([T.congSoNguyen, T.truSoNguyen, T.nhanSoNguyen,
+            T.chiaSoNguyen, T.giaTriTuyetDoi, T.soSanhSoNguyen])();
+        } }
     ]
   });
 </script>

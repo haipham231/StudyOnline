@@ -29,12 +29,27 @@
     id: 'l6-phan-so',
     total: 10,
     levels: [
-      { name: 'Rút gọn', hint: 'Về phân số tối giản',
+      { name: 'Rút gọn', hint: 'Chia tử và mẫu cho ước chung lớn nhất',
         gen: T.rutGonPS6 },
-      { name: 'Cộng khác mẫu', hint: 'Quy đồng rồi cộng',
+      { name: 'So sánh phân số', hint: 'Quy đồng rồi so tử số',
+        gen: T.soSanhPhanSo },
+      { name: 'Cộng khác mẫu', hint: 'Quy đồng rồi cộng tử',
         gen: T.congPSKhacMau },
-      { name: 'Nhân phân số', hint: 'Tử nhân tử, mẫu nhân mẫu',
-        gen: T.nhanChiaPS6 }
+      { name: 'Trừ khác mẫu', hint: 'Quy đồng rồi trừ tử',
+        gen: T.truPSKhacMau },
+      { name: 'Nhân và chia', hint: 'Tử nhân tử, mẫu nhân mẫu',
+        gen: T.nhanChiaPS6 },
+      { name: 'Hỗn số', hint: 'Phần nguyên nhân mẫu rồi cộng tử',
+        gen: T.honSoThanhPhanSo },
+      { name: 'Phân số của một số', hint: 'Tìm hai phần ba của 45',
+        gen: T.phanSoCuaMotSo },
+      { name: 'Bài toán ngược', hint: 'Biết phần, đi tìm cả số',
+        gen: T.timSoBietPhanSo },
+      { name: 'Trộn tất cả', hint: 'Mỗi câu một dạng',
+        gen: function () {
+          return Quiz.pick([T.rutGonPS6, T.soSanhPhanSo, T.congPSKhacMau, T.truPSKhacMau,
+            T.nhanChiaPS6, T.honSoThanhPhanSo, T.phanSoCuaMotSo, T.timSoBietPhanSo])();
+        } }
     ]
   });
 </script>

@@ -29,12 +29,25 @@
     id: 'l6-thap-phan',
     total: 10,
     levels: [
-      { name: 'Số thập phân', hint: 'Cộng trừ số thập phân',
+      { name: 'Cộng trừ thập phân', hint: 'Thẳng hàng dấu phẩy',
         gen: T.thapPhan6 },
-      { name: 'Phần trăm', hint: 'Tìm mấy phần trăm của một số',
+      { name: 'Nhân thập phân', hint: 'Nhân như số tự nhiên rồi đặt dấu phẩy',
+        gen: T.nhanThapPhan },
+      { name: 'Chia thập phân', hint: 'Chia rồi đặt dấu phẩy ở thương',
+        gen: T.chiaThapPhan },
+      { name: 'Làm tròn', hint: 'Nhìn chữ số đầu sau dấu phẩy',
+        gen: T.lamTronThapPhan },
+      { name: 'Phần trăm của một số', hint: 'Tính 25% của 80',
         gen: T.phanTram6 },
+      { name: 'Tỉ số phần trăm', hint: 'Của 15 và 25 là bao nhiêu phần trăm',
+        gen: T.tiSoPhanTram6 },
       { name: 'Bài toán ngược', hint: 'Biết phần trăm, tìm cả số',
-        gen: T.timSoBietPhanTram }
+        gen: T.timSoBietPhanTram },
+      { name: 'Trộn tất cả', hint: 'Mỗi câu một dạng',
+        gen: function () {
+          return Quiz.pick([T.thapPhan6, T.nhanThapPhan, T.chiaThapPhan, T.lamTronThapPhan,
+            T.phanTram6, T.tiSoPhanTram6, T.timSoBietPhanTram])();
+        } }
     ]
   });
 </script>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tìm x và biểu thức — Toán lớp 6</title>
+<meta name="description" content="Thứ tự thực hiện phép tính có ngoặc và lũy thừa, tìm x trong bốn dạng thường gặp. Bài tập Toán lớp 6.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>❓</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>❓ Tìm x và biểu thức</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/o-tra-loi.js"></script>
+<script src="../../js/quiz.js"></script>
+<script src="../../js/toan-lop-6.js"></script>
+<script>
+  var T = ToanL6;
+
+  Quiz.init({
+    id: 'l6-tim-x',
+    total: 10,
+    levels: [
+      { name: 'Biểu thức có ngoặc', hint: 'Trong ngoặc trước, lũy thừa, rồi nhân chia',
+        gen: T.bieuThucCoNgoac },
+      { name: 'Tìm x cơ bản', hint: 'x là thừa số hoặc số bị chia',
+        gen: T.timXLop6 },
+      { name: 'Bỏ dấu ngoặc', hint: 'Trước ngoặc là dấu trừ thì đổi dấu',
+        gen: T.boDauNgoac },
+      { name: 'Trộn cả ba phần', hint: 'Mỗi câu một kiểu',
+        gen: function () { return Quiz.pick([T.bieuThucCoNgoac, T.timXLop6, T.boDauNgoac])(); } }
+    ]
+  });
+</script>
+</body>
+</html>

@@ -29,12 +29,18 @@
     id: 'l6-luy-thua',
     total: 10,
     levels: [
-      { name: 'Tính lũy thừa', hint: 'a mũ n bằng bao nhiêu',
+      { name: 'Lũy thừa', hint: 'Tính giá trị của một lũy thừa',
         gen: T.luyThua },
       { name: 'Nhân lũy thừa', hint: 'Giữ cơ số, cộng số mũ',
         gen: T.nhanLuyThua },
-      { name: 'Thứ tự phép tính', hint: 'Lũy thừa trước, rồi nhân chia, rồi cộng trừ',
-        gen: T.thuTuPhepTinh }
+      { name: 'Thứ tự phép tính', hint: 'Lũy thừa, nhân chia, rồi cộng trừ',
+        gen: T.thuTuPhepTinh },
+      { name: 'Biểu thức có ngoặc', hint: 'Trong ngoặc làm trước',
+        gen: T.bieuThucCoNgoac },
+      { name: 'Trộn tất cả', hint: 'Mỗi câu một dạng',
+        gen: function () {
+          return Quiz.pick([T.luyThua, T.nhanLuyThua, T.thuTuPhepTinh, T.bieuThucCoNgoac])();
+        } }
     ]
   });
 </script>

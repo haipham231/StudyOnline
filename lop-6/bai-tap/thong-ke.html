@@ -29,12 +29,19 @@
     id: 'l6-thong-ke',
     total: 10,
     levels: [
+      { name: 'Đọc biểu đồ cột', hint: 'Nhìn cột rồi trả lời',
+        gen: T.docBieuDoCot },
       { name: 'Trung bình cộng', hint: 'Tính điểm trung bình',
         gen: T.trungBinhCong6 },
       { name: 'Xác suất', hint: 'Đếm kết quả thuận lợi',
         gen: T.xacSuatDonGian },
-      { name: 'Trộn', hint: 'Cả hai phần',
-        gen: function () { return Quiz.pick([T.trungBinhCong6, T.xacSuatDonGian])(); } }
+      { name: 'Xác suất thực nghiệm', hint: 'Đếm số lần xảy ra thật',
+        gen: T.xacSuatThucNghiem },
+      { name: 'Trộn tất cả', hint: 'Mỗi câu một dạng',
+        gen: function () {
+          return Quiz.pick([T.docBieuDoCot, T.trungBinhCong6, T.xacSuatDonGian,
+            T.xacSuatThucNghiem])();
+        } }
     ]
   });
 </script>

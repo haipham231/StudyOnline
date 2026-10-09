@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Học Lớp 6</title>
-<meta name="description" content="Lớp 6: Lũy thừa, số nguyên âm, ƯCLN và BCNN, phân số, hình học trực quan — và cả Tiếng Anh. Có ba game, bài nâng cao và bộ đề kiểm tra.">
+<meta name="description" content="Lớp 6: Tập hợp, lũy thừa, số nguyên âm, phân số, hình học trực quan, thống kê — và cả Tiếng Anh. Có ba game, bài nâng cao và bộ đề kiểm tra.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
   <div class="hero">
     <div class="mascot">🎓</div>
     <h1>Học Lớp 6</h1>
-    <p id="loi-chao">Lũy thừa, số nguyên âm, ƯCLN và BCNN, phân số, hình học trực quan — và cả Tiếng Anh.</p>
+    <p id="loi-chao">Tập hợp, lũy thừa, số nguyên âm, phân số, hình học trực quan, thống kê — và cả Tiếng Anh.</p>
   </div>
 
   <main id="noi-dung"></main>
@@ -31,25 +31,30 @@
 <script>
   var NHOM = [
     { ten: 'Số tự nhiên', kieu: 'kieu-sticker', bai: [
+      { id: 'tap-hop', emoji: '🗂️', mau: '#ff8fd0', ten: 'Tập hợp, ước và bội', mo_ta: 'Đếm phần tử, dấu thuộc, ước và bội.' },
       { id: 'luy-thua', emoji: '🔢', mau: '#8b7bf7', ten: 'Lũy thừa và thứ tự phép tính', mo_ta: 'Lũy thừa với số mũ tự nhiên, nhân chia lũy thừa.' },
-      { id: 'so-nguyen-to', emoji: '🔑', mau: '#2fcf90', ten: 'Số nguyên tố, ƯCLN, BCNN', mo_ta: 'Phân tích ra thừa số nguyên tố.' },
+      { id: 'so-nguyen-to', emoji: '🔑', mau: '#2fcf90', ten: 'Số nguyên tố, ước chung, bội chung', mo_ta: 'Phân tích ra thừa số nguyên tố.' },
       { id: 'chia-het', emoji: '➗', mau: '#4aa8ff', ten: 'Dấu hiệu chia hết', mo_ta: 'Chia hết cho 2, 3, 5, 9.' },
-      { id: 'so-nguyen', emoji: '➖', mau: '#ff7a7a', ten: 'Số nguyên âm', mo_ta: 'Cộng trừ nhân số nguyên, so sánh trên trục số.' }
+      { id: 'tim-x', emoji: '❓', mau: '#ffc93c', ten: 'Tìm x và biểu thức', mo_ta: 'Biểu thức có ngoặc, bốn dạng tìm x.' },
+      { id: 'so-nguyen', emoji: '➖', mau: '#ff7a7a', ten: 'Số nguyên âm', mo_ta: 'Cộng trừ nhân chia số nguyên, giá trị tuyệt đối.' }
     ] },
     { ten: 'Phân số và số thập phân', kieu: 'kieu-sticker', bai: [
-      { id: 'phan-so', emoji: '🍰', mau: '#ff8fd0', ten: 'Phân số', mo_ta: 'Rút gọn, quy đồng, cộng trừ nhân chia.' },
-      { id: 'thap-phan', emoji: '🔟', mau: '#ffc93c', ten: 'Số thập phân và phần trăm', mo_ta: 'Bốn phép tính và tỉ số phần trăm.' }
+      { id: 'phan-so', emoji: '🍰', mau: '#ff8fd0', ten: 'Phân số', mo_ta: 'Rút gọn, so sánh, quy đồng, hỗn số, toán ngược.' },
+      { id: 'thap-phan', emoji: '🔟', mau: '#ffc93c', ten: 'Số thập phân và phần trăm', mo_ta: 'Bốn phép tính, làm tròn và tỉ số phần trăm.' }
     ] },
     { ten: 'Hình học và thống kê', kieu: 'kieu-sticker', bai: [
       { id: 'hinh-truc-quan', emoji: '🔷', mau: '#4aa8ff', ten: 'Hình học trực quan', mo_ta: 'Tam giác đều, lục giác đều, hình thoi, hình thang cân.' },
+      { id: 'chu-vi-dien-tich', emoji: '📏', mau: '#2fcf90', ten: 'Chu vi và diện tích', mo_ta: 'Hình thang, hình bình hành, hình thoi và đổi đơn vị.' },
+      { id: 'doi-xung', emoji: '🪞', mau: '#ff7a7a', ten: 'Hình có trục đối xứng', mo_ta: 'Trục đối xứng và tâm đối xứng.' },
       { id: 'diem-doan-goc', emoji: '📐', mau: '#8b7bf7', ten: 'Điểm, đoạn thẳng, góc', mo_ta: 'Trung điểm và số đo góc.' },
-      { id: 'thong-ke', emoji: '📊', mau: '#2fcf90', ten: 'Thống kê và xác suất', mo_ta: 'Trung bình cộng và kết quả thuận lợi.' }
+      { id: 'thong-ke', emoji: '📊', mau: '#ffc93c', ten: 'Thống kê và xác suất', mo_ta: 'Đọc biểu đồ cột, trung bình cộng, xác suất.' }
     ] },
     { ten: 'Tiếng Anh', kieu: 'kieu-hinh', bai: [
-      { id: 'ta-thi', emoji: '⏰', mau: '#4aa8ff', ten: 'Các thì', mo_ta: 'Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn.' },
-      { id: 'ta-ngu-phap', emoji: '🔤', mau: '#8b7bf7', ten: 'Ngữ pháp', mo_ta: 'So sánh, mạo từ, giới từ, động từ khuyết thiếu.' },
-      { id: 'ta-tu-vung', emoji: '📒', mau: '#2fcf90', ten: 'Từ vựng', mo_ta: 'Theo các chủ đề trong sách lớp 6.' },
-      { id: 'ta-doc-hieu', emoji: '📖', mau: '#ffc93c', ten: 'Đọc hiểu', mo_ta: 'Đọc đoạn tiếng Anh rồi trả lời.' }
+      { id: 'ta-thi', emoji: '⏰', mau: '#4aa8ff', ten: 'Các thì', mo_ta: 'To be, hiện tại đơn, tiếp diễn, quá khứ, tương lai gần.' },
+      { id: 'ta-ngu-phap', emoji: '🔤', mau: '#8b7bf7', ten: 'Ngữ pháp', mo_ta: 'So sánh, mạo từ, giới từ, khuyết thiếu, số nhiều.' },
+      { id: 'ta-cau', emoji: '💬', mau: '#ff8fd0', ten: 'Câu và từ loại', mo_ta: 'There is, từ để hỏi, sở hữu, tần suất, trật tự câu.' },
+      { id: 'ta-tu-vung', emoji: '📒', mau: '#2fcf90', ten: 'Từ vựng', mo_ta: '120 từ theo 12 chủ đề sách lớp 6, trái nghĩa, khác loại.' },
+      { id: 'ta-doc-hieu', emoji: '📖', mau: '#ffc93c', ten: 'Đọc hiểu', mo_ta: 'Bảy bài đọc tiếng Anh rồi trả lời câu hỏi.' }
     ] }
   ];
 
@@ -66,11 +71,14 @@
   ];
 
   var KIEM_TRA = [
-    { id: 'l6-kiem-tra', emoji: '📝', mau: '#8b7bf7', ten: 'Bài kiểm tra',
-      mo_ta: 'Sáu bộ đề: ba đề theo mốc năm học và ba đề luyện tập. Máy chấm điểm thang 10.',
+    { id: 'l6-kiem-tra', emoji: '📝', mau: '#8b7bf7', ten: 'Bài kiểm tra Toán',
+      mo_ta: 'Tám bộ đề: ba đề theo mốc năm học và năm đề luyện tập, khoảng 30 câu mỗi đề.',
       href: 'kiem-tra.html' },
+    { id: 'l6-kiem-tra-anh', emoji: '🔠', mau: '#4aa8ff', ten: 'Bài kiểm tra Tiếng Anh',
+      mo_ta: 'Năm bộ đề ngữ pháp, từ vựng và đọc hiểu. Chấm xong thầy giảng lại câu sai.',
+      href: 'kiem-tra-anh.html' },
     { id: 'l6-nang-cao', emoji: '🚀', mau: '#ff7a7a', ten: 'Bài tập nâng cao',
-      mo_ta: 'Dạng khó hơn hẳn. Chấm xong, trợ lý giải lại từng câu sai theo từng bước.',
+      mo_ta: 'Dạng khó hơn hẳn. Chấm xong, thầy giáo hiện lên giảng lại từng câu sai.',
       href: 'nang-cao.html' }
   ];
 
@@ -88,8 +96,8 @@
     card.style.setProperty('--tint', bai.mau);
 
     var huy = '', ptDe = null;
-    if (bai.id === 'l6-kiem-tra') {
-      var ds = Quiz.readLichSu('l6-kiem-tra');
+    if (bai.id === 'l6-kiem-tra' || bai.id === 'l6-kiem-tra-anh') {
+      var ds = Quiz.readLichSu(bai.id);
       if (ds.length) {
         huy = '<span class="best">Lần gần nhất: ' + ds[0].diem + '/10 — ' + ds[0].de + '</span>';
         ptDe = ds[0].diem * 10;

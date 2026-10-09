@@ -199,7 +199,7 @@
 
   function l5_phanTramNguoc() {
     var pt = chon([10, 20, 25, 50]);
-    // sĩ số phải là bội của 100/ƯCLN, nếu không số học sinh giỏi ra số lẻ
+    // sĩ số phải là bội của 100 chia cho ước chung lớn nhất, nếu không số học sinh giỏi ra số lẻ
     var boi = 100 / ucln(pt, 100);
     var goc = r(3, 12) * boi;
     var phan = goc * pt / 100;
@@ -257,13 +257,13 @@
               'vào các phần quà sao cho <b>không thừa</b> thứ gì. Hỏi chia được <b>nhiều nhất</b> ' +
               'bao nhiêu phần quà?',
       speak: 'Có ' + a + ' quyển vở và ' + b + ' cây bút, chia đều không thừa. Nhiều nhất bao nhiêu phần quà?',
-      answer: d, after: 'phần', soChuSo: 4, mach: 'ƯCLN thực tế',
+      answer: d, after: 'phần', soChuSo: 4, mach: 'Ước chung trong đời sống',
       giai: ['Chia đều cả hai thứ mà không thừa nghĩa là số phần quà phải là <b>ước chung</b> của ' +
         a + ' và ' + b + '.',
-        'Hỏi <b>nhiều nhất</b> nên lấy <b>ƯCLN</b>.',
-        'ƯCLN(' + a + ', ' + b + ') = ' + d + '.',
+        'Hỏi <b>nhiều nhất</b> nên lấy <b>ước chung lớn nhất</b>.',
+        'Ước chung lớn nhất của ' + a + ' và ' + b + ' là ' + d + '.',
         'Kiểm lại: mỗi phần có ' + (a / d) + ' quyển vở và ' + (b / d) + ' cây bút.',
-        'Chỗ hay nhầm: lấy BCNN, hoặc cộng hai số lại rồi chia.']
+        'Chỗ hay nhầm: lấy bội chung nhỏ nhất, hoặc cộng hai số lại rồi chia.']
     };
   }
 
@@ -277,11 +277,13 @@
               '</b> phút chạy một chuyến, xe thứ hai cứ <b>' + b + '</b> phút một chuyến. ' +
               'Hỏi sau ít nhất bao nhiêu phút thì hai xe lại cùng rời bến?',
       speak: 'Xe một cứ ' + a + ' phút, xe hai cứ ' + b + ' phút. Sau bao nhiêu phút hai xe lại cùng rời bến?',
-      answer: m, after: 'phút', soChuSo: 4, mach: 'BCNN thực tế',
+      answer: m, after: 'phút', soChuSo: 4, mach: 'Bội chung trong đời sống',
       giai: ['Hai xe cùng rời bến khi số phút là <b>bội chung</b> của ' + a + ' và ' + b + '.',
-        'Hỏi <b>ít nhất</b> nên lấy <b>BCNN</b>.',
-        'BCNN(' + a + ', ' + b + ') = ' + a + ' × ' + b + ' : ' + uc(a, b) + ' = ' + m + ' phút.',
-        'Chỗ hay nhầm: lấy ƯCLN, hoặc nhân thẳng ' + a + ' × ' + b + ' = ' + (a * b) + '.']
+        'Hỏi <b>ít nhất</b> nên lấy <b>bội chung nhỏ nhất</b>.',
+        'Bội chung nhỏ nhất của ' + a + ' và ' + b + ' là ' + a + ' × ' + b + ' : ' +
+          uc(a, b) + ' = ' + m + ' phút.',
+        'Chỗ hay nhầm: lấy ước chung lớn nhất, hoặc nhân thẳng ' + a + ' × ' + b +
+          ' = ' + (a * b) + '.']
     };
   }
 
@@ -325,13 +327,121 @@
     };
   }
 
+  function l6_luyThuaHaiBuoc() {
+    var a = chon([2, 3, 5]), m = r(2, 3), n = r(2, 3), b = r(2, 9);
+    var luy = Math.pow(a, m + n);
+    var kq = luy + b * b;
+    return {
+      prompt: 'Tính giá trị của biểu thức <b>' + a + '<sup>' + m + '</sup> · ' + a +
+              '<sup>' + n + '</sup> + ' + b + '<sup>2</sup></b>.',
+      speak: a + ' mũ ' + m + ' nhân ' + a + ' mũ ' + n + ' cộng ' + b + ' mũ hai',
+      answer: kq, soChuSo: 6, mach: 'Lũy thừa nâng cao',
+      giai: ['Nhân hai lũy thừa <b>cùng cơ số</b> thì giữ cơ số, <b>cộng số mũ</b>: ' +
+          a + '<sup>' + m + '</sup> · ' + a + '<sup>' + n + '</sup> = ' + a +
+          '<sup>' + (m + n) + '</sup>.',
+        a + '<sup>' + (m + n) + '</sup> = ' + luy + '.',
+        'Tính tiếp ' + b + '² = ' + (b * b) + '.',
+        'Cộng lại: ' + luy + ' + ' + (b * b) + ' = ' + kq + '.',
+        'Chỗ hay nhầm: <b>nhân</b> hai số mũ với nhau thay vì cộng.']
+    };
+  }
+
+  function l6_phanSoHaiBuoc() {
+    // bể nước: ngày đầu dùng một phần, ngày sau dùng một phần của chỗ còn lại
+    var mau1 = chon([2, 3, 4, 5]), mau2 = chon([2, 3, 4]);
+    var tong = mau1 * mau2 * r(3, 14);
+    var ngay1 = tong / mau1;
+    var conLai = tong - ngay1;
+    var ngay2 = conLai / mau2;
+    var cuoi = conLai - ngay2;
+    return {
+      prompt: 'Một bể chứa <b>' + tong + ' lít</b> nước. Ngày đầu dùng hết <b>1/' + mau1 +
+              '</b> số nước, ngày thứ hai dùng hết <b>1/' + mau2 +
+              '</b> <b>chỗ nước còn lại</b>. Hỏi cuối cùng bể còn bao nhiêu lít?',
+      speak: 'Bể có ' + tong + ' lít. Ngày đầu dùng một phần ' + mau1 +
+             ', ngày sau dùng một phần ' + mau2 + ' chỗ còn lại. Bể còn bao nhiêu lít?',
+      answer: cuoi, after: 'lít', soChuSo: 5, mach: 'Phân số nâng cao',
+      giai: ['Ngày đầu dùng: ' + tong + ' : ' + mau1 + ' = ' + ngay1 + ' lít.',
+        'Sau ngày đầu còn: ' + tong + ' − ' + ngay1 + ' = ' + conLai + ' lít.',
+        'Ngày thứ hai dùng một phần ' + mau2 + ' của <b>' + conLai + '</b> lít chứ không phải của ' +
+          tong + ' lít: ' + conLai + ' : ' + mau2 + ' = ' + ngay2 + ' lít.',
+        'Cuối cùng còn: ' + conLai + ' − ' + ngay2 + ' = ' + cuoi + ' lít.',
+        'Chỗ hay nhầm: lấy một phần ' + mau2 + ' của cả bể ban đầu.']
+    };
+  }
+
+  function l6_dienTichGhepHinh() {
+    var a = r(8, 25), b = r(4, 15);          // hình chữ nhật
+    var day = r(4, 12), cao = r(4, 12) * 2;  // tam giác ghép thêm
+    var tong = a * b + day * cao / 2;
+    return {
+      prompt: 'Một mảnh vườn gồm <b>một hình chữ nhật</b> dài ' + a + ' m, rộng ' + b +
+              ' m, ghép thêm <b>một hình tam giác</b> có đáy ' + day + ' m và chiều cao ' +
+              cao + ' m. Tính diện tích cả mảnh vườn.',
+      speak: 'Vườn gồm hình chữ nhật ' + a + ' nhân ' + b + ' mét, ghép thêm tam giác đáy ' +
+             day + ' cao ' + cao + ' mét. Tính diện tích cả mảnh vườn.',
+      answer: tong, after: 'm²', soChuSo: 6, mach: 'Diện tích nâng cao',
+      giai: ['Cắt mảnh vườn thành <b>hai hình quen thuộc</b> rồi cộng diện tích lại.',
+        'Diện tích hình chữ nhật: ' + a + ' × ' + b + ' = ' + (a * b) + ' m².',
+        'Diện tích tam giác: ' + day + ' × ' + cao + ' : 2 = ' + (day * cao / 2) + ' m².',
+        'Cộng lại: ' + (a * b) + ' + ' + (day * cao / 2) + ' = ' + tong + ' m².',
+        'Chỗ hay nhầm: quên chia đôi khi tính diện tích tam giác.']
+    };
+  }
+
+  function l6_tiSoPhanTramNguoc() {
+    var pt = chon([10, 20, 25, 40, 50, 60, 75]);
+    var sau = r(3, 30) * 4;
+    var goc = Math.round(sau * 100 / (100 + pt));
+    // chọn lại cho số tròn: đi ngược từ số gốc
+    goc = r(5, 50) * 4;
+    sau = goc + goc * pt / 100;
+    while (sau % 1 !== 0) { goc += 4; sau = goc + goc * pt / 100; }
+    return {
+      prompt: 'Năm ngoái trường có một số học sinh. Năm nay số học sinh <b>tăng ' + pt +
+              '%</b> so với năm ngoái và đạt <b>' + sau +
+              ' bạn</b>. Hỏi năm ngoái trường có bao nhiêu học sinh?',
+      speak: 'Số học sinh tăng ' + pt + ' phần trăm và đạt ' + sau +
+             ' bạn. Năm ngoái có bao nhiêu bạn?',
+      answer: goc, after: 'bạn', soChuSo: 5, mach: 'Phần trăm nâng cao',
+      giai: ['Coi số học sinh <b>năm ngoái</b> là 100%.',
+        'Năm nay là 100% + ' + pt + '% = ' + (100 + pt) + '%, ứng với ' + sau + ' bạn.',
+        'Vậy 1% ứng với ' + sau + ' : ' + (100 + pt) + ' = ' + (sau / (100 + pt)) + ' bạn.',
+        'Năm ngoái (100%) có ' + (sau / (100 + pt)) + ' × 100 = ' + goc + ' bạn.',
+        'Chỗ hay nhầm: lấy ' + sau + ' trừ đi ' + pt + '% <b>của chính ' + sau + '</b>.']
+    };
+  }
+
+  function l6_ucln_bcnn_chung() {
+    var d = r(2, 9), k1 = r(2, 7), k2 = r(2, 7);
+    while (k2 === k1 || ucln(k1, k2) !== 1) k2 = r(2, 7);
+    var a = d * k1, b = d * k2;
+    var m = a / ucln(a, b) * b;
+    return {
+      prompt: 'Hai số <b>' + a + '</b> và <b>' + b + '</b> có ước chung lớn nhất bằng <b>' + d +
+              '</b>. Hỏi <b>bội chung nhỏ nhất</b> của hai số đó bằng bao nhiêu?',
+      speak: 'Hai số ' + a + ' và ' + b + ' có ước chung lớn nhất là ' + d +
+             '. Bội chung nhỏ nhất bằng bao nhiêu?',
+      answer: m, soChuSo: 5, mach: 'Ước chung và bội chung nâng cao',
+      giai: ['Có một công thức rất gọn: <b>ước chung lớn nhất nhân bội chung nhỏ nhất ' +
+          'bằng tích hai số</b>.',
+        'Tích hai số: ' + a + ' × ' + b + ' = ' + (a * b) + '.',
+        'Vậy bội chung nhỏ nhất bằng ' + (a * b) + ' : ' + d + ' = ' + m + '.',
+        'Thử lại: ' + m + ' : ' + a + ' = ' + (m / a) + ' và ' + m + ' : ' + b + ' = ' +
+          (m / b) + ', đều chia hết.',
+        'Chỗ hay nhầm: nhân thẳng ' + a + ' × ' + b + ' mà quên chia cho ' + d + '.']
+    };
+  }
+
   var BO = {
     1: [l1_bachoc, l1_sosanhTong, l1_timSoBiAn],
     2: [l2_haiBuoc, l2_timXHaiBuoc, l2_gapVaThem],
     3: [l3_chiaDuThucTe, l3_chuViNguoc, l3_bieuThucKho],
     4: [l4_tongTiCoDu, l4_trungBinhNguoc, l4_phanSoCuaSoKho],
     5: [l5_phanTramNguoc, l5_vanTocNguoc, l5_dienTichConLai],
-    6: [l6_ucln_thucTe, l6_bcnn_thucTe, l6_phanTramHaiBuoc, l6_soNguyenNhieuBuoc]
+    6: [l6_ucln_thucTe, l6_bcnn_thucTe, l6_phanTramHaiBuoc, l6_soNguyenNhieuBuoc,
+        l6_luyThuaHaiBuoc, l6_phanSoHaiBuoc, l6_dienTichGhepHinh,
+        l6_tiSoPhanTramNguoc, l6_ucln_bcnn_chung]
   };
 
   global.NangCao = {

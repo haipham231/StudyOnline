@@ -21,6 +21,7 @@
 
 <script src="../js/o-tra-loi.js"></script>
 <script src="../js/quiz.js"></script>
+<script src="../js/tro-ly.js"></script>
 <script src="../js/toan-lop-6.js"></script>
 <script>
   var T = ToanL6;
@@ -28,59 +29,106 @@
   /* Ma trận đề — mỗi dòng là [số câu, hàm sinh đề], bám ba mốc của năm học. */
   var MA_TRAN = {
     'giua-ki-1': [
-      [4, T.luyThua],
+      [3, T.tapHopPhanTu],
+      [2, T.phanTuThuocTapHop],
+      [3, T.luyThua],
       [3, T.nhanLuyThua],
       [3, T.dauHieuChiaHet6],
       [3, T.soNguyenTo],
+      [2, T.demUoc],
       [3, T.timUCLN],
       [2, T.timBCNN],
-      [2, T.thuTuPhepTinh]
+      [3, T.thuTuPhepTinh],
+      [3, T.bieuThucCoNgoac]
     ],
     'cuoi-ki-1': [
       [3, T.congSoNguyen],
-      [3, T.nhanSoNguyen],
+      [3, T.truSoNguyen],
+      [2, T.nhanSoNguyen],
+      [2, T.chiaSoNguyen],
+      [2, T.giaTriTuyetDoi],
+      [2, T.boDauNgoac],
       [2, T.soSanhSoNguyen],
       [3, T.timUCLN],
-      [3, T.timBCNN],
+      [2, T.timBCNN],
       [3, T.nhanBietHinh6],
-      [3, T.chuViLucGiac]
+      [3, T.chuViLucGiac],
+      [3, T.timXLop6]
     ],
     'cuoi-nam': [
       [3, T.rutGonPS6],
+      [2, T.soSanhPhanSo],
       [3, T.congPSKhacMau],
+      [2, T.truPSKhacMau],
       [2, T.nhanChiaPS6],
+      [2, T.phanSoCuaMotSo],
       [2, T.phanTram6],
+      [2, T.tiSoPhanTram6],
       [2, T.timSoBietPhanTram],
       [2, T.dienTichHinhThang],
+      [2, T.dienTichHinhBinhHanh],
       [2, T.trungDiem],
       [2, T.congGoc],
-      [3, T.trungBinhCong6]
+      [2, T.trungBinhCong6],
+      [2, T.docBieuDoCot]
     ],
     'luyen-1': [
-      [4, T.luyThua],
+      [3, T.tapHopPhanTu],
+      [3, T.luyThua],
       [3, T.thuTuPhepTinh],
+      [3, T.bieuThucCoNgoac],
       [3, T.congSoNguyen],
+      [3, T.truSoNguyen],
       [3, T.nhanSoNguyen],
       [3, T.soNguyenTo],
       [4, function () { return Quiz.pick([T.timUCLN, T.timBCNN])(); }]
     ],
     'luyen-2': [
-      [4, T.rutGonPS6],
-      [4, T.congPSKhacMau],
+      [3, T.rutGonPS6],
+      [3, T.congPSKhacMau],
+      [3, T.truPSKhacMau],
       [3, T.nhanChiaPS6],
+      [3, T.honSoThanhPhanSo],
       [3, T.thapPhan6],
+      [3, T.nhanThapPhan],
+      [3, T.chiaThapPhan],
       [3, T.phanTram6],
       [3, T.timSoBietPhanTram]
     ],
     'luyen-3': [
       [3, T.nhanBietHinh6],
+      [3, T.chuViHinhChuNhat6],
       [3, T.chuViLucGiac],
       [3, T.dienTichHinhThang],
+      [3, T.dienTichHinhBinhHanh],
+      [3, T.dienTichHinhThoi],
+      [2, T.demTrucDoiXung],
+      [2, T.coTamDoiXung],
       [3, T.trungDiem],
       [3, T.loaiGoc],
-      [3, T.congGoc],
-      [2, T.trungBinhCong6],
-      [2, T.xacSuatDonGian]
+      [3, T.congGoc]
+    ],
+    'luyen-4': [
+      [3, T.demUoc],
+      [3, T.boiNhoNhat],
+      [3, T.thuaSoNguyenToLonNhat],
+      [3, T.timXLop6],
+      [3, T.boDauNgoac],
+      [3, T.giaTriTuyetDoi],
+      [3, T.chiaSoNguyen],
+      [3, T.doiDonVi6],
+      [3, T.lamTronThapPhan]
+    ],
+    'luyen-5': [
+      [3, T.docBieuDoCot],
+      [3, T.trungBinhCong6],
+      [3, T.xacSuatDonGian],
+      [3, T.xacSuatThucNghiem],
+      [3, T.tiSoPhanTram6],
+      [3, T.phanSoCuaMotSo],
+      [3, T.timSoBietPhanSo],
+      [3, T.soSanhPhanSo],
+      [3, T.doiDonVi6]
     ]
   };
 
@@ -111,12 +159,13 @@
   Quiz.init({
     id: 'l6-kiem-tra',
     exam: true,
+    troLy: true,
     levels: [
       { name: 'Đề giữa học kì 1',
         hint: demCau('giua-ki-1') + ' câu · lũy thừa, chia hết, số nguyên tố',
         taoDe: function () { return taoDe('giua-ki-1'); } },
       { name: 'Đề cuối học kì 1',
-        hint: demCau('cuoi-ki-1') + ' câu · số nguyên âm, ƯCLN BCNN, hình học',
+        hint: demCau('cuoi-ki-1') + ' câu · số nguyên âm, ước chung, bội chung, hình học',
         taoDe: function () { return taoDe('cuoi-ki-1'); } },
       { name: 'Đề cuối năm học',
         hint: demCau('cuoi-nam') + ' câu · cả năm — phân số, phần trăm, góc',
@@ -129,7 +178,13 @@
         taoDe: function () { return taoDe('luyen-2'); } },
       { name: 'Đề luyện tập 3',
         hint: demCau('luyen-3') + ' câu · trộn cả năm, nhấn hình học và thống kê',
-        taoDe: function () { return taoDe('luyen-3'); } }
+        taoDe: function () { return taoDe('luyen-3'); } },
+      { name: 'Đề luyện tập 4',
+        hint: demCau('luyen-4') + ' câu · ước và bội, tìm x, số nguyên, đo lường',
+        taoDe: function () { return taoDe('luyen-4'); } },
+      { name: 'Đề luyện tập 5',
+        hint: demCau('luyen-5') + ' câu · thống kê, xác suất, phân số và phần trăm',
+        taoDe: function () { return taoDe('luyen-5'); } }
     ]
   });
 </script>

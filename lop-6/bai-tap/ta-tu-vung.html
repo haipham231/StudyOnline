@@ -32,12 +32,18 @@
     total: 10,
     speak: true,
     levels: [
-      { name: 'Anh sang Việt', hint: 'Từ này nghĩa là gì',
+      { name: 'Từ tiếng Anh nghĩa gì', hint: 'Chọn nghĩa tiếng Việt đúng',
         gen: V.nghiaTuVung },
-      { name: 'Việt sang Anh', hint: 'Tiếng Anh gọi là gì',
+      { name: 'Tiếng Việt sang tiếng Anh', hint: 'Chọn từ tiếng Anh đúng',
         gen: V.tuTiengAnh },
-      { name: 'Trộn', hint: 'Cả hai chiều',
-        gen: function () { return Quiz.pick([V.nghiaTuVung, V.tuTiengAnh])(); } }
+      { name: 'Từ trái nghĩa', hint: 'big ↔ small, hot ↔ cold',
+        gen: V.traiNghia },
+      { name: 'Từ khác loại', hint: 'Tìm từ không cùng nhóm',
+        gen: V.tuKhacLoai },
+      { name: 'Trộn tất cả', hint: 'Mỗi câu một kiểu',
+        gen: function () {
+          return Quiz.pick([V.nghiaTuVung, V.tuTiengAnh, V.traiNghia, V.tuKhacLoai])();
+        } }
     ]
   });
 </script>

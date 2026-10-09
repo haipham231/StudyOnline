@@ -34,10 +34,21 @@
     levels: [
       { name: 'So sánh', hint: 'Hơn và nhất',
         gen: V.soSanhHonNhat },
-      { name: 'Mạo từ và giới từ', hint: 'a, an, the, in, on, at',
-        gen: function () { return Quiz.pick([V.maoTu, V.gioiTu])(); } },
-      { name: 'Khuyết thiếu và danh từ', hint: 'can, should, must, many, much',
-        gen: function () { return Quiz.pick([V.dongTuKhuyetThieu, V.demDuocKhongDem])(); } }
+      { name: 'Mạo từ', hint: 'a, an, the',
+        gen: V.maoTu },
+      { name: 'Giới từ', hint: 'in, on, at, under, next to',
+        gen: V.gioiTu },
+      { name: 'Động từ khuyết thiếu', hint: 'can, should, must',
+        gen: V.dongTuKhuyetThieu },
+      { name: 'Đếm được và không đếm được', hint: 'many, much, some, any',
+        gen: V.demDuocKhongDem },
+      { name: 'Danh từ số nhiều', hint: 'books, boxes, children, teeth',
+        gen: V.danhTuSoNhieu },
+      { name: 'Trộn tất cả', hint: 'Mỗi câu một điểm ngữ pháp',
+        gen: function () {
+          return Quiz.pick([V.soSanhHonNhat, V.maoTu, V.gioiTu, V.dongTuKhuyetThieu,
+            V.demDuocKhongDem, V.danhTuSoNhieu])();
+        } }
     ]
   });
 </script>

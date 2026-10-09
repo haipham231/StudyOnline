@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chu vi và diện tích — Toán lớp 6</title>
+<meta name="description" content="Chu vi hình chữ nhật và lục giác đều, diện tích hình thang, hình bình hành, hình thoi, và đổi đơn vị đo. Bài tập Toán lớp 6.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>📏</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>📏 Chu vi và diện tích</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/o-tra-loi.js"></script>
+<script src="../../js/quiz.js"></script>
+<script src="../../js/toan-lop-6.js"></script>
+<script>
+  var T = ToanL6;
+
+  Quiz.init({
+    id: 'l6-chu-vi-dien-tich',
+    total: 10,
+    levels: [
+      { name: 'Chu vi', hint: 'Hình chữ nhật, tam giác đều, lục giác đều',
+        gen: function () { return Quiz.pick([T.chuViHinhChuNhat6, T.chuViLucGiac])(); } },
+      { name: 'Hình bình hành', hint: 'Đáy nhân chiều cao',
+        gen: T.dienTichHinhBinhHanh },
+      { name: 'Hình thoi', hint: 'Tích hai đường chéo chia đôi',
+        gen: T.dienTichHinhThoi },
+      { name: 'Hình thang', hint: 'Tổng hai đáy nhân chiều cao chia đôi',
+        gen: T.dienTichHinhThang },
+      { name: 'Đổi đơn vị đo', hint: 'Mét, ki-lô-gam, giờ, phút',
+        gen: T.doiDonVi6 },
+      { name: 'Trộn tất cả', hint: 'Mỗi câu một hình',
+        gen: function () { return Quiz.pick([T.chuViHinhChuNhat6, T.chuViLucGiac, T.dienTichHinhBinhHanh, T.dienTichHinhThoi, T.dienTichHinhThang, T.doiDonVi6])(); } }
+    ]
+  });
+</script>
+</body>
+</html>

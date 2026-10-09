@@ -43,18 +43,25 @@
     ho: [
     { id: 'ao', ten: 'Ao Nhỏ', mucDo: 'Dễ', emoji: '🪣', mau: '#2fcf90', nen: '#e4f9f0',
       dan: ['cau-ca/ca-nho', 'cau-ca/cua'], coCa: 48,
-      mota: 'Lũy thừa, dấu hiệu chia hết, số nguyên tố',
-      de: mix(T.luyThua, T.dauHieuChiaHet6, T.soNguyenTo, T.loaiGoc) },
+      mota: 'Tập hợp, lũy thừa, chia hết, số nguyên tố',
+      de: mix(T.tapHopPhanTu, T.phanTuThuocTapHop, T.luyThua, T.nhanLuyThua,
+        T.dauHieuChiaHet6, T.soNguyenTo, T.demUoc, T.boiNhoNhat, T.loaiGoc,
+        T.demTrucDoiXung, T.coTamDoiXung) },
 
     { id: 'song', ten: 'Sông Lớn', mucDo: 'Vừa', emoji: '🏞️', mau: '#4aa8ff', nen: '#e3f1ff',
       dan: ['cau-ca/ca-vua', 'cau-ca/bach-tuoc', 'cau-ca/cua'], coCa: 66,
-      mota: 'Số nguyên âm, ƯCLN, BCNN, phân số',
-      de: mix(T.congSoNguyen, T.nhanSoNguyen, T.timUCLN, T.timBCNN, T.rutGonPS6) },
+      mota: 'Số nguyên âm, ước chung, bội chung, phân số',
+      de: mix(T.congSoNguyen, T.truSoNguyen, T.nhanSoNguyen, T.chiaSoNguyen,
+        T.giaTriTuyetDoi, T.boDauNgoac, T.timXLop6, T.bieuThucCoNgoac,
+        T.timUCLN, T.timBCNN, T.rutGonPS6, T.soSanhPhanSo, T.doiDonVi6) },
 
     { id: 'bien', ten: 'Biển Sâu', mucDo: 'Khó', emoji: '🌊', mau: '#6a58e0', nen: '#ece8ff',
       dan: ['cau-ca/ca-map', 'cau-ca/ca-voi', 'cau-ca/sua', 'cau-ca/bach-tuoc'], coCa: 80,
-      mota: 'Quy đồng phân số, phần trăm ngược, hình thang',
-      de: mix(T.congPSKhacMau, T.nhanChiaPS6, T.timSoBietPhanTram, T.dienTichHinhThang, T.congGoc) }
+      mota: 'Quy đồng phân số, phần trăm ngược, diện tích, thống kê',
+      de: mix(T.congPSKhacMau, T.truPSKhacMau, T.nhanChiaPS6, T.honSoThanhPhanSo,
+        T.phanSoCuaMotSo, T.timSoBietPhanSo, T.tiSoPhanTram6, T.timSoBietPhanTram,
+        T.nhanThapPhan, T.chiaThapPhan, T.dienTichHinhThang, T.dienTichHinhBinhHanh,
+        T.dienTichHinhThoi, T.congGoc, T.docBieuDoCot, T.xacSuatThucNghiem) }
     ]
   });
 </script>

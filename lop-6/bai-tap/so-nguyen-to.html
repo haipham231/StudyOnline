@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Số nguyên tố, ƯCLN, BCNN — Toán lớp 6</title>
+<title>Số nguyên tố, ước chung, bội chung — Toán lớp 6</title>
 <meta name="description" content="Phân tích ra thừa số nguyên tố. Bài tập Toán lớp 6 sinh ngẫu nhiên mỗi lần chơi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
 <body>
 <header class="topbar">
   <a class="back" href="../index.html">← Quay lại</a>
-  <h1>🔑 Số nguyên tố, ƯCLN, BCNN</h1>
+  <h1>🔑 Số nguyên tố, ước chung, bội chung</h1>
 </header>
 
 <main id="quiz" class="quiz"></main>
@@ -29,12 +29,18 @@
     id: 'l6-so-nguyen-to',
     total: 10,
     levels: [
-      { name: 'Số nguyên tố', hint: 'Nhận biết số nguyên tố',
+      { name: 'Số nguyên tố', hint: 'Chỉ chia hết cho 1 và chính nó',
         gen: T.soNguyenTo },
-      { name: 'ƯCLN', hint: 'Ước chung lớn nhất',
+      { name: 'Phân tích ra thừa số', hint: 'Chia dần cho 2, 3, 5, 7…',
+        gen: T.thuaSoNguyenToLonNhat },
+      { name: 'Ước chung lớn nhất', hint: 'Số lớn nhất mà cả hai số đều chia hết',
         gen: T.timUCLN },
-      { name: 'BCNN', hint: 'Bội chung nhỏ nhất',
-        gen: T.timBCNN }
+      { name: 'Bội chung nhỏ nhất', hint: 'Số nhỏ nhất chia hết cho cả hai số',
+        gen: T.timBCNN },
+      { name: 'Trộn tất cả', hint: 'Mỗi câu một dạng',
+        gen: function () {
+          return Quiz.pick([T.soNguyenTo, T.thuaSoNguyenToLonNhat, T.timUCLN, T.timBCNN])();
+        } }
     ]
   });
 </script>

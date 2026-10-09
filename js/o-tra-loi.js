@@ -138,9 +138,21 @@
 
     /* --- bấm chọn --- */
 
+    function soChu(gt) {
+      return String(gt).replace(/<[^>]+>/g, '').length;
+    }
+
     if (cau.choices) {
       var boc = el('div', 'choices');
-      boc.style.setProperty('--cols', cau.cols || cau.choices.length);
+      var cot = cau.cols || cau.choices.length;
+      boc.style.setProperty('--cols', cot);
+
+      // Từ tiếng Anh dài hơn tiếng Việt nhiều; chia ba cột mà để nguyên cỡ chữ
+      // là chữ thò ra khỏi nút. Dài vừa thì thu chữ, dài quá thì bớt cột.
+      var daiNhat = 0;
+      cau.choices.forEach(function (gt) { daiNhat = Math.max(daiNhat, soChu(gt)); });
+      if (cot >= 3 && daiNhat >= 8) boc.classList.add('chu-dai');
+      if (cot >= 3 && daiNhat >= 13) boc.classList.add('chu-rat-dai');
 
       cau.choices.forEach(function (gt) {
         var nut = el('button', 'choice', String(gt));
@@ -149,6 +161,9 @@
           if (khoa) return;
           o.innerHTML = String(gt);
           o.classList.remove('empty');
+          // đáp án là cả một câu thì phải thu chữ, nếu không ô đáp án tràn ra ngoài
+          if (soChu(gt) > 9) hang.classList.add('sm');
+          if (soChu(gt) > 16) hang.classList.add('rat-sm');
           var dung = String(gt) === String(cau.answer);
           nut.classList.add(dung ? 'is-ok' : 'is-bad');
           traLoi(dung, gt);

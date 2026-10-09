@@ -19,9 +19,17 @@
     return n;
   }
 
-  // bỏ thẻ HTML để lấy chữ trần khi cần đọc lại đề
+  // Bỏ thẻ HTML để lấy chữ trần khi thầy đọc lại đề. Phần <small> là lời dặn
+  // cách gõ đáp án, đọc lại nghe lủng củng nên bỏ hẳn.
   function tran(s) {
-    return String(s == null ? '' : s).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    return String(s == null ? '' : s)
+      .replace(/<small>[\s\S]*?<\/small>/gi, ' ')
+      .replace(/<br\s*\/?>/gi, ' ')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .replace(/\s+([.,;:!?%)\]])/g, '$1')      // bỏ thẻ xong hay thừa dấu cách trước dấu câu
+      .replace(/([(\[])\s+/g, '$1')
+      .trim();
   }
 
   // Lấy các số trong một chuỗi, giữ cả số thập phân kiểu Việt (3,5)
@@ -156,34 +164,276 @@
       'Bé đọc lại đề một lần nữa rồi thử tự làm lại câu này nhé.'];
   }
 
+  /* ---------- Thầy giáo hiện lên giảng bài ---------- */
+
+  // Năm dáng thầy giáo cắt sẵn. Mỗi bài giảng đổi một dáng cho đỡ chán.
+  var DANG = ['1-bang', '2-khoanh-tay', '3-may-tinh', '4-ngoi', '5-hai-tay'];
+  var dangTruoc = -1;
+
+  // Trang bài tập nằm sâu một hoặc hai tầng thư mục, nên lấy gốc trang từ
+  // chính đường dẫn của tệp js này thay vì đoán bằng ../
+  var GOC = (function () {
+    var ds = document.getElementsByTagName('script');
+    for (var i = ds.length - 1; i >= 0; i--) {
+      var src = ds[i].src || '';
+      if (/tro-ly\.js(\?|$)/.test(src)) return src.replace(/js\/tro-ly\.js.*$/, '');
+    }
+    return '';
+  })();
+
+  function dangNgauNhien() {
+    var k;
+    do { k = Math.floor(Math.random() * DANG.length); }
+    while (DANG.length > 1 && k === dangTruoc);
+    dangTruoc = k;
+    return GOC + 'assets/thay-giao/' + DANG[k] + '.png';
+  }
+
+  /* Bài giảng cho một câu sai: từng câu nói ngắn, thầy nói lần lượt. */
+  function loiGiang(m, thuTu, tong) {
+    var noi = [];
+    noi.push('Mình cùng xem lại <b>câu ' + thuTu + '</b> trong ' + tong +
+      ' câu con làm chưa đúng nhé.');
+    // Bài đọc hiểu có nguyên đoạn văn trong đề; đọc lại cả đoạn thì màn hình
+    // điện thoại không chứa nổi một bài giảng, nên chỉ nhắc phần cuối.
+    var de = tran(m.label);
+    if (de.length > 200) de = '…' + de.slice(de.length - 190);
+    noi.push('Đề bài là: <i>' + de + (m.after ? ' (' + tran(m.after) + ')' : '') + '</i>');
+    noi.push('Con trả lời <b class="sai">' + tran(m.given) + '</b>, còn đáp án đúng là <b class="dung">' +
+      tran(m.answer) + '</b>.');
+    noi.push('Thầy giảng lại từ đầu nha:');
+    buoc(m).forEach(function (b, i) { noi.push('<span class="buoc">' + (i + 1) + '</span> ' + b); });
+    noi.push(KHUYEN[Math.floor(Math.random() * KHUYEN.length)]);
+    return noi;
+  }
+
+  var KHUYEN = [
+    'Con hiểu rồi chứ? Lần sau gặp dạng này con làm được ngay thôi!',
+    'Dạng bài này chỉ cần nhớ đúng một bước là xong. Con giỏi lắm!',
+    'Sai một câu không sao cả, biết vì sao sai mới là điều quan trọng nhé.',
+    'Con thử tự làm lại câu này một lần nữa cho nhớ lâu nhé!',
+    'Thầy tin lần sau con sẽ làm đúng câu này.'
+  ];
+
+  /* Thầy có nói thành tiếng hay không — nhớ lại lựa chọn của lần trước. */
+  var KHOA_NOI = 'studyonline:thay-noi';
+
+  function dangBatTieng() {
+    try { return localStorage.getItem(KHOA_NOI) !== '0'; } catch (e) { return true; }
+  }
+  function datTieng(bat) {
+    try { localStorage.setItem(KHOA_NOI, bat ? '1' : '0'); } catch (e) { /* chế độ riêng tư */ }
+  }
+
+  function thoiNoi() {
+    if (global.speechSynthesis) { try { global.speechSynthesis.cancel(); } catch (e) {} }
+  }
+
+  /* Gõ chữ ra từ từ cho giống đang nói, và nếu bật tiếng thì thầy đọc luôn
+     từng câu. Câu sau chỉ bắt đầu khi câu trước vừa gõ xong vừa đọc xong.
+     Trả về hàm tua nhanh tới hết. */
+  function goChu(oChua, cacCau, xong, coTieng) {
+    var i = 0, huy = false, hen = null, dong = null, chuoi = null, vt = 0;
+    var goXong = false, noiXong = false, daSang = false;
+
+    function cauSau() {
+      if (huy) return;
+      if (i >= cacCau.length) { if (xong) xong(); return; }
+      dong = el('p', lopDong(cacCau[i]));
+      oChua.appendChild(dong);
+      chuoi = cheNho(cacCau[i]);
+      vt = 0;
+      goXong = false;
+      daSang = false;
+      noiXong = true;
+
+      if (coTieng && global.Quiz && global.Quiz.docTo) {
+        noiXong = false;
+        global.Quiz.docTo(cacCau[i], null, {
+          nam: true, noiTiep: i > 0,
+          xong: function () { noiXong = true; thuSang(); }
+        });
+      }
+      i++;
+      goTiep();
+    }
+
+    function thuSang() {
+      if (huy || daSang || !goXong || !noiXong) return;
+      daSang = true;
+      hen = setTimeout(cauSau, 240);
+    }
+
+    // tách chuỗi HTML thành từng mẩu: thẻ hiện ngay, chữ hiện từng con một
+    function cheNho(html) {
+      var ra = [], re = /<[^>]+>|&[a-z#0-9]+;|[\s\S]/g, m;
+      while ((m = re.exec(html))) ra.push(m[0]);
+      return ra;
+    }
+
+    function goTiep() {
+      if (huy) return;
+      var den = Math.min(chuoi.length, vt + 1);
+      dong.innerHTML = chuoi.slice(0, den).join('');
+      lan();
+      if (den >= chuoi.length) { vt = den; goXong = true; thuSang(); return; }
+      var c = chuoi[den - 1];
+      vt = den;
+      // bật tiếng thì gõ chậm lại cho khớp nhịp thầy nói
+      var cho = coTieng ? 32 : 17;
+      if (c === ',' || c === ';' || c === ':') cho = coTieng ? 190 : 150;
+      else if (c === '.' || c === '!' || c === '?') cho = coTieng ? 300 : 240;
+      hen = setTimeout(goTiep, cho);
+    }
+
+    function lan() {
+      // luôn giữ dòng mới nhất trong tầm mắt
+      oChua.scrollTop = oChua.scrollHeight;
+    }
+
+    // dòng có số thứ tự bước thì xếp theo cột, chữ xuống dòng vẫn thẳng hàng
+    function lopDong(html) {
+      return 'cau' + (/^<span class="buoc">/.test(html) ? ' co-buoc' : '');
+    }
+
+    cauSau();
+
+    return {
+      het: function () {
+        if (huy) return;
+        clearTimeout(hen);
+        thoiNoi();
+        if (dong && chuoi) dong.innerHTML = chuoi.join('');
+        while (i < cacCau.length) {
+          oChua.appendChild(el('p', lopDong(cacCau[i]), cacCau[i]));
+          i++;
+        }
+        lan();
+        if (xong) xong();
+      },
+      dung: function () { huy = true; clearTimeout(hen); thoiNoi(); }
+    };
+  }
+
+  /* Popup thầy giáo: mỗi lần một bài giảng, điện thoại hiện trọn vẹn. */
+  function moHop(cacSai, batDau) {
+    var k = batDau || 0, dangGo = null;
+
+    var nen = el('div', 'nen-thay');
+    var hop = el('div', 'hop-thay');
+    hop.setAttribute('role', 'dialog');
+    hop.setAttribute('aria-modal', 'true');
+    hop.setAttribute('aria-label', 'Thầy giáo giảng bài');
+    nen.appendChild(hop);
+
+    var dau = el('div', 'thay-dau');
+    var dem = el('span', 'thay-dem');
+    dau.appendChild(dem);
+    var nutLoa = el('button', 'thay-loa', '');
+    nutLoa.type = 'button';
+    dau.appendChild(nutLoa);
+    veLoa();
+
+    function veLoa() {
+      var bat = dangBatTieng();
+      nutLoa.textContent = bat ? '🔊' : '🔇';
+      nutLoa.classList.toggle('tat-tieng', !bat);
+      nutLoa.title = bat ? 'Tắt tiếng thầy' : 'Bật tiếng thầy';
+      nutLoa.setAttribute('aria-label', nutLoa.title);
+      nutLoa.setAttribute('aria-pressed', bat ? 'true' : 'false');
+    }
+    var nutDong = el('button', 'thay-dong', '✕');
+    nutDong.type = 'button';
+    nutDong.setAttribute('aria-label', 'Đóng');
+    dau.appendChild(nutDong);
+    hop.appendChild(dau);
+
+    var than = el('div', 'thay-than');
+    var anh = el('img', 'thay-anh');
+    anh.alt = 'Thầy giáo';
+    anh.decoding = 'async';
+    than.appendChild(anh);
+    var bong = el('div', 'thay-bong');
+    var loi = el('div', 'thay-loi');
+    bong.appendChild(loi);
+    than.appendChild(bong);
+    hop.appendChild(than);
+
+    var chan = el('div', 'thay-chan');
+    var nutTua = el('button', 'btn ghost thay-tua', '⏩ Nói nhanh');
+    nutTua.type = 'button';
+    chan.appendChild(nutTua);
+    var nutHieu = el('button', 'btn go thay-hieu', 'Em đã hiểu');
+    nutHieu.type = 'button';
+    chan.appendChild(nutHieu);
+    hop.appendChild(chan);
+
+    function ve() {
+      if (dangGo) dangGo.dung();
+      loi.innerHTML = '';
+      anh.src = dangNgauNhien();
+      dem.textContent = 'Bài giảng ' + (k + 1) + ' / ' + cacSai.length;
+      nutHieu.textContent = k + 1 < cacSai.length ? 'Em đã hiểu → câu sau' : 'Em đã hiểu';
+      nutTua.disabled = false;
+      hop.classList.add('dang-noi');
+      thoiNoi();
+      dangGo = goChu(loi, loiGiang(cacSai[k], k + 1, cacSai.length), function () {
+        nutTua.disabled = true;
+        hop.classList.remove('dang-noi');
+      }, dangBatTieng());
+    }
+
+    function dong() {
+      if (dangGo) dangGo.dung();
+      thoiNoi();
+      document.removeEventListener('keydown', phim);
+      document.body.classList.remove('khoa-cuon');
+      nen.classList.add('tat');
+      setTimeout(function () { if (nen.parentNode) nen.parentNode.removeChild(nen); }, 180);
+    }
+
+    function phim(ev) {
+      if (ev.key === 'Escape') { dong(); ev.preventDefault(); }
+      else if (ev.key === 'Enter' || ev.key === ' ') { nutHieu.click(); ev.preventDefault(); }
+    }
+
+    nutTua.addEventListener('click', function () { if (dangGo) dangGo.het(); });
+    nutDong.addEventListener('click', dong);
+    nen.addEventListener('click', function (ev) { if (ev.target === nen) dong(); });
+    nutHieu.addEventListener('click', function () {
+      if (k + 1 < cacSai.length) { k++; ve(); }
+      else dong();
+    });
+    nutLoa.addEventListener('click', function () {
+      var bat = !dangBatTieng();
+      datTieng(bat);
+      veLoa();
+      // bật lên giữa chừng thì thầy giảng lại bài này từ đầu cho có tiếng
+      if (bat) ve(); else thoiNoi();
+    });
+    document.addEventListener('keydown', phim);
+
+    document.body.appendChild(nen);
+    document.body.classList.add('khoa-cuon');
+    requestAnimationFrame(function () { nen.classList.add('hien'); });
+    ve();
+    nutHieu.focus();
+  }
+
+  /* Khối hiện dưới phiếu điểm: một nút mời thầy giáo lên giảng. */
   function veBang(cacSai) {
     var khung = el('div', 'tro-ly');
-    khung.appendChild(el('h3', null, '🧑‍🏫 Trợ lý giải từng bài sai'));
+    khung.appendChild(el('h3', null, '🧑‍🏫 Thầy giáo giảng lại bài'));
     khung.appendChild(el('p', 'tro-ly-dan',
-      'Trợ lý xem lại ' + cacSai.length + ' câu bé làm chưa đúng và giải từng bước.'));
+      'Con làm chưa đúng ' + cacSai.length + ' câu. Bấm nút dưới đây, thầy sẽ giảng ' +
+      'lại từng câu một cho con nghe.'));
 
-    cacSai.forEach(function (m, i) {
-      var o = el('details', 'bai-sai');
-      if (i === 0) o.open = true;
-      var dau = el('summary', null,
-        '<span class="so">Câu ' + (i + 1) + '</span>' +
-        '<span class="tomtat">' + tran(m.label).slice(0, 60) + '</span>');
-      o.appendChild(dau);
-
-      o.appendChild(el('div', 'de-lai', '<b>Đề:</b> ' + (m.label || '') +
-        (m.after ? ' <i>(' + m.after + ')</i>' : '')));
-      o.appendChild(el('div', 'so-sanh-dap',
-        '<span class="sai">Bé trả lời: <b>' + tran(m.given) + '</b></span>' +
-        '<span class="dung">Đáp án đúng: <b>' + tran(m.answer) + '</b></span>'));
-
-      var ds = el('ol', 'cac-buoc');
-      buoc(m).forEach(function (b) { ds.appendChild(el('li', null, b)); });
-      o.appendChild(el('div', 'loi-giai', '<b>Giải thích:</b>'));
-      o.appendChild(ds);
-      khung.appendChild(o);
-    });
+    var nut = el('button', 'btn go nut-giang', '🧑‍🏫 Giải thích câu sai');
+    nut.type = 'button';
+    nut.addEventListener('click', function () { moHop(cacSai, 0); });
+    khung.appendChild(nut);
     return khung;
   }
 
-  global.TroLy = { veBang: veBang, buoc: buoc, _soTrong: soTrong };
+  global.TroLy = { veBang: veBang, moHop: moHop, buoc: buoc, _soTrong: soTrong };
 })(window);

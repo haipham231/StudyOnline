@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Câu và từ loại — Tiếng Anh lớp 6</title>
+<meta name="description" content="There is và there are, từ để hỏi, đại từ sở hữu, trạng từ tần suất, câu mệnh lệnh, liên từ và trật tự câu tiếng Anh lớp 6.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>💬</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>💬 Câu và từ loại</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/o-tra-loi.js"></script>
+<script src="../../js/quiz.js"></script>
+<script src="../../js/toan-lop-6.js"></script>
+<script src="../../js/tieng-anh-lop-6.js"></script>
+<script>
+  var T = ToanL6;
+  var V = TiengAnhL6;
+
+  Quiz.init({
+    id: 'l6-ta-cau',
+    total: 10,
+    speak: true,
+    levels: [
+      { name: 'Động từ to be', hint: 'am, is, are',
+        gen: V.dongTuToBe },
+      { name: 'There is, there are', hint: 'Có một hay có nhiều',
+        gen: V.coKhongCo },
+      { name: 'Từ để hỏi', hint: 'What, where, when, who, why, how',
+        gen: V.tuDeHoi },
+      { name: 'Đại từ và sở hữu', hint: 'my, her, him, Nam’s',
+        gen: V.daiTuSoHuu },
+      { name: 'Trạng từ tần suất', hint: 'always, usually, often, never',
+        gen: V.trangTuTanSuat },
+      { name: 'Mệnh lệnh và liên từ', hint: 'Close the door, and, but, so, because',
+        gen: function () { return Quiz.pick([V.cauMenhLenh, V.lienTu])(); } },
+      { name: 'Trật tự câu', hint: 'Câu nào viết đúng',
+        gen: V.trongCauDung }
+    ]
+  });
+</script>
+</body>
+</html>
