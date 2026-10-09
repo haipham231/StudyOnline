@@ -196,7 +196,7 @@
     var ai = van.ai;
     goc.innerHTML = '';
 
-    var khung = el('div', 'panel man-choi dem-halloween');
+    var khung = el('div', 'panel san-choi dem-halloween');
     khung.style.setProperty('--mau', ai.mau);
 
     var tren = el('div', 'thanh-tren');
@@ -206,33 +206,20 @@
     tren.appendChild(el('span', 'tim', bi));
     khung.appendChild(tren);
 
-    var canh = el('div', 'canh dem');
-    canh.innerHTML = '<div class="trang-tri">' +
-      ['🦇', '🕸️', '🌙', '🦇', '🕷️'].map(function (e, k) {
-        return '<span style="left:' + (7 + k * 21) + '%">' + e + '</span>';
-      }).join('') + '</div>';
-
-    var duong = el('div', 'duong');
+    // dải tiến độ gọn: đi được mấy bước, còn mấy bước tới trùm
+    var duong = el('div', 'duong-gon');
     for (var m = 0; m < ai.soCau; m++) {
       duong.appendChild(el('i', 'moc' + (m < van.buoc ? ' qua' : '')));
     }
-    canh.appendChild(duong);
-
-    var nguoi = el('div', 'nguoi-choi' + (hieuUng === 'tien' ? ' nhay' : ''), hinh('keo', 54));
-    nguoi.style.left = (van.buoc / ai.soCau * 76) + '%';
-    canh.appendChild(nguoi);
-
-    canh.appendChild(el('div', 'dich', hinh(ai.hinh, ai.trum ? 96 : 84)));
-    khung.appendChild(canh);
+    duong.appendChild(el('span', 'trum', ai.emoji));
+    khung.appendChild(duong);
 
     khung.appendChild(el('div', 'meta',
       '<span><span class="nhan-mon ' + (van.cau.mon === TEN_MON[0] ? 'toan' : 'tviet') + '">' +
       van.cau.mon + '</span> Câu ' + Math.min(van.buoc + 1, ai.soCau) + ' / ' + ai.soCau + '</span>' +
       '<span class="hits">🍬 ' + van.keo + '</span>'));
 
-    van.oTraLoi = global.OTraLoi.ve(khung, van.cau, {
-      nhanNop: '🍬 Trả lời',
-      boc: 'o-hoi',
+    van.oTraLoi = global.ManNhay.ve(khung, van.cau, {
       khoaSan: van.dangChuyen,
       coLoa: van.cau.mon === TEN_MON[1] && TEN_MON[1] === 'Tiếng Việt',
       doc: Q.docTo,
@@ -255,12 +242,12 @@
 
       phanHoi.className = 'feedback pop ok';
       phanHoi.innerHTML = (van.lienTiep >= 3 ? '🔥 Chuỗi ' + van.lienTiep + ' câu! ' : '') +
-        Q.pick(['🍬 Được kẹo rồi!', '🎃 Giỏi quá!', '👻 Qua được rồi!', '⭐ Chính xác!']) +
+        Q.pick(['💖 Đội trúng rồi!', '🍬 Được kẹo!', '🎃 Giỏi quá!', '⭐ Chính xác!']) +
         ' <small>+' + thuong + ' kẹo</small>';
 
       setTimeout(function () {
         if (van.buoc >= van.ai.soCau) return thangAi();
-        van.dangChuyen = true; ve('tien'); van.dangChuyen = false;
+        van.dangChuyen = true; ve(); van.dangChuyen = false;
         setTimeout(raCauHoi, 520);
       }, 760);
       return;
@@ -269,7 +256,7 @@
     van.bi -= 1;
     van.lienTiep = 0;
     phanHoi.className = 'feedback pop bad';
-    phanHoi.innerHTML = '🖤 Chưa đúng — đáp án là <b>' + q.answer + '</b>' + (q.after ? ' ' + q.after : '');
+    phanHoi.innerHTML = '👻 Hụt rồi! Đáp án là <b>' + q.answer + '</b>' + (q.after ? ' ' + q.after : '');
 
     setTimeout(function () {
       if (van.bi <= 0) return thuaAi();

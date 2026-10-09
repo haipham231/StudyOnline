@@ -2456,3 +2456,281 @@ body.khoa-cuon { overflow: hidden; }
   .tro-ly { padding: 14px 12px 12px; }
   .bai-sai .de-lai, .bai-sai .cac-buoc { font-size: 14.5px; }
 }
+
+/* ===================================================================
+   Màn chơi nhảy đập hộp đáp án (game Halloween)
+   =================================================================== */
+
+.panel.san-choi {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 12px 14px;
+  /* cao hẳn lên cho sân chơi rộng rãi, phần ghi công bị đẩy xuống dưới nếp gấp */
+  min-height: min(660px, calc(100svh - 150px));
+  overflow: hidden;
+  /* cả khung là đêm Halloween, chữ trắng mới đọc được */
+  background: linear-gradient(170deg, #1d1640, #2c2159);
+  color: #fff;
+}
+
+.panel.san-choi .thanh-tren { color: rgba(255, 255, 255, 0.85); }
+.panel.san-choi .meta { color: rgba(255, 255, 255, 0.78); }
+.panel.san-choi .meta > span { background: rgba(255, 255, 255, 0.1); }
+.panel.san-choi .feedback.ok { color: #6ff0b4; }
+.panel.san-choi .feedback.bad { color: #ff9a9a; }
+
+.san-nhay {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* ---- đề bài ---- */
+
+.san-hoi {
+  flex: none;
+  padding: 10px 12px;
+  border-radius: var(--r-md);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.san-hoi .prompt { margin: 0; font-size: clamp(15px, 4.2vw, 19px); line-height: 1.45; }
+.san-hoi .question { margin: 6px 0 0; font-size: clamp(22px, 7vw, 34px); }
+.san-hoi .art { margin: 6px 0 0; }
+.san-hoi .art svg { max-height: 88px; }
+.san-hoi .don-vi { margin-top: 4px; font-size: 14px; opacity: 0.75; }
+.san-hoi .loa { background: rgba(255, 255, 255, 0.18); color: #fff; }
+
+/* ---- sân đấu ---- */
+
+.san-dau {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 240px;
+  max-height: 420px;
+  overflow: hidden;
+  border-radius: var(--r-md);
+  background: linear-gradient(180deg, #241b4d 0%, #3a2a6b 62%, #4a3570 100%);
+  box-shadow: inset 0 0 0 2px rgba(255, 143, 60, 0.28);
+}
+
+.san-dau .nen-ma { position: absolute; inset: 0; pointer-events: none; }
+
+.san-dau .nen-ma span {
+  position: absolute;
+  top: 10px;
+  font-size: 19px;
+  opacity: 0.4;
+  animation: lo-mo 3.4s ease-in-out infinite;
+}
+
+.san-dau .nen-ma span:nth-child(even) { top: 44px; font-size: 15px; animation-delay: 1.1s; }
+
+@keyframes lo-mo { 50% { opacity: 0.14; transform: translateY(-5px); } }
+
+.mat-dat {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 14px;
+  background: repeating-linear-gradient(90deg, #6b4a2f 0 14px, #5a3e27 14px 28px);
+  box-shadow: 0 -3px 0 #7d5736;
+}
+
+/* ---- hộp đáp án ---- */
+
+.hop-dap {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 4px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffc93c, #ff9f1c);
+  box-shadow: 0 4px 0 #c9780f, inset 0 2px 0 rgba(255, 255, 255, 0.5);
+  color: #4a2a00;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.hop-dap .nhan-dap { display: block; white-space: nowrap; }
+
+/* nhãn là chữ dài: hộp cao lên, chữ xuống dòng cho dễ đọc */
+.san-dau.nhan-dai .hop-dap { height: 60px; font-size: 14px; }
+
+.san-dau.nhan-dai .hop-dap .nhan-dap {
+  line-height: 1.14;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
+.hop-dap.bi-doi { animation: hop-nay 0.4s ease; }
+.hop-dap.trung { background: linear-gradient(180deg, #5ce6a8, #2fcf90); box-shadow: 0 4px 0 #1b9c68; }
+.hop-dap.truot { background: linear-gradient(180deg, #ff9a9a, #ff6b6b); box-shadow: 0 4px 0 #c43c3c; color: #fff; }
+
+.hop-dap.chi-ra {
+  background: linear-gradient(180deg, #5ce6a8, #2fcf90);
+  box-shadow: 0 4px 0 #1b9c68, 0 0 0 4px rgba(47, 207, 144, 0.35);
+  animation: hop-nhay-nhe 0.9s ease infinite;
+}
+
+@keyframes hop-nay {
+  40% { transform: translateY(-13px); }
+  70% { transform: translateY(3px); }
+}
+
+@keyframes hop-nhay-nhe { 50% { transform: translateY(-5px); } }
+
+/* ---- nhân vật ---- */
+
+.be-choi {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  width: 42px;
+  height: 56px;
+  will-change: transform;
+}
+
+.be-choi .than {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 38px;
+  line-height: 1;
+}
+
+.be-choi .mu {
+  position: absolute;
+  top: -2px;
+  left: 4px;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.be-choi.quay { transform-origin: center; }
+.be-choi.quay .than, .be-choi.quay .mu { transform: scaleX(-1); }
+.be-choi.bay .than { transform: translateY(-2px) rotate(-6deg); }
+.be-choi.so { animation: run-so 0.5s ease 3; }
+
+@keyframes run-so {
+  25% { transform: translate3d(var(--tx, 0), 0, 0) rotate(-9deg); }
+  75% { transform: translate3d(var(--tx, 0), 0, 0) rotate(9deg); }
+}
+
+/* ---- trái tim và con ma bay ra ---- */
+
+.bay-tim, .bay-ma {
+  position: absolute;
+  pointer-events: none;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.bay-tim { font-size: 24px; animation: tim-bay 1.3s ease-out forwards; }
+.bay-ma { animation: ma-hu 1.5s ease-out forwards; }
+.bay-ma:not(:has(.hoat)) { font-size: 46px; }
+
+@keyframes tim-bay {
+  0% { opacity: 0; transform: translate(-50%, 10px) scale(0.5); }
+  35% { opacity: 1; transform: translate(-50%, -16px) scale(1.15); }
+  100% { opacity: 0; transform: translate(-50%, -58px) scale(1); }
+}
+
+@keyframes ma-hu {
+  0% { opacity: 0; transform: translate(-50%, 16px) scale(0.4); }
+  25% { opacity: 1; transform: translate(-50%, -8px) scale(1.25); }
+  55% { opacity: 1; transform: translate(-50%, -14px) scale(1.05); }
+  100% { opacity: 0; transform: translate(-50%, -46px) scale(0.9); }
+}
+
+/* ---- tay lái ---- */
+
+.tay-lai {
+  display: flex;
+  gap: 10px;
+  flex: none;
+  align-items: stretch;
+}
+
+.nut-lai {
+  flex: 1;
+  min-height: 58px;
+  border: 0;
+  border-radius: var(--r-md);
+  background: #fff;
+  box-shadow: 0 5px 0 rgba(43, 47, 85, 0.22);
+  color: var(--ink);
+  font-family: "Baloo 2", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.nut-lai:active { box-shadow: 0 1px 0 rgba(43, 47, 85, 0.22); transform: translateY(4px); }
+
+.nut-lai.nut-nhay {
+  flex: 1.5;
+  background: linear-gradient(180deg, #ffb24d, #ff8f3c);
+  box-shadow: 0 5px 0 #c9620f;
+  color: #fff;
+  font-size: 19px;
+}
+
+.nut-lai.nut-nhay:active { box-shadow: 0 1px 0 #c9620f; }
+
+.meo-choi {
+  flex: none;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  text-align: center;
+}
+
+.san-nhay .feedback { flex: none; min-height: 28px; margin: 0; font-size: 18px; }
+
+@media (max-width: 480px) {
+  .panel.san-choi { padding: 10px 10px 12px; min-height: calc(100svh - 128px); }
+  .san-dau { min-height: 210px; }
+  .hop-dap { height: 42px; font-size: 17px; }
+  .nut-lai { min-height: 54px; font-size: 22px; }
+  .nut-lai.nut-nhay { font-size: 17px; }
+  .meo-choi { font-size: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .san-dau .nen-ma span, .hop-dap.chi-ra { animation: none; }
+}
+
+/* dải tiến độ gọn của game Halloween: thay cho con đường cũ */
+.duong-gon {
+  display: flex;
+  gap: 5px;
+  flex: none;
+  align-items: center;
+  padding: 0 2px;
+}
+
+.duong-gon .moc {
+  flex: 1;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.duong-gon .moc.qua { background: var(--mau); box-shadow: 0 0 8px var(--mau); }
+.duong-gon .trum { flex: none; margin-left: 2px; font-size: 20px; line-height: 1; }
