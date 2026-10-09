@@ -280,8 +280,8 @@
       answer: m, after: 'phút', soChuSo: 4, mach: 'Bội chung trong đời sống',
       giai: ['Hai xe cùng rời bến khi số phút là <b>bội chung</b> của ' + a + ' và ' + b + '.',
         'Hỏi <b>ít nhất</b> nên lấy <b>bội chung nhỏ nhất</b>.',
-        'Bội chung nhỏ nhất của ' + a + ' và ' + b + ' là ' + a + ' × ' + b + ' : ' +
-          uc(a, b) + ' = ' + m + ' phút.',
+        'Bội chung nhỏ nhất của ' + a + ' và ' + b + ' là ' + a + ' × ' + b +
+          (uc(a, b) > 1 ? ' : ' + uc(a, b) : '') + ' = ' + m + ' phút.',
         'Chỗ hay nhầm: lấy ước chung lớn nhất, hoặc nhân thẳng ' + a + ' × ' + b +
           ' = ' + (a * b) + '.']
     };

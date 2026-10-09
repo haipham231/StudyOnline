@@ -2227,11 +2227,11 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
   font-size: 18px;
 }
 
-/* ---- Thầy giáo hiện lên giảng bài ---- */
+/* ---- Cô Nhi hiện lên giảng bài ---- */
 
 body.khoa-cuon { overflow: hidden; }
 
-.nen-thay {
+.nen-co {
   position: fixed;
   inset: 0;
   z-index: 90;
@@ -2245,15 +2245,15 @@ body.khoa-cuon { overflow: hidden; }
   transition: opacity 0.18s ease;
 }
 
-.nen-thay.hien { opacity: 1; }
-.nen-thay.tat { opacity: 0; }
+.nen-co.hien { opacity: 1; }
+.nen-co.tat { opacity: 0; }
 
-.hop-thay {
+.hop-co {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 560px;
-  /* chiều cao cố định: thầy nói tới đâu ô vẫn đứng yên tới đó, không nhảy */
+  /* chiều cao cố định: cô nói tới đâu ô vẫn đứng yên tới đó, không nhảy */
   height: min(94svh, 720px);
   overflow: hidden;
   border-radius: var(--r-lg);
@@ -2264,9 +2264,9 @@ body.khoa-cuon { overflow: hidden; }
   text-align: left;
 }
 
-.nen-thay.hien .hop-thay { transform: none; }
+.nen-co.hien .hop-co { transform: none; }
 
-.thay-dau {
+.co-dau {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -2274,17 +2274,28 @@ body.khoa-cuon { overflow: hidden; }
   padding: 12px 14px 8px;
 }
 
-.thay-dem {
-  margin-right: auto;
+.co-ten {
+  flex: none;
   padding: 4px 12px;
   border-radius: 999px;
-  background: var(--soft);
+  background: linear-gradient(135deg, #ffe3f1, #e9e3ff);
   color: var(--grape-dark);
   font-size: 13.5px;
   font-weight: 800;
+  white-space: nowrap;
 }
 
-.thay-loa, .thay-dong {
+.co-dem {
+  margin-right: auto;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.co-loa, .co-dong {
   flex: none;
   width: 36px;
   height: 36px;
@@ -2298,10 +2309,10 @@ body.khoa-cuon { overflow: hidden; }
   cursor: pointer;
 }
 
-.thay-loa:active, .thay-dong:active { box-shadow: none; transform: translateY(2px); }
-.thay-loa.tat-tieng { background: var(--soft); opacity: 0.75; }
+.co-loa:active, .co-dong:active { box-shadow: none; transform: translateY(2px); }
+.co-loa.tat-tieng { background: var(--soft); opacity: 0.75; }
 
-.thay-than {
+.co-than {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -2311,9 +2322,9 @@ body.khoa-cuon { overflow: hidden; }
   padding: 0 14px;
 }
 
-.thay-anh {
+.co-anh {
   flex: none;
-  height: 128px;
+  height: 150px;
   width: auto;
   margin-bottom: -6px;
   filter: drop-shadow(0 6px 10px rgba(43, 47, 85, 0.16));
@@ -2325,7 +2336,7 @@ body.khoa-cuon { overflow: hidden; }
   to   { opacity: 1; transform: none; }
 }
 
-.thay-bong {
+.co-bong {
   position: relative;
   flex: 1 1 auto;
   width: 100%;
@@ -2338,7 +2349,7 @@ body.khoa-cuon { overflow: hidden; }
   box-shadow: 0 4px 0 rgba(43, 47, 85, 0.08);
 }
 
-.thay-bong::before {        /* mỏ bóng nói, chỉ lên phía thầy */
+.co-bong::before {        /* mỏ bóng nói, chỉ lên phía cô */
   content: '';
   position: absolute;
   top: -9px;
@@ -2348,36 +2359,39 @@ body.khoa-cuon { overflow: hidden; }
   border-bottom-color: #fff;
 }
 
-.thay-loi { font-size: 16px; line-height: 1.58; color: var(--ink); }
-.thay-loi .cau { margin: 0 0 9px; }
-.thay-loi .cau:last-child { margin-bottom: 0; }
-.thay-loi b.sai { color: var(--coral-dark); }
-.thay-loi b.dung { color: var(--mint-dark); }
-.thay-loi i { color: var(--muted); font-style: normal; font-weight: 700; }
+.co-loi { font-size: 16px; line-height: 1.58; color: var(--ink); }
+.co-loi .cau { margin: 0 0 9px; }
+.co-loi .cau:last-child { margin-bottom: 0; }
+.co-loi b.sai { color: var(--coral-dark); }
+.co-loi b.dung { color: var(--mint-dark); }
+.co-loi i { color: var(--muted); font-style: normal; font-weight: 700; }
 
-.thay-loi .co-buoc {
-  display: flex;
-  gap: 7px;
-  align-items: flex-start;
+/* Dòng có số thứ tự: thụt treo, chữ xuống dòng vẫn thẳng hàng dưới chữ.
+   Không dùng flex ở đây — trong flex thì mỗi thẻ <b> thành một ô riêng,
+   câu có chữ in đậm sẽ bị xếp thành mấy cột cạnh nhau. */
+.co-loi .co-buoc {
+  padding-left: 30px;
+  text-indent: -30px;
 }
 
-.thay-loi .buoc {
+.co-loi .buoc {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: none;
   width: 23px;
   height: 23px;
-  margin-top: 2px;
+  margin-right: 6px;
   border-radius: 50%;
   background: var(--soft);
   color: var(--grape-dark);
   font-size: 13px;
   font-weight: 800;
+  text-indent: 0;
+  vertical-align: -5px;
 }
 
-/* con trỏ nhấp nháy ở cuối dòng thầy đang nói dở */
-.hop-thay.dang-noi .thay-loi .cau:last-child::after {
+/* con trỏ nhấp nháy ở cuối dòng cô đang nói dở */
+.hop-co.dang-noi .co-loi .cau:last-child::after {
   content: '▋';
   margin-left: 1px;
   color: var(--grape-dark);
@@ -2386,30 +2400,32 @@ body.khoa-cuon { overflow: hidden; }
 
 @keyframes nhay-con-tro { 50% { opacity: 0; } }
 
-.thay-chan {
+.co-chan {
   display: flex;
   gap: 10px;
   flex: none;
   padding: 12px 14px 14px;
 }
 
-.thay-chan .btn { margin: 0; font-size: 16px; }
-.thay-tua { flex: none; }
-.thay-hieu { flex: 1; }
-.thay-tua[disabled] { opacity: 0.4; pointer-events: none; }
+.co-chan .btn { margin: 0; font-size: 16px; }
+.co-tua { flex: none; }
+.co-hieu { flex: 1; }
+.co-tua[disabled] { opacity: 0.4; pointer-events: none; }
 
 @media (max-width: 480px) {
-  .nen-thay { padding: 8px; }
-  .hop-thay { height: 96svh; }
-  .thay-anh { height: 96px; }
-  .thay-chan .btn { font-size: 15px; padding-left: 14px; padding-right: 14px; }
+  .nen-co { padding: 8px; }
+  .hop-co { height: 96svh; }
+  .co-anh { height: 112px; }
+  .co-ten { font-size: 12.5px; padding: 3px 10px; }
+  .co-dem { font-size: 12px; }
+  .co-chan .btn { font-size: 15px; padding-left: 14px; padding-right: 14px; }
 }
 
-/* màn hình thấp (điện thoại nằm ngang): thầy đứng cạnh bóng nói cho đỡ tốn chiều cao */
+/* màn hình thấp (điện thoại nằm ngang): cô đứng cạnh bóng nói cho đỡ tốn chiều cao */
 @media (max-height: 560px) and (min-width: 481px) {
-  .thay-than { flex-direction: row; align-items: flex-end; gap: 12px; }
-  .thay-anh { height: 150px; margin-bottom: 0; }
-  .thay-bong::before {
+  .co-than { flex-direction: row; align-items: flex-end; gap: 12px; }
+  .co-anh { height: 164px; margin-bottom: 0; }
+  .co-bong::before {
     top: auto;
     bottom: 28px;
     left: -9px;
@@ -2420,7 +2436,7 @@ body.khoa-cuon { overflow: hidden; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .nen-thay, .hop-thay, .thay-anh { transition: none; animation: none; }
+  .nen-co, .hop-co, .co-anh { transition: none; animation: none; }
 }
 
 /* đoạn văn trong bài đọc hiểu: tách khỏi câu hỏi cho dễ đọc */

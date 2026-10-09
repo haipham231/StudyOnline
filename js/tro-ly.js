@@ -19,7 +19,7 @@
     return n;
   }
 
-  // Bỏ thẻ HTML để lấy chữ trần khi thầy đọc lại đề. Phần <small> là lời dặn
+  // Bỏ thẻ HTML để lấy chữ trần khi cô đọc lại đề. Phần <small> là lời dặn
   // cách gõ đáp án, đọc lại nghe lủng củng nên bỏ hẳn.
   function tran(s) {
     return String(s == null ? '' : s)
@@ -164,10 +164,16 @@
       'Bé đọc lại đề một lần nữa rồi thử tự làm lại câu này nhé.'];
   }
 
-  /* ---------- Thầy giáo hiện lên giảng bài ---------- */
+  /* ---------- Cô Nhi hiện lên giảng bài ---------- */
 
-  // Năm dáng thầy giáo cắt sẵn. Mỗi bài giảng đổi một dáng cho đỡ chán.
-  var DANG = ['1-bang', '2-khoanh-tay', '3-may-tinh', '4-ngoi', '5-hai-tay'];
+  var TEN_CO = 'Cô Nhi — AI';
+
+  // Mười hai dáng cô giáo cắt sẵn. Mỗi bài giảng đổi một dáng cho đỡ chán.
+  var DANG = [
+    '1-thuoc-sach', '2-bang-den', '3-om-sach', '4-gio-tay',
+    '5-giang-bai', '6-nghi-ngoi', '7-bang-trang', '8-chi-sach',
+    '9-may-tinh', '10-co-len', '11-xoa-dau', '12-tam-biet'
+  ];
   var dangTruoc = -1;
 
   // Trang bài tập nằm sâu một hoặc hai tầng thư mục, nên lấy gốc trang từ
@@ -186,10 +192,10 @@
     do { k = Math.floor(Math.random() * DANG.length); }
     while (DANG.length > 1 && k === dangTruoc);
     dangTruoc = k;
-    return GOC + 'assets/thay-giao/' + DANG[k] + '.png';
+    return GOC + 'assets/co-giao/' + DANG[k] + '.png';
   }
 
-  /* Bài giảng cho một câu sai: từng câu nói ngắn, thầy nói lần lượt. */
+  /* Bài giảng cho một câu sai: từng câu nói ngắn, cô nói lần lượt. */
   function loiGiang(m, thuTu, tong) {
     var noi = [];
     noi.push('Mình cùng xem lại <b>câu ' + thuTu + '</b> trong ' + tong +
@@ -201,7 +207,7 @@
     noi.push('Đề bài là: <i>' + de + (m.after ? ' (' + tran(m.after) + ')' : '') + '</i>');
     noi.push('Con trả lời <b class="sai">' + tran(m.given) + '</b>, còn đáp án đúng là <b class="dung">' +
       tran(m.answer) + '</b>.');
-    noi.push('Thầy giảng lại từ đầu nha:');
+    noi.push('Cô giảng lại từ đầu nha:');
     buoc(m).forEach(function (b, i) { noi.push('<span class="buoc">' + (i + 1) + '</span> ' + b); });
     noi.push(KHUYEN[Math.floor(Math.random() * KHUYEN.length)]);
     return noi;
@@ -212,11 +218,11 @@
     'Dạng bài này chỉ cần nhớ đúng một bước là xong. Con giỏi lắm!',
     'Sai một câu không sao cả, biết vì sao sai mới là điều quan trọng nhé.',
     'Con thử tự làm lại câu này một lần nữa cho nhớ lâu nhé!',
-    'Thầy tin lần sau con sẽ làm đúng câu này.'
+    'Cô tin lần sau con sẽ làm đúng câu này.'
   ];
 
-  /* Thầy có nói thành tiếng hay không — nhớ lại lựa chọn của lần trước. */
-  var KHOA_NOI = 'studyonline:thay-noi';
+  /* Cô có nói thành tiếng hay không — nhớ lại lựa chọn của lần trước. */
+  var KHOA_NOI = 'studyonline:co-noi';
 
   function dangBatTieng() {
     try { return localStorage.getItem(KHOA_NOI) !== '0'; } catch (e) { return true; }
@@ -229,7 +235,7 @@
     if (global.speechSynthesis) { try { global.speechSynthesis.cancel(); } catch (e) {} }
   }
 
-  /* Gõ chữ ra từ từ cho giống đang nói, và nếu bật tiếng thì thầy đọc luôn
+  /* Gõ chữ ra từ từ cho giống đang nói, và nếu bật tiếng thì cô đọc luôn
      từng câu. Câu sau chỉ bắt đầu khi câu trước vừa gõ xong vừa đọc xong.
      Trả về hàm tua nhanh tới hết. */
   // dòng có số thứ tự bước thì xếp theo cột, chữ xuống dòng vẫn thẳng hàng
@@ -256,7 +262,7 @@
       if (coTieng && global.Quiz && global.Quiz.docTo) {
         noiXong = false;
         global.Quiz.docTo(cacCau[i], null, {
-          nam: true, noiTiep: i > 0,
+          giangBai: true, noiTiep: i > 0,
           xong: function () { noiXong = true; thuSang(); }
         });
       }
@@ -285,7 +291,7 @@
       if (den >= chuoi.length) { vt = den; goXong = true; thuSang(); return; }
       var c = chuoi[den - 1];
       vt = den;
-      // bật tiếng thì gõ chậm lại cho khớp nhịp thầy nói
+      // bật tiếng thì gõ chậm lại cho khớp nhịp cô nói
       var cho = coTieng ? 32 : 17;
       if (c === ',' || c === ';' || c === ':') cho = coTieng ? 190 : 150;
       else if (c === '.' || c === '!' || c === '?') cho = coTieng ? 300 : 240;
@@ -316,21 +322,22 @@
     };
   }
 
-  /* Popup thầy giáo: mỗi lần một bài giảng, điện thoại hiện trọn vẹn. */
+  /* Popup cô giáo: mỗi lần một bài giảng, điện thoại hiện trọn vẹn. */
   function moHop(cacSai, batDau) {
     var k = batDau || 0, dangGo = null;
 
-    var nen = el('div', 'nen-thay');
-    var hop = el('div', 'hop-thay');
+    var nen = el('div', 'nen-co');
+    var hop = el('div', 'hop-co');
     hop.setAttribute('role', 'dialog');
     hop.setAttribute('aria-modal', 'true');
-    hop.setAttribute('aria-label', 'Thầy giáo giảng bài');
+    hop.setAttribute('aria-label', TEN_CO + ' giảng bài');
     nen.appendChild(hop);
 
-    var dau = el('div', 'thay-dau');
-    var dem = el('span', 'thay-dem');
+    var dau = el('div', 'co-dau');
+    dau.appendChild(el('span', 'co-ten', '👩‍🏫 ' + TEN_CO));
+    var dem = el('span', 'co-dem');
     dau.appendChild(dem);
-    var nutLoa = el('button', 'thay-loa', '');
+    var nutLoa = el('button', 'co-loa', '');
     nutLoa.type = 'button';
     dau.appendChild(nutLoa);
     veLoa();
@@ -339,38 +346,38 @@
       var bat = dangBatTieng();
       nutLoa.textContent = bat ? '🔊' : '🔇';
       nutLoa.classList.toggle('tat-tieng', !bat);
-      nutLoa.title = bat ? 'Tắt tiếng thầy' : 'Bật tiếng thầy';
+      nutLoa.title = bat ? 'Tắt tiếng cô' : 'Bật tiếng cô';
       nutLoa.setAttribute('aria-label', nutLoa.title);
       nutLoa.setAttribute('aria-pressed', bat ? 'true' : 'false');
     }
-    var nutDong = el('button', 'thay-dong', '✕');
+    var nutDong = el('button', 'co-dong', '✕');
     nutDong.type = 'button';
     nutDong.setAttribute('aria-label', 'Đóng');
     dau.appendChild(nutDong);
     hop.appendChild(dau);
 
-    var than = el('div', 'thay-than');
-    var anh = el('img', 'thay-anh');
-    anh.alt = 'Thầy giáo';
+    var than = el('div', 'co-than');
+    var anh = el('img', 'co-anh');
+    anh.alt = TEN_CO;
     anh.decoding = 'async';
     than.appendChild(anh);
-    var bong = el('div', 'thay-bong');
-    var loi = el('div', 'thay-loi');
+    var bong = el('div', 'co-bong');
+    var loi = el('div', 'co-loi');
     bong.appendChild(loi);
     than.appendChild(bong);
     hop.appendChild(than);
 
-    var chan = el('div', 'thay-chan');
-    var nutTua = el('button', 'btn ghost thay-tua', '⏩ Nói nhanh');
+    var chan = el('div', 'co-chan');
+    var nutTua = el('button', 'btn ghost co-tua', '⏩ Nói nhanh');
     nutTua.type = 'button';
     chan.appendChild(nutTua);
-    var nutHieu = el('button', 'btn go thay-hieu', 'Em đã hiểu');
+    var nutHieu = el('button', 'btn go co-hieu', 'Em đã hiểu');
     nutHieu.type = 'button';
     chan.appendChild(nutHieu);
     hop.appendChild(chan);
 
     /* Ướm thử cả bài giảng một lượt để chọn cỡ chữ vừa khung, rồi mới cho
-       thầy nói. Làm vậy chữ không nhảy cỡ giữa chừng, mà bài dài tới đâu
+       cô nói. Làm vậy chữ không nhảy cỡ giữa chừng, mà bài dài tới đâu
        màn hình điện thoại vẫn chứa trọn một bài. */
     function chonCoChu(cacCau) {
       var co = 16;
@@ -427,7 +434,7 @@
       var bat = !dangBatTieng();
       datTieng(bat);
       veLoa();
-      // bật lên giữa chừng thì thầy giảng lại bài này từ đầu cho có tiếng
+      // bật lên giữa chừng thì cô giảng lại bài này từ đầu cho có tiếng
       if (bat) ve(); else thoiNoi();
     });
     document.addEventListener('keydown', phim);
@@ -439,12 +446,12 @@
     nutHieu.focus();
   }
 
-  /* Khối hiện dưới phiếu điểm: một nút mời thầy giáo lên giảng. */
+  /* Khối hiện dưới phiếu điểm: một nút mời cô giáo lên giảng. */
   function veBang(cacSai) {
     var khung = el('div', 'tro-ly');
-    khung.appendChild(el('h3', null, '🧑‍🏫 Thầy giáo giảng lại bài'));
+    khung.appendChild(el('h3', null, '👩‍🏫 ' + TEN_CO + ' giảng lại bài'));
     khung.appendChild(el('p', 'tro-ly-dan',
-      'Con làm chưa đúng ' + cacSai.length + ' câu. Bấm nút dưới đây, thầy sẽ giảng ' +
+      'Con làm chưa đúng ' + cacSai.length + ' câu. Bấm nút dưới đây, cô sẽ giảng ' +
       'lại từng câu một cho con nghe.'));
 
     var nut = el('button', 'btn go nut-giang', '🧑‍🏫 Giải thích câu sai');

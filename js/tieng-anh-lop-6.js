@@ -645,11 +645,17 @@
     var c = chon(TRAI_NGHIA);
     var dao = Math.random() < 0.5;
     var hoi = dao ? c[1] : c[0], dap = dao ? c[0] : c[1];
-    var sai = [];
-    Q.shuffle(TRAI_NGHIA).forEach(function (x) {
-      if (sai.length < 2 && x[0] !== c[0] && x[0] !== dap && x[1] !== dap && x[0] !== hoi && x[1] !== hoi)
-        sai.push(Math.random() < 0.5 ? x[0] : x[1]);
+    // Gom hết từ khác làm kho đáp án sai rồi mới bốc — nhiều từ nằm ở hai
+    // cặp (old đi với young mà cũng đi với new), bốc thẳng là dễ trùng nhau
+    // rồi câu hỏi chỉ còn hai lựa chọn.
+    var kho = [];
+    TRAI_NGHIA.forEach(function (x) {
+      if (x === c) return;
+      x.forEach(function (t) {
+        if (t !== hoi && t !== dap && kho.indexOf(t) === -1) kho.push(t);
+      });
     });
+    var sai = Q.shuffle(kho).slice(0, 2);
     return {
       prompt: 'Từ nào <b>trái nghĩa</b> với <b class="tu-anh">' + hoi + '</b>?',
       speak: 'What is the opposite of ' + hoi, tieng: 'en',

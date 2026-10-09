@@ -121,7 +121,8 @@
       answer: m, soChuSo: 4, mach: 'Ước chung và bội chung',
       giai: ['Bội chung nhỏ nhất bằng tích hai số chia cho ước chung lớn nhất của chúng.',
         'Ước chung lớn nhất của ' + a + ' và ' + b + ' là ' + ucln(a, b) + '.',
-        'Vậy bội chung nhỏ nhất là ' + a + ' × ' + b + ' : ' + ucln(a, b) + ' = ' + m + '.']
+        'Vậy bội chung nhỏ nhất là ' + a + ' × ' + b +
+          (ucln(a, b) > 1 ? ' : ' + ucln(a, b) : '') + ' = ' + m + '.']
     };
   }
 

@@ -114,25 +114,23 @@
     en: { ma: 'en-US', tim: /^en/i, nhanh: 0.78 }
   };
 
-  // Máy nào có sẵn giọng nam thì dùng, không thì hạ cao độ giọng đang có
-  // xuống cho ra chất đàn ông. Tên giọng mỗi hệ điều hành một kiểu nên phải
-  // dò bằng danh sách tên thay vì một thuộc tính chuẩn — Web Speech API
-  // không hề cho biết giọng là nam hay nữ.
-  var TEN_NAM = /\b(nam|male|man|an|minh|quang|b[aắ]c|tu[aấ]n|h[uùu]ng|khanh|eddy|grandpa|reed|rocko|ralph|bruce|junior|daniel|alex|fred|george|james|david|mark|guy|eric|ryan|aaron|arthur|gordon|oliver|rishi|nathan|lee)\b/i;
-  var TEN_NU  = /\b(linh|mai|lan|ng[oọ]c|thu|hoai|hoài|my|mỹ|ha|hà|nu|female|woman|samantha|victoria|karen|moira|tessa|zira|hazel|aria|jenny|google ti[eế]ng vi[eệ]t)\b/i;
+  // Tên giọng mỗi hệ điều hành một kiểu, Web Speech API lại không cho biết
+  // giọng nào nam giọng nào nữ, nên phải dò bằng danh sách tên. Cô Nhi là cô
+  // giáo nên ưu tiên giọng nữ — may là giọng tiếng Việt sẵn có hầu hết là nữ.
+  var TEN_NU = /\b(linh|mai|lan|ng[oọ]c|thu|hoai|my|female|woman|samantha|victoria|karen|moira|tessa|zira|hazel|aria|jenny|flo|sandy|shelley|grandma)\b/i;
 
   var giong = { vi: null, en: null };
-  var giongNam = { vi: null, en: null };
 
   function timGiong() {
     if (!global.speechSynthesis) return;
     var ds = global.speechSynthesis.getVoices() || [];
     Object.keys(TIENG).forEach(function (k) {
       var hop = ds.filter(function (v) { return TIENG[k].tim.test(v.lang); });
-      giong[k] = hop[0] || null;
-      giongNam[k] =
-        hop.filter(function (v) { return TEN_NAM.test(v.name) && !TEN_NU.test(v.name); })[0] ||
-        hop.filter(function (v) { return !TEN_NU.test(v.name); })[0] || null;
+      giong[k] =
+        hop.filter(function (v) { return TEN_NU.test(v.name); })[0] ||
+        // giọng cài sẵn trong máy nghe mượt hơn giọng tải về qua mạng
+        hop.filter(function (v) { return v.localService; })[0] ||
+        hop[0] || null;
     });
   }
 
@@ -144,6 +142,8 @@
   /* Chuyển chữ trên màn hình thành câu đọc được: bỏ thẻ HTML và đổi ký hiệu
      toán sang lời nói, nếu không máy đọc "3 × 4" thành "ba bốn". */
   var KY_HIEU = [
+    // số thứ tự của bước giảng là để nhìn, đọc lên thành "một, hai, ba" nghe kỳ
+    [/<span class="buoc">[^<]*<\/span>/g, ' '],
     [/<sup>([^<]*)<\/sup>/g, ' mũ $1 '],
     [/<span class="ps"><i>([^<]*)<\/i><b>([^<]*)<\/b><\/span>/g, ' $1 phần $2 '],
     [/<[^>]+>/g, ' '],
@@ -156,7 +156,8 @@
     [/\+/g, ' cộng '], [/=/g, ' bằng '],
     [/</g, ' bé hơn '], [/>/g, ' lớn hơn '],
     [/%/g, ' phần trăm '], [/°/g, ' độ '],
-    [/[“”"]/g, ' '], [/\s+/g, ' ']
+    [/[“”"]/g, ' '], [/\s+/g, ' '],
+    [/\s+([.,;!?])/g, '$1']          // bỏ thẻ xong hay thừa dấu cách trước dấu câu
   ];
 
   function locLoiDoc(html) {
@@ -174,9 +175,9 @@
   /**
    * docTo(text, ma, tuyChon)
    *   ma      : 'vi' | 'en' — bỏ trống thì đoán theo chữ
-   *   tuyChon : { nam, cao, nhanh, noiTiep, xong }
-   *     nam     — ưu tiên giọng nam, không có thì hạ cao độ xuống
-   *     noiTiep — không cắt câu đang đọc dở, nối vào sau
+   *   tuyChon : { giangBai, cao, nhanh, noiTiep, xong }
+   *     giangBai — cô giảng bài thì nói nhanh hơn lúc đọc đề cho bé
+   *     noiTiep  — không cắt câu đang đọc dở, nối vào sau
    */
   function docTo(text, ma, tuyChon) {
     tuyChon = tuyChon || {};
@@ -188,14 +189,11 @@
       if (!tuyChon.noiTiep) global.speechSynthesis.cancel();
       var loi = new global.SpeechSynthesisUtterance(loiDoc);
       loi.lang = t.ma;
-      // thầy giáo giảng bài thì nói nhanh hơn chút so với lúc đọc đề cho bé
-      loi.rate = tuyChon.nhanh || (tuyChon.nam ? Math.min(1, t.nhanh + 0.07) : t.nhanh);
+      // cô giảng bài thì nói nhanh hơn chút so với lúc đọc đề cho bé
+      loi.rate = tuyChon.nhanh || (tuyChon.giangBai ? Math.min(1, t.nhanh + 0.07) : t.nhanh);
       if (!giong[khoa]) timGiong();
-      var g = (tuyChon.nam ? giongNam[khoa] : null) || giong[khoa];
-      if (g) loi.voice = g;
-      // không kiếm được giọng nam thật thì trầm giọng hiện có xuống
-      if (tuyChon.nam) loi.pitch = tuyChon.cao || (giongNam[khoa] ? 0.92 : 0.7);
-      else if (tuyChon.cao) loi.pitch = tuyChon.cao;
+      if (giong[khoa]) loi.voice = giong[khoa];
+      if (tuyChon.cao) loi.pitch = tuyChon.cao;
       if (tuyChon.xong) {
         var daGoi = false;
         var goi = function () { if (!daGoi) { daGoi = true; tuyChon.xong(); } };
