@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ngữ pháp — Tiếng Anh lớp 6</title>
+<meta name="description" content="So sánh, mạo từ, giới từ, động từ khuyết thiếu. Bài tập Tiếng Anh lớp 6 sinh ngẫu nhiên mỗi lần chơi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🔤</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>🔤 Ngữ pháp</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/o-tra-loi.js"></script>
+<script src="../../js/quiz.js"></script>
+<script src="../../js/toan-lop-6.js"></script>
+<script src="../../js/tieng-anh-lop-6.js"></script>
+<script>
+  var T = ToanL6;
+  var V = TiengAnhL6;
+
+  Quiz.init({
+    id: 'l6-ta-ngu-phap',
+    total: 10,
+    speak: true,
+    levels: [
+      { name: 'So sánh', hint: 'Hơn và nhất',
+        gen: V.soSanhHonNhat },
+      { name: 'Mạo từ và giới từ', hint: 'a, an, the, in, on, at',
+        gen: function () { return Quiz.pick([V.maoTu, V.gioiTu])(); } },
+      { name: 'Khuyết thiếu và danh từ', hint: 'can, should, must, many, much',
+        gen: function () { return Quiz.pick([V.dongTuKhuyetThieu, V.demDuocKhongDem])(); } }
+    ]
+  });
+</script>
+</body>
+</html>

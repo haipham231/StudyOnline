@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đêm Halloween — Toán lớp 6</title>
+<meta name="description" content="Game Toán lớp 6: vượt 5 ải, xen kẽ hai mạch đề để đòi lại kẹo từ phù thuỷ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🎃</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="index.html">← Trang chủ</a>
+  <h1>🎃 Đêm Halloween</h1>
+</header>
+
+<main id="game" class="quiz"></main>
+
+<footer class="ghi-cong">
+  <p>Hoạt hình trên LottieFiles: Halloween pack của Animo Arts · Witch của Nabil Mersni ·
+     Pumpkin và Ghost của Mahendra.</p>
+</footer>
+
+<script src="../js/hoat-hinh.js"></script>
+<script src="../js/o-tra-loi.js"></script>
+<script src="../js/quiz.js"></script>
+<script src="../js/danh-hieu.js"></script>
+<script src="../js/toan-lop-6.js"></script>
+<script src="../js/game-halloween.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
+<script>
+  var T = ToanL6;
+
+  // Lớp trên không học Tiếng Việt ở đây nên hai mạch xen kẽ là Tính và Đố
+  GameHalloween.batDau('game', {
+    khoa: 'studyonline:game-halloween-l6',
+    mon: ['Tính', 'Đố'],
+    ai: [
+    { ten: 'Cổng Bí Ngô', hinh: 'bi-ngo', emoji: '🎃', mau: '#ff8f3c', soCau: 6,
+      mota: 'Lũy thừa · dấu hiệu chia hết',
+      toan: T.luyThua,
+      tviet: T.dauHieuChiaHet6 },
+
+    { ten: 'Lối Mòn Ma Trơi', hinh: 'ma', emoji: '👻', mau: '#8b7bf7', soCau: 6,
+      mota: 'Số nguyên tố · ƯCLN BCNN',
+      toan: T.soNguyenTo,
+      tviet: function () { return Quiz.pick([T.timUCLN, T.timBCNN])(); } },
+
+    { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
+      mota: 'Số nguyên âm · so sánh',
+      toan: function () { return Quiz.pick([T.congSoNguyen, T.nhanSoNguyen])(); },
+      tviet: T.soSanhSoNguyen },
+
+    { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
+      mota: 'Phân số · phần trăm',
+      toan: function () { return Quiz.pick([T.rutGonPS6, T.congPSKhacMau, T.nhanChiaPS6])(); },
+      tviet: function () { return Quiz.pick([T.phanTram6, T.timSoBietPhanTram])(); } },
+
+    { ten: 'Lâu Đài Phù Thuỷ', hinh: 'phu-thuy', emoji: '🧙', mau: '#6a58e0', soCau: 7, trum: true,
+      mota: 'Hình học · thống kê',
+      toan: function () { return Quiz.pick([T.dienTichHinhThang, T.chuViLucGiac, T.trungDiem, T.congGoc])(); },
+      tviet: function () { return Quiz.pick([T.trungBinhCong6, T.xacSuatDonGian])(); } }
+    ]
+  });
+</script>
+</body>
+</html>

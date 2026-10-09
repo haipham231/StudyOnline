@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Câu cá cùng bé — Lớp 6</title>
+<meta name="description" content="Game câu cá cho bé lớp 6: chọn hồ theo độ khó, trả lời 10 câu Toán để câu cá bỏ vào xô.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🎣</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="index.html">← Trang chủ</a>
+  <h1>🎣 Câu cá cùng bé</h1>
+</header>
+
+<main id="game" class="quiz"></main>
+
+<footer class="ghi-cong">
+  <p>Hoạt hình trên LottieFiles: Fishing của Vladislav · Fishing animation của anil kumar ·
+     fish của ginka_studio · Cute Shark Tapping của Gregory Forster · Bucket của SM Rony.</p>
+</footer>
+
+<script src="../js/hoat-hinh.js"></script>
+<script src="../js/o-tra-loi.js"></script>
+<script src="../js/quiz.js"></script>
+<script src="../js/danh-hieu.js"></script>
+<script src="../js/toan-lop-6.js"></script>
+<script src="../js/game-cau-ca.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
+<script>
+  var T = ToanL6;
+  function mix() {
+    var ds = Array.prototype.slice.call(arguments);
+    return function () { return Quiz.pick(ds)(); };
+  }
+
+  GameCauCa.batDau('game', {
+    khoa: 'studyonline:game-cau-ca-l6',
+    ho: [
+    { id: 'ao', ten: 'Ao Nhỏ', mucDo: 'Dễ', emoji: '🪣', mau: '#2fcf90', nen: '#e4f9f0',
+      dan: ['cau-ca/ca-nho', 'cau-ca/cua'], coCa: 48,
+      mota: 'Lũy thừa, dấu hiệu chia hết, số nguyên tố',
+      de: mix(T.luyThua, T.dauHieuChiaHet6, T.soNguyenTo, T.loaiGoc) },
+
+    { id: 'song', ten: 'Sông Lớn', mucDo: 'Vừa', emoji: '🏞️', mau: '#4aa8ff', nen: '#e3f1ff',
+      dan: ['cau-ca/ca-vua', 'cau-ca/bach-tuoc', 'cau-ca/cua'], coCa: 66,
+      mota: 'Số nguyên âm, ƯCLN, BCNN, phân số',
+      de: mix(T.congSoNguyen, T.nhanSoNguyen, T.timUCLN, T.timBCNN, T.rutGonPS6) },
+
+    { id: 'bien', ten: 'Biển Sâu', mucDo: 'Khó', emoji: '🌊', mau: '#6a58e0', nen: '#ece8ff',
+      dan: ['cau-ca/ca-map', 'cau-ca/ca-voi', 'cau-ca/sua', 'cau-ca/bach-tuoc'], coCa: 80,
+      mota: 'Quy đồng phân số, phần trăm ngược, hình thang',
+      de: mix(T.congPSKhacMau, T.nhanChiaPS6, T.timSoBietPhanTram, T.dienTichHinhThang, T.congGoc) }
+    ]
+  });
+</script>
+</body>
+</html>

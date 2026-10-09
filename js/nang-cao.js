@@ -244,12 +244,94 @@
     };
   }
 
+
+  /* ---------------- Lớp 6 ---------------- */
+
+  function l6_ucln_thucTe() {
+    var k = r(3, 15), a = k * r(2, 7), b = k * r(2, 7);
+    while (a === b) b = k * r(2, 7);
+    function uc(x, y) { return y ? uc(y, x % y) : x; }
+    var d = uc(a, b);
+    return {
+      prompt: 'Cô giáo có <b>' + a + '</b> quyển vở và <b>' + b + '</b> cây bút, muốn chia đều ' +
+              'vào các phần quà sao cho <b>không thừa</b> thứ gì. Hỏi chia được <b>nhiều nhất</b> ' +
+              'bao nhiêu phần quà?',
+      speak: 'Có ' + a + ' quyển vở và ' + b + ' cây bút, chia đều không thừa. Nhiều nhất bao nhiêu phần quà?',
+      answer: d, after: 'phần', soChuSo: 4, mach: 'ƯCLN thực tế',
+      giai: ['Chia đều cả hai thứ mà không thừa nghĩa là số phần quà phải là <b>ước chung</b> của ' +
+        a + ' và ' + b + '.',
+        'Hỏi <b>nhiều nhất</b> nên lấy <b>ƯCLN</b>.',
+        'ƯCLN(' + a + ', ' + b + ') = ' + d + '.',
+        'Kiểm lại: mỗi phần có ' + (a / d) + ' quyển vở và ' + (b / d) + ' cây bút.',
+        'Chỗ hay nhầm: lấy BCNN, hoặc cộng hai số lại rồi chia.']
+    };
+  }
+
+  function l6_bcnn_thucTe() {
+    var a = r(3, 12), b = r(3, 12);
+    while (b === a) b = r(3, 12);
+    function uc(x, y) { return y ? uc(y, x % y) : x; }
+    var m = a / uc(a, b) * b;
+    return {
+      prompt: 'Hai xe buýt cùng rời bến lúc 6 giờ. Xe thứ nhất cứ <b>' + a +
+              '</b> phút chạy một chuyến, xe thứ hai cứ <b>' + b + '</b> phút một chuyến. ' +
+              'Hỏi sau ít nhất bao nhiêu phút thì hai xe lại cùng rời bến?',
+      speak: 'Xe một cứ ' + a + ' phút, xe hai cứ ' + b + ' phút. Sau bao nhiêu phút hai xe lại cùng rời bến?',
+      answer: m, after: 'phút', soChuSo: 4, mach: 'BCNN thực tế',
+      giai: ['Hai xe cùng rời bến khi số phút là <b>bội chung</b> của ' + a + ' và ' + b + '.',
+        'Hỏi <b>ít nhất</b> nên lấy <b>BCNN</b>.',
+        'BCNN(' + a + ', ' + b + ') = ' + a + ' × ' + b + ' : ' + uc(a, b) + ' = ' + m + ' phút.',
+        'Chỗ hay nhầm: lấy ƯCLN, hoặc nhân thẳng ' + a + ' × ' + b + ' = ' + (a * b) + '.']
+    };
+  }
+
+  function l6_phanTramHaiBuoc() {
+    // giá là bội của 1000 nên mọi mức giảm 10/20/25/50% đều ra số tròn
+    var goc = r(50, 400) * 1000, giam = chon([10, 20, 25, 50]);
+    var sau = goc - goc * giam / 100;
+    return {
+      prompt: 'Một chiếc áo giá <b>' + goc.toLocaleString('vi-VN') + ' đồng</b>, được giảm <b>' +
+              giam + '%</b>. Hỏi phải trả bao nhiêu tiền?' +
+              '<br><small>Trả lời bằng số, không có dấu chấm.</small>',
+      speak: 'Áo giá ' + goc + ' đồng, giảm ' + giam + ' phần trăm. Phải trả bao nhiêu?',
+      answer: sau, after: 'đồng', soChuSo: 7, mach: 'Phần trăm nâng cao',
+      giai: ['Số tiền được giảm: ' + goc + ' × ' + giam + ' : 100 = ' + (goc * giam / 100) + ' đồng.',
+        'Số tiền phải trả: ' + goc + ' − ' + (goc * giam / 100) + ' = ' + sau + ' đồng.',
+        'Cách nhanh hơn: còn phải trả ' + (100 - giam) + '% nên ' + goc + ' × ' + (100 - giam) +
+          ' : 100 = ' + sau + ' đồng.',
+        'Chỗ hay nhầm: trả lời ' + (goc * giam / 100) + ' — đó là số tiền <b>được giảm</b>.']
+    };
+  }
+
+  function l6_soNguyenNhieuBuoc() {
+    var a = r(5, 30), b = r(5, 30), c = r(2, 9);
+    var kq = -a + b * c;
+    var vs = function (x) { return x < 0 ? '(−' + Math.abs(x) + ')' : String(x); };
+    // dùng dấu trừ in ấn giống hệt đáp án, để lời giải và đáp án khớp nhau
+    var kqHien = String(kq).replace('-', '−');
+    return {
+      prompt: 'Tính giá trị biểu thức:',
+      text: vs(-a) + ' + ' + b + ' · ' + c,
+      speak: 'Âm ' + a + ' cộng ' + b + ' nhân ' + c,
+      answer: String(kq).replace('-', '−'),
+      choices: Q.shuffle([String(kq).replace('-', '−'),
+        String(-a + b + c).replace('-', '−'), String((-a + b) * c).replace('-', '−')]),
+      cols: 3, mach: 'Số nguyên nâng cao',
+      giai: ['Làm <b>nhân trước</b>, cộng trừ sau: ' + b + ' × ' + c + ' = ' + (b * c) + '.',
+        'Biểu thức còn: −' + a + ' + ' + (b * c) + '.',
+        'Hai số khác dấu: lấy ' + Math.max(a, b * c) + ' − ' + Math.min(a, b * c) + ' = ' +
+          Math.abs(kq) + ', mang dấu của số lớn hơn → ' + kqHien + '.',
+        'Chỗ hay nhầm: cộng −' + a + ' với ' + b + ' trước rồi mới nhân.']
+    };
+  }
+
   var BO = {
     1: [l1_bachoc, l1_sosanhTong, l1_timSoBiAn],
     2: [l2_haiBuoc, l2_timXHaiBuoc, l2_gapVaThem],
     3: [l3_chiaDuThucTe, l3_chuViNguoc, l3_bieuThucKho],
     4: [l4_tongTiCoDu, l4_trungBinhNguoc, l4_phanSoCuaSoKho],
-    5: [l5_phanTramNguoc, l5_vanTocNguoc, l5_dienTichConLai]
+    5: [l5_phanTramNguoc, l5_vanTocNguoc, l5_dienTichConLai],
+    6: [l6_ucln_thucTe, l6_bcnn_thucTe, l6_phanTramHaiBuoc, l6_soNguyenNhieuBuoc]
   };
 
   global.NangCao = {

@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Học Lớp 2</title>
-<meta name="description" content="Lớp 2: Phạm vi 1000, bảng nhân chia 2 và 5, xem giờ và đo lường. Có ba game, bài nâng cao và bộ đề kiểm tra.">
+<title>Học Lớp 6</title>
+<meta name="description" content="Lớp 6: Lũy thừa, số nguyên âm, ƯCLN và BCNN, phân số, hình học trực quan — và cả Tiếng Anh. Có ba game, bài nâng cao và bộ đề kiểm tra.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧮</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🎓</text></svg>">
 </head>
 <body>
 <div class="wrap">
@@ -18,9 +18,9 @@
   </header>
 
   <div class="hero">
-    <div class="mascot">🧮</div>
-    <h1>Học Lớp 2</h1>
-    <p id="loi-chao">Phạm vi 1000, bảng nhân chia 2 và 5, xem giờ và đo lường.</p>
+    <div class="mascot">🎓</div>
+    <h1>Học Lớp 6</h1>
+    <p id="loi-chao">Lũy thừa, số nguyên âm, ƯCLN và BCNN, phân số, hình học trực quan — và cả Tiếng Anh.</p>
   </div>
 
   <main id="noi-dung"></main>
@@ -30,27 +30,26 @@
 <script src="../js/danh-hieu.js"></script>
 <script>
   var NHOM = [
-    { ten: 'Số và phép tính', kieu: 'kieu-sticker', bai: [
-      { id: 'cong-tru-100', emoji: '➕', mau: '#4aa8ff', ten: 'Cộng trừ trong 100', mo_ta: 'Có nhớ và không nhớ, tính nhẩm tròn chục.' },
-      { id: 'cong-tru-1000', emoji: '💯', mau: '#2fcf90', ten: 'Cộng trừ trong 1000', mo_ta: 'Số có ba chữ số.' },
-      { id: 'nhan-chia', emoji: '✖️', mau: '#8b7bf7', ten: 'Bảng nhân chia 2 và 5', mo_ta: 'Nhân chia trong bảng.' },
-      { id: 'thanh-phan', emoji: '🏷️', mau: '#ff8fd0', ten: 'Tên gọi thành phần', mo_ta: 'Số hạng, tổng, thừa số, tích…' },
-      { id: 'tim-x', emoji: '🧩', mau: '#ffc93c', ten: 'Tìm x', mo_ta: 'Tìm số còn thiếu trong phép cộng trừ.' },
-      { id: 'so-ba-chu-so', emoji: '🔢', mau: '#ff7a7a', ten: 'Số có ba chữ số', mo_ta: 'Cấu tạo số, so sánh, dãy số.' }
+    { ten: 'Số tự nhiên', kieu: 'kieu-sticker', bai: [
+      { id: 'luy-thua', emoji: '🔢', mau: '#8b7bf7', ten: 'Lũy thừa và thứ tự phép tính', mo_ta: 'Lũy thừa với số mũ tự nhiên, nhân chia lũy thừa.' },
+      { id: 'so-nguyen-to', emoji: '🔑', mau: '#2fcf90', ten: 'Số nguyên tố, ƯCLN, BCNN', mo_ta: 'Phân tích ra thừa số nguyên tố.' },
+      { id: 'chia-het', emoji: '➗', mau: '#4aa8ff', ten: 'Dấu hiệu chia hết', mo_ta: 'Chia hết cho 2, 3, 5, 9.' },
+      { id: 'so-nguyen', emoji: '➖', mau: '#ff7a7a', ten: 'Số nguyên âm', mo_ta: 'Cộng trừ nhân số nguyên, so sánh trên trục số.' }
     ] },
-    { ten: 'Đo lường và thời gian', kieu: 'kieu-sticker', bai: [
-      { id: 'do-luong', emoji: '📏', mau: '#2fcf90', ten: 'Đơn vị đo', mo_ta: 'cm, dm, m, kg, lít.' },
-      { id: 'xem-gio', emoji: '🕐', mau: '#4aa8ff', ten: 'Xem giờ và ngày tháng', mo_ta: 'Giờ đúng, giờ rưỡi, 15 phút.' },
-      { id: 'hinh-hoc', emoji: '🔷', mau: '#8b7bf7', ten: 'Hình học', mo_ta: 'Hình tứ giác, chu vi, đường gấp khúc.' }
+    { ten: 'Phân số và số thập phân', kieu: 'kieu-sticker', bai: [
+      { id: 'phan-so', emoji: '🍰', mau: '#ff8fd0', ten: 'Phân số', mo_ta: 'Rút gọn, quy đồng, cộng trừ nhân chia.' },
+      { id: 'thap-phan', emoji: '🔟', mau: '#ffc93c', ten: 'Số thập phân và phần trăm', mo_ta: 'Bốn phép tính và tỉ số phần trăm.' }
     ] },
-    { ten: 'Tiếng Việt', kieu: 'kieu-hinh', bai: [
-      { id: 'tv-tu-loai', emoji: '🏷️', mau: '#ff8fd0', ten: 'Từ loại', mo_ta: 'Từ chỉ sự vật, hoạt động, đặc điểm.' },
-      { id: 'tv-cau-dau', emoji: '📝', mau: '#4aa8ff', ten: 'Câu và dấu câu', mo_ta: 'Ai là gì, Ai làm gì, Ai thế nào và dấu cuối câu.' },
-      { id: 'tv-chinh-ta', emoji: '✍️', mau: '#2fcf90', ten: 'Chính tả và từ ngữ', mo_ta: 'Viết đúng, quy tắc c/k, g/gh, ng/ngh, từ trái nghĩa.' },
-      { id: 'tv-doc-hieu', emoji: '📖', mau: '#ffc93c', ten: 'Đọc hiểu', mo_ta: 'Đọc đoạn ngắn rồi trả lời.' }
+    { ten: 'Hình học và thống kê', kieu: 'kieu-sticker', bai: [
+      { id: 'hinh-truc-quan', emoji: '🔷', mau: '#4aa8ff', ten: 'Hình học trực quan', mo_ta: 'Tam giác đều, lục giác đều, hình thoi, hình thang cân.' },
+      { id: 'diem-doan-goc', emoji: '📐', mau: '#8b7bf7', ten: 'Điểm, đoạn thẳng, góc', mo_ta: 'Trung điểm và số đo góc.' },
+      { id: 'thong-ke', emoji: '📊', mau: '#2fcf90', ten: 'Thống kê và xác suất', mo_ta: 'Trung bình cộng và kết quả thuận lợi.' }
     ] },
-    { ten: 'Giải toán có lời văn', kieu: 'kieu-sticker', bai: [
-      { id: 'toan-do', emoji: '📖', mau: '#ff8f3c', ten: 'Toán đố', mo_ta: 'Nhiều hơn, ít hơn, gấp mấy lần, chia đều.' }
+    { ten: 'Tiếng Anh', kieu: 'kieu-hinh', bai: [
+      { id: 'ta-thi', emoji: '⏰', mau: '#4aa8ff', ten: 'Các thì', mo_ta: 'Hiện tại đơn, hiện tại tiếp diễn, quá khứ đơn.' },
+      { id: 'ta-ngu-phap', emoji: '🔤', mau: '#8b7bf7', ten: 'Ngữ pháp', mo_ta: 'So sánh, mạo từ, giới từ, động từ khuyết thiếu.' },
+      { id: 'ta-tu-vung', emoji: '📒', mau: '#2fcf90', ten: 'Từ vựng', mo_ta: 'Theo các chủ đề trong sách lớp 6.' },
+      { id: 'ta-doc-hieu', emoji: '📖', mau: '#ffc93c', ten: 'Đọc hiểu', mo_ta: 'Đọc đoạn tiếng Anh rồi trả lời.' }
     ] }
   ];
 
@@ -67,10 +66,10 @@
   ];
 
   var KIEM_TRA = [
-    { id: 'l2-kiem-tra', emoji: '📝', mau: '#8b7bf7', ten: 'Bài kiểm tra',
+    { id: 'l6-kiem-tra', emoji: '📝', mau: '#8b7bf7', ten: 'Bài kiểm tra',
       mo_ta: 'Sáu bộ đề: ba đề theo mốc năm học và ba đề luyện tập. Máy chấm điểm thang 10.',
       href: 'kiem-tra.html' },
-    { id: 'l2-nang-cao', emoji: '🚀', mau: '#ff7a7a', ten: 'Bài tập nâng cao',
+    { id: 'l6-nang-cao', emoji: '🚀', mau: '#ff7a7a', ten: 'Bài tập nâng cao',
       mo_ta: 'Dạng khó hơn hẳn. Chấm xong, trợ lý giải lại từng câu sai theo từng bước.',
       href: 'nang-cao.html' }
   ];
@@ -79,7 +78,7 @@
   var tongSao = 0;
 
   function taoThe(bai, noiBat, kieu) {
-    var best = Quiz.readBest(noiBat ? bai.id : 'l2-' + bai.id);
+    var best = Quiz.readBest(noiBat ? bai.id : 'l6-' + bai.id);
     var sao = best ? Quiz.starsFor(best.correct, best.total) : 0;
     if (!noiBat) tongSao += sao;
 
@@ -89,8 +88,8 @@
     card.style.setProperty('--tint', bai.mau);
 
     var huy = '', ptDe = null;
-    if (bai.id === 'l2-kiem-tra') {
-      var ds = Quiz.readLichSu('l2-kiem-tra');
+    if (bai.id === 'l6-kiem-tra') {
+      var ds = Quiz.readLichSu('l6-kiem-tra');
       if (ds.length) {
         huy = '<span class="best">Lần gần nhất: ' + ds[0].diem + '/10 — ' + ds[0].de + '</span>';
         ptDe = ds[0].diem * 10;

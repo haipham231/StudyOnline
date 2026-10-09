@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Từ vựng — Tiếng Anh lớp 6</title>
+<meta name="description" content="Theo các chủ đề trong sách lớp 6. Bài tập Tiếng Anh lớp 6 sinh ngẫu nhiên mỗi lần chơi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>📒</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>📒 Từ vựng</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/o-tra-loi.js"></script>
+<script src="../../js/quiz.js"></script>
+<script src="../../js/toan-lop-6.js"></script>
+<script src="../../js/tieng-anh-lop-6.js"></script>
+<script>
+  var T = ToanL6;
+  var V = TiengAnhL6;
+
+  Quiz.init({
+    id: 'l6-ta-tu-vung',
+    total: 10,
+    speak: true,
+    levels: [
+      { name: 'Anh sang Việt', hint: 'Từ này nghĩa là gì',
+        gen: V.nghiaTuVung },
+      { name: 'Việt sang Anh', hint: 'Tiếng Anh gọi là gì',
+        gen: V.tuTiengAnh },
+      { name: 'Trộn', hint: 'Cả hai chiều',
+        gen: function () { return Quiz.pick([V.nghiaTuVung, V.tuTiengAnh])(); } }
+    ]
+  });
+</script>
+</body>
+</html>
