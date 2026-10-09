@@ -54,6 +54,31 @@
       [2, T.canNang],
       [2, T.ngayThang],
       [3, function () { return Quiz.pick([T.doGapSoLan, T.doChiaDeu, T.doNhieuHon])(); }]
+    ],
+    'luyen-1': [
+      [4, function () { return Quiz.pick([T.congTru100, T.congTru1000])(true); }],
+      [3, function () { return Quiz.pick([T.nhanBang, T.chiaBang])(); }],
+      [3, T.timX],
+      [2, T.cauTaoSo],
+      [2, T.xemGio2],
+      [2, T.duongGapKhuc],
+      [4, function () { return Quiz.pick([T.doNhieuHon, T.doItHon, T.doGapSoLan, T.doChiaDeu])(); }]
+    ],
+    'luyen-2': [
+      [4, T.nhanRaChia],
+      [3, T.tenThanhPhan],
+      [3, T.soSanh3CS],
+      [3, T.daySoLop2],
+      [2, T.canNang],
+      [2, T.ngayThang],
+      [3, T.hinhHoc2]
+    ],
+    'luyen-3': [
+      [5, function () { return T.congTru100(true); }],
+      [4, T.congTru1000],
+      [3, T.timX],
+      [3, T.doDoDai2],
+      [5, function () { return Quiz.pick([T.doNhieuHon, T.doGapSoLan, T.doChiaDeu])(); }]
     ]
   };
 
@@ -93,7 +118,16 @@
         taoDe: function () { return taoDe('cuoi-ki-1'); } },
       { name: 'Đề cuối năm học',
         hint: demCau('cuoi-nam') + ' câu · phạm vi 1000, toán đố và đo lường',
-        taoDe: function () { return taoDe('cuoi-nam'); } }
+        taoDe: function () { return taoDe('cuoi-nam'); } },
+      { name: 'Đề luyện tập 1',
+        hint: demCau('luyen-1') + ' câu · trộn cả năm, nhấn tính toán và toán đố',
+        taoDe: function () { return taoDe('luyen-1'); } },
+      { name: 'Đề luyện tập 2',
+        hint: demCau('luyen-2') + ' câu · trộn cả năm, nhấn số và đo lường',
+        taoDe: function () { return taoDe('luyen-2'); } },
+      { name: 'Đề luyện tập 3',
+        hint: demCau('luyen-3') + ' câu · trộn cả năm, nhiều phép tính nhất',
+        taoDe: function () { return taoDe('luyen-3'); } }
     ]
   });
 </script>

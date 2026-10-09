@@ -56,6 +56,32 @@
       [2, T.phanSoCuaSo],
       [2, T.tienViet],
       [3, function () { return Quiz.pick([T.doHaiBuoc, T.doTimPhan, T.doGapLan])(); }]
+    ],
+    'luyen-1': [
+      [4, function () { return Quiz.pick([T.bangNhan, T.bangChia])(); }],
+      [3, function () { return T.nhanNgoaiBang(2); }],
+      [3, T.chiaCoDu],
+      [3, T.bieuThucNgoac],
+      [2, T.gapMayLan],
+      [2, T.doiDonViL3],
+      [4, function () { return Quiz.pick([T.doHaiBuoc, T.doGapLan])(); }]
+    ],
+    'luyen-2': [
+      [3, T.chuViChuNhat],
+      [3, T.dienTichChuNhat],
+      [3, T.hinhVuongL3],
+      [3, T.xemGioPhut],
+      [3, T.tienViet],
+      [2, T.phanSoCuaSo],
+      [4, function () { return Quiz.pick([T.doTimPhan, T.doChiaDeuL3])(); }]
+    ],
+    'luyen-3': [
+      [4, function () { return T.nhanNgoaiBang(3); }],
+      [4, T.chiaNgoaiBang],
+      [3, function () { return T.congTruLon(100000); }],
+      [3, T.timXNhanChia],
+      [3, T.bieuThuc],
+      [4, function () { return Quiz.pick([T.doHaiBuoc, T.doTimPhan])(); }]
     ]
   };
 
@@ -95,7 +121,16 @@
         taoDe: function () { return taoDe('cuoi-ki-1'); } },
       { name: 'Đề cuối năm học',
         hint: demCau('cuoi-nam') + ' câu · cả năm — có chu vi diện tích và toán đố hai bước',
-        taoDe: function () { return taoDe('cuoi-nam'); } }
+        taoDe: function () { return taoDe('cuoi-nam'); } },
+      { name: 'Đề luyện tập 1',
+        hint: demCau('luyen-1') + ' câu · trộn cả năm, nhấn nhân chia',
+        taoDe: function () { return taoDe('luyen-1'); } },
+      { name: 'Đề luyện tập 2',
+        hint: demCau('luyen-2') + ' câu · trộn cả năm, nhấn hình học và đo lường',
+        taoDe: function () { return taoDe('luyen-2'); } },
+      { name: 'Đề luyện tập 3',
+        hint: demCau('luyen-3') + ' câu · trộn cả năm, nhiều phép tính nhất',
+        taoDe: function () { return taoDe('luyen-3'); } }
     ]
   });
 </script>

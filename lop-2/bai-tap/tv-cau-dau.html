@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Câu và dấu câu — Tiếng Việt lớp 2</title>
+<meta name="description" content="Ai là gì, Ai làm gì, Ai thế nào và dấu cuối câu. Bài tập Tiếng Việt lớp 2 sinh ngẫu nhiên mỗi lần chơi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>📝</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>📝 Câu và dấu câu</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/o-tra-loi.js"></script>
+<script src="../../js/quiz.js"></script>
+<script src="../../js/toan-lop-2.js"></script>
+<script src="../../js/tieng-viet-lop-2.js"></script>
+<script>
+  var T = ToanL2;
+  var V = TiengVietL2;
+
+  Quiz.init({
+    id: 'l2-tv-cau-dau',
+    total: 10,
+    speak: true,
+    levels: [
+      { name: 'Mẫu câu', hint: 'Ba mẫu câu đã học',
+        gen: V.nhanMauCau },
+      { name: 'Dấu câu', hint: 'Chấm, chấm hỏi, chấm than',
+        gen: V.chonDauCau },
+      { name: 'Sắp xếp câu', hint: 'Xếp các từ thành câu đúng',
+        gen: V.sapXepCau }
+    ]
+  });
+</script>
+</body>
+</html>

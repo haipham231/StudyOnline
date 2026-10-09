@@ -1020,13 +1020,37 @@ h2.nhom::before {
 .choices > .choice,
 .pad > .key,
 .grid > .card,
-.huy-hieu > .hh {
-  min-width: 0;
-  overflow-wrap: break-word;
+.huy-hieu > .hh { min-width: 0; }
+
+/* Tiếng Việt không được ngắt giữa tiếng: "Bốn" mà vỡ thành "B ốn" là hỏng.
+   Chỉ cho xuống dòng ở khoảng trắng; chữ quá dài thì thu cỡ chữ, xem dưới. */
+.choices > .choice,
+.prompt, .question, .feedback, .nhan {
+  overflow-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
 }
 
-/* chữ trong hình vẽ và trong đề bài cũng phải chịu xuống dòng */
-.prompt, .question, .feedback, .nhan { overflow-wrap: break-word; }
+/* Thẻ và huy hiệu thì cho ngắt, vì tên bài có thể dài hơn thẻ */
+.grid > .card, .huy-hieu > .hh { overflow-wrap: break-word; }
+
+/* Nhiều lựa chọn trên màn hẹp: thay vì ép đủ số cột rồi vỡ chữ, cho các ô
+   rớt xuống hàng. Mỗi ô rộng tối thiểu 96px, thừa chỗ thì mới xếp thêm cột. */
+@media (max-width: 560px) {
+  .choices[style*="--cols: 4"],
+  .choices[style*="--cols:4"],
+  .choices[style*="--cols: 5"],
+  .choices[style*="--cols:5"] {
+    grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  }
+
+  /* ba lựa chọn là chữ thì cỡ chữ phải nhỏ lại mới vừa một hàng */
+  .choices[style*="--cols: 3"] > .choice,
+  .choices[style*="--cols:3"] > .choice { font-size: clamp(15px, 4.4vw, 21px); }
+
+  .choices[style*="--cols: 4"] > .choice,
+  .choices[style*="--cols:4"] > .choice { font-size: clamp(14px, 4vw, 19px); }
+}
 
 
 /* ===== Hoạt hình Lottie ===== */

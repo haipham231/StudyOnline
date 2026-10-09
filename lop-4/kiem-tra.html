@@ -57,6 +57,33 @@
       [2, T.dienTichHinhThoi],
       [2, T.doiDonViL4],
       [3, function () { return Quiz.pick([T.doTongHieu, T.doMuaHang, T.doDienTichDat])(); }]
+    ],
+    'luyen-1': [
+      [3, T.hangCuaChuSo],
+      [3, T.nhanHaiChuSo],
+      [3, T.chiaHaiChuSo],
+      [3, T.dauHieuChiaHet],
+      [3, T.trungBinhCong],
+      [2, T.lamTronL4],
+      [4, function () { return Quiz.pick([T.doTrungBinh, T.doMuaHang])(); }]
+    ],
+    'luyen-2': [
+      [3, T.rutGonPS],
+      [3, T.soSanhPS],
+      [3, T.congPSCungMau],
+      [3, T.phanSoCuaSoL4],
+      [3, T.tongHieu],
+      [3, T.tongTi],
+      [3, T.doTongHieu]
+    ],
+    'luyen-3': [
+      [3, T.dienTichBinhHanh],
+      [3, T.dienTichHinhThoi],
+      [3, T.chuViDienTichL4],
+      [3, T.doiDonViL4],
+      [2, T.nhanBietGoc],
+      [2, T.tinhNhanhL4],
+      [4, function () { return Quiz.pick([T.doDienTichDat, T.doMuaHang])(); }]
     ]
   };
 
@@ -96,7 +123,16 @@
         taoDe: function () { return taoDe('cuoi-ki-1'); } },
       { name: 'Đề cuối năm học',
         hint: demCau('cuoi-nam') + ' câu · cả năm — phân số, tổng hiệu tổng tỉ, hình học',
-        taoDe: function () { return taoDe('cuoi-nam'); } }
+        taoDe: function () { return taoDe('cuoi-nam'); } },
+      { name: 'Đề luyện tập 1',
+        hint: demCau('luyen-1') + ' câu · trộn cả năm, nhấn số và phép tính',
+        taoDe: function () { return taoDe('luyen-1'); } },
+      { name: 'Đề luyện tập 2',
+        hint: demCau('luyen-2') + ' câu · trộn cả năm, nhấn phân số và dạng toán điển hình',
+        taoDe: function () { return taoDe('luyen-2'); } },
+      { name: 'Đề luyện tập 3',
+        hint: demCau('luyen-3') + ' câu · trộn cả năm, nhấn hình học và đo lường',
+        taoDe: function () { return taoDe('luyen-3'); } }
     ]
   });
 </script>
