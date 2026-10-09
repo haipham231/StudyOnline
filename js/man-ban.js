@@ -85,17 +85,18 @@
     var quaiDS = nhanDS.map(function (nhan, i) {
       var o = el('div', 'con-quai');
       o.dataset.nhan = nhan;
-      var hs = anh('quai/' + tenQuai[i] + '-song.png', 'quai-hinh hinh-song');
-      var hc = anh('quai/' + tenQuai[i] + '-chet.png', 'quai-hinh hinh-chet');
-      o.appendChild(hs);
-      o.appendChild(hc);
+      o.appendChild(anh('quai/' + tenQuai[i] + '-song.png', 'quai-hinh hinh-song'));
+      o.appendChild(anh('quai/' + tenQuai[i] + '-nem.png', 'quai-hinh hinh-nem'));
+      o.appendChild(anh('quai/' + tenQuai[i] + '-chet.png', 'quai-hinh hinh-chet'));
       o.appendChild(el('span', 'quai-nhan', nhan));
       dau.appendChild(o);
       return o;
     });
 
-    var phg = el('div', 'phi-hanh-gia');
-    phg.appendChild(anh('phi-hanh-gia.png', 'phg-hinh'));
+    var phg = el('div', 'phi-hanh-gia dang-ngam');
+    phg.appendChild(anh('phi-hanh-gia.png', 'phg-hinh hinh-ngam'));
+    phg.appendChild(anh('phg-trung.png', 'phg-hinh hinh-trung'));
+    phg.appendChild(anh('phg-nga.png', 'phg-hinh hinh-nga'));
     phg.appendChild(anh('lua-sung.png', 'phg-lua'));
     dau.appendChild(phg);
     san.appendChild(dau);
@@ -139,6 +140,7 @@
         o.style.width = Math.round(rongQuai) + 'px';
         o.style.left = Math.round((i + 0.5) / n * rong - rongQuai / 2) + 'px';
         o.style.top = Math.round(Math.max(8, cao * 0.05)) + 'px';
+        o.style.height = '116px';
       });
       x = Math.min(Math.max(x || (rong / 2 - RONG_PHG / 2), 4), rong - RONG_PHG - 4);
       return true;
@@ -227,12 +229,61 @@
         dau.appendChild(tim);
       } else {
         muc.classList.add('nhon-nhao');
+        choiDaLai(muc);
         var oDung = quaiDS.filter(function (o) { return o.dataset.nhan === String(cau.answer); })[0];
-        if (oDung) setTimeout(function () { oDung.classList.add('chi-ra'); }, 500);
+        if (oDung) setTimeout(function () { oDung.classList.add('chi-ra'); }, 900);
       }
 
       thaoPhim();
       if (tuyChon.khiTraLoi) tuyChon.khiTraLoi(dung, nhan, phanHoi);
+    }
+
+    /* --- bắn trật thì con quái chọi đá lại, phi hành gia ngã --- */
+    function choiDaLai(muc) {
+      setTimeout(function () {
+        if (!dau.isConnected) return;
+        muc.classList.remove('nhon-nhao');
+        muc.classList.add('dang-nem');
+
+        var tuX = muc.offsetLeft + muc.offsetWidth * 0.78;
+        var tuY = muc.offsetTop + muc.offsetHeight * 0.5;
+        var toiX = x + RONG_PHG * 0.5;
+        var toiY = cao - 10 - CAO_PHG * 0.62;
+
+        var da = anh('da.png', 'hon-da');
+        da.style.left = tuX + 'px';
+        da.style.top = tuY + 'px';
+        dau.appendChild(da);
+
+        requestAnimationFrame(function () {
+          da.style.transition = 'transform 0.42s cubic-bezier(0.35, 0, 0.9, 1)';
+          da.style.transform = 'translate(-50%,-50%) translate(' + (toiX - tuX) + 'px,' +
+            (toiY - tuY) + 'px) rotate(540deg)';
+        });
+
+        setTimeout(function () {
+          if (da.parentNode) da.parentNode.removeChild(da);
+          if (!dau.isConnected) return;
+          // trúng đá: bật ngửa ra rồi nằm luôn
+          doiDangPhg('trung');
+          var vun = anh('da-vun.png', 'da-vun-bay');
+          vun.style.left = toiX + 'px';
+          vun.style.top = toiY + 'px';
+          dau.appendChild(vun);
+          setTimeout(function () { if (vun.parentNode) vun.parentNode.removeChild(vun); }, 620);
+          setTimeout(function () {
+            if (dau.isConnected) doiDangPhg('nga');
+          }, 360);
+        }, 440);
+      }, 240);
+    }
+
+    var dangPhg = 'ngam';
+    function doiDangPhg(d) {
+      if (d === dangPhg) return;
+      phg.classList.remove('dang-' + dangPhg);
+      phg.classList.add('dang-' + d);
+      dangPhg = d;
     }
 
     /* --- nút bấm và bàn phím --- */
@@ -276,6 +327,19 @@
       document.removeEventListener('keydown', nghePhim);
       document.removeEventListener('keyup', thaPhim);
     }
+
+    // Ảnh đang ẩn thì trình duyệt hay để tới lúc cần mới tải, đổi dáng xong
+    // lại trống một nhịp. Nạp trước hết cho chắc.
+    tenQuai.forEach(function (t) {
+      ['song', 'nem', 'chet'].forEach(function (d) {
+        var i = new Image();
+        i.src = GOC + 'assets/vu-tru/quai/' + t + '-' + d + '.png';
+      });
+    });
+    ['phg-trung', 'phg-nga', 'da', 'da-vun', 'ten-lua', 'no'].forEach(function (t) {
+      var i = new Image();
+      i.src = GOC + 'assets/vu-tru/' + t + '.png';
+    });
 
     if (doSan()) { datChoPhg(); ngam(); }
     hen = requestAnimationFrame(vong);

@@ -248,7 +248,8 @@
       if (van.nhienLieu <= 0) return canNhienLieu();
       van.dangChuyen = true; ve(); van.dangChuyen = false;
       setTimeout(raCauHoi, 300);
-    }, 2200);
+      // chờ lâu hơn chút: còn phải xem con quái chọi đá và phi hành gia ngã
+    }, 2800);
   }
 
   /* ---------- Tới nơi / cạn nhiên liệu ---------- */
