@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài kiểm tra — Toán lớp 2</title>
+<meta name="description" content="Ba bộ đề kiểm tra Toán lớp 2: giữa kì 1, cuối kì 1 và cuối năm. Máy chấm điểm thang 10.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>📝</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="index.html">← Quay lại</a>
+  <h1>📝 Bài kiểm tra Toán lớp 2</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../js/o-tra-loi.js"></script>
+<script src="../js/quiz.js"></script>
+<script src="../js/toan-lop-2.js"></script>
+<script>
+  var T = ToanL2;
+
+  /* Ma trận đề — mỗi dòng là [số câu, hàm sinh đề], bám ba mốc của năm học. */
+  var MA_TRAN = {
+    'giua-ki-1': [
+      [4, function () { return T.congTru100(false); }],
+      [3, T.cauTaoSo],
+      [3, T.soSanh3CS],
+      [3, function () { return T.nhanBang(2); }],
+      [2, T.daySoLop2],
+      [2, T.tenThanhPhan],
+      [2, T.hinhHoc2]
+    ],
+    'cuoi-ki-1': [
+      [4, function () { return T.congTru100(true); }],
+      [3, function () { return T.nhanBang(); }],
+      [3, function () { return T.chiaBang(); }],
+      [3, T.timX],
+      [2, T.xemGio2],
+      [2, T.doDoDai2],
+      [3, function () { return Quiz.pick([T.doNhieuHon, T.doItHon])(); }]
+    ],
+    'cuoi-nam': [
+      [3, T.congTru1000],
+      [3, function () { return T.congTru100(true); }],
+      [3, T.nhanRaChia],
+      [2, T.timX],
+      [2, T.duongGapKhuc],
+      [2, T.canNang],
+      [2, T.ngayThang],
+      [3, function () { return Quiz.pick([T.doGapSoLan, T.doChiaDeu, T.doNhieuHon])(); }]
+    ]
+  };
+
+  // Dựng đề: sinh đủ số câu mỗi phần, loại đề trùng nhau, rồi xáo trộn thứ tự
+  function taoDe(ten) {
+    var de = [];
+    var daCo = {};
+    MA_TRAN[ten].forEach(function (dong) {
+      var soCau = dong[0], sinh = dong[1];
+      for (var i = 0; i < soCau; i++) {
+        var q, khoa, lan = 0;
+        do {
+          q = sinh();
+          khoa = (q.prompt || '') + (q.text || '') + (q.after || '') + q.answer;
+          lan++;
+        } while (daCo[khoa] && lan < 25);
+        daCo[khoa] = true;
+        de.push(q);
+      }
+    });
+    return Quiz.shuffle(de);
+  }
+
+  function demCau(ten) {
+    return MA_TRAN[ten].reduce(function (t, d) { return t + d[0]; }, 0);
+  }
+
+  Quiz.init({
+    id: 'l2-kiem-tra',
+    exam: true,
+    levels: [
+      { name: 'Đề giữa học kì 1',
+        hint: demCau('giua-ki-1') + ' câu · các số đến 100, bảng nhân 2',
+        taoDe: function () { return taoDe('giua-ki-1'); } },
+      { name: 'Đề cuối học kì 1',
+        hint: demCau('cuoi-ki-1') + ' câu · cộng trừ có nhớ, nhân chia 2 và 5',
+        taoDe: function () { return taoDe('cuoi-ki-1'); } },
+      { name: 'Đề cuối năm học',
+        hint: demCau('cuoi-nam') + ' câu · phạm vi 1000, toán đố và đo lường',
+        taoDe: function () { return taoDe('cuoi-nam'); } }
+    ]
+  });
+</script>
+</body>
+</html>

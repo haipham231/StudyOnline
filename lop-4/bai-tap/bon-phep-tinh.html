@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bốn phép tính — Toán lớp 4</title>
+<meta name="description" content="Nhân chia số có nhiều chữ số. Bài tập Toán lớp 4 sinh ngẫu nhiên mỗi lần chơi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>✖️</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>✖️ Bốn phép tính</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/o-tra-loi.js"></script>
+<script src="../../js/quiz.js"></script>
+<script src="../../js/toan-lop-4.js"></script>
+<script>
+  var T = ToanL4;
+
+  Quiz.init({
+    id: 'l4-bon-phep-tinh',
+    total: 10,
+    levels: [
+      { name: 'Cộng trừ số lớn', hint: 'Phạm vi hàng trăm nghìn',
+        gen: T.congTruLonL4 },
+      { name: 'Nhân hai chữ số', hint: 'Số có hai chữ số × hai chữ số',
+        gen: T.nhanHaiChuSo },
+      { name: 'Chia hai chữ số', hint: 'Chia cho số có hai chữ số',
+        gen: T.chiaHaiChuSo }
+    ]
+  });
+</script>
+</body>
+</html>

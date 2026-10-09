@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài kiểm tra — Toán lớp 3</title>
+<meta name="description" content="Ba bộ đề kiểm tra Toán lớp 3: giữa kì 1, cuối kì 1 và cuối năm. Máy chấm điểm thang 10.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>📝</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="index.html">← Quay lại</a>
+  <h1>📝 Bài kiểm tra Toán lớp 3</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../js/o-tra-loi.js"></script>
+<script src="../js/quiz.js"></script>
+<script src="../js/toan-lop-3.js"></script>
+<script>
+  var T = ToanL3;
+
+  /* Ma trận đề — mỗi dòng là [số câu, hàm sinh đề], bám ba mốc của năm học. */
+  var MA_TRAN = {
+    'giua-ki-1': [
+      [4, function () { return T.bangNhan(); }],
+      [4, function () { return T.bangChia(); }],
+      [3, T.gapGiam],
+      [2, T.gapMayLan],
+      [2, function () { return T.congTruLon(10000); }],
+      [2, T.xemGioPhut],
+      [3, function () { return Quiz.pick([T.doChiaDeuL3, T.doGapLan])(); }]
+    ],
+    'cuoi-ki-1': [
+      [3, function () { return T.nhanNgoaiBang(2); }],
+      [3, T.chiaNgoaiBang],
+      [3, T.chiaCoDu],
+      [3, T.bieuThuc],
+      [2, T.timXNhanChia],
+      [2, T.doiDonViL3],
+      [2, T.chuViChuNhat],
+      [2, T.doHaiBuoc]
+    ],
+    'cuoi-nam': [
+      [3, function () { return T.nhanNgoaiBang(3); }],
+      [2, T.chiaCoDu],
+      [2, T.bieuThucNgoac],
+      [2, function () { return T.congTruLon(100000); }],
+      [2, T.dienTichChuNhat],
+      [2, T.hinhVuongL3],
+      [2, T.phanSoCuaSo],
+      [2, T.tienViet],
+      [3, function () { return Quiz.pick([T.doHaiBuoc, T.doTimPhan, T.doGapLan])(); }]
+    ]
+  };
+
+  // Dựng đề: sinh đủ số câu mỗi phần, loại đề trùng nhau, rồi xáo trộn thứ tự
+  function taoDe(ten) {
+    var de = [];
+    var daCo = {};
+    MA_TRAN[ten].forEach(function (dong) {
+      var soCau = dong[0], sinh = dong[1];
+      for (var i = 0; i < soCau; i++) {
+        var q, khoa, lan = 0;
+        do {
+          q = sinh();
+          khoa = (q.prompt || '') + (q.text || '') + (q.after || '') + q.answer;
+          lan++;
+        } while (daCo[khoa] && lan < 25);
+        daCo[khoa] = true;
+        de.push(q);
+      }
+    });
+    return Quiz.shuffle(de);
+  }
+
+  function demCau(ten) {
+    return MA_TRAN[ten].reduce(function (t, d) { return t + d[0]; }, 0);
+  }
+
+  Quiz.init({
+    id: 'l3-kiem-tra',
+    exam: true,
+    levels: [
+      { name: 'Đề giữa học kì 1',
+        hint: demCau('giua-ki-1') + ' câu · bảng nhân chia và gấp giảm',
+        taoDe: function () { return taoDe('giua-ki-1'); } },
+      { name: 'Đề cuối học kì 1',
+        hint: demCau('cuoi-ki-1') + ' câu · nhân chia ngoài bảng, chia có dư, biểu thức',
+        taoDe: function () { return taoDe('cuoi-ki-1'); } },
+      { name: 'Đề cuối năm học',
+        hint: demCau('cuoi-nam') + ' câu · cả năm — có chu vi diện tích và toán đố hai bước',
+        taoDe: function () { return taoDe('cuoi-nam'); } }
+    ]
+  });
+</script>
+</body>
+</html>

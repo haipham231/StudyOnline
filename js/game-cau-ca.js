@@ -15,47 +15,53 @@
     return function () { return Q.pick(ds)(); };
   }
 
-  var HO = [
-    { id: 'ao', ten: 'Ao Nhỏ', mucDo: 'Dễ', emoji: '🪣', mau: '#2fcf90', nen: '#e4f9f0',
-      dan: ['cau-ca/ca-nho', 'cau-ca/cua'], coCa: 48,
-      mota: 'Cá nhỏ hiền lành · cộng trừ trong 10, đếm, chữ cái',
-      de: mix(
-        function () { return T.congTru(10); },
-        function () { return T.demHinh(10); },
-        function () { return T.soSanh(10); },
-        T.nhanBietHinh,
-        V.chuHoaThuong,
-        V.timThanh
-      ) },
+  /* Bộ mặc định của lớp 1. Dựng muộn, vì trang lớp 2–4 không nạp
+     ToanL1 và TiengVietL1 — gọi sớm là cả mô-đun vỡ lúc nạp. */
+  function boDeMacDinh() {
+    return [
+      { id: 'ao', ten: 'Ao Nhỏ', mucDo: 'Dễ', emoji: '🪣', mau: '#2fcf90', nen: '#e4f9f0',
+        dan: ['cau-ca/ca-nho', 'cau-ca/cua'], coCa: 48,
+        mota: 'Cá nhỏ hiền lành · cộng trừ trong 10, đếm, chữ cái',
+        de: mix(
+          function () { return T.congTru(10); },
+          function () { return T.demHinh(10); },
+          function () { return T.soSanh(10); },
+          T.nhanBietHinh,
+          V.chuHoaThuong,
+          V.timThanh
+        ) },
 
-    { id: 'song', ten: 'Sông Lớn', mucDo: 'Vừa', emoji: '🏞️', mau: '#4aa8ff', nen: '#e3f1ff',
-      dan: ['cau-ca/ca-vua', 'cau-ca/bach-tuoc', 'cau-ca/cua'], coCa: 66,
-      mota: 'Cá to hơn · phạm vi 20, tách gộp, xem giờ, ghép vần',
-      de: mix(
-        function () { return T.congTru(20); },
-        function () { return T.tachGop(10); },
-        function () { return T.dienSo(20); },
-        function () { return T.xemGio(false); },
-        V.ghepVan,
-        V.quyTacChinhTa,
-        V.timTuLoai
-      ) },
+      { id: 'song', ten: 'Sông Lớn', mucDo: 'Vừa', emoji: '🏞️', mau: '#4aa8ff', nen: '#e3f1ff',
+        dan: ['cau-ca/ca-vua', 'cau-ca/bach-tuoc', 'cau-ca/cua'], coCa: 66,
+        mota: 'Cá to hơn · phạm vi 20, tách gộp, xem giờ, ghép vần',
+        de: mix(
+          function () { return T.congTru(20); },
+          function () { return T.tachGop(10); },
+          function () { return T.dienSo(20); },
+          function () { return T.xemGio(false); },
+          V.ghepVan,
+          V.quyTacChinhTa,
+          V.timTuLoai
+        ) },
 
-    { id: 'bien', ten: 'Biển Sâu', mucDo: 'Khó', emoji: '🌊', mau: '#6a58e0', nen: '#ece8ff',
-      dan: ['cau-ca/ca-map', 'cau-ca/ca-voi', 'cau-ca/sua', 'cau-ca/bach-tuoc'], coCa: 80,
-      mota: 'Cá mập cỡ lớn · phạm vi 100, toán đố, đo độ dài, đọc hiểu',
-      de: mix(
-        T.congTruKhongNho,
-        T.chucDonVi,
-        function () { return T.tinhDay(20); },
-        T.doDoDai,
-        function () { return Q.pick([T.choThem, T.choDi, T.nhieuHon, T.itHon])(20, false); },
-        function () { return T.honKem(20); },
-        V.sapXepCau,
-        V.docHieu,
-        V.vietDung
-      ) }
-  ];
+      { id: 'bien', ten: 'Biển Sâu', mucDo: 'Khó', emoji: '🌊', mau: '#6a58e0', nen: '#ece8ff',
+        dan: ['cau-ca/ca-map', 'cau-ca/ca-voi', 'cau-ca/sua', 'cau-ca/bach-tuoc'], coCa: 80,
+        mota: 'Cá mập cỡ lớn · phạm vi 100, toán đố, đo độ dài, đọc hiểu',
+        de: mix(
+          T.congTruKhongNho,
+          T.chucDonVi,
+          function () { return T.tinhDay(20); },
+          T.doDoDai,
+          function () { return Q.pick([T.choThem, T.choDi, T.nhieuHon, T.itHon])(20, false); },
+          function () { return T.honKem(20); },
+          V.sapXepCau,
+          V.docHieu,
+          V.vietDung
+        ) }
+    ];;
+  }
+
+  var HO = T && V ? boDeMacDinh() : [];
 
   /* ---------- lưu kết quả ---------- */
 
@@ -286,8 +292,13 @@
 
   global.GameCauCa = {
     HO: HO, SO_CAU: SO_CAU,
+    /* Lớp 2, 3, 4 dùng chung bộ máy game này, chỉ thay bộ hồ và khoá lưu.
+       Không truyền gì thì vẫn là bộ hồ của lớp 1. */
     _conTiepTheo: function () { van.conCa = conTiepTheo(); return van.conCa; },
-    batDau: function (idGoc) {
+    batDau: function (idGoc, cauHinh) {
+      if (cauHinh && cauHinh.ho) { HO = cauHinh.ho; this.HO = HO; }
+      if (!HO.length) { HO = boDeMacDinh(); this.HO = HO; }
+      if (cauHinh && cauHinh.khoa) STORE = cauHinh.khoa;
       goc = document.getElementById(idGoc || 'game');
       chonHo();
     },

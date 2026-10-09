@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Góc và hình — Toán lớp 4</title>
+<meta name="description" content="Góc nhọn, góc tù, góc bẹt. Bài tập Toán lớp 4 sinh ngẫu nhiên mỗi lần chơi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>📐</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../index.html">← Quay lại</a>
+  <h1>📐 Góc và hình</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/o-tra-loi.js"></script>
+<script src="../../js/quiz.js"></script>
+<script src="../../js/toan-lop-4.js"></script>
+<script>
+  var T = ToanL4;
+
+  Quiz.init({
+    id: 'l4-goc-va-hinh',
+    total: 10,
+    levels: [
+      { name: 'Nhận biết góc', hint: 'Góc nhọn, vuông, tù, bẹt',
+        gen: T.nhanBietGoc },
+      { name: 'Hình bình hành', hint: 'Diện tích hình bình hành',
+        gen: T.dienTichBinhHanh },
+      { name: 'Hình thoi', hint: 'Diện tích hình thoi',
+        gen: T.dienTichHinhThoi }
+    ]
+  });
+</script>
+</body>
+</html>

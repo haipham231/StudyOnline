@@ -8,6 +8,8 @@
 
   var Q = global.Quiz, T = global.ToanL1, V = global.TiengVietL1;
   var STORE = 'studyonline:game-halloween';
+  // tên hai mạch đề xen kẽ; lớp trên không có Tiếng Việt nên đổi thành Tính / Đố
+  var TEN_MON = ['Toán', 'Tiếng Việt'];
   var SO_BI = 3;
 
   function mix() {
@@ -16,39 +18,45 @@
   }
 
   // mỗi ải có một bộ đề Toán và một bộ đề Tiếng Việt, dùng xen kẽ
-  var AI = [
-    { ten: 'Cổng Bí Ngô', hinh: 'bi-ngo', emoji: '🎃', mau: '#ff8f3c', soCau: 6,
-      mota: 'Cộng trừ phạm vi 10 · chữ cái và thanh điệu',
-      toan: function () { return T.congTru(10); },
-      tviet: mix(V.chuHoaThuong, V.timThanh) },
+  /* Bộ mặc định của lớp 1. Dựng muộn, vì trang lớp 2–4 không nạp
+     ToanL1 và TiengVietL1 — gọi sớm là cả mô-đun vỡ lúc nạp. */
+  function boDeMacDinh() {
+    return [
+      { ten: 'Cổng Bí Ngô', hinh: 'bi-ngo', emoji: '🎃', mau: '#ff8f3c', soCau: 6,
+        mota: 'Cộng trừ phạm vi 10 · chữ cái và thanh điệu',
+        toan: function () { return T.congTru(10); },
+        tviet: mix(V.chuHoaThuong, V.timThanh) },
 
-    { ten: 'Lối Mòn Ma Trơi', hinh: 'ma', emoji: '👻', mau: '#8b7bf7', soCau: 6,
-      mota: 'Tách gộp số · ghép vần',
-      toan: function () { return T.tachGop(10); },
-      tviet: mix(V.ghepVan, V.timAmDau) },
+      { ten: 'Lối Mòn Ma Trơi', hinh: 'ma', emoji: '👻', mau: '#8b7bf7', soCau: 6,
+        mota: 'Tách gộp số · ghép vần',
+        toan: function () { return T.tachGop(10); },
+        tviet: mix(V.ghepVan, V.timAmDau) },
 
-    { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
-      mota: 'Cộng trừ phạm vi 20 · quy tắc chính tả',
-      toan: function () { return T.congTru(20); },
-      tviet: mix(V.quyTacChinhTa, V.timVan) },
+      { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
+        mota: 'Cộng trừ phạm vi 20 · quy tắc chính tả',
+        toan: function () { return T.congTru(20); },
+        tviet: mix(V.quyTacChinhTa, V.timVan) },
 
-    { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
-      mota: 'So sánh và dãy số · chính tả dễ lẫn',
-      toan: mix(function () { return T.soSanh(20); }, function () { return T.lonNhatBeNhat(20); }),
-      tviet: V.vietDung },
+      { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
+        mota: 'So sánh và dãy số · chính tả dễ lẫn',
+        toan: mix(function () { return T.soSanh(20); }, function () { return T.lonNhatBeNhat(20); }),
+        tviet: V.vietDung },
 
-    { ten: 'Hang Rồng Lửa', hinh: 'rong', emoji: '🐉', mau: '#ff7a7a', soCau: 7,
-      mota: 'Toán đố · từ ngữ và câu',
-      toan: mix(function () { return T.choThem(20, false); }, function () { return T.choDi(20, false); },
-                function () { return T.roiKhoi(20); }),
-      tviet: mix(V.timTuLoai, V.traiNghia, V.demTieng) },
+      { ten: 'Hang Rồng Lửa', hinh: 'rong', emoji: '🐉', mau: '#ff7a7a', soCau: 7,
+        mota: 'Toán đố · từ ngữ và câu',
+        toan: mix(function () { return T.choThem(20, false); }, function () { return T.choDi(20, false); },
+                  function () { return T.roiKhoi(20); }),
+        tviet: mix(V.timTuLoai, V.traiNghia, V.demTieng) },
 
-    { ten: 'Lâu Đài Phù Thuỷ', hinh: 'phu-thuy', emoji: '🧙‍♀️', mau: '#6a58e0', soCau: 8, trum: true,
-      mota: 'Ải cuối — trộn toàn bộ toán và tiếng Việt',
-      toan: mix(T.congTruKhongNho, T.chucDonVi, function () { return T.dienSo(20); },
-                function () { return T.honKem(20); }),
-      tviet: mix(V.sapXepCau, V.dauCau, V.docHieu, V.vietDung) }
-  ];
+      { ten: 'Lâu Đài Phù Thuỷ', hinh: 'phu-thuy', emoji: '🧙‍♀️', mau: '#6a58e0', soCau: 8, trum: true,
+        mota: 'Ải cuối — trộn toàn bộ toán và tiếng Việt',
+        toan: mix(T.congTruKhongNho, T.chucDonVi, function () { return T.dienSo(20); },
+                  function () { return T.honKem(20); }),
+        tviet: mix(V.sapXepCau, V.dauCau, V.docHieu, V.vietDung) }
+    ];;
+  }
+
+  var AI = T && V ? boDeMacDinh() : [];
 
   /* ---------- lưu tiến độ ---------- */
 
@@ -172,7 +180,7 @@
       lan++;
     } while (van.daRa[khoa] && lan < 30);
     van.daRa[khoa] = true;
-    q.mon = laToan ? 'Toán' : 'Tiếng Việt';
+    q.mon = laToan ? TEN_MON[0] : TEN_MON[1];
     return q;
   }
 
@@ -218,7 +226,7 @@
     khung.appendChild(canh);
 
     khung.appendChild(el('div', 'meta',
-      '<span><span class="nhan-mon ' + (van.cau.mon === 'Toán' ? 'toan' : 'tviet') + '">' +
+      '<span><span class="nhan-mon ' + (van.cau.mon === TEN_MON[0] ? 'toan' : 'tviet') + '">' +
       van.cau.mon + '</span> Câu ' + Math.min(van.buoc + 1, ai.soCau) + ' / ' + ai.soCau + '</span>' +
       '<span class="hits">🍬 ' + van.keo + '</span>'));
 
@@ -226,7 +234,7 @@
       nhanNop: '🍬 Trả lời',
       boc: 'o-hoi',
       khoaSan: van.dangChuyen,
-      coLoa: van.cau.mon === 'Tiếng Việt',
+      coLoa: van.cau.mon === TEN_MON[1] && TEN_MON[1] === 'Tiếng Việt',
       doc: Q.docTo,
       khiTraLoi: function (dung, _n, phanHoi) { cham(dung, van.cau, phanHoi); }
     });
@@ -345,7 +353,12 @@
 
   global.GameHalloween = {
     AI: AI,
-    batDau: function (idGoc) {
+    /* Lớp 2, 3, 4 truyền bộ ải và khoá lưu riêng; để trống thì là lớp 1. */
+    batDau: function (idGoc, cauHinh) {
+      if (cauHinh && cauHinh.ai) { AI = cauHinh.ai; this.AI = AI; }
+      if (!AI.length) { AI = boDeMacDinh(); this.AI = AI; }
+      if (cauHinh && cauHinh.khoa) STORE = cauHinh.khoa;
+      if (cauHinh && cauHinh.mon) { TEN_MON = cauHinh.mon; }
       goc = document.getElementById(idGoc || 'game');
       veBanDo();
     },

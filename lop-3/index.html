@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Học Toán Lớp 3</title>
+<meta name="description" content="Toán lớp 3: Bảng nhân chia 2–9, chia có dư, chu vi và diện tích, phạm vi 100 000. Có ba game và bộ đề kiểm tra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>📐</text></svg>">
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <a class="back" href="../index.html">← Chọn lứa tuổi</a>
+  </header>
+
+  <div class="hero">
+    <div class="mascot">📐</div>
+    <h1>Học Toán Lớp 3</h1>
+    <p id="loi-chao">Bảng nhân chia 2–9, chia có dư, chu vi và diện tích, phạm vi 100 000.</p>
+  </div>
+
+  <main id="noi-dung"></main>
+</div>
+
+<script src="../js/quiz.js"></script>
+<script src="../js/danh-hieu.js"></script>
+<script>
+  var NHOM = [
+    { ten: 'Nhân chia', kieu: 'kieu-sticker', bai: [
+      { id: 'bang-nhan-chia', emoji: '✖️', mau: '#8b7bf7', ten: 'Bảng nhân chia', mo_ta: 'Bảng nhân chia từ 2 đến 9.' },
+      { id: 'nhan-chia-ngoai-bang', emoji: '🔢', mau: '#4aa8ff', ten: 'Nhân chia ngoài bảng', mo_ta: 'Nhân chia với số có một chữ số.' },
+      { id: 'chia-co-du', emoji: '➗', mau: '#2fcf90', ten: 'Chia có dư', mo_ta: 'Tìm thương và số dư.' },
+      { id: 'gap-giam', emoji: '📈', mau: '#ffc93c', ten: 'Gấp và giảm', mo_ta: 'Gấp lên, giảm đi, gấp mấy lần.' }
+    ] },
+    { ten: 'Số và biểu thức', kieu: 'kieu-sticker', bai: [
+      { id: 'cong-tru-lon', emoji: '💯', mau: '#ff7a7a', ten: 'Cộng trừ số lớn', mo_ta: 'Phạm vi 10 000 và 100 000.' },
+      { id: 'bieu-thuc', emoji: '🧮', mau: '#8b7bf7', ten: 'Biểu thức', mo_ta: 'Nhân chia trước, cộng trừ sau.' },
+      { id: 'tim-x', emoji: '🧩', mau: '#ff8fd0', ten: 'Tìm x', mo_ta: 'Tìm thừa số, số bị chia, số chia.' },
+      { id: 'phan-so', emoji: '🍰', mau: '#ff8f3c', ten: 'Phân số đơn giản', mo_ta: 'Một phần mấy của một số.' }
+    ] },
+    { ten: 'Hình học và đo lường', kieu: 'kieu-sticker', bai: [
+      { id: 'chu-vi-dien-tich', emoji: '🟦', mau: '#4aa8ff', ten: 'Chu vi và diện tích', mo_ta: 'Hình chữ nhật và hình vuông.' },
+      { id: 'do-luong', emoji: '📏', mau: '#2fcf90', ten: 'Đơn vị đo và tiền', mo_ta: 'mm, cm, m, km, g, kg, ml, l và tiền Việt.' },
+      { id: 'xem-gio', emoji: '🕐', mau: '#ffc93c', ten: 'Xem giờ đến phút', mo_ta: 'Đọc giờ chính xác đến 5 phút.' }
+    ] },
+    { ten: 'Giải toán có lời văn', kieu: 'kieu-sticker', bai: [
+      { id: 'toan-do', emoji: '📖', mau: '#ff7a7a', ten: 'Toán đố', mo_ta: 'Bài giải hai bước, chia đều, gấp lần.' }
+    ] }
+  ];
+
+  var TRO_CHOI = [
+    { id: 'cau-ca', emoji: '🎣', mau: '#4aa8ff', ten: 'Câu cá cùng bé',
+      mo_ta: 'Chọn hồ dễ, vừa hay khó rồi trả lời 10 câu. Đúng thì câu được cá bỏ vào xô!',
+      href: 'cau-ca.html' },
+    { id: 'cuu-cong-chua', emoji: '🗡️', mau: '#ff8fd0', ten: 'Giải cứu công chúa',
+      mo_ta: 'Rồng bắt mất công chúa rồi! Vượt 5 chặng, giải đúng bài toán để tiến bước.',
+      href: 'cuu-cong-chua.html' },
+    { id: 'halloween', emoji: '🎃', mau: '#ff8f3c', ten: 'Đêm Halloween',
+      mo_ta: 'Phù thuỷ giấu hết kẹo! Vượt 5 ải, xen kẽ hai mạch đề để đòi lại kẹo.',
+      href: 'halloween.html' }
+  ];
+
+  var KIEM_TRA = { id: 'l3-kiem-tra', emoji: '📝', mau: '#8b7bf7', ten: 'Bài kiểm tra',
+    mo_ta: 'Ba bộ đề theo giữa kì 1, cuối kì 1 và cuối năm. Máy chấm điểm thang 10.',
+    href: 'kiem-tra.html' };
+
+  var goc = document.getElementById('noi-dung');
+  var tongSao = 0;
+
+  function taoThe(bai, noiBat, kieu) {
+    var best = Quiz.readBest(noiBat ? bai.id : 'l3-' + bai.id);
+    var sao = best ? Quiz.starsFor(best.correct, best.total) : 0;
+    if (!noiBat) tongSao += sao;
+
+    var card = document.createElement('a');
+    card.className = 'card';
+    card.href = bai.href || ('bai-tap/' + bai.id + '.html');
+    card.style.setProperty('--tint', bai.mau);
+
+    var huy = '', ptDe = null;
+    if (bai.id === 'l3-kiem-tra') {
+      var ds = Quiz.readLichSu('l3-kiem-tra');
+      if (ds.length) {
+        huy = '<span class="best">Lần gần nhất: ' + ds[0].diem + '/10 — ' + ds[0].de + '</span>';
+        ptDe = ds[0].diem * 10;
+      }
+    } else if (best) {
+      huy = '<span class="best">' + '⭐'.repeat(sao) + ' ' + best.score + ' điểm</span>';
+    }
+
+    if (kieu === 'kieu-tien-do') {
+      var phanTram = ptDe != null ? ptDe : (best ? Math.round(best.correct / best.total * 100) : 0);
+      var nhan = best || ptDe != null
+        ? '⭐'.repeat(sao) + '<span class="mo-sao">' + '⭐'.repeat(3 - sao) + '</span>'
+        : 'Chưa làm';
+      card.innerHTML =
+        '<div class="dau-the"><div class="emoji">' + bai.emoji + '</div>' +
+        '<div><h2>' + bai.ten + '</h2><p>' + bai.mo_ta + '</p></div></div>' +
+        '<div class="thanh-the"><i style="width:' + phanTram + '%"></i></div>' +
+        '<div class="duoi-the"><span>' + nhan + '</span><b>' + phanTram + '%</b></div>' + huy;
+      return card;
+    }
+
+    card.innerHTML =
+      '<div class="emoji">' + bai.emoji + '</div>' +
+      '<h2>' + bai.ten + '</h2>' +
+      '<p>' + bai.mo_ta + '</p>' + huy;
+    return card;
+  }
+
+  function veNhom(ten, kieu, ds, noiBat) {
+    var tieu = document.createElement('h2');
+    tieu.className = 'nhom';
+    tieu.textContent = ten;
+    goc.appendChild(tieu);
+
+    var luoi = document.createElement('div');
+    luoi.className = 'grid ' + kieu;
+    ds.forEach(function (b) { luoi.appendChild(taoThe(b, noiBat, kieu)); });
+    goc.appendChild(luoi);
+  }
+
+  veNhom('Trò chơi', 'kieu-keo', TRO_CHOI, true);
+  veNhom('Bài kiểm tra', 'kieu-tien-do', [KIEM_TRA], true);
+  NHOM.forEach(function (nhom) { veNhom(nhom.ten, nhom.kieu, nhom.bai, false); });
+
+  if (tongSao > 0) {
+    document.getElementById('loi-chao').innerHTML =
+      'Bé đã sưu tầm được <b>' + tongSao + ' ⭐</b> — cố lên nào!';
+  }
+</script>
+</body>
+</html>

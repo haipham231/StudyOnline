@@ -8,36 +8,42 @@
 
   /* ---------- Các màn chơi ---------- */
 
-  var MAN = [
-    { ten: 'Rừng Xanh', emoji: '🌳', mau: '#2fcf90', nen: '#e4f9f0', hinh: 'canh/rung',
-      mota: 'Cộng trừ trong phạm vi 10', soCau: 5,
-      de: [function () { return T.congTru(10); }] },
+  /* Bộ mặc định của lớp 1. Dựng muộn, vì trang lớp 2–4 không nạp
+     ToanL1 và TiengVietL1 — gọi sớm là cả mô-đun vỡ lúc nạp. */
+  function boDeMacDinh() {
+    return [
+      { ten: 'Rừng Xanh', emoji: '🌳', mau: '#2fcf90', nen: '#e4f9f0', hinh: 'canh/rung',
+        mota: 'Cộng trừ trong phạm vi 10', soCau: 5,
+        de: [function () { return T.congTru(10); }] },
 
-    { ten: 'Dòng Sông', emoji: '🏞️', mau: '#4aa8ff', nen: '#e3f1ff', hinh: 'canh/song',
-      mota: 'Tách gộp số và điền số còn thiếu', soCau: 5,
-      de: [function () { return T.tachGop(10); }, function () { return T.dienSo(10); }] },
+      { ten: 'Dòng Sông', emoji: '🏞️', mau: '#4aa8ff', nen: '#e3f1ff', hinh: 'canh/song',
+        mota: 'Tách gộp số và điền số còn thiếu', soCau: 5,
+        de: [function () { return T.tachGop(10); }, function () { return T.dienSo(10); }] },
 
-    { ten: 'Núi Đá', emoji: '⛰️', mau: '#8b7bf7', nen: '#efeaff', hinh: 'canh/nui',
-      mota: 'Cộng trừ trong phạm vi 20', soCau: 6,
-      de: [function () { return T.congTru(20); }, function () { return T.tinhDay(10); }] },
+      { ten: 'Núi Đá', emoji: '⛰️', mau: '#8b7bf7', nen: '#efeaff', hinh: 'canh/nui',
+        mota: 'Cộng trừ trong phạm vi 20', soCau: 6,
+        de: [function () { return T.congTru(20); }, function () { return T.tinhDay(10); }] },
 
-    { ten: 'Sa Mạc', emoji: '🏜️', mau: '#ffc93c', nen: '#fff6dd', hinh: 'canh/sa-mac',
-      mota: 'So sánh số và dãy số', soCau: 6,
-      de: [function () { return T.soSanh(20); }, function () { return T.lonNhatBeNhat(20); },
-           function () { return T.daySo(Q.pick([2, 5]), 50); }] },
+      { ten: 'Sa Mạc', emoji: '🏜️', mau: '#ffc93c', nen: '#fff6dd', hinh: 'canh/sa-mac',
+        mota: 'So sánh số và dãy số', soCau: 6,
+        de: [function () { return T.soSanh(20); }, function () { return T.lonNhatBeNhat(20); },
+             function () { return T.daySo(Q.pick([2, 5]), 50); }] },
 
-    { ten: 'Hang Lửa', emoji: '🌋', mau: '#ff7a7a', nen: '#ffe9e9', hinh: 'canh/lua',
-      mota: 'Toán đố — đọc kĩ đề nhé!', soCau: 6,
-      de: [function () { return T.choThem(20, false); }, function () { return T.choDi(20, false); },
-           function () { return T.nhieuHon(20); }, function () { return T.itHon(20); },
-           function () { return T.roiKhoi(20); }] },
+      { ten: 'Hang Lửa', emoji: '🌋', mau: '#ff7a7a', nen: '#ffe9e9', hinh: 'canh/lua',
+        mota: 'Toán đố — đọc kĩ đề nhé!', soCau: 6,
+        de: [function () { return T.choThem(20, false); }, function () { return T.choDi(20, false); },
+             function () { return T.nhieuHon(20); }, function () { return T.itHon(20); },
+             function () { return T.roiKhoi(20); }] },
 
-    { ten: 'Lâu Đài Rồng', emoji: '🏰', mau: '#6a58e0', nen: '#ece8ff', hinh: 'rong',
-      mota: 'Trận cuối — đánh bại rồng để cứu công chúa!', soCau: 8, boss: true,
-      de: [function () { return T.congTruKhongNho(); }, function () { return T.chucDonVi(); },
-           function () { return T.tachGop(20); }, function () { return T.dienSo(20); },
-           function () { return T.honKem(20); }, function () { return T.lucDau(20); }] }
-  ];
+      { ten: 'Lâu Đài Rồng', emoji: '🏰', mau: '#6a58e0', nen: '#ece8ff', hinh: 'rong',
+        mota: 'Trận cuối — đánh bại rồng để cứu công chúa!', soCau: 8, boss: true,
+        de: [function () { return T.congTruKhongNho(); }, function () { return T.chucDonVi(); },
+             function () { return T.tachGop(20); }, function () { return T.dienSo(20); },
+             function () { return T.honKem(20); }, function () { return T.lucDau(20); }] }
+    ];;
+  }
+
+  var MAN = T ? boDeMacDinh() : [];
 
   /* ---------- Lưu tiến độ ---------- */
 
@@ -370,7 +376,11 @@
 
   global.GameCongChua = {
     MAN: MAN,
-    batDau: function (idGoc) {
+    /* Lớp 2, 3, 4 truyền bộ chặng và khoá lưu riêng; để trống thì là lớp 1. */
+    batDau: function (idGoc, cauHinh) {
+      if (cauHinh && cauHinh.man) { MAN = cauHinh.man; this.MAN = MAN; }
+      if (!MAN.length) { MAN = boDeMacDinh(); this.MAN = MAN; }
+      if (cauHinh && cauHinh.khoa) STORE = cauHinh.khoa;
       goc = document.getElementById(idGoc || 'game');
       veBanDo();
     },
