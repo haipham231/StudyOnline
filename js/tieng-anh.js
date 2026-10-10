@@ -63,8 +63,16 @@
     return ket;
   }
 
+  // Nhãn một từ tiếng Anh: chữ ở trên, phiên âm ở dưới. Dùng chung cho cả
+  // nút chọn lẫn đáp án nên so khớp vẫn là so hai chuỗi y hệt nhau.
+  function tuVaPhienAm(en) {
+    var pa = global.PhienAm ? global.PhienAm.cua(en) : null;
+    return pa ? en + '<i class="phien-am">' + pa + '</i>' : en;
+  }
+
   function the(t) {
-    return '<span class="anh-tu">' + t.e + '</span><span class="nhan">' + t.en + '</span>';
+    return '<span class="anh-tu">' + t.e + '</span><span class="nhan">' +
+      tuVaPhienAm(t.en) + '</span>';
   }
 
   /* --- nhìn hình, chọn từ tiếng Anh --- */
@@ -76,8 +84,9 @@
     return {
       prompt: 'Cái này tiếng Anh gọi là gì?',
       art: '<span class="anh-to">' + dung.e + '</span>',
-      choices: Q.shuffle([dung, sai[0], sai[1]].filter(Boolean).map(function (x) { return x.en; })),
-      answer: dung.en,
+      choices: Q.shuffle([dung, sai[0], sai[1]].filter(Boolean)
+        .map(function (x) { return tuVaPhienAm(x.en); })),
+      answer: tuVaPhienAm(dung.en),
       // một cột: từ tiếng Anh như "watermelon" xếp ba cột là tràn khỏi màn
       cols: 1,
       speak: dung.en,

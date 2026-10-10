@@ -19,8 +19,17 @@
 
 <main class="quiz" id="noi-dung"></main>
 
+<footer class="ghi-cong">
+  <p>Phiên âm dựa trên bộ dữ liệu mở
+     <a href="https://github.com/open-dict-data/ipa-dict">open-dict-data/ipa-dict</a>
+     (giọng Anh - Anh, giấy phép MIT), có nắn lại cho đúng lối viết quen thuộc
+     trong sách giáo khoa.</p>
+</footer>
+
+
 <script src="../js/quiz.js"></script>
 <script src="../js/hinh-ve.js"></script>
+<script src="../js/phien-am.js"></script>
 <script src="../js/tieng-viet-mam-non.js"></script>
 <script src="../js/tu-vung-anh.js"></script>
 <script src="../js/tieng-anh.js"></script>
@@ -48,6 +57,8 @@
                  : '<span class="chu-the">' + t.vi + '</span>') +
             '<span class="goi-y">Bấm để lật</span></div>' +
           '<div class="mat sau"><span class="tu-anh-to">' + t.en + '</span>' +
+            (window.PhienAm && PhienAm.cua(t.en)
+              ? '<span class="phien-am-to">' + PhienAm.cua(t.en) + '</span>' : '') +
             '<span class="nghia-viet">' + t.vi + '</span>' +
             (t.e ? '<span class="anh-nho">' + hv(t.e) + '</span>' : '') + '</div>' +
         '</div>' +
