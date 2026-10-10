@@ -12,30 +12,30 @@
      ToanL1 và TiengVietL1 — gọi sớm là cả mô-đun vỡ lúc nạp. */
   function boDeMacDinh() {
     return [
-      { ten: 'Rừng Xanh', emoji: '🌳', mau: '#2fcf90', nen: '#e4f9f0', hinh: 'canh/rung',
+      { ten: 'Rừng Xanh', emoji: '🌳', quai: 'nhot', mau: '#2fcf90', nen: '#e4f9f0', hinh: 'canh/rung',
         mota: 'Cộng trừ trong phạm vi 10', soCau: 5,
         de: [function () { return T.congTru(10); }] },
 
-      { ten: 'Dòng Sông', emoji: '🏞️', mau: '#4aa8ff', nen: '#e3f1ff', hinh: 'canh/song',
+      { ten: 'Dòng Sông', emoji: '🏞️', quai: 'ca-sau', mau: '#4aa8ff', nen: '#e3f1ff', hinh: 'canh/song',
         mota: 'Tách gộp số và điền số còn thiếu', soCau: 5,
         de: [function () { return T.tachGop(10); }, function () { return T.dienSo(10); }] },
 
-      { ten: 'Núi Đá', emoji: '⛰️', mau: '#8b7bf7', nen: '#efeaff', hinh: 'canh/nui',
+      { ten: 'Núi Đá', emoji: '⛰️', quai: 'golem', mau: '#8b7bf7', nen: '#efeaff', hinh: 'canh/nui',
         mota: 'Cộng trừ trong phạm vi 20', soCau: 6,
         de: [function () { return T.congTru(20); }, function () { return T.tinhDay(10); }] },
 
-      { ten: 'Sa Mạc', emoji: '🏜️', mau: '#ffc93c', nen: '#fff6dd', hinh: 'canh/sa-mac',
+      { ten: 'Sa Mạc', emoji: '🏜️', quai: 'bo-cap', mau: '#ffc93c', nen: '#fff6dd', hinh: 'canh/sa-mac',
         mota: 'So sánh số và dãy số', soCau: 6,
         de: [function () { return T.soSanh(20); }, function () { return T.lonNhatBeNhat(20); },
              function () { return T.daySo(Q.pick([2, 5]), 50); }] },
 
-      { ten: 'Hang Lửa', emoji: '🌋', mau: '#ff7a7a', nen: '#ffe9e9', hinh: 'canh/lua',
+      { ten: 'Hang Lửa', emoji: '🌋', quai: 'quy-lua', mau: '#ff7a7a', nen: '#ffe9e9', hinh: 'canh/lua',
         mota: 'Toán đố — đọc kĩ đề nhé!', soCau: 6,
         de: [function () { return T.choThem(20, false); }, function () { return T.choDi(20, false); },
              function () { return T.nhieuHon(20); }, function () { return T.itHon(20); },
              function () { return T.roiKhoi(20); }] },
 
-      { ten: 'Lâu Đài Rồng', emoji: '🏰', mau: '#6a58e0', nen: '#ece8ff', hinh: 'rong',
+      { ten: 'Lâu Đài Rồng', emoji: '🏰', quai: 'rong-bang', mau: '#6a58e0', nen: '#ece8ff', hinh: 'rong',
         mota: 'Trận cuối — đánh bại rồng để cứu công chúa!', soCau: 8, boss: true,
         de: [function () { return T.congTruKhongNho(); }, function () { return T.chucDonVi(); },
              function () { return T.tachGop(20); }, function () { return T.dienSo(20); },
@@ -60,6 +60,29 @@
   }
 
   /* ---------- Tiện ích ---------- */
+
+  // tự suy ra thư mục ảnh từ vị trí tệp script này
+  var GOC = (function () {
+    var ds = document.getElementsByTagName('script');
+    for (var i = ds.length - 1; i >= 0; i--) {
+      var src = ds[i].src || '';
+      if (/game-cong-chua\.js(\?|$)/.test(src)) return src.replace(/js\/game-cong-chua\.js.*$/, '');
+    }
+    return '';
+  })();
+
+  /* Mười con quái chặng đường, mỗi con hai dáng: chặn và xỉu. */
+  var QUAI = ['nhot', 'yeu-tinh', 'ca-sau', 'thuy-linh', 'golem',
+              'yeti', 'bo-cap', 'xuong-rong', 'quy-lua', 'rong-bang'];
+
+  function anh(duong, cls) {
+    return '<img class="' + cls + '" src="' + GOC + 'assets/cong-chua/' + duong +
+      '" alt="" draggable="false">';
+  }
+
+  function quaiCua(man) {
+    return QUAI.indexOf(man.quai) >= 0 ? man.quai : QUAI[0];
+  }
 
   function el(tag, cls, html) {
     var n = document.createElement(tag);
@@ -230,16 +253,19 @@
 
     canh.appendChild(el('div', 'duong', veCau(man.soCau, van.buoc, man.mau)));
 
-    var nguoi = el('div', 'nguoi-choi' + (hieuUng === 'tien' ? ' nhay' : ''), NV.hiepSi(64));
+    // đi thường thì chạy, vừa đánh trúng thì vung kiếm
+    var dangHS = hieuUng === 'danh' ? 'hs-chem' : hieuUng === 'tien' ? 'hs-chay' : 'hs-dung';
+    var nguoi = el('div', 'nguoi-choi' + (hieuUng === 'tien' ? ' nhay' : ''),
+      anh(dangHS + '.png', 'nv-hinh'));
     nguoi.style.left = (van.buoc / man.soCau * 78) + '%';
     canh.appendChild(nguoi);
 
     var dich = el('div', 'dich' + (hieuUng === 'danh' ? ' rung' : ''),
-      man.boss ? NV.rong(80) : global.HoatHinh.ve(man.hinh, 72, null));
+      anh('quai/' + quaiCua(man) + '-chan.png', 'nv-hinh'));
     canh.appendChild(dich);
 
     // lồng công chúa luôn ở cuối đường để bé nhớ mình đang đi cứu ai
-    if (!man.boss) canh.appendChild(el('div', 'long-cuoi', NV.long(50)));
+    if (!man.boss) canh.appendChild(el('div', 'long-cuoi', anh('cc-trong-long.png', 'nv-hinh')));
 
     if (man.boss) {
       var mau = el('div', 'thanh-mau');
@@ -315,12 +341,13 @@
 
     if (cuoiCung) {
       khung.appendChild(el('div', 'doi-nhan-vat',
-        global.HoatHinh.ve('cup', 110, null) + NV.congChua(90)));
+        anh('cc-tu-do.png', 'nv-to') + anh('long-mo.png', 'nv-to') + anh('ruong.png', 'nv-to')));
       khung.appendChild(el('h2', null, '👑 Bé đã cứu được công chúa!'));
       khung.appendChild(el('p', 'lead',
         'Hiệp sĩ nhỏ đã đánh bại rồng và đưa công chúa về nhà. Giỏi quá!'));
     } else {
-      khung.appendChild(el('div', 'doi-nhan-vat', NV.hiepSi(90)));
+      khung.appendChild(el('div', 'doi-nhan-vat',
+        anh('hs-mung.png', 'nv-to') + anh('quai/' + quaiCua(van.man) + '-xiu.png', 'nv-to')));
       khung.appendChild(el('h2', null, '🎉 Qua chặng ' + (van.chiSo + 1) + '!'));
       khung.appendChild(el('p', 'lead', 'Chặng <b>' + MAN[van.chiSo + 1].ten + '</b> đã mở khoá.'));
     }
@@ -351,7 +378,8 @@
     goc.innerHTML = '';
 
     var khung = el('div', 'panel');
-    khung.appendChild(el('div', 'doi-nhan-vat', NV.rong(96)));
+    khung.appendChild(el('div', 'doi-nhan-vat',
+      anh('quai/' + quaiCua(van.man) + '-chan.png', 'nv-to') + anh('cc-trong-long.png', 'nv-to')));
     khung.appendChild(el('h2', null, 'Hết mất rồi!'));
     khung.appendChild(el('p', 'lead',
       'Hiệp sĩ đã đi được <b>' + van.buoc + '/' + van.man.soCau + '</b> bước. ' +

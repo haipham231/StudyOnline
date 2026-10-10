@@ -806,7 +806,7 @@ h2.nhom::before {
 
 .canh {
   position: relative;
-  height: 132px;
+  height: 146px;
   margin-bottom: 16px;
   border-radius: var(--r-md);
   background: linear-gradient(180deg, var(--nen), #fff);
@@ -843,7 +843,8 @@ h2.nhom::before {
   transition: left 0.55s cubic-bezier(.3, 1.3, .6, 1);
 }
 
-.canh .dich { position: absolute; right: 6px; bottom: 18px; }
+/* quái đứng chặn trước lồng, chừa chỗ cho lồng công chúa ở sát mép */
+.canh .dich { position: absolute; right: 52px; bottom: 16px; }
 
 .canh .nguoi-choi.nhay { animation: nhay-buoc 0.55s ease; }
 .canh .dich.rung { animation: rung 0.5s ease; }
@@ -893,6 +894,25 @@ h2.nhom::before {
   .canh { height: 118px; }
   .cot-truyen { gap: 12px; padding: 14px; }
   .cot-truyen p { font-size: 14.5px; }
+}
+
+/* hiệp sĩ, công chúa và quái chặng đường đều là ảnh tự vẽ */
+.nguoi-choi .nv-hinh, .dich .nv-hinh, .long-cuoi .nv-hinh {
+  display: block;
+  width: auto;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.3));
+}
+
+.nguoi-choi .nv-hinh { height: 68px; }
+.dich .nv-hinh { height: 76px; }
+.long-cuoi .nv-hinh { height: 56px; }
+
+.doi-nhan-vat .nv-to {
+  display: inline-block;
+  height: clamp(78px, 24vw, 110px);
+  width: auto;
+  vertical-align: bottom;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.28));
 }
 
 .canh .trang-tri { position: absolute; inset: 0; pointer-events: none; }
@@ -1400,7 +1420,7 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
   .bau-troi { height: 164px; }
 }
 
-.canh .long-cuoi { position: absolute; right: 4px; bottom: 16px; opacity: 0.9; }
+.canh .long-cuoi { position: absolute; right: 2px; bottom: 16px; }
 
 /* ===== Game Câu cá ===== */
 
