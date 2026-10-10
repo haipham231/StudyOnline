@@ -2564,6 +2564,24 @@ body.khoa-cuon { overflow: hidden; }
   box-shadow: inset 0 0 0 2px rgba(255, 143, 60, 0.28);
 }
 
+/* dải nền riêng từng ải, lát ngang, nằm sát mặt đất */
+.san-dau .dai-nen {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: clamp(120px, 52%, 210px);
+  background: var(--dai-nen) repeat-x bottom center;
+  background-size: auto 100%;
+  pointer-events: none;
+}
+
+/* có ảnh nền thì bầu trời nhạt bớt cho ăn với ảnh */
+.san-dau.co-dai-nen { background: linear-gradient(180deg, #1b1340 0%, #2e2159 70%, #3a2a6b 100%); }
+.san-dau.co-dai-nen .nen-ma span { opacity: 0.26; }
+/* ảnh nền đã vẽ sẵn mặt đất, dải đất kẻ sọc cũ thành thừa */
+.san-dau.co-dai-nen .mat-dat { display: none; }
+
 .san-dau .nen-ma { position: absolute; inset: 0; pointer-events: none; }
 
 .san-dau .nen-ma span {
@@ -2595,11 +2613,8 @@ body.khoa-cuon { overflow: hidden; }
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 46px;
   padding: 0 4px;
-  border-radius: 12px;
-  background: linear-gradient(180deg, #ffc93c, #ff9f1c);
-  box-shadow: 0 4px 0 #c9780f, inset 0 2px 0 rgba(255, 255, 255, 0.5);
+  background: var(--khung-hop) no-repeat center / 100% 100%;
   color: #4a2a00;
   font-family: "Baloo 2", sans-serif;
   font-size: 19px;
@@ -2636,6 +2651,20 @@ body.khoa-cuon { overflow: hidden; }
 }
 
 @keyframes hop-nhay-nhe { 50% { transform: translateY(-5px); } }
+
+/* mặt phẳng trống của khung nằm hơi dưới tâm, chữ phải xuống theo */
+.hop-dap .nhan-dap {
+  position: absolute;
+  top: var(--tam-nhan, 62%);
+  transform: translateY(-50%);
+}
+
+.bay-tim .anh-tim {
+  display: block;
+  height: 62px;
+  width: auto;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4));
+}
 
 /* ---- nhân vật: cậu bé ma cà rồng, bốn dáng xếp chồng ---- */
 
@@ -3228,6 +3257,34 @@ body.khoa-cuon { overflow: hidden; }
   margin: -20px -18px 14px;
   height: auto;
   border-radius: var(--r-lg) var(--r-lg) 18px 18px;
+}
+
+/* cảnh cắt của game Halloween: dải nền của ải làm phông, hai nhân vật
+   đứng hai bên như một khung truyện tranh */
+.canh-hw {
+  position: relative;
+  display: block;
+  width: calc(100% + 36px);
+  height: clamp(150px, 44vw, 210px);
+  margin: -20px -18px 14px;
+  border-radius: var(--r-lg) var(--r-lg) 18px 18px;
+  background: #2e2159 center bottom / auto 100% repeat-x;
+  overflow: hidden;
+}
+
+.canh-hw .ben {
+  position: absolute;
+  bottom: 6%;
+}
+
+.canh-hw .trai { left: 7%; }
+.canh-hw .phai { right: 7%; }
+
+.canh-hw .nv-canh {
+  display: block;
+  height: clamp(96px, 28vw, 140px);
+  width: auto;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
 }
 
 .cat-canh h2 { margin: 6px 0 4px; }

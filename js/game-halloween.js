@@ -22,33 +22,33 @@
      ToanL1 và TiengVietL1 — gọi sớm là cả mô-đun vỡ lúc nạp. */
   function boDeMacDinh() {
     return [
-      { ten: 'Cổng Bí Ngô', hinh: 'bi-ngo', quai: 'bi-ngo', emoji: '🎃', mau: '#ff8f3c', soCau: 6,
+      { ten: 'Cổng Bí Ngô', hinh: 'bi-ngo', quai: 'bi-ngo', nen: 'vuon-bi-ngo', hop: 'bi-ngo', emoji: '🎃', mau: '#ff8f3c', soCau: 6,
         mota: 'Cộng trừ phạm vi 10 · chữ cái và thanh điệu',
         toan: function () { return T.congTru(10); },
         tviet: mix(V.chuHoaThuong, V.timThanh) },
 
-      { ten: 'Lối Mòn Ma Trơi', hinh: 'ma', quai: 'ma', emoji: '👻', mau: '#8b7bf7', soCau: 6,
+      { ten: 'Lối Mòn Ma Trơi', hinh: 'ma', quai: 'ma', nen: 'rung-suong', hop: 'thung', emoji: '👻', mau: '#8b7bf7', soCau: 6,
         mota: 'Tách gộp số · ghép vần',
         toan: function () { return T.tachGop(10); },
         tviet: mix(V.ghepVan, V.timAmDau) },
 
-      { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', quai: 'doi', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
+      { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', quai: 'doi', nen: 'nghia-dia', hop: 'bia-mo', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
         mota: 'Cộng trừ phạm vi 20 · quy tắc chính tả',
         toan: function () { return T.congTru(20); },
         tviet: mix(V.quyTacChinhTa, V.timVan) },
 
-      { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', quai: 'meo-den', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
+      { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', quai: 'meo-den', nen: 'gac-mai', hop: 'ruong', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
         mota: 'So sánh và dãy số · chính tả dễ lẫn',
         toan: mix(function () { return T.soSanh(20); }, function () { return T.lonNhatBeNhat(20); }),
         tviet: V.vietDung },
 
-      { ten: 'Hang Rồng Lửa', hinh: 'rong', quai: 'than-chet', emoji: '🐉', mau: '#ff7a7a', soCau: 7,
+      { ten: 'Hang Rồng Lửa', hinh: 'rong', quai: 'than-chet', nen: 'dam-lay', hop: 'bi-ngo', emoji: '🐉', mau: '#ff7a7a', soCau: 7,
         mota: 'Toán đố · từ ngữ và câu',
         toan: mix(function () { return T.choThem(20, false); }, function () { return T.choDi(20, false); },
                   function () { return T.roiKhoi(20); }),
         tviet: mix(V.timTuLoai, V.traiNghia, V.demTieng) },
 
-      { ten: 'Lâu Đài Phù Thuỷ', hinh: 'phu-thuy', quai: 'phu-thuy', emoji: '🧙‍♀️', mau: '#6a58e0', soCau: 8, trum: true,
+      { ten: 'Lâu Đài Phù Thuỷ', hinh: 'phu-thuy', quai: 'phu-thuy', nen: 'san-lau-dai', hop: 'thung', emoji: '🧙‍♀️', mau: '#6a58e0', soCau: 8, trum: true,
         mota: 'Ải cuối — trộn toàn bộ toán và tiếng Việt',
         toan: mix(T.congTruKhongNho, T.chucDonVi, function () { return T.dienSo(20); },
                   function () { return T.honKem(20); }),
@@ -80,6 +80,21 @@
     if (cls) n.className = cls;
     if (html != null) n.innerHTML = html;
     return n;
+  }
+
+  // tự suy ra thư mục ảnh từ vị trí tệp script này
+  var GOC = (function () {
+    var ds = document.getElementsByTagName('script');
+    for (var i = ds.length - 1; i >= 0; i--) {
+      var src = ds[i].src || '';
+      if (/game-halloween\.js(\?|$)/.test(src)) return src.replace(/js\/game-halloween\.js.*$/, '');
+    }
+    return '';
+  })();
+
+  function anh(duong, cls) {
+    return '<img class="' + cls + '" src="' + GOC + 'assets/halloween/' + duong +
+      '" alt="" draggable="false">';
   }
 
   function hinh(ten, cao) {
@@ -167,7 +182,40 @@
 
   function vaoAi(i) {
     van = { ai: AI[i], chiSo: i, buoc: 0, bi: SO_BI, keo: 0, lienTiep: 0, daRa: {} };
-    raCauHoi();
+    moMan();
+  }
+
+  /* ---------- Cảnh mở màn một ải ---------- */
+
+  function khungCanh(ai, trai, phai) {
+    var k = el('div', 'canh-hw');
+    if (ai && ai.nen) k.style.backgroundImage = 'url(' + GOC + 'assets/halloween/nen/' + ai.nen + '.jpg)';
+    k.innerHTML = (trai ? '<span class="ben trai">' + trai + '</span>' : '') +
+                  (phai ? '<span class="ben phai">' + phai + '</span>' : '');
+    return k;
+  }
+
+  function moMan() {
+    thaoPhim();
+    goc.innerHTML = '';
+    var ai = van.ai;
+    var khung = el('div', 'panel cat-canh dem-halloween');
+
+    khung.appendChild(khungCanh(ai, anh('canh/be-xo-rong.png', 'nv-canh'),
+      anh('canh/phu-thuy-bao.png', 'nv-canh')));
+
+    khung.appendChild(el('h2', null, ai.emoji + ' Ải ' + (van.chiSo + 1) + ' · ' + ai.ten));
+    khung.appendChild(el('p', 'lead',
+      'Phù thuỷ vác bao kẹo chạy qua <b>' + ai.ten + '</b>! Giải đúng <b>' + ai.soCau +
+      ' câu</b> để đuổi kịp và đòi lại kẹo.'));
+    khung.appendChild(el('p', 'luat', '🎃 ' + ai.mota));
+
+    var nut = el('button', 'btn go', '🍬 Đi đòi kẹo!');
+    nut.type = 'button';
+    nut.addEventListener('click', raCauHoi);
+    khung.appendChild(el('div', 'actions')).appendChild(nut);
+
+    goc.appendChild(khung);
   }
 
   // xen kẽ: câu lẻ là Toán, câu chẵn là Tiếng Việt
@@ -223,6 +271,8 @@
     van.oTraLoi = global.ManNhay.ve(khung, van.cau, {
       khoaSan: van.dangChuyen,
       quai: ai.quai,
+      nen: ai.nen,
+      hop: ai.hop,
       coLoa: van.cau.mon === TEN_MON[1] && TEN_MON[1] === 'Tiếng Việt',
       doc: Q.docTo,
       khiTraLoi: function (dung, _n, phanHoi) { cham(dung, van.cau, phanHoi); }
@@ -282,9 +332,14 @@
     ghi(tt);
 
     goc.innerHTML = '';
-    var khung = el('div', 'panel dem-halloween');
-    khung.appendChild(el('div', 'doi-nhan-vat',
-      cuoi ? hinh('cup', 110) + hinh('keo', 70) : hinh('keo', 80) + hinh(van.ai.hinh, 76)));
+    var khung = el('div', 'panel cat-canh dem-halloween');
+    // thắng cả game thì phù thuỷ ngồi bệt, kẹo đổ ra đất; thắng một ải thì
+    // con quái canh ải nằm xỉu bên cạnh
+    khung.appendChild(khungCanh(van.ai,
+      anh(cuoi ? 'canh/be-vuong-mien.png' : 'canh/be-xo-day.png', 'nv-canh'),
+      cuoi ? anh('canh/phu-thuy-thua.png', 'nv-canh')
+           : anh((van.ai.quai || 'bi-ngo') + '-xiu.png', 'nv-canh')));
+    if (cuoi) khung.appendChild(el('div', 'doi-nhan-vat', hinh('cup', 96)));
 
     khung.appendChild(el('h2', null, cuoi
       ? '👑 Bé là Vua Halloween!'
@@ -318,8 +373,9 @@
     thaoPhim();
     goc.innerHTML = '';
 
-    var khung = el('div', 'panel dem-halloween');
-    khung.appendChild(el('div', 'doi-nhan-vat', hinh('phu-thuy', 92)));
+    var khung = el('div', 'panel cat-canh dem-halloween');
+    khung.appendChild(khungCanh(van.ai, anh('canh/be-buon.png', 'nv-canh'),
+      anh('canh/phu-thuy-bao.png', 'nv-canh')));
     khung.appendChild(el('h2', null, '🖤 Hết bí ngô rồi!'));
     khung.appendChild(el('p', 'lead',
       'Bé đã đi được <b>' + van.buoc + '/' + van.ai.soCau + '</b> chặng của ải này. ' +

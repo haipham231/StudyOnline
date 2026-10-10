@@ -41,27 +41,27 @@
     khoa: 'studyonline:game-halloween-l4',
     mon: ['Tính', 'Đố'],
     ai: [
-    { ten: 'Cổng Bí Ngô', hinh: 'bi-ngo', quai: 'bi-ngo', emoji: '🎃', mau: '#ff8f3c', soCau: 6,
+    { ten: 'Cổng Bí Ngô', hinh: 'bi-ngo', quai: 'bi-ngo', nen: 'vuon-bi-ngo', hop: 'ruong', emoji: '🎃', mau: '#ff8f3c', soCau: 6,
       mota: 'Hàng và lớp · dấu hiệu chia hết',
       toan: T.hangCuaChuSo,
       tviet: T.dauHieuChiaHet },
 
-    { ten: 'Lối Mòn Ma Trơi', hinh: 'ma', quai: 'nguoi-soi', emoji: '👻', mau: '#8b7bf7', soCau: 6,
+    { ten: 'Lối Mòn Ma Trơi', hinh: 'ma', quai: 'nguoi-soi', nen: 'rung-suong', hop: 'bi-ngo', emoji: '👻', mau: '#8b7bf7', soCau: 6,
       mota: 'Nhân chia số lớn · làm tròn',
       toan: function () { return Quiz.pick([T.nhanHaiChuSo, T.chiaHaiChuSo])(); },
       tviet: T.lamTronL4 },
 
-    { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', quai: 'meo-den', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
+    { ten: 'Rừng Dơi Đen', hinh: 'canh/doi', quai: 'meo-den', nen: 'nghia-dia', hop: 'thung', emoji: '🦇', mau: '#4b3bb0', soCau: 6,
       mota: 'Phân số · tính nhanh',
       toan: function () { return Quiz.pick([T.rutGonPS, T.soSanhPS, T.congPSCungMau])(); },
       tviet: T.tinhNhanhL4 },
 
-    { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', quai: 'than-chet', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
+    { ten: 'Nghĩa Địa Mèo Đen', hinh: 'meo-phu-thuy', quai: 'than-chet', nen: 'gac-mai', hop: 'bia-mo', emoji: '🐈‍⬛', mau: '#2b2f55', soCau: 7,
       mota: 'Trung bình cộng · đổi đơn vị',
       toan: T.trungBinhCong,
       tviet: T.doiDonViL4 },
 
-    { ten: 'Lâu Đài Phù Thuỷ', hinh: 'phu-thuy', quai: 'phu-thuy', emoji: '🧙', mau: '#6a58e0', soCau: 7, trum: true,
+    { ten: 'Lâu Đài Phù Thuỷ', hinh: 'phu-thuy', quai: 'phu-thuy', nen: 'dam-lay', hop: 'ruong', emoji: '🧙', mau: '#6a58e0', soCau: 7, trum: true,
       mota: 'Tổng hiệu tổng tỉ · toán đố',
       toan: function () { return Quiz.pick([T.tongHieu, T.tongTi])(); },
       tviet: function () { return Quiz.pick([T.doTongHieu, T.doMuaHang, T.doDienTichDat])(); } }

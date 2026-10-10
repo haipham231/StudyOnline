@@ -51,6 +51,10 @@
       dang + '.png" alt="" draggable="false">';
   }
 
+  /* Mỗi khung hộp chừa một mặt phẳng trống ở chỗ khác nhau; số đáp án phải
+     rơi đúng vào đó chứ không phải giữa hộp. Đo theo chiều cao ảnh. */
+  var TAM_NHAN = { 'bi-ngo': '63%', 'thung': '58%', 'bia-mo': '61%', 'ruong': '73%' };
+
   var CAO_BE = 74;            // chiều cao khung va chạm của nhân vật, px
   var RONG_BE = 48;
 
@@ -85,7 +89,18 @@
 
     /* --- sân đấu --- */
     var dau = el('div', 'san-dau');
-    dau.innerHTML = '<div class="nen-ma">' +
+    // Mỗi ải một dải nền và một kiểu khung hộp, truyền từ cấu hình của trang.
+    if (tuyChon.nen) {
+      dau.classList.add('co-dai-nen');
+      dau.style.setProperty('--dai-nen',
+        'url(' + GOC + 'assets/halloween/nen/' + tuyChon.nen + '.jpg)');
+    }
+    var kieuHop = TAM_NHAN[tuyChon.hop] ? tuyChon.hop : 'bi-ngo';
+    dau.style.setProperty('--khung-hop',
+      'url(' + GOC + 'assets/halloween/do/hop-' + kieuHop + '.png)');
+    dau.style.setProperty('--tam-nhan', TAM_NHAN[kieuHop]);
+    dau.innerHTML = (tuyChon.nen ? '<div class="dai-nen"></div>' : '') +
+      '<div class="nen-ma">' +
       ['🦇', '🕸️', '🌙', '🕷️'].map(function (e, k) {
         return '<span style="left:' + (6 + k * 19) + '%">' + e + '</span>';
       }).join('') + '</div>';
@@ -160,7 +175,8 @@
       // offsetLeft, mà offsetLeft không tính phần transform.
       var soHop = hopDS.length;
       var rongHop = Math.max(54, Math.min(104, (rong - 14) / soHop - 9));
-      var caoHop = dau.classList.contains('nhan-dai') ? 60 : 46;
+      // khung hộp vẽ đứng (cao hơn rộng), kéo bẹt ra là méo ngay
+      var caoHop = Math.round(rongHop * 1.14);
 
       // Treo hộp vừa tầm nhảy: sân cao mấy cũng không để hộp lên quá cao,
       // nếu không cú nhảy dài lê thê, bé chờ chán.
@@ -169,6 +185,7 @@
 
       hopDS.forEach(function (h, i) {
         h.style.width = Math.round(rongHop) + 'px';
+        h.style.height = caoHop + 'px';
         h.style.left = Math.round((i + 0.5) / soHop * rong - rongHop / 2) + 'px';
         h.style.bottom = Math.round(yHop) + 'px';
 
@@ -176,7 +193,8 @@
         var nh = h.firstChild;
         nh.style.transform = '';
         var tiLe = 1;
-        var choNgang = rongHop - 10, choDoc = caoHop - 8;
+        // mặt phẳng trống chỉ chiếm chừng hai phần ba khung
+        var choNgang = rongHop * 0.68, choDoc = caoHop * 0.3;
         if (nh.scrollWidth > choNgang) tiLe = Math.min(tiLe, choNgang / nh.scrollWidth);
         if (nh.scrollHeight > choDoc) tiLe = Math.min(tiLe, choDoc / nh.scrollHeight);
         if (tiLe < 1) nh.style.transform = 'scale(' + Math.max(0.5, tiLe).toFixed(3) + ')';
@@ -253,7 +271,8 @@
       h.classList.add('bi-doi', dung ? 'trung' : 'truot');
 
       var bay = el('div', dung ? 'bay-tim' : 'bay-ma',
-        dung ? '💖💖💖' : anhQuai(tenQuai, 'hu', 'anh-hu-to'));
+        dung ? '<img class="anh-tim" src="' + GOC + 'assets/halloween/do/tim.png" alt="">'
+             : anhQuai(tenQuai, 'hu', 'anh-hu-to'));
       bay.style.left = h.offsetLeft + h.offsetWidth / 2 + 'px';
       bay.style.bottom = (yHop + h.offsetHeight) + 'px';
       dau.appendChild(bay);
