@@ -388,6 +388,20 @@ h1, h2, h3, .num {
 .choice.is-bad { background: var(--coral); box-shadow: 0 5px 0 var(--coral-dark); color: #fff; }
 .choice svg { display: block; margin: 0 auto; }
 
+/* Hình vẽ thay emoji: cao đúng một dòng chữ nên chỗ nào chỉnh cỡ emoji
+   bằng font-size thì ảnh tự lớn nhỏ theo, khỏi phải chỉnh riêng. */
+.hinh-ve {
+  display: inline-block;
+  height: 1em;
+  width: auto;
+  vertical-align: -0.16em;
+}
+
+/* trong nút trả lời của bé thì cho to hẳn, nút chỉ có mỗi hình */
+.panel.kids.khong-chu .choice .hinh-ve { height: 1.12em; }
+
+.art .hinh-ve { vertical-align: middle; }
+
 /* ===== Kết quả ===== */
 
 .result-mascot { font-size: 62px; line-height: 1; animation: pop 0.5s ease; }

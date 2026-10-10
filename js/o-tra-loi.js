@@ -4,6 +4,12 @@
 (function (global) {
   'use strict';
 
+  // Khu Mầm non và Tiếng Anh thay emoji bằng hình vẽ; chỗ nào chưa có ảnh
+  // thì giữ nguyên emoji. Đổi ở đây là cả đề bài lẫn nút chọn đổi theo.
+  function hv(s) {
+    return global.HinhVe ? global.HinhVe.doi(s) : s;
+  }
+
   function el(tag, cls, html) {
     var n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -100,7 +106,7 @@
     /* --- đề bài --- */
 
     if (cau.prompt) {
-      var dong = el('p', 'prompt', cau.prompt);
+      var dong = el('p', 'prompt', hv(cau.prompt));
       if (tuyChon.coLoa && tuyChon.doc) {
         var loa = el('button', 'loa', '🔊');
         loa.type = 'button';
@@ -111,7 +117,7 @@
       }
       de.appendChild(dong);
     }
-    if (cau.art) de.appendChild(el('div', 'art', cau.art));
+    if (cau.art) de.appendChild(el('div', 'art', hv(cau.art)));
 
     var o = el('span', 'answer-box empty', '?');
     var hang = el('div', 'question');
@@ -155,11 +161,11 @@
       if (cot >= 3 && daiNhat >= 13) boc.classList.add('chu-rat-dai');
 
       cau.choices.forEach(function (gt) {
-        var nut = el('button', 'choice', String(gt));
+        var nut = el('button', 'choice', hv(String(gt)));
         nut.type = 'button';
         nut.addEventListener('click', function () {
           if (khoa) return;
-          o.innerHTML = String(gt);
+          o.innerHTML = hv(String(gt));
           o.classList.remove('empty');
           // đáp án là cả một câu thì phải thu chữ, nếu không ô đáp án tràn ra ngoài
           if (soChu(gt) > 9) hang.classList.add('sm');

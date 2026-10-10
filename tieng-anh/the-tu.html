@@ -20,10 +20,14 @@
 <main class="quiz" id="noi-dung"></main>
 
 <script src="../js/quiz.js"></script>
+<script src="../js/hinh-ve.js"></script>
 <script src="../js/tieng-viet-mam-non.js"></script>
 <script src="../js/tu-vung-anh.js"></script>
 <script src="../js/tieng-anh.js"></script>
 <script>
+  // emoji nào có hình vẽ thì dùng hình, chưa có thì giữ emoji
+  function hv(x) { return window.HinhVe ? HinhVe.doi(x) : x; }
+
   var goc = document.getElementById('noi-dung');
   var cd = decodeURIComponent((location.search.match(/[?&]cd=([^&]*)/) || [])[1] || '');
   var bo = Quiz.shuffle(TiengAnh.tuCuaCaChu(cd).slice());
@@ -40,12 +44,12 @@
         '<div class="the-tu' + (datLat ? ' da-lat' : '') + '" id="the" role="button" tabindex="0"' +
              ' aria-label="Bấm để lật thẻ">' +
           '<div class="mat truoc">' +
-            (t.e ? '<span class="anh-the">' + t.e + '</span>'
+            (t.e ? '<span class="anh-the">' + hv(t.e) + '</span>'
                  : '<span class="chu-the">' + t.vi + '</span>') +
             '<span class="goi-y">Bấm để lật</span></div>' +
           '<div class="mat sau"><span class="tu-anh-to">' + t.en + '</span>' +
             '<span class="nghia-viet">' + t.vi + '</span>' +
-            (t.e ? '<span class="anh-nho">' + t.e + '</span>' : '') + '</div>' +
+            (t.e ? '<span class="anh-nho">' + hv(t.e) + '</span>' : '') + '</div>' +
         '</div>' +
         '<div class="hang-nut">' +
           '<button class="btn phu" id="truoc" type="button">← Trước</button>' +
