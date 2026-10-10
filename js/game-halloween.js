@@ -14,7 +14,10 @@
 
   function mix() {
     var ds = Array.prototype.slice.call(arguments);
-    return function () { return Q.pick(ds)(); };
+    // giữ lại danh sách để MucDo bớt dạng khi chơi mức Dễ
+    var f = function () { return Q.pick(ds)(); };
+    f.ds = ds;
+    return f;
   }
 
   // mỗi ải có một bộ đề Toán và một bộ đề Tiếng Việt, dùng xen kẽ
@@ -137,6 +140,8 @@
       '</b> và một câu <b>' + TEN_MON[1] + '</b>, để giành lại kẹo và trở thành ' +
       '<b>Vua Halloween</b>.</p>'));
 
+    if (global.MucDo) khung.appendChild(global.MucDo.veChon(STORE, veBanDo));
+
     var tongSao = 0;
     Object.keys(tt.sao).forEach(function (k) { tongSao += tt.sao[k]; });
     khung.appendChild(el('p', 'lead',
@@ -181,7 +186,14 @@
   /* ---------- Vào một ải ---------- */
 
   function vaoAi(i) {
-    van = { ai: AI[i], chiSo: i, buoc: 0, bi: SO_BI, keo: 0, lienTiep: 0, daRa: {} };
+    var ai = AI[i];
+    var muc = global.MucDo ? global.MucDo.doc(STORE) : 'vua';
+    var soCau = global.MucDo ? global.MucDo.soCau(ai.soCau, muc) : ai.soCau;
+    var soBi = global.MucDo ? global.MucDo.mang(SO_BI, muc) : SO_BI;
+    van = { ai: ai, chiSo: i, buoc: 0, bi: soBi, soBi: soBi, soCau: soCau,
+      boToan: global.MucDo ? global.MucDo.de(ai.toan, muc) : ai.toan,
+      boTviet: global.MucDo ? global.MucDo.de(ai.tviet, muc) : ai.tviet,
+      keo: 0, lienTiep: 0, daRa: {} };
     moMan();
   }
 
@@ -206,7 +218,7 @@
 
     khung.appendChild(el('h2', null, ai.emoji + ' Ải ' + (van.chiSo + 1) + ' · ' + ai.ten));
     khung.appendChild(el('p', 'lead',
-      'Phù thuỷ vác bao kẹo chạy qua <b>' + ai.ten + '</b>! Giải đúng <b>' + ai.soCau +
+      'Phù thuỷ vác bao kẹo chạy qua <b>' + ai.ten + '</b>! Giải đúng <b>' + van.soCau +
       ' câu</b> để đuổi kịp và đòi lại kẹo.'));
     khung.appendChild(el('p', 'luat', '🎃 ' + ai.mota));
 
@@ -221,7 +233,7 @@
   // xen kẽ: câu lẻ là Toán, câu chẵn là Tiếng Việt
   function sinhCau() {
     var laToan = van.buoc % 2 === 0;
-    var nguon = laToan ? van.ai.toan : van.ai.tviet;
+    var nguon = laToan ? van.boToan : van.boTviet;
     var q, khoa, lan = 0;
     do {
       q = nguon();
@@ -251,13 +263,13 @@
     var tren = el('div', 'thanh-tren');
     tren.appendChild(el('span', 'ten-man', ai.emoji + ' Ải ' + (van.chiSo + 1) + ' · ' + ai.ten));
     var bi = '';
-    for (var b = 0; b < SO_BI; b++) bi += b < van.bi ? '🎃' : '<span class="mat">🖤</span>';
+    for (var b = 0; b < van.soBi; b++) bi += b < van.bi ? '🎃' : '<span class="mat">🖤</span>';
     tren.appendChild(el('span', 'tim', bi));
     khung.appendChild(tren);
 
     // dải tiến độ gọn: đi được mấy bước, còn mấy bước tới trùm
     var duong = el('div', 'duong-gon');
-    for (var m = 0; m < ai.soCau; m++) {
+    for (var m = 0; m < van.soCau; m++) {
       duong.appendChild(el('i', 'moc' + (m < van.buoc ? ' qua' : '')));
     }
     duong.appendChild(el('span', 'trum', ai.emoji));
@@ -265,7 +277,7 @@
 
     khung.appendChild(el('div', 'meta',
       '<span><span class="nhan-mon ' + (van.cau.mon === TEN_MON[0] ? 'toan' : 'tviet') + '">' +
-      van.cau.mon + '</span> Câu ' + Math.min(van.buoc + 1, ai.soCau) + ' / ' + ai.soCau + '</span>' +
+      van.cau.mon + '</span> Câu ' + Math.min(van.buoc + 1, van.soCau) + ' / ' + van.soCau + '</span>' +
       '<span class="hits">🍬 ' + van.keo + '</span>'));
 
     van.oTraLoi = global.ManNhay.ve(khung, van.cau, {
@@ -298,7 +310,7 @@
         ' <small>+' + thuong + ' kẹo</small>';
 
       setTimeout(function () {
-        if (van.buoc >= van.ai.soCau) return thangAi();
+        if (van.buoc >= van.soCau) return thangAi();
         van.dangChuyen = true; ve(); van.dangChuyen = false;
         setTimeout(raCauHoi, 520);
       }, 760);
@@ -321,7 +333,7 @@
 
   function thangAi() {
     thaoPhim();
-    var sao = van.bi === SO_BI ? 3 : van.bi === SO_BI - 1 ? 2 : 1;
+    var sao = van.bi === van.soBi ? 3 : van.bi >= van.soBi - 1 ? 2 : 1;
     var cuoi = van.chiSo === AI.length - 1;
 
     tt = doc();
@@ -378,7 +390,7 @@
       anh('canh/phu-thuy-bao.png', 'nv-canh')));
     khung.appendChild(el('h2', null, '🖤 Hết bí ngô rồi!'));
     khung.appendChild(el('p', 'lead',
-      'Bé đã đi được <b>' + van.buoc + '/' + van.ai.soCau + '</b> chặng của ải này. ' +
+      'Bé đã đi được <b>' + van.buoc + '/' + van.soCau + '</b> chặng của ải này. ' +
       'Mình thử lại nhé — các ải đã qua vẫn còn nguyên.'));
 
     var actions = el('div', 'actions');
@@ -407,7 +419,10 @@
       goc = document.getElementById(idGoc || 'game');
       veBanDo();
     },
-    _moVan: function (i) { van = { ai: AI[i], chiSo: i, buoc: 0, bi: SO_BI, keo: 0, lienTiep: 0, daRa: {} }; },
+    _moVan: function (i) {
+      van = { ai: AI[i], chiSo: i, buoc: 0, bi: SO_BI, soBi: SO_BI, soCau: AI[i].soCau,
+        boToan: AI[i].toan, boTviet: AI[i].tviet, keo: 0, lienTiep: 0, daRa: {} };
+    },
     _cauTiep: function () { var q = sinhCau(); van.buoc++; return q; }
   };
 })(window);

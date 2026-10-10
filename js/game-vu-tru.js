@@ -14,7 +14,10 @@
 
   function mix() {
     var ds = Array.prototype.slice.call(arguments);
-    return function () { return Q.pick(ds)(); };
+    // giữ lại danh sách để MucDo bớt dạng khi chơi mức Dễ
+    var f = function () { return Q.pick(ds)(); };
+    f.ds = ds;
+    return f;
   }
 
   /* Bộ chặng mặc định của lớp 5. Dựng muộn, vì trang lớp khác không nạp
@@ -119,6 +122,8 @@
       '<p>Phi hành gia ơi! Hãy bay qua <b>' + CHANG.length + ' hành tinh</b> để tới Trạm Thiên Hà. ' +
       'Mỗi lời giải đúng cho ta thêm nhiên liệu, giải sai thì hụt mất — cạn nhiên liệu là phải quay lại.</p>'));
 
+    if (global.MucDo) khung.appendChild(global.MucDo.veChon(STORE, veBanDo));
+
     var tongSao = 0;
     Object.keys(tt.sao).forEach(function (k) { tongSao += tt.sao[k]; });
     khung.appendChild(el('p', 'lead',
@@ -163,14 +168,19 @@
   /* ---------- Bay một chặng ---------- */
 
   function bayToi(i) {
-    van = { chang: CHANG[i], chiSo: i, buoc: 0, nhienLieu: NHIEN_LIEU_DAU, daRa: {} };
+    var chang = CHANG[i];
+    var muc = global.MucDo ? global.MucDo.doc(STORE) : 'vua';
+    van = { chang: chang, chiSo: i, buoc: 0, nhienLieu: NHIEN_LIEU_DAU, daRa: {},
+      soCau: global.MucDo ? global.MucDo.soCau(chang.soCau, muc) : chang.soCau,
+      phat: global.MucDo ? global.MucDo.phat(PHAT, muc) : PHAT,
+      deBo: global.MucDo ? global.MucDo.de(chang.de, muc) : chang.de };
     raCauHoi();
   }
 
   function sinhCau() {
     var q, khoa, lan = 0;
     do {
-      q = van.chang.de();
+      q = typeof van.deBo === 'function' ? van.deBo() : Q.pick(van.deBo)();
       khoa = (q.prompt || '') + (q.text || '') + (q.after || '') + q.answer;
       lan++;
     } while (van.daRa[khoa] && lan < 30);
@@ -205,7 +215,7 @@
     khung.appendChild(tren);
 
     var quyDao = el('div', 'duong-gon');
-    for (var b = 0; b < chang.soCau; b++) {
+    for (var b = 0; b < van.soCau; b++) {
       quyDao.appendChild(el('i', 'moc' + (b < van.buoc ? ' qua' : '')));
     }
     quyDao.appendChild(el('span', 'trum', chang.emoji));
@@ -214,8 +224,8 @@
     var kieu = kieuMan(van.chiSo);
     khung.appendChild(el('div', 'meta',
       '<span>' + (kieu === 'ban' ? '🚀 Bắn quái' : '🛸 Lái phi thuyền') +
-      ' · Câu ' + Math.min(van.buoc + 1, chang.soCau) + ' / ' + chang.soCau + '</span>' +
-      '<span class="hits">🛰️ ' + van.buoc + '/' + chang.soCau + '</span>'));
+      ' · Câu ' + Math.min(van.buoc + 1, van.soCau) + ' / ' + van.soCau + '</span>' +
+      '<span class="hits">🛰️ ' + van.buoc + '/' + van.soCau + '</span>'));
 
     var man = kieu === 'ban' ? global.ManBan : global.ManLai;
     van.oTraLoi = man.ve(khung, van.cau, {
@@ -241,17 +251,17 @@
                                     '🌟 Bay tiếp nào!', '👏 Giỏi lắm!']);
 
       setTimeout(function () {
-        if (van.buoc >= van.chang.soCau) return toiNoi();
+        if (van.buoc >= van.soCau) return toiNoi();
         van.dangChuyen = true; ve(); van.dangChuyen = false;
         setTimeout(raCauHoi, 520);
       }, 720);
       return;
     }
 
-    van.nhienLieu -= PHAT;
+    van.nhienLieu -= van.phat;
     phanHoi.className = 'feedback pop bad';
     phanHoi.innerHTML = '💥 Chưa đúng — đáp án là <b>' + q.answer + '</b>' +
-                        (q.after ? ' ' + q.after : '') + '<br><small>Hụt mất ' + PHAT + '% nhiên liệu</small>';
+                        (q.after ? ' ' + q.after : '') + '<br><small>Hụt mất ' + van.phat + '% nhiên liệu</small>';
 
     setTimeout(function () {
       if (van.nhienLieu <= 0) return canNhienLieu();
@@ -318,7 +328,7 @@
     khung.appendChild(el('div', 'doi-nhan-vat', V.phiThuyen(80)));
     khung.appendChild(el('h2', null, '⛽ Cạn nhiên liệu rồi!'));
     khung.appendChild(el('p', 'lead',
-      'Phi thuyền đã bay được <b>' + van.buoc + '/' + van.chang.soCau +
+      'Phi thuyền đã bay được <b>' + van.buoc + '/' + van.soCau +
       '</b> chặng. Mình bay lại hành tinh này nhé — các hành tinh đã qua vẫn còn nguyên.'));
 
     var actions = el('div', 'actions');
@@ -346,7 +356,10 @@
       goc = document.getElementById(idGoc || 'game');
       veBanDo();
     },
-    _moVan: function (i) { van = { chang: CHANG[i], chiSo: i, buoc: 0, nhienLieu: NHIEN_LIEU_DAU, daRa: {} }; },
+    _moVan: function (i) {
+      van = { chang: CHANG[i], chiSo: i, buoc: 0, nhienLieu: NHIEN_LIEU_DAU,
+        soCau: CHANG[i].soCau, phat: PHAT, deBo: CHANG[i].de, daRa: {} };
+    },
     _cauTiep: function () { return sinhCau(); }
   };
 })(window);

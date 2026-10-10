@@ -125,6 +125,8 @@
       '<p>Rồng đã bắt công chúa nhốt trong lâu đài! Hiệp sĩ nhỏ ơi, hãy vượt qua ' +
       MAN.length + ' chặng đường và giải hết các bài toán để cứu công chúa nhé.</p>'));
 
+    if (global.MucDo) khung.appendChild(global.MucDo.veChon(STORE, veBanDo));
+
     var tongSao = 0;
     Object.keys(tt.sao).forEach(function (k) { tongSao += tt.sao[k]; });
     khung.appendChild(el('p', 'lead',
@@ -170,14 +172,19 @@
 
   function vaoMan(i) {
     var man = MAN[i];
-    van = { man: man, chiSo: i, buoc: 0, tim: SO_TIM, daRa: {}, batDau: Date.now() };
+    var muc = global.MucDo ? global.MucDo.doc(STORE) : 'vua';
+    var soCau = global.MucDo ? global.MucDo.soCau(man.soCau, muc) : man.soCau;
+    var soTim = global.MucDo ? global.MucDo.mang(SO_TIM, muc) : SO_TIM;
+    van = { man: man, chiSo: i, buoc: 0, tim: soTim, soTim: soTim, soCau: soCau,
+      deBo: global.MucDo ? global.MucDo.de(man.de, muc) : man.de,
+      daRa: {}, batDau: Date.now() };
     raCauHoi();
   }
 
   function sinhCau() {
     var q, khoa, lan = 0;
     do {
-      q = Q.pick(van.man.de)();
+      q = Q.pick(van.deBo)();
       khoa = (q.prompt || '') + (q.text || '') + (q.after || '') + q.answer;
       lan++;
     } while (van.daRa[khoa] && lan < 30);
@@ -236,7 +243,7 @@
     var tren = el('div', 'thanh-tren');
     tren.appendChild(el('span', 'ten-man', man.emoji + ' Chặng ' + (van.chiSo + 1) + ' · ' + man.ten));
     var tim = '';
-    for (var t = 0; t < SO_TIM; t++) tim += t < van.tim ? '❤️' : '<span class="mat">🤍</span>';
+    for (var t = 0; t < van.soTim; t++) tim += t < van.tim ? '❤️' : '<span class="mat">🤍</span>';
     tren.appendChild(el('span', 'tim', tim));
     khung.appendChild(tren);
 
@@ -251,13 +258,13 @@
       .join('');
     canh.appendChild(trangTri);
 
-    canh.appendChild(el('div', 'duong', veCau(man.soCau, van.buoc, man.mau)));
+    canh.appendChild(el('div', 'duong', veCau(van.soCau, van.buoc, man.mau)));
 
     // đi thường thì chạy, vừa đánh trúng thì vung kiếm
     var dangHS = hieuUng === 'danh' ? 'hs-chem' : hieuUng === 'tien' ? 'hs-chay' : 'hs-dung';
     var nguoi = el('div', 'nguoi-choi' + (hieuUng === 'tien' ? ' nhay' : ''),
       anh(dangHS + '.png', 'nv-hinh'));
-    nguoi.style.left = (van.buoc / man.soCau * 78) + '%';
+    nguoi.style.left = (van.buoc / van.soCau * 78) + '%';
     canh.appendChild(nguoi);
 
     var dich = el('div', 'dich' + (hieuUng === 'danh' ? ' rung' : ''),
@@ -269,13 +276,13 @@
 
     if (man.boss) {
       var mau = el('div', 'thanh-mau');
-      mau.innerHTML = '<i style="width:' + Math.round((1 - van.buoc / man.soCau) * 100) + '%"></i>';
+      mau.innerHTML = '<i style="width:' + Math.round((1 - van.buoc / van.soCau) * 100) + '%"></i>';
       canh.appendChild(mau);
     }
     khung.appendChild(canh);
 
     khung.appendChild(el('div', 'meta',
-      '<span>Câu ' + Math.min(van.buoc + 1, man.soCau) + ' / ' + man.soCau + '</span>' +
+      '<span>Câu ' + Math.min(van.buoc + 1, van.soCau) + ' / ' + van.soCau + '</span>' +
       '<span class="hits">' + (man.boss ? '🐉 Đánh trúng ' : '👣 Đã đi ') + van.buoc + '</span>'));
 
     veCauHoi(khung, van.cau);
@@ -306,7 +313,7 @@
         : Q.pick(['🎉 Giỏi quá!', '👏 Đi tiếp nào!', '⭐ Tuyệt vời!', '💪 Qua được rồi!']);
 
       setTimeout(function () {
-        if (van.buoc >= van.man.soCau) return thangMan();
+        if (van.buoc >= van.soCau) return thangMan();
         van.dangChuyen = true; ve(van.man.boss ? 'danh' : 'tien'); van.dangChuyen = false;
         setTimeout(raCauHoi, 520);
       }, 700);
@@ -327,7 +334,7 @@
 
   function thangMan() {
     thaoPhim();
-    var sao = van.tim === SO_TIM ? 3 : van.tim === SO_TIM - 1 ? 2 : 1;
+    var sao = van.tim === van.soTim ? 3 : van.tim >= van.soTim - 1 ? 2 : 1;
     var cuoiCung = van.chiSo === MAN.length - 1;
 
     tt = doc();
@@ -382,7 +389,7 @@
       anh('quai/' + quaiCua(van.man) + '-chan.png', 'nv-to') + anh('cc-trong-long.png', 'nv-to')));
     khung.appendChild(el('h2', null, 'Hết mất rồi!'));
     khung.appendChild(el('p', 'lead',
-      'Hiệp sĩ đã đi được <b>' + van.buoc + '/' + van.man.soCau + '</b> bước. ' +
+      'Hiệp sĩ đã đi được <b>' + van.buoc + '/' + van.soCau + '</b> bước. ' +
       'Mình thử lại chặng này nhé — tiến độ các chặng trước vẫn còn nguyên.'));
 
     var actions = el('div', 'actions');
@@ -413,7 +420,10 @@
       veBanDo();
     },
     // dành cho kiểm thử tự động
-    _moVan: function (i) { van = { man: MAN[i], chiSo: i, buoc: 0, tim: SO_TIM, daRa: {} }; },
+    _moVan: function (i) {
+      van = { man: MAN[i], chiSo: i, buoc: 0, tim: SO_TIM, soTim: SO_TIM,
+        soCau: MAN[i].soCau, deBo: MAN[i].de, daRa: {} };
+    },
     _cauTiep: function () { return sinhCau(); }
   };
 })(window);

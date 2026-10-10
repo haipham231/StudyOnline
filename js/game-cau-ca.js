@@ -12,7 +12,10 @@
 
   function mix() {
     var ds = Array.prototype.slice.call(arguments);
-    return function () { return Q.pick(ds)(); };
+    // giữ lại danh sách để MucDo bớt dạng khi chơi mức Dễ
+    var f = function () { return Q.pick(ds)(); };
+    f.ds = ds;
+    return f;
   }
 
   /* Bộ mặc định của lớp 1. Dựng muộn, vì trang lớp 2–4 không nạp
@@ -125,6 +128,8 @@
       'Mỗi câu đúng câu được một con cá bỏ vào xô, trả lời sai thì cá bơi mất. ' +
       '<b>Hồ càng khó thì thuỷ quái càng to</b>.</p>'));
 
+    if (global.MucDo) khung.appendChild(global.MucDo.veChon(STORE, chonHo));
+
     khung.appendChild(el('p', 'lead', '🐟 Tổng cộng đã câu được <b>' + (tt.tongCa || 0) + ' con cá</b>'));
 
     var ds = el('div', 'chang-list');
@@ -154,7 +159,7 @@
   function sinhCau() {
     var q, khoa, lan = 0;
     do {
-      q = van.ho.de();
+      q = typeof van.deBo === 'function' ? van.deBo() : Q.pick(van.deBo)();
       khoa = (q.prompt || '') + (q.text || '') + (q.after || '') + q.answer;
       lan++;
     } while (van.daRa[khoa] && lan < 30);
@@ -199,7 +204,13 @@
   /* ---------- Vào một hồ ---------- */
 
   function batDauCau(i) {
-    van = { ho: HO[i], chiSo: i, cau: 0, nac: 0, truot: 0, daRa: {}, conCa: null };
+    var ho = HO[i];
+    var muc = global.MucDo ? global.MucDo.doc(STORE) : 'vua';
+    // Dễ thì cho nhiều lượt hơn để đủ sáu nấc, và cá không tuột lại khi sai.
+    van = { ho: ho, chiSo: i, cau: 0, nac: 0, truot: 0, daRa: {}, conCa: null,
+      muc: muc,
+      soCau: global.MucDo ? global.MucDo.luot(SO_CAU, muc) : SO_CAU,
+      deBo: global.MucDo ? global.MucDo.de(ho.de, muc) : ho.de };
     moMan();
   }
 
@@ -213,10 +224,13 @@
     khung.innerHTML =
       anhCauCa(tenTranh(van.chiSo), 'tranh-canh', 'jpg') +
       '<h2>' + ho.emoji + ' ' + ho.ten + '</h2>' +
-      '<p class="lead">' + ho.mota + '<br><small>Mức <b>' + ho.mucDo + '</b> · hôm nay mình rình con <b>' +
+      '<p class="lead">' + ho.mota + '<br><small>Hồ <b>' + ho.mucDo + '</b> · hôm nay mình rình con <b>' +
       loaiCa(van.chiSo) + '</b></small></p>' +
       '<p class="luat">Trả lời đúng thì kéo cá gần thêm một nấc. Đủ <b>' + SO_NAC +
-      ' nấc</b> là bắt được. Sai thì thuỷ quái quậy, cá tuột lại một nấc.</p>';
+      ' nấc</b> là bắt được trong <b>' + van.soCau + ' câu</b>. ' +
+      (van.muc === 'de'
+        ? 'Sai thì cá chưa cắn câu thôi, không tuột lại nấc nào.'
+        : 'Sai thì thuỷ quái quậy, cá tuột lại một nấc.') + '</p>';
     var nut = el('button', 'btn go', '🎣 Thả cần!');
     nut.type = 'button';
     nut.addEventListener('click', raCauHoi);
@@ -230,7 +244,7 @@
     thaoPhim();
     van.loiNhan = null;
     van.cau += 1;
-    if (van.cau > SO_CAU) return xong();
+    if (van.cau > van.soCau) return xong();
     van.deBai = sinhCau();
     ve();
   }
@@ -291,7 +305,7 @@
     khung.appendChild(canh);
 
     khung.appendChild(el('div', 'meta',
-      '<span>Câu ' + van.cau + ' / ' + SO_CAU + '</span>' +
+      '<span>Câu ' + van.cau + ' / ' + van.soCau + '</span>' +
       '<span class="hits">🎣 Nấc ' + nac + '/' + SO_NAC + '</span>'));
 
     van.oTraLoi = global.OTraLoi.ve(khung, van.deBai, {
@@ -338,7 +352,7 @@
     }
 
     van.truot += 1;
-    var tut = van.nac > 0;
+    var tut = van.nac > 0 && van.muc !== 'de';
     if (tut) van.nac -= 1;
     phanHoi.className = 'feedback pop bad';
     phanHoi.innerHTML = '🫧 Chưa đúng — đáp án là <b>' +
@@ -440,7 +454,10 @@
       goc = document.getElementById(idGoc || 'game');
       chonHo();
     },
-    _moVan: function (i) { van = { ho: HO[i], chiSo: i, cau: 0, nac: 0, truot: 0, daRa: {} }; },
+    _moVan: function (i) {
+      van = { ho: HO[i], chiSo: i, cau: 0, nac: 0, truot: 0, daRa: {},
+        muc: 'vua', soCau: SO_CAU, deBo: HO[i].de };
+    },
     _cauTiep: function () { return sinhCau(); }
   };
 })(window);

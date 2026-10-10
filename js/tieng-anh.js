@@ -8,13 +8,52 @@
   var Q = global.Quiz;
   var chon = Q.pick;
 
-  // Vốn từ ghép từ ba nguồn, xem js/tu-vung-anh.js
+  /* Vốn từ ghép từ ba nguồn, xem js/tu-vung-anh.js.
+
+     Kho gốc tách rất nhỏ: "trái cây" tám từ rồi "trái cây thêm" mười từ nữa,
+     nên danh sách chủ đề dài lê thê mà mỗi mục lại ít từ. Ở khu tiếng Anh thì
+     gộp lại cho mỗi chủ đề dày dặn. Chỉ gộp ở đây, kho gốc giữ nguyên vì khu
+     Mầm non tiếng Việt vẫn dùng đúng những mục nhỏ đó. */
+  var GOP_VAO = {
+    'con vật': 'thú nuôi và vật nuôi', 'thú nuôi': 'thú nuôi và vật nuôi',
+    'chim chóc': 'chim và côn trùng', 'côn trùng': 'chim và côn trùng',
+    'trái cây thêm': 'trái cây',
+    'rau củ thêm': 'rau củ',
+    'đồ ăn': 'đồ ăn và đồ uống', 'đồ ăn thêm': 'đồ ăn và đồ uống',
+    'đồ uống': 'đồ ăn và đồ uống',
+    'màu sắc': 'màu sắc và hình khối', 'màu sắc thêm': 'màu sắc và hình khối',
+    'hình khối': 'màu sắc và hình khối',
+    'cơ thể thêm': 'cơ thể',
+    'gia đình thêm': 'gia đình',
+    'quần áo thêm': 'quần áo',
+    'trong nhà thêm': 'đồ dùng trong nhà', 'nhà bếp': 'đồ dùng trong nhà',
+    'phương tiện thêm': 'phương tiện',
+    'thời tiết': 'thiên nhiên và thời tiết',
+    'thời tiết thêm': 'thiên nhiên và thời tiết',
+    'thiên nhiên thêm': 'thiên nhiên và thời tiết',
+    'đồ vật': 'ở trường', 'đồ dùng học tập': 'ở trường',
+    'thể thao': 'thể thao và nhạc cụ', 'nhạc cụ': 'thể thao và nhạc cụ'
+  };
+
   function gop() {
     var ds = {};
     var goc = (global.TiengVietMN && global.TiengVietMN.CHU_DE) || {};
     var kho = global.TuVungAnh || { CO_HINH: {}, CHU: {} };
-    Object.keys(goc).forEach(function (k) { ds[k] = goc[k]; });
-    Object.keys(kho.CO_HINH).forEach(function (k) { ds[k] = kho.CO_HINH[k]; });
+
+    function them(ten, tu) {
+      var dich = GOP_VAO[ten] || ten;
+      if (!ds[dich]) ds[dich] = [];
+      // một từ tiếng Anh chỉ vào chủ đề một lần, kẻo gộp xong bị lặp
+      tu.forEach(function (t) {
+        for (var i = 0; i < ds[dich].length; i++) {
+          if (ds[dich][i].en === t.en) return;
+        }
+        ds[dich].push(t);
+      });
+    }
+
+    Object.keys(goc).forEach(function (k) { them(k, goc[k]); });
+    Object.keys(kho.CO_HINH).forEach(function (k) { them(k, kho.CO_HINH[k]); });
     return ds;
   }
 

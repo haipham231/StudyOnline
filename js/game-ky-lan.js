@@ -12,7 +12,10 @@
 
   function mix() {
     var ds = Array.prototype.slice.call(arguments);
-    return function () { return Q.pick(ds)(); };
+    // giữ lại danh sách để MucDo bớt dạng khi chơi mức Dễ
+    var f = function () { return Q.pick(ds)(); };
+    f.ds = ds;
+    return f;
   }
 
   var CHANG = [

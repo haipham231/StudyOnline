@@ -27,6 +27,7 @@
 <script src="../js/hoat-hinh.js"></script>
 <script src="../js/o-tra-loi.js"></script>
 <script src="../js/quiz.js"></script>
+<script src="../js/muc-do.js"></script>
 <script src="../js/danh-hieu.js"></script>
 <script src="../js/toan-lop-2.js"></script>
 <script src="../js/game-cau-ca.js"></script>
@@ -35,7 +36,10 @@
   var T = ToanL2;
   function mix() {
     var ds = Array.prototype.slice.call(arguments);
-    return function () { return Quiz.pick(ds)(); };
+    // giữ lại danh sách để MucDo bớt dạng khi chơi mức Dễ
+    var f = function () { return Quiz.pick(ds)(); };
+    f.ds = ds;
+    return f;
   }
 
   GameCauCa.batDau('game', {

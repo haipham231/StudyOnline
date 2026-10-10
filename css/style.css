@@ -402,6 +402,9 @@ h1, h2, h3, .num {
 
 .art .hinh-ve { vertical-align: middle; }
 
+/* thẻ chủ đề trên trang Tiếng Anh: hình thay emoji, cao bằng dòng emoji cũ */
+.card .emoji .hinh-ve { vertical-align: middle; }
+
 /* ===== Kết quả ===== */
 
 .result-mascot { font-size: 62px; line-height: 1; animation: pop 0.5s ease; }
@@ -3556,4 +3559,56 @@ body.khoa-cuon { overflow: hidden; }
   font-size: 17px;
   font-weight: 600;
   letter-spacing: 0.2px;
+}
+
+/* ===== Hàng chọn mức độ khó của game ===== */
+
+.chon-muc {
+  margin: 0 0 14px;
+  text-align: center;
+}
+
+.chon-muc .nhan-muc {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.chon-muc .nut-muc {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.chon-muc .mot-muc {
+  flex: 1 1 0;
+  max-width: 150px;
+  padding: 10px 6px;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ink);
+  font-family: "Baloo 2", sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.08s ease, border-color 0.12s ease, background 0.12s ease;
+}
+
+.chon-muc .mot-muc:active { transform: translateY(2px); }
+
+.chon-muc .mot-muc.dang-chon {
+  border-color: var(--grape);
+  background: color-mix(in srgb, var(--grape) 14%, #fff);
+  color: var(--grape-dark);
+}
+
+.chon-muc .mota-muc {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.4;
 }
