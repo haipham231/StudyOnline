@@ -339,7 +339,10 @@
       root.innerHTML = '';
 
       var q = state.question;
-      var panel = el('div', 'panel' + (config.kids ? ' kids' : ''));
+      // khongChu: bé mầm non chưa biết đọc, nút trả lời chỉ còn hình.
+      // Nhãn chữ vẫn nằm trong DOM cho trình đọc màn hình, chỉ ẩn khỏi mắt.
+      var panel = el('div', 'panel' + (config.kids ? ' kids' : '') +
+        (config.khongChu ? ' khong-chu' : ''));
 
       var meta = el('div', 'meta');
       meta.appendChild(el('span', null, 'Câu ' + state.index + ' / ' + state.total));
