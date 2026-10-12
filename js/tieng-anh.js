@@ -92,14 +92,63 @@
     return het;
   }
 
+  /* Ảnh minh hoạ một từ.
+
+     Hai tầng từ vựng tra ảnh hai kiểu. Tầng CO_HINH vốn có emoji làm khoá nên
+     trả về chính emoji, để o-tra-loi.js đổi sang thẻ ảnh như mọi chỗ khác.
+     Tầng CHU không emoji nào tả đúng (dance, big, Monday…) nên tra thẳng theo
+     từ tiếng Anh. Từ nào chưa có ảnh thì trả null, nơi gọi tự lo. */
+  function anhCua(t) {
+    if (t.e) return t.e;
+    if (global.HinhVe && global.HinhVe.coTu && global.HinhVe.coTu(t.en))
+      return global.HinhVe.veTu(t.en);
+    return null;
+  }
+  function coAnh(t) { return !!anhCua(t); }
+
+  /* Khoá để biết hai từ có chung một hình hay không. Trước đây so thẳng bằng
+     t.e — nay tầng chữ không từ nào có e, so kiểu đó thì mọi từ đều hoá ra
+     "trùng hình" và khac() loại sạch đáp án sai. */
+  function khoaAnh(t) { return t.e || ('tu:' + t.en); }
+
   // n từ khác với "loaiTru". Loại cả theo từ tiếng Anh lẫn theo hình: hai từ
   // trùng hình thì bé nhìn hình không phân biệt nổi, chọn đúng vẫn bị chấm sai.
   function khac(ds, n, loaiTru) {
     var ket = [];
     Q.shuffle(ds).forEach(function (x) {
-      if (ket.length < n && x.en !== loaiTru.en && x.e !== loaiTru.e) ket.push(x);
+      if (ket.length < n && x.en !== loaiTru.en && khoaAnh(x) !== khoaAnh(loaiTru)) ket.push(x);
     });
     return ket;
+  }
+
+  /* Chủ đề tầng chữ nào dùng được cho câu hỏi kiểu nhìn hình.
+
+     Điều kiện là nhìn hình phải đoán ra ĐÚNG từ đó. Động từ, số lượng, vị
+     trí, môn học đều đạt — vẽ bé đang bơi thì chỉ có thể là "swim".
+
+     Tính từ và từ ngược nghĩa thì không đạt: hình của "clean" là cái áo sạch
+     đặt cạnh cái áo bẩn, mà hình của "dirty" cũng là một cặp y như vậy, bé
+     không có cách nào chọn đúng. Ngày tháng cũng thế — "Tuesday" vẽ thành
+     cảnh bé ngồi làm bài thì đoán sao ra. Mấy chủ đề đó vẫn có hình ở thẻ từ
+     và ở đề bài, chỉ là không dùng hình làm đáp án. */
+  var CHU_DOAN_DUOC = {
+    'việc hằng ngày': 1, 'động từ thường gặp': 1, 'số lớn và thứ tự': 1,
+    'vị trí và hướng': 1, 'môn học': 1, 'đi đường': 1,
+    'thiên nhiên và con vật (chữ)': 1, 'sức khoẻ': 1
+  };
+
+  // Kho từ cho câu hỏi kiểu nhìn hình: phải có ảnh, và nếu là từ tầng chữ thì
+  // chủ đề phải nằm trong danh sách đoán được ở trên.
+  function tuCuaAnh(ten) {
+    if (ten && CHU_DE[ten]) return CHU_DE[ten].filter(coAnh);
+    if (ten && CHU_DE_CHU[ten])
+      return CHU_DOAN_DUOC[ten] ? CHU_DE_CHU[ten].filter(coAnh) : [];
+    var het = [];
+    Object.keys(CHU_DE).forEach(function (k) { het = het.concat(CHU_DE[k]); });
+    Object.keys(CHU_DE_CHU).forEach(function (k) {
+      if (CHU_DOAN_DUOC[k]) het = het.concat(CHU_DE_CHU[k]);
+    });
+    return het.filter(coAnh);
   }
 
   // Nhãn một từ tiếng Anh: chữ ở trên, phiên âm ở dưới. Dùng chung cho cả
@@ -110,19 +159,20 @@
   }
 
   function the(t) {
-    return '<span class="anh-tu">' + t.e + '</span><span class="nhan">' +
+    return '<span class="anh-tu">' + anhCua(t) + '</span><span class="nhan">' +
       tuVaPhienAm(t.en) + '</span>';
   }
 
   /* --- nhìn hình, chọn từ tiếng Anh --- */
 
   function nhinChon(ten) {
-    var ds = tuCua(ten);
+    var ds = tuCuaAnh(ten);
+    if (ds.length < 3) return nghiaViet(ten);
     var dung = chon(ds);
     var sai = khac(ds, 2, dung);
     return {
       prompt: 'Cái này tiếng Anh gọi là gì?',
-      art: '<span class="anh-to">' + dung.e + '</span>',
+      art: '<span class="anh-to">' + anhCua(dung) + '</span>',
       choices: Q.shuffle([dung, sai[0], sai[1]].filter(Boolean)
         .map(function (x) { return tuVaPhienAm(x.en); })),
       answer: tuVaPhienAm(dung.en),
@@ -137,7 +187,8 @@
   /* --- nghe từ, chọn hình --- */
 
   function ngheChon(ten) {
-    var ds = tuCua(ten);
+    var ds = tuCuaAnh(ten);
+    if (ds.length < 3) return nghiaViet(ten);
     var dung = chon(ds);
     var sai = khac(ds, 2, dung);
     return {
@@ -157,10 +208,11 @@
      mà đoán nghĩa của từ. */
 
   function tuChonHinh(ten) {
-    var ds = tuCua(ten);
+    var ds = tuCuaAnh(ten);
+    if (ds.length < 3) return nghiaViet(ten);
     var dung = chon(ds);
     var sai = khac(ds, 2, dung);
-    function oHinh(x) { return '<span class="anh-tu">' + x.e + '</span>'; }
+    function oHinh(x) { return '<span class="anh-tu">' + anhCua(x) + '</span>'; }
     return {
       prompt: 'Từ này là hình nào?',
       art: '<span class="tu-to">' + tuVaPhienAm(dung.en) + '</span>',
@@ -204,6 +256,9 @@
     CHU_DE_CHU: CHU_DE_CHU,
     tuCua: tuCua,
     tuCuaCaChu: tuCuaCaChu,
+    tuCuaAnh: tuCuaAnh,
+    anhCua: anhCua,
+    coAnh: coAnh,
     nhinChon: nhinChon,
     ngheChon: ngheChon,
     tuChonHinh: tuChonHinh,

@@ -46,7 +46,19 @@
       { name: 'Trái cây', gen: A.tron('trái cây') },
       { name: 'Màu sắc', gen: A.tron('màu sắc') },
       { name: 'Số đếm', gen: A.tron('số đếm') },
-      { name: 'Trộn tất cả', gen: A.tron(null) }
+      { name: 'Trộn tất cả', gen: A.tron(null) },
+      /* Bốn mức dưới là của tầng từ xưa nay chỉ có chữ. Giờ chúng đã có hình
+         riêng nên chơi được kiểu nhìn hình, nhưng chỉ nhận những chủ đề mà
+         nhìn hình là đoán ra đúng từ — tính từ vẽ theo cặp đối lập hay ngày
+         tháng vẽ thành cảnh sinh hoạt thì bé không có cách nào chọn đúng,
+         TiengAnh tự lùi mấy chủ đề đó về câu hỏi nghĩa.
+
+         Thêm vào CUỐI danh sách chứ không chen vào giữa: tiến độ của bé lưu
+         theo số thứ tự mức, chen vào giữa là lệch hết. */
+      { name: 'Việc hằng ngày', gen: A.tron('việc hằng ngày') },
+      { name: 'Động từ', gen: A.tron('động từ thường gặp') },
+      { name: 'Vị trí', gen: A.tron('vị trí và hướng') },
+      { name: 'Sức khoẻ', gen: A.tron('sức khoẻ') }
     ]
   });
 </script>

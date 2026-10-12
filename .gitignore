@@ -1,2 +1,6 @@
 # thư mục cấu hình của công cụ trên máy, không thuộc về trang web
 .claude/
+
+# Tấm gốc do AI vẽ, mỗi tấm ~3MB, 36 tấm là gần 100MB. Cắt xong là xong
+# việc của nó nên không đưa vào repo — các đợt trước cũng vậy.
+assets/generated-image-*.png

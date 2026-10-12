@@ -1,23 +1,29 @@
-# Hình còn thiếu cho trang học tiếng Anh
+# Hình cho trang học tiếng Anh
 
-Trang hiện có **182 hình**. Tài liệu này gom những từ còn
-thiếu, chia sẵn thành từng tấm 16 hình kèm prompt để nhờ AI vẽ.
+**Đã xong: 571 hình của 36 tấm đều đã cắt và nối vào trang.** Tài liệu này giữ
+lại để tra cứu — ô nào của tấm nào ứng với từ gì, và prompt đã dùng để xin tấm.
 
-**Tổng: 571 hình, chia 36 tấm.**
+Hiện trạng kho hình:
 
-## Cách làm cho hình nét
+| | Số từ |
+|---|---|
+| Tầng từ có emoji | 295/295 đều có hình |
+| Tầng từ chỉ có chữ | 344/408 có hình |
+| Còn để nguyên dạng chữ | 64 |
 
-Xin tấm **2048×2048**, lưới **4×4** (16 hình). Mỗi hình được ~500px.
-Mấy đợt trước xin tấm 1254px nên mỗi hình chỉ ~300px, tôi phải phóng lên mới đủ nét.
-Tấm 2048px thì cắt ra là dùng thẳng, không phải phóng.
+64 từ còn lại là `and`, `but`, `because`, mấy từ để hỏi và mấy mẫu câu dài —
+xem mục cuối tài liệu. Vẽ ra bé vẫn phải đọc chữ mới hiểu nên để vậy thì hơn.
 
-Hai điều tấm trước hay sai, prompt dưới đã nhắc kỹ:
-nền phải **trong suốt thật**, và **tuyệt đối không kẻ khung ô** — có kẻ khung là tôi phải dò đường kẻ rồi cắt theo, mất công hơn.
+## Lưu ý cho đợt sau
 
-Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lượt.
+Bộ sinh ảnh **chặn khổ tấm ở 1254×1254**, xin 2048 cũng chỉ ra 1254. Một tấm
+4×4 vì vậy chỉ cho ~300px mỗi hình, tôi phải phóng lên 400px mới đủ cho chỗ
+hiển thị. Muốn hình nét hơn nữa thì phải **xin ít hình mỗi tấm** — 2×2 cho
+~620px một hình — chứ xin tấm to hơn là vô ích.
 
-Ngại cuộn tìm thì mỗi tấm còn có một tệp riêng trong thư mục `promp-hinh/`
-(`tam-01.txt`, `tam-02.txt`…) — mở ra chọn tất rồi dán.
+Tấm xuất ra **không có nền trong suốt thật**: AI vẽ luôn ô ca-rô vào ảnh. Tôi
+đã có bộ tự dò hai tông ca-rô rồi bóc ra nên không sao, nhưng prompt vẫn cứ
+giữ dòng đòi nền trong suốt, được thì đỡ việc.
 
 ---
 

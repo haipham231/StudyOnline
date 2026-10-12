@@ -2273,7 +2273,7 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 
 /* hình trong câu hỏi và trong ô chọn */
 .anh-to { font-size: clamp(110px, 40vw, 160px); line-height: 1.05; }
-.choice .anh-tu { display: block; font-size: clamp(44px, 13vw, 62px); line-height: 1.15; }
+.choice .anh-tu { display: block; font-size: clamp(56px, 18vw, 78px); line-height: 1.12; }
 
 /* nhãn tiếng Anh dưới hình: ba cột trên khổ 360px chỉ còn ~100px mỗi ô nên
    chữ phải nhỏ và được phép xuống dòng */

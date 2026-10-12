@@ -47,20 +47,24 @@
 
   function ve() {
     var t = bo[i];
+    // TiengAnh.anhCua lo cả hai tầng từ: tầng có emoji trả về emoji, tầng chỉ
+    // có chữ trả thẳng thẻ ảnh. Từ nào vẫn chưa có hình thì mặt trước hiện
+    // nghĩa tiếng Việt như trước.
+    var anh = window.TiengAnh && TiengAnh.anhCua ? TiengAnh.anhCua(t) : t.e;
     goc.innerHTML =
       '<div class="panel the-khung">' +
         '<div class="dem-the">' + (i + 1) + ' / ' + bo.length + '</div>' +
         '<div class="the-tu' + (datLat ? ' da-lat' : '') + '" id="the" role="button" tabindex="0"' +
              ' aria-label="Bấm để lật thẻ">' +
           '<div class="mat truoc">' +
-            (t.e ? '<span class="anh-the">' + hv(t.e) + '</span>'
+            (anh ? '<span class="anh-the">' + hv(anh) + '</span>'
                  : '<span class="chu-the">' + t.vi + '</span>') +
             '<span class="goi-y">Bấm để lật</span></div>' +
           '<div class="mat sau"><span class="tu-anh-to">' + t.en + '</span>' +
             (window.PhienAm && PhienAm.cua(t.en)
               ? '<span class="phien-am-to">' + PhienAm.cua(t.en) + '</span>' : '') +
             '<span class="nghia-viet">' + t.vi + '</span>' +
-            (t.e ? '<span class="anh-nho">' + hv(t.e) + '</span>' : '') + '</div>' +
+            (anh ? '<span class="anh-nho">' + hv(anh) + '</span>' : '') + '</div>' +
         '</div>' +
         '<div class="hang-nut">' +
           '<button class="btn phu" id="truoc" type="button">← Trước</button>' +

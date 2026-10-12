@@ -85,12 +85,17 @@
 
   veNhom('Thẻ từ có hình', 'kieu-hinh', dsThe);
 
-  // Từ không có hình nào tả đúng (động từ, tính từ, mẫu câu) để riêng một nhóm,
-  // thẻ của chúng hiện chữ thay cho hình.
+  /* Nhóm từ không emoji nào tả đúng: động từ, tính từ, ngày tháng, mẫu câu.
+
+     Trước đây thẻ của nhóm này hiện chung một biểu tượng 🔡 vì không có hình.
+     Nay mỗi từ đều có hình riêng nên lấy hình của từ đầu tiên làm mặt thẻ,
+     nhìn cho ăn với nhóm trên. Chủ đề nào vẫn chưa có hình thì giữ 🔡. */
   var dsChu = [];
   Object.keys(TiengAnh.CHU_DE_CHU).forEach(function (ten, k) {
     var tu = TiengAnh.CHU_DE_CHU[ten];
-    dsChu.push(taoThe('the-tu.html?cd=' + encodeURIComponent(ten), '🔡',
+    var coAnh = null;
+    for (var i = 0; i < tu.length && !coAnh; i++) coAnh = TiengAnh.anhCua(tu[i]);
+    dsChu.push(taoThe('the-tu.html?cd=' + encodeURIComponent(ten), coAnh || '🔡',
       ten.charAt(0).toUpperCase() + ten.slice(1), tu.length + ' từ', MAU[(k + 2) % MAU.length]));
   });
   veNhom('Thẻ từ chữ — động từ, tính từ, mẫu câu', 'kieu-sticker', dsChu);
