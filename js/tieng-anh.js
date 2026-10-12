@@ -151,6 +151,28 @@
     };
   }
 
+  /* --- hiện từ tiếng Anh, chọn hình đúng ---
+     Khác ngheChon ở chỗ hiện hẳn mặt chữ chứ không chỉ đọc lên, nên dùng được
+     cả ở nơi không có nút loa. Nút chọn chỉ có hình, không chữ — bé nhìn hình
+     mà đoán nghĩa của từ. */
+
+  function tuChonHinh(ten) {
+    var ds = tuCua(ten);
+    var dung = chon(ds);
+    var sai = khac(ds, 2, dung);
+    function oHinh(x) { return '<span class="anh-tu">' + x.e + '</span>'; }
+    return {
+      prompt: 'Từ này là hình nào?',
+      art: '<span class="tu-to">' + tuVaPhienAm(dung.en) + '</span>',
+      choices: Q.shuffle([dung, sai[0], sai[1]].filter(Boolean).map(oHinh)),
+      answer: oHinh(dung),
+      cols: 3,
+      speak: dung.en,
+      tieng: 'en',
+      mach: 'Từ chọn hình'
+    };
+  }
+
   /* --- từ tiếng Anh này nghĩa là gì --- */
 
   function nghiaViet(ten) {
@@ -184,6 +206,7 @@
     tuCuaCaChu: tuCuaCaChu,
     nhinChon: nhinChon,
     ngheChon: ngheChon,
+    tuChonHinh: tuChonHinh,
     nghiaViet: nghiaViet,
     tron: tron
   };

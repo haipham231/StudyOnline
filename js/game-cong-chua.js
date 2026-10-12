@@ -75,6 +75,26 @@
   var QUAI = ['nhot', 'yeu-tinh', 'ca-sau', 'thuy-linh', 'golem',
               'yeti', 'bo-cap', 'xuong-rong', 'quy-lua', 'rong-bang'];
 
+  /* Thỉnh thoảng chen một câu từ vựng tiếng Anh cho bé ôn hai thứ trong một
+     lượt chơi. Trộn ở sinhCau() chứ không nhét vào mảng de của từng chặng:
+     MucDo.de() cắt bớt mảng de ở mức Dễ, nhét vào đó thì mức Dễ mất sạch câu
+     tiếng Anh. */
+  var CHU_DE_ANH = ['thú nuôi và vật nuôi', 'trái cây', 'rau củ',
+                    'màu sắc và hình khối', 'đồ ăn và đồ uống', 'phương tiện',
+                    'chim và côn trùng', 'dưới biển', 'thú rừng'];
+  var TI_LE_ANH = { de: 0.25, vua: 0.33, kho: 0.33 };
+  var CO_ANH = true;   // trang nào không muốn thì truyền tiengAnh: false
+
+  function cauTiengAnh() {
+    var TA = global.TiengAnh;
+    if (!TA) return null;
+    var cd = Q.pick(CHU_DE_ANH.filter(function (k) {
+      return TA.CHU_DE[k] && TA.CHU_DE[k].length >= 3;
+    }));
+    if (!cd) return null;
+    return Math.random() < 0.5 ? TA.nhinChon(cd) : TA.tuChonHinh(cd);
+  }
+
   function anh(duong, cls) {
     return '<img class="' + cls + '" src="' + GOC + 'assets/cong-chua/' + duong +
       '" alt="" draggable="false">';
@@ -170,21 +190,29 @@
 
   /* ---------- Vào một màn ---------- */
 
-  function vaoMan(i) {
+  function dungVan(i, muc) {
     var man = MAN[i];
-    var muc = global.MucDo ? global.MucDo.doc(STORE) : 'vua';
+    if (!muc) muc = global.MucDo ? global.MucDo.doc(STORE) : 'vua';
     var soCau = global.MucDo ? global.MucDo.soCau(man.soCau, muc) : man.soCau;
     var soTim = global.MucDo ? global.MucDo.mang(SO_TIM, muc) : SO_TIM;
-    van = { man: man, chiSo: i, buoc: 0, tim: soTim, soTim: soTim, soCau: soCau,
+    return {
+      man: man, chiSo: i, buoc: 0, tim: soTim, soTim: soTim, soCau: soCau,
+      muc: muc, coAnh: CO_ANH && !!global.TiengAnh,
       deBo: global.MucDo ? global.MucDo.de(man.de, muc) : man.de,
-      daRa: {}, batDau: Date.now() };
+      daRa: {}, batDau: Date.now()
+    };
+  }
+
+  function vaoMan(i) {
+    van = dungVan(i);
     raCauHoi();
   }
 
   function sinhCau() {
     var q, khoa, lan = 0;
+    var tiLe = van.coAnh ? (TI_LE_ANH[van.muc] || 0) : 0;
     do {
-      q = Q.pick(van.deBo)();
+      q = (Math.random() < tiLe && cauTiengAnh()) || Q.pick(van.deBo)();
       khoa = (q.prompt || '') + (q.text || '') + (q.after || '') + q.answer;
       lan++;
     } while (van.daRa[khoa] && lan < 30);
@@ -296,6 +324,9 @@
       nhanNop: '⚔️ Tấn công',
       boc: 'o-hoi',
       khoaSan: van.dangChuyen,
+      // câu từ vựng mới cần loa; câu toán thì không, kẻo thừa một nút
+      coLoa: q.tieng === 'en',
+      doc: Q.docTo,
       khiTraLoi: function (dung, _daNhap, phanHoi) { cham(dung, q, phanHoi); }
     });
   }
@@ -322,7 +353,9 @@
 
     van.tim -= 1;
     phanHoi.className = 'feedback pop bad';
-    phanHoi.innerHTML = '💔 Chưa đúng — đáp án là <b>' + q.answer + '</b>';
+    // đáp án tiếng Anh là cả một cụm HTML có thẻ hình; lột thẻ ra rồi mới in
+    phanHoi.innerHTML = '💔 Chưa đúng — đáp án là <b>' +
+      String(q.answer).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() + '</b>';
 
     setTimeout(function () {
       if (van.tim <= 0) return thuaMan();
@@ -416,14 +449,12 @@
       if (cauHinh && cauHinh.man) { MAN = cauHinh.man; this.MAN = MAN; }
       if (!MAN.length) { MAN = boDeMacDinh(); this.MAN = MAN; }
       if (cauHinh && cauHinh.khoa) STORE = cauHinh.khoa;
+      if (cauHinh && cauHinh.tiengAnh === false) CO_ANH = false;
       goc = document.getElementById(idGoc || 'game');
       veBanDo();
     },
     // dành cho kiểm thử tự động
-    _moVan: function (i) {
-      van = { man: MAN[i], chiSo: i, buoc: 0, tim: SO_TIM, soTim: SO_TIM,
-        soCau: MAN[i].soCau, deBo: MAN[i].de, daRa: {} };
-    },
+    _moVan: function (i, muc) { van = dungVan(i, muc); },
     _cauTiep: function () { return sinhCau(); }
   };
 })(window);
