@@ -25,11 +25,11 @@
 <script>
   function cauHoi(soLuaChon) {
     var con = Quiz.pick(ConVat.coTiengKeu);
-    var sai = ConVat.nhieu(ConVat.DS, soLuaChon - 1, function (c) { return c.e; }, con.e);
+    var sai = ConVat.nhieu(ConVat.DS, soLuaChon - 1, ConVat.khoaCon, ConVat.khoaCon(con));
 
-    var dung = ConVat.nut(con.e, con.ten);
+    var dung = ConVat.nut(ConVat.anhCon(con), con.ten);
     var luaChon = Quiz.shuffle([dung].concat(sai.map(function (c) {
-      return ConVat.nut(c.e, c.ten);
+      return ConVat.nut(ConVat.anhCon(c), c.ten);
     })));
 
     return {

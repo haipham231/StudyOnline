@@ -64,7 +64,25 @@
     { ten: 'con dơi',    e: '🦇', an: { ten: 'quả xoài',    e: '🥭' }, o: 'troi', keu: null },
     { ten: 'con kiến',   e: '🐜', an: { ten: 'quả dâu tây', e: '🍓' }, o: 'can',  keu: null },
     { ten: 'bọ rùa',     e: '🐞', an: { ten: 'lá cây',      e: '🍃' }, o: 'can',  keu: null },
-    { ten: 'ốc sên',     e: '🐌', an: { ten: 'quả dưa chuột', e: '🥒' }, o: 'can', keu: null }
+    { ten: 'ốc sên',     e: '🐌', an: { ten: 'quả dưa chuột', e: '🥒' }, o: 'can', keu: null },
+
+    /* --- có hình riêng, không emoji nào tả đúng --- */
+    { ten: 'con hổ',        hinh: 'them/ho',             an: { ten: 'miếng thịt', e: '🥩' }, o: 'can',  keu: 'gầm' },
+    { ten: 'con báo',       hinh: 'them/bao',            an: { ten: 'miếng thịt', e: '🥩' }, o: 'can',  keu: null },
+    { ten: 'gấu bắc cực',   hinh: 'them/gau-bac-cuc',    an: { ten: 'con cá',     e: '🐟' }, o: 'can',  keu: null },
+    { ten: 'gấu nâu',       hinh: 'them/gau-nau',        an: { ten: 'mật ong',    e: '🍯' }, o: 'can',  keu: null },
+    { ten: 'gấu mèo',       hinh: 'them/gau-meo',        an: { ten: 'quả táo',    e: '🍎' }, o: 'can',  keu: null },
+    { ten: 'con hải ly',    hinh: 'them/hai-ly',         an: { ten: 'cây tre',    e: '🎋' }, o: 'nuoc', keu: null },
+    { ten: 'nai sừng tấm',  hinh: 'them/nai-sung-tam',   an: { ten: 'lá cây',     e: '🍃' }, o: 'can',  keu: null },
+    { ten: 'sóc đỏ',        hinh: 'them/soc-do',         an: { ten: 'hạt dẻ',     e: '🌰' }, o: 'can',  keu: null },
+    { ten: 'cá voi xanh',   hinh: 'them/ca-voi-xanh',    an: { ten: 'con tôm',    e: '🦐' }, o: 'nuoc', keu: null },
+    { ten: 'cá voi lưng gù', hinh: 'them/ca-voi-lung-gu', an: { ten: 'con tôm',   e: '🦐' }, o: 'nuoc', keu: null },
+    { ten: 'cá nhà táng',   hinh: 'them/ca-nha-tang',    an: { ten: 'con mực',    e: '🦑' }, o: 'nuoc', keu: null },
+    { ten: 'cá voi sát thủ', hinh: 'them/ca-voi-sat-thu', an: { ten: 'con cá nhỏ', e: '🐠' }, o: 'nuoc', keu: null },
+    { ten: 'lươn biển',     hinh: 'them/luon-bien',      an: { ten: 'con tôm',    e: '🦐' }, o: 'nuoc', keu: null },
+    { ten: 'sao biển',      hinh: 'them/sao-bien',       an: { ten: 'con sò',     e: '🐚' }, o: 'nuoc', keu: null },
+    { ten: 'nhím biển',     hinh: 'them/nhim-bien',      an: { ten: 'lá rau',     e: '🥬' }, o: 'nuoc', keu: null },
+    { ten: 'cá đuối',       hinh: 'them/ca-duoi',        an: { ten: 'con cua',    e: '🦀' }, o: 'nuoc', keu: null }
   ];
 
   var NOI_SONG = {
@@ -72,6 +90,18 @@
     can:  { e: '🌳', ten: 'trên cạn' },
     troi: { e: '☁️', ten: 'trên trời' }
   };
+
+  /* Hình của một con: con nào có trường hinh thì trỏ thẳng vào tệp ảnh (mấy
+     con không có emoji nào tả đúng), còn lại vẫn đi qua emoji như cũ. */
+  function anhCon(con) {
+    if (con.hinh && global.HinhVe && global.HinhVe.veTen) {
+      return global.HinhVe.veTen(con.hinh);
+    }
+    return con.e;
+  }
+
+  // Khoá phân biệt hai con: dùng cho chỗ bốc đáp án nhiễu, tránh trùng nhau
+  function khoaCon(con) { return con.hinh || con.e; }
 
   // Nút lựa chọn: hình to kèm nhãn chữ nhỏ cho người lớn đọc cùng bé
   function nut(emoji, nhan) {
@@ -95,13 +125,15 @@
     if (con.lt && global.HoatHinh) {
       return global.HoatHinh.ve('con-vat/' + con.lt, cao || 120, null);
     }
-    return '<span class="nhun">' + con.e + '</span>';
+    return '<span class="nhun">' + anhCon(con) + '</span>';
   }
 
   global.ConVat = {
     veCon: veCon,
     DS: CON_VAT,
     NOI_SONG: NOI_SONG,
+    anhCon: anhCon,
+    khoaCon: khoaCon,
     nut: nut,
     nhieu: nhieu,
     coTiengKeu: CON_VAT.filter(function (c) { return c.keu; })

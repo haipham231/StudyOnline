@@ -57,7 +57,43 @@
     '🍎': 'qua-rau/tao', '🍌': 'qua-rau/chuoi', '🍊': 'qua-rau/cam', '🍇': 'qua-rau/nho',
     '🍉': 'qua-rau/dua-hau', '🍓': 'qua-rau/dau-tay', '🍍': 'qua-rau/dua', '🥭': 'qua-rau/xoai',
     '🥕': 'qua-rau/ca-rot', '🌽': 'qua-rau/ngo', '🍅': 'qua-rau/ca-chua', '🥔': 'qua-rau/khoai-tay',
-    '🥒': 'qua-rau/dua-chuot', '🥦': 'qua-rau/bong-cai', '🍄': 'qua-rau/nam', '🌶️': 'qua-rau/ot'
+    '🥒': 'qua-rau/dua-chuot', '🥦': 'qua-rau/bong-cai', '🍄': 'qua-rau/nam', '🌶️': 'qua-rau/ot',
+
+    /* món ăn của con vật */
+    '🦴': 'thuc-an/xuong', '🐟': 'thuc-an/ca', '🍯': 'thuc-an/mat-ong',
+    '🧀': 'thuc-an/pho-mai', '🌿': 'thuc-an/co', '🌾': 'thuc-an/thoc',
+    '🎋': 'thuc-an/tre', '🍃': 'thuc-an/la-cay', '🪱': 'thuc-an/giun',
+    '🥩': 'thuc-an/thit', '🪰': 'thuc-an/ruoi', '🌼': 'thuc-an/hoa',
+    '🥬': 'thuc-an/la-rau', '🌰': 'thuc-an/hat-de',
+    '🐸': 'thuc-an/ech', '🦗': 'thuc-an/chau-chau',
+
+    /* đồ vật quen thuộc */
+    '🎒': 'do-vat/cap-sach', '📖': 'do-vat/sach', '✏️': 'do-vat/but-chi',
+    '🥤': 'do-vat/coc-nuoc', '☂️': 'do-vat/cai-o', '⚽': 'do-vat/qua-bong',
+    '🧸': 'do-vat/gau-bong', '🎈': 'do-vat/bong-bay', '🪑': 'do-vat/cai-ghe',
+    '🛏️': 'do-vat/cai-giuong', '💡': 'do-vat/bong-den', '🌀': 'do-vat/quat-may',
+    '🥣': 'do-vat/bat', '🥄': 'do-vat/thia', '🔑': 'do-vat/chia-khoa',
+    '🕐': 'do-vat/dong-ho',
+
+    /* gia đình và cơ thể */
+    '👴': 'nguoi/ong', '👵': 'nguoi/ba', '👨': 'nguoi/bo', '👩': 'nguoi/me',
+    '👦': 'nguoi/anh-trai', '👧': 'nguoi/chi-gai', '👶': 'nguoi/em-be',
+    '👨‍👩‍👧‍👦': 'nguoi/ca-nha',
+    '👁️': 'nguoi/mat', '👂': 'nguoi/tai', '👃': 'nguoi/mui', '👄': 'nguoi/mieng',
+    '✋': 'nguoi/ban-tay', '🦶': 'nguoi/ban-chan', '💇': 'nguoi/toc', '🦷': 'nguoi/rang',
+
+    /* quần áo và đồ ăn */
+    '👕': 'mac-an/ao-phong', '👖': 'mac-an/quan', '👗': 'mac-an/vay',
+    '🧢': 'mac-an/mu', '👟': 'mac-an/giay', '🧦': 'mac-an/tat',
+    '🧣': 'mac-an/khan', '🧤': 'mac-an/gang-tay', '🍚': 'mac-an/com',
+    '🍜': 'mac-an/pho', '🍞': 'mac-an/banh-mi', '🥛': 'mac-an/sua',
+    '🥚': 'mac-an/trung', '🧁': 'mac-an/banh-ngot', '🍬': 'mac-an/keo',
+    '💧': 'mac-an/giot-nuoc',
+
+    /* thêm thú và sinh vật biển */
+    '🐋': 'them/ca-voi-xanh', '🐅': 'them/ho', '🐆': 'them/bao',
+    '🐻‍❄️': 'them/gau-bac-cuc', '🦝': 'them/gau-meo', '🦫': 'them/hai-ly',
+    '🫎': 'them/nai-sung-tam'
   };
 
   // Emoji có thể kèm hoặc không kèm ký tự biến thể U+FE0F; tra cả hai kiểu.
@@ -72,6 +108,14 @@
   }
 
   function co(e) { return !!tim(e); }
+
+  /* Vẽ thẳng theo đường dẫn trong assets/sinh-vat, dùng cho thứ không có
+     emoji nào tả đúng. */
+  function veTen(duong, cls) {
+    if (!duong) return null;
+    return '<img class="' + (cls || 'hinh-ve') + '" src="' + GOC + 'assets/sinh-vat/' +
+      duong + '.png" alt="" draggable="false">';
+  }
 
   function ve(e, cls) {
     var d = tim(e);
@@ -98,5 +142,5 @@
     });
   }
 
-  global.HinhVe = { co: co, ve: ve, doi: doi, KHO: KHO, GOC: GOC };
+  global.HinhVe = { co: co, ve: ve, veTen: veTen, doi: doi, KHO: KHO, GOC: GOC };
 })(window);
