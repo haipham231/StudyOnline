@@ -541,7 +541,7 @@ footer { text-align: center; margin-top: 40px; color: var(--muted); font-size: 1
   margin-bottom: 18px;
 }
 
-.panel.kids .art { font-size: clamp(60px, 21vw, 112px); line-height: 1.12; letter-spacing: 6px; margin: 6px 0 18px; }
+.panel.kids .art { font-size: clamp(72px, 30vw, 128px); line-height: 1.12; letter-spacing: 6px; margin: 6px 0 18px; }
 .panel.kids .art svg { width: clamp(90px, 26vw, 140px); height: auto; }
 
 .panel.kids .question { display: none; }          /* bé chưa cần ô đáp án dạng chữ */
@@ -580,7 +580,9 @@ footer { text-align: center; margin-top: 40px; color: var(--muted); font-size: 1
 
 .panel.kids.khong-chu .choice {
   position: relative;
-  padding: 22px 10px;
+  /* đệm hai bên hẹp vì ba ô chia nhau một khổ 375px: mỗi bên 10px là mất
+     40px bề ngang hình, mà bề ngang mới là thứ bó cỡ hình ở đây */
+  padding: 20px 4px;
   background: linear-gradient(180deg, #fff, #f3f6ff);
   box-shadow: 0 7px 0 var(--line), inset 0 0 0 2px #e6ecff;
   font-size: clamp(52px, 16vw, 78px);
@@ -2239,7 +2241,7 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
   color: #fff;
 }
 
-.the-tu .anh-the { font-size: 186px; line-height: 1; }
+.the-tu .anh-the { font-size: 215px; line-height: 1; }
 .the-tu .goi-y { color: var(--muted); font-size: 14.5px; font-weight: 800; }
 
 .the-tu .tu-anh-to {
@@ -2270,7 +2272,7 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 .btn.tron-lai { margin-top: 12px; background: var(--soft); color: var(--ink); box-shadow: 0 5px 0 var(--line); }
 
 /* hình trong câu hỏi và trong ô chọn */
-.anh-to { font-size: clamp(88px, 24vw, 132px); line-height: 1.05; }
+.anh-to { font-size: clamp(110px, 40vw, 160px); line-height: 1.05; }
 .choice .anh-tu { display: block; font-size: clamp(44px, 13vw, 62px); line-height: 1.15; }
 
 /* nhãn tiếng Anh dưới hình: ba cột trên khổ 360px chỉ còn ~100px mỗi ô nên
@@ -2281,7 +2283,7 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 @media (max-width: 480px) {
   /* thẻ cao thêm và hình to hẳn lên — trước thừa nhiều khoảng trống quá */
   .the-tu { height: clamp(300px, 46vh, 360px); }
-  .the-tu .anh-the { font-size: 168px; }
+  .the-tu .anh-the { font-size: 215px; }
   .the-khung { padding: 16px 12px 18px; }
   .hang-nut .btn { padding: 12px 16px; font-size: 16px; }
 }
@@ -3839,12 +3841,25 @@ body.khoa-cuon { overflow: hidden; }
 .choice .anh-tu .hinh-ve {
   height: auto;
   width: auto;
-  max-width: 94%;
+  /* Trần cứng 200px cho cạnh dài.
+
+     Ảnh trong kho sinh-vat có cạnh dài 400px. Màn hình điện thoại thường là
+     DPR 2, tức vẽ 200px CSS là đã ăn hết 400 pixel thật — vẽ to hơn nữa thì
+     trình duyệt phải phóng lên, viền nhoè ra đúng kiểu "bị bể". Bé thích hình
+     to, nhưng to mà bể thì không còn đẹp, nên chặn ở ngưỡng vừa đủ nét.
+
+     Trần này chỉ chặn ẢNH. Emoji dự phòng ăn theo font-size nên vẫn to như cũ,
+     và vì emoji là hình vector nên to bao nhiêu cũng nét.
+
+     Muốn vẽ to hơn 200px mà vẫn nét thì phải có ảnh gốc nhiều pixel hơn: xin
+     AI vẽ mỗi tấm ít hình lại (2×2 cho ~620px một hình thay vì 4×4). */
+  max-width: min(94%, 200px);
+  max-height: 200px;
 }
 
-.panel.kids .art .hinh-ve { max-height: 1.62em; }
-.panel.kids.khong-chu .choice .hinh-ve { max-height: 1.46em; }
-.the-tu .anh-the .hinh-ve { max-height: 1em; }
-.the-tu .anh-nho .hinh-ve { max-height: 1em; }
-.art .anh-to .hinh-ve { max-height: 1em; }
-.choice .anh-tu .hinh-ve { max-height: 1em; }
+.panel.kids .art .hinh-ve { max-height: min(1.62em, 200px); }
+.panel.kids.khong-chu .choice .hinh-ve { max-height: min(1.46em, 200px); max-width: min(100%, 200px); }
+.the-tu .anh-the .hinh-ve { max-height: min(1em, 200px); }
+.the-tu .anh-nho .hinh-ve { max-height: min(1em, 200px); }
+.art .anh-to .hinh-ve { max-height: min(1em, 200px); }
+.choice .anh-tu .hinh-ve { max-height: min(1em, 200px); }

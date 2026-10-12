@@ -118,19 +118,30 @@
 
   function co(e) { return !!tim(e); }
 
+  /* Dựng thẻ ảnh.
+
+     Ảnh ở đây là WebP: cùng một con vật, bản WebP 400px còn nhẹ hơn bản PNG
+     200px cũ, nên hình vừa to gấp đôi vừa đỡ tốn mạng. Máy quá cũ không đọc
+     được WebP thì onerror tự lùi về bản .png vẫn nằm cạnh đó, bé không thấy
+     ô ảnh vỡ. */
+  var LUI = ' onerror="this.onerror=null;this.src=this.src.replace(\'.webp\',\'.png\')"';
+
+  function the(duong, cls) {
+    return '<img class="' + (cls || 'hinh-ve') + '" src="' + GOC + 'assets/sinh-vat/' +
+      duong + '.webp" alt="" draggable="false"' + LUI + '>';
+  }
+
   /* Vẽ thẳng theo đường dẫn trong assets/sinh-vat, dùng cho thứ không có
      emoji nào tả đúng. */
   function veTen(duong, cls) {
     if (!duong) return null;
-    return '<img class="' + (cls || 'hinh-ve') + '" src="' + GOC + 'assets/sinh-vat/' +
-      duong + '.png" alt="" draggable="false">';
+    return the(duong, cls);
   }
 
   function ve(e, cls) {
     var d = tim(e);
     if (!d) return null;
-    return '<img class="' + (cls || 'hinh-ve') + '" src="' + GOC + 'assets/sinh-vat/' + d +
-      '.png" alt="" draggable="false">';
+    return the(d, cls);
   }
 
   /* Đổi mọi emoji đã có ảnh trong một đoạn HTML thành thẻ ảnh. Chỉ đụng tới

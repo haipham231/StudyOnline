@@ -350,7 +350,8 @@
       ranDS.forEach(function (ran) {
         if (!ran.nut) {
           ran.nut = el('img', 'con-ran' + (ran.duoi ? ' ran-duoi' : ''));
-          ran.nut.src = GOC + 'assets/sinh-vat/rung/ran.png';
+          ran.nut.src = GOC + 'assets/sinh-vat/rung/ran.webp';
+          ran.nut.onerror = function () { this.onerror = null; this.src = GOC + 'assets/sinh-vat/rung/ran.png'; };
           ran.nut.alt = '';
         }
         ran.nut.style.width = Math.round(oRong * 0.72) + 'px';
