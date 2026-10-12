@@ -170,10 +170,11 @@
   function bayToi(i) {
     var chang = CHANG[i];
     var muc = global.MucDo ? global.MucDo.doc(STORE) : 'vua';
-    van = { chang: chang, chiSo: i, buoc: 0, nhienLieu: NHIEN_LIEU_DAU, daRa: {},
+    van = { chang: chang, chiSo: i, buoc: 0, nhienLieu: NHIEN_LIEU_DAU, daRa: {}, muc: muc,
       soCau: global.MucDo ? global.MucDo.soCau(chang.soCau, muc) : chang.soCau,
       phat: global.MucDo ? global.MucDo.phat(PHAT, muc) : PHAT,
       deBo: global.MucDo ? global.MucDo.de(chang.de, muc) : chang.de };
+    if (kieuMan(i) === 'me-cung') return roiXuongMeCung();
     raCauHoi();
   }
 
@@ -194,10 +195,41 @@
     ve();
   }
 
+  /* ---------- Cảnh rơi xuống mê cung ---------- */
+
+  function roiXuongMeCung() {
+    thaoPhim();
+    goc.innerHTML = '';
+    var chang = van.chang;
+    var khung = el('div', 'panel cat-canh san-vu-tru');
+
+    var canh = el('div', 'canh-roi');
+    canh.style.backgroundImage = 'url(' + V.duongNen(chang.nen) + ')';
+    canh.innerHTML = '<img class="phg-roi" src="' + V.GOC +
+      'assets/vu-tru/phg-nga.png" alt="" draggable="false">';
+    khung.appendChild(canh);
+
+    khung.appendChild(el('h2', null, '🧭 Mê cung ' + chang.ten));
+    khung.appendChild(el('p', 'lead',
+      'Phi thuyền trục trặc! Phi hành gia rơi xuống một mê cung dưới lòng <b>' +
+      chang.ten + '</b>. Muốn ra thì phải tìm đúng cửa.'));
+    khung.appendChild(el('p', 'luat',
+      '🔢 Tính ra đáp án rồi đi tới <b>cánh cửa mang số đó</b>. ' +
+      '🐍 Bị rắn cắn thì về chỗ xuất phát, nhưng không bị trừ gì cả.'));
+
+    var nut = el('button', 'btn go', '🔦 Bò dậy thôi!');
+    nut.type = 'button';
+    nut.addEventListener('click', raCauHoi);
+    khung.appendChild(el('div', 'actions')).appendChild(nut);
+
+    goc.appendChild(khung);
+  }
+
   /* ---------- Vẽ màn chơi ---------- */
 
-  // Chặng lẻ bắn tên lửa, chặng chẵn lái phi thuyền — xen kẽ cho đỡ chán.
-  function kieuMan(i) { return i % 2 === 0 ? 'ban' : 'lai'; }
+  // Ba kiểu màn xoay vòng cho đỡ chán: bắn quái, lái phi thuyền, rồi mê cung.
+  var KIEU = ['ban', 'lai', 'me-cung'];
+  function kieuMan(i) { return KIEU[i % KIEU.length]; }
 
   function ve(hieuUng) {
     var chang = van.chang;
@@ -223,14 +255,17 @@
 
     var kieu = kieuMan(van.chiSo);
     khung.appendChild(el('div', 'meta',
-      '<span>' + (kieu === 'ban' ? '🚀 Bắn quái' : '🛸 Lái phi thuyền') +
+      '<span>' + (kieu === 'ban' ? '🚀 Bắn quái'
+        : kieu === 'lai' ? '🛸 Lái phi thuyền' : '🧭 Mê cung') +
       ' · Câu ' + Math.min(van.buoc + 1, van.soCau) + ' / ' + van.soCau + '</span>' +
       '<span class="hits">🛰️ ' + van.buoc + '/' + van.soCau + '</span>'));
 
-    var man = kieu === 'ban' ? global.ManBan : global.ManLai;
+    var man = kieu === 'ban' ? global.ManBan
+      : kieu === 'lai' ? global.ManLai : global.ManMeCung;
     van.oTraLoi = man.ve(khung, van.cau, {
       khoaSan: van.dangChuyen,
       nen: chang.nen,
+      muc: van.muc,
       vat: chang.vat || V.vatTheoNen(chang.nen),
       khiTraLoi: function (dung, _daChon, phanHoi) { cham(dung, van.cau, phanHoi); }
     });

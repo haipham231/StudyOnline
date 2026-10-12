@@ -2940,7 +2940,7 @@ body.khoa-cuon { overflow: hidden; }
 .panel.san-vu-tru .feedback.bad { color: #ff9a9a; }
 .panel.san-vu-tru .nhien-lieu { color: rgba(255, 255, 255, 0.9); }
 
-.san-ban, .san-lai {
+.san-ban, .san-lai, .san-me-cung {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -3634,3 +3634,163 @@ body.khoa-cuon { overflow: hidden; }
 }
 
 .art .tu-to .phien-am { font-size: 0.42em; }
+
+/* ===== Màn mê cung ngoài hành tinh ===== */
+
+/* --- ba cánh cửa, nằm trên mê cung ---
+   Nhãn đáp án có khi là cả cụm HTML (phân số lớp 5), nhét vào một ô lưới ba
+   chục pixel thì không đọc nổi, nên cửa vẽ thành dải ngang phía trên. */
+
+.dai-cua {
+  position: relative;
+  height: 58px;
+  margin-bottom: 2px;
+}
+
+.mot-cua {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  max-width: 116px;
+  height: 58px;
+  transform: translateX(-50%);
+  background: var(--cua-thuong) no-repeat center / 100% 100%;
+  color: #15306b;
+  font-family: "Baloo 2", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.mot-cua .cua-nhan {
+  margin-top: 6%;
+  padding: 0 6px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.dai-cua.nhan-dai .mot-cua { font-size: 13.5px; }
+.dai-cua.nhan-dai .cua-nhan { white-space: normal; line-height: 1.15; }
+.dai-cua.nhan-rat-dai .mot-cua { font-size: 11.5px; }
+
+.mot-cua.mo-ra { background-image: var(--cua-mo); }
+.mot-cua.chan-lai { background-image: var(--cua-chan); }
+.mot-cua.chi-ra { animation: cua-chi 0.9s ease 3; }
+
+@keyframes cua-chi {
+  50% { filter: brightness(1.45) drop-shadow(0 0 10px #ffd96b); }
+}
+
+/* --- lưới mê cung --- */
+
+.san-dau.luoi-me {
+  flex: 1 1 auto;
+  min-height: 250px;
+  max-height: 520px;
+}
+
+.lop-me { position: absolute; }
+
+.lop-me .tuong { position: absolute; inset: 0; overflow: visible; }
+
+.lop-me .tuong path {
+  fill: none;
+  stroke: #9fd0ff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px rgba(122, 190, 255, 0.75));
+}
+
+.lop-me .o-dau,
+.lop-me .phg-me,
+.lop-me .con-ran {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.lop-me .o-dau { opacity: 0.85; height: auto; }
+
+.lop-me .phg-me { z-index: 3; transition: transform 0.13s linear; }
+
+.lop-me .phg-me .phg-hinh {
+  display: none;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.55));
+}
+
+.lop-me .phg-me.dang-ngam .hinh-ngam,
+.lop-me .phg-me.dang-trung .hinh-trung,
+.lop-me .phg-me.dang-nga .hinh-nga { display: block; }
+
+.lop-me .phg-me.bi-can { animation: phg-nhay-do 0.38s ease 2; }
+
+@keyframes phg-nhay-do {
+  50% { filter: drop-shadow(0 0 10px #ff6b6b) brightness(1.3); }
+}
+
+.lop-me .con-ran {
+  z-index: 2;
+  height: auto;
+  transition: transform 0.22s linear;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
+}
+
+.lop-me .con-ran.quay { transform-origin: center; }
+.lop-me .con-ran.ran-duoi { filter: drop-shadow(0 0 7px rgba(255, 107, 107, 0.9)); }
+
+/* --- khoá tay lái tới khi bé bấm "mình tính ra rồi" --- */
+
+.nut-mo-me { align-self: center; margin: 8px 0 2px; }
+
+.san-me-cung .tay-lai,
+.san-me-cung .meo-choi { opacity: 0.4; pointer-events: none; }
+
+.san-me-cung.da-mo .tay-lai,
+.san-me-cung.da-mo .meo-choi { opacity: 1; pointer-events: auto; }
+
+.san-me-cung:not(.da-mo) .luoi-me::after {
+  content: "Tính xong rồi bấm nút bên dưới nhé";
+  position: absolute;
+  inset: auto 8px 8px;
+  padding: 6px;
+  border-radius: 10px;
+  background: rgba(10, 12, 36, 0.72);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* --- cảnh rơi xuống mê cung --- */
+
+.canh-roi {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: calc(100% + 36px);
+  height: clamp(150px, 42vw, 200px);
+  margin: -20px -18px 14px;
+  border-radius: var(--r-lg) var(--r-lg) 18px 18px;
+  background: #141337 center / cover no-repeat;
+  overflow: hidden;
+}
+
+.canh-roi .phg-roi {
+  height: clamp(96px, 30vw, 140px);
+  width: auto;
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.6));
+  animation: phg-roi-xuong 2.6s ease-in-out infinite;
+}
+
+@keyframes phg-roi-xuong {
+  50% { transform: translateY(-8px) rotate(-4deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canh-roi .phg-roi, .mot-cua.chi-ra, .lop-me .phg-me.bi-can { animation: none; }
+  .lop-me .phg-me, .lop-me .con-ran { transition: none; }
+}
