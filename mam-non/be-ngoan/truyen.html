@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nghe kể chuyện — Bé ngoan</title>
+<meta name="description" content="Truyện đạo đức cho bé mầm non: máy kể bằng giọng nói, mỗi cảnh một hình, cuối truyện rút ra bài học.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>📖</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="index.html">← Quay lại</a>
+  <h1 id="ten-truyen">📖 Nghe kể chuyện</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/o-tra-loi.js"></script>
+<script src="../../js/hinh-ve.js"></script>
+<script src="../../js/quiz.js"></script>
+<script src="../../js/truyen-dao-duc.js"></script>
+<script src="../../js/ke-chuyen.js"></script>
+<script>
+  var goc = document.getElementById('quiz');
+  var ma = decodeURIComponent((location.search.match(/[?&]t=([^&]*)/) || [])[1] || '');
+  var truyen = TruyenDaoDuc.tim(ma) || TruyenDaoDuc.TRUYEN[0];
+
+  document.title = truyen.ten + ' — Bé ngoan';
+  document.getElementById('ten-truyen').textContent = '📖 ' + truyen.ten;
+
+  var KHOA = 'studyonline:be-ngoan';
+
+  /* Bé kể xong truyện nào thì truyện ấy mọc một bông hoa ngoài vườn. Lưu số
+     lần nghe chứ không chỉ lưu "đã xong", để sau có muốn khen bé nghe lại
+     nhiều lần thì đã có sẵn số liệu. */
+  function danhDauXong() {
+    try {
+      var da = JSON.parse(localStorage.getItem(KHOA) || '{}');
+      da[truyen.ma] = (da[truyen.ma] || 0) + 1;
+      localStorage.setItem(KHOA, JSON.stringify(da));
+    } catch (e) { /* chế độ riêng tư thì thôi, không chặn bé chơi */ }
+  }
+
+  var dangKe = null, dangHoi = null;
+
+  /* Ô trả lời chỉ có hình. Nhãn chữ trong dữ liệu là để người lớn và bộ test
+     đọc, tuyệt đối không đưa ra màn hình — bé mầm non chưa biết đọc. */
+  function oHinh(x) {
+    return '<span class="anh-tu">' + HinhVe.veTen(x.hinh) + '</span>';
+  }
+
+  function hoiBai() {
+    if (dangKe) { dangKe.dung(); dangKe = null; }
+    danhDauXong();
+
+    var bo = Quiz.shuffle(truyen.hoi.slice());
+    var k = 0, dung = 0;
+
+    function hoiTiep() {
+      if (dangHoi) { dangHoi.huy(); dangHoi = null; }
+      if (k >= bo.length) return khenNgoi();
+
+      goc.innerHTML = '';
+      var khung = document.createElement('div');
+      khung.className = 'panel kids khong-chu';
+      goc.appendChild(khung);
+
+      var dem = document.createElement('div');
+      dem.className = 'dem-the';
+      dem.textContent = 'Câu ' + (k + 1) + ' / ' + bo.length;
+      khung.appendChild(dem);
+
+      var h = bo[k];
+      var cau = {
+        prompt: h.de,
+        answer: oHinh(h.dung),
+        choices: Quiz.shuffle([h.dung].concat(h.sai).map(oHinh)),
+        cols: 3
+      };
+
+      dangHoi = OTraLoi.ve(khung, cau, {
+        coLoa: true,
+        doc: function (t) { Quiz.docTo(t, 'vi', {}); },
+        khiTraLoi: function (la) {
+          if (la) dung++;
+          k++;
+          setTimeout(hoiTiep, la ? 1100 : 1900);
+        }
+      });
+
+      Quiz.docTo(h.de, 'vi', {});
+    }
+
+    function khenNgoi() {
+      goc.innerHTML = '';
+      var khung = document.createElement('div');
+      khung.className = 'panel kids xong-truyen';
+      goc.appendChild(khung);
+
+      var loi = dung === bo.length
+        ? 'Bé trả lời đúng hết! Bé ngoan lắm.'
+        : 'Bé đã nghe hết truyện rồi. Giỏi lắm!';
+      khung.innerHTML =
+        '<div class="hoa-moi">' + HinhVe.veTen('thien-nhien-them/rose') + '</div>' +
+        '<h2>Bé trồng được một bông hoa</h2>' +
+        '<p class="lead">' + loi + '</p>' +
+        '<div class="hang-nut">' +
+          '<button class="btn phu" type="button" id="nghe-lai">🔁 Nghe lại truyện</button>' +
+          '<a class="btn chinh" href="index.html">Chọn truyện khác ▶</a>' +
+        '</div>';
+
+      document.getElementById('nghe-lai').addEventListener('click', keTruyen);
+      Quiz.docTo(loi, 'vi', {});
+    }
+
+    hoiTiep();
+  }
+
+  function keTruyen() {
+    if (dangHoi) { dangHoi.huy(); dangHoi = null; }
+    dangKe = KeChuyen.ke(goc, truyen, { xong: hoiBai });
+  }
+
+  keTruyen();
+
+  // rời trang giữa chừng thì ngắt giọng đọc, kẻo máy còn nói sang trang sau
+  window.addEventListener('pagehide', function () {
+    if (dangKe) dangKe.dung();
+    if (global_speech()) global_speech().cancel();
+  });
+  function global_speech() { return window.speechSynthesis || null; }
+</script>
+</body>
+</html>

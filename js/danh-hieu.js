@@ -27,11 +27,29 @@
 
   function game(ten) { return doc(ten) || {}; }
 
+  /* Khu Bé ngoan lưu riêng một đối tượng {mã truyện: số lần nghe}, không theo
+     khuôn sao của bài tập, nên đếm riêng ở đây. */
+  function soTruyenDaNghe() {
+    var o = doc('be-ngoan');
+    if (!o || typeof o !== 'object') return 0;
+    return Object.keys(o).length;
+  }
+
   function tongSaoCua(ds) {
     return ds.reduce(function (t, id) { return t + sao(id); }, 0);
   }
 
   var DANH_HIEU = [
+    /* ---- Mầm non: khu Bé ngoan ---- */
+    { id: 'be-biet-nghe', e: '🌱', ten: 'Mầm Non Ngoan', mo: 'Nghe xong truyện đầu tiên', khu: 'mam-non',
+      dat: function () { return soTruyenDaNghe() >= 1; } },
+    { id: 'be-cham-nghe', e: '🌸', ten: 'Vườn Hoa Chớm Nở', mo: 'Nghe xong 5 truyện', khu: 'mam-non',
+      dat: function () { return soTruyenDaNghe() >= 5; } },
+    { id: 'be-ngoan-nhat', e: '🌻', ten: 'Vườn Hoa Nở Rộ', mo: 'Nghe xong cả 10 truyện', khu: 'mam-non',
+      dat: function () { return soTruyenDaNghe() >= 10; } },
+    { id: 'be-biet-xu', e: '🤔', ten: 'Bé Biết Cư Xử', mo: 'Đạt 3 sao bài Bé nên làm gì', khu: 'mam-non',
+      dat: function () { return sao('mn-tinh-huong') === 3; } },
+
     /* ---- Lớp 1 ---- */
     { id: 'tap-su', e: '🌱', ten: 'Tân Binh', mo: 'Hoàn thành bài tập đầu tiên', khu: 'lop-1',
       dat: function () { return tongSaoCua(['cong-tru', 'tach-gop', 'so-sanh', 'toan-do']) > 0; } },

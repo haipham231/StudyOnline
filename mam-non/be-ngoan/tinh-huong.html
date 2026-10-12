@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bé nên làm gì — Bé ngoan</title>
+<meta name="description" content="Tình huống hằng ngày cho bé mầm non: bạn ngã thì làm gì, làm đổ nước thì nói gì. Bé chọn hình, máy đọc đề.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🤔</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="index.html">← Quay lại</a>
+  <h1>🤔 Bé nên làm gì</h1>
+</header>
+
+<main id="quiz" class="quiz"></main>
+
+<script src="../../js/o-tra-loi.js"></script>
+<script src="../../js/hinh-ve.js"></script>
+<script src="../../js/quiz.js"></script>
+<script src="../../js/truyen-dao-duc.js"></script>
+<script>
+  /* Ô trả lời chỉ có hình, nhãn chữ trong dữ liệu không đưa ra màn hình. */
+  function oHinh(x) {
+    return '<span class="anh-tu">' + HinhVe.veTen(x.hinh) + '</span>';
+  }
+
+  var k = 0;
+  var bo = Quiz.shuffle(TruyenDaoDuc.TINH_HUONG.slice());
+
+  function cauHoi() {
+    var h = bo[k % bo.length];
+    k++;
+    return {
+      prompt: h.de,
+      answer: oHinh(h.dung),
+      choices: Quiz.shuffle([h.dung].concat(h.sai).map(oHinh)),
+      cols: 3
+    };
+  }
+
+  Quiz.init({
+    id: 'mn-tinh-huong',
+    total: 10,
+    kids: true,
+    khongChu: true,
+    speak: true,
+    levels: [
+      { name: 'Bé nên làm gì nhỉ?', gen: cauHoi }
+    ]
+  });
+</script>
+</body>
+</html>

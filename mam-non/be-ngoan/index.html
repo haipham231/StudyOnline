@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bé ngoan — Mầm non</title>
+<meta name="description" content="Khu dạy đạo đức cho bé mầm non: mười truyện có máy kể bằng giọng nói, và bài tình huống bé chọn hình.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🌻</text></svg>">
+</head>
+<body>
+<div class="wrap">
+  <nav class="crumb"><a class="back" href="../index.html">← Mầm non</a></nav>
+
+  <header class="hero">
+    <div class="mascot">🌻</div>
+    <h1>Bé ngoan</h1>
+    <p>Nghe truyện rồi trả lời vài câu. Mỗi truyện nghe xong, bé trồng được một bông hoa.</p>
+  </header>
+
+  <main id="noi-dung"></main>
+
+  <footer>
+    <p>🔊 Máy đọc truyện cho bé nghe — bé chưa biết chữ vẫn nghe được hết.</p>
+  </footer>
+</div>
+
+<script src="../../js/hinh-ve.js"></script>
+<script src="../../js/truyen-dao-duc.js"></script>
+<script>
+  var goc = document.getElementById('noi-dung');
+  var KHOA = 'studyonline:be-ngoan';
+
+  function daNghe() {
+    try { return JSON.parse(localStorage.getItem(KHOA) || '{}'); } catch (e) { return {}; }
+  }
+
+  var da = daNghe();
+  var MAU = ['#ff8fd0', '#8b7bf7', '#4aa8ff', '#ffc93c', '#2fcf90', '#ff7a7a'];
+
+  function veNhom(ten, kieu, cacThe) {
+    var h = document.createElement('h2');
+    h.className = 'nhom ' + kieu;
+    h.textContent = ten;
+    goc.appendChild(h);
+    var luoi = document.createElement('div');
+    luoi.className = 'grid';
+    cacThe.forEach(function (t) { luoi.appendChild(t); });
+    goc.appendChild(luoi);
+  }
+
+  function taoThe(href, hinh, ten, moTa, mau, xong) {
+    var a = document.createElement('a');
+    a.className = 'card' + (xong ? ' da-xong' : '');
+    a.href = href;
+    a.style.setProperty('--tint', mau);
+    a.innerHTML = '<div class="emoji">' + hinh + '</div>' +
+      '<h2>' + ten + (xong ? ' <span class="dau-xong">🌸</span>' : '') + '</h2>' +
+      '<p>' + moTa + '</p>';
+    return a;
+  }
+
+  /* ---- Mảnh vườn: mỗi truyện nghe xong là một bông hoa ---- */
+
+  var HOA = ['thien-nhien-them/rose', 'thien-nhien-them/tulip', 'qua-rau/dua-hau',
+             'thien-nhien-them/cactus', 'chim-bo/buom', 'chim-bo/ong'];
+
+  function veVuon() {
+    var soXong = TruyenDaoDuc.TRUYEN.filter(function (t) { return da[t.ma]; }).length;
+    var o = document.createElement('section');
+    o.className = 'vuon-be-ngoan';
+    var luong = '';
+    TruyenDaoDuc.TRUYEN.forEach(function (t, i) {
+      luong += '<span class="o-vuon' + (da[t.ma] ? ' co-hoa' : '') + '" title="' + t.ten + '">' +
+        (da[t.ma] ? HinhVe.veTen(HOA[i % HOA.length]) : '<i class="mam"></i>') + '</span>';
+    });
+    o.innerHTML = '<h2 class="nhom kieu-hinh">Vườn của bé</h2>' +
+      '<div class="luong-vuon">' + luong + '</div>' +
+      '<p class="lead dem-hoa">' + soXong + ' / ' + TruyenDaoDuc.TRUYEN.length +
+      ' bông hoa đã nở</p>';
+    goc.appendChild(o);
+  }
+
+  veVuon();
+
+  veNhom('Bé nên làm gì', 'kieu-keo', [
+    taoThe('tinh-huong.html', '🤔', 'Bé nên làm gì',
+      'Bạn ngã thì làm sao? Làm đổ nước thì nói gì? Mười câu một lượt.', '#4aa8ff', false)
+  ]);
+
+  var theTruyen = TruyenDaoDuc.TRUYEN.map(function (t, i) {
+    return taoThe('truyen.html?t=' + encodeURIComponent(t.ma),
+      HinhVe.veTen(t.canh[0].hinh),
+      t.ten,
+      'Dạy bé ' + t.duc + ' · ' + t.canh.length + ' cảnh · ' + t.tuoi.join('–') + ' tuổi',
+      MAU[i % MAU.length],
+      !!da[t.ma]);
+  });
+
+  veNhom('Mười truyện cho bé', 'kieu-hinh', theTruyen);
+</script>
+</body>
+</html>
