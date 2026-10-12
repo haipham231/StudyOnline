@@ -26,9 +26,11 @@
   /* Thông số riêng của mê cung theo mức độ. Số câu, số lượt hụt và mức phạt
      thì để MucDo lo, ở đây chỉ lo chuyện mê cung to nhỏ và rắn đông thưa. */
   var THONG_SO = {
-    de:  { cot: 7,  hang: 7,  ran: 1, tocDo: 900, duoi: false, boNgoCut: 0.30 },
-    vua: { cot: 9,  hang: 9,  ran: 2, tocDo: 650, duoi: false, boNgoCut: 0.15 },
-    kho: { cot: 11, hang: 11, ran: 3, tocDo: 450, duoi: true,  boNgoCut: 0 }
+    // Lưới rộng hơn cao: khung mê cung trên điện thoại nằm ngang, để lưới
+    // vuông thì thừa hai bên mà ô lại bé.
+    de:  { cot: 9,  hang: 5, ran: 1, tocDo: 900, duoi: false, boNgoCut: 0.30 },
+    vua: { cot: 11, hang: 7, ran: 2, tocDo: 650, duoi: false, boNgoCut: 0.15 },
+    kho: { cot: 13, hang: 9, ran: 3, tocDo: 450, duoi: true,  boNgoCut: 0 }
   };
 
   var MS_MOT_O = 140;          // đi trọn một ô mất bấy nhiêu mili-giây
@@ -176,6 +178,9 @@
     var cuaDS = nhanDS.map(function (nhan) {
       var c = el('div', 'mot-cua');
       c.dataset.nhan = nhan;
+      // Khung cửa vẽ đứng; ép vào một ô ngang thì hai trụ bên phình ra che
+      // mất chữ số. Nên để khung ở trên, số nằm trên một dải riêng bên dưới.
+      c.appendChild(el('i', 'cua-khung'));
       c.appendChild(el('span', 'cua-nhan', nhan));
       daiCua.appendChild(c);
       return c;

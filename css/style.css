@@ -541,7 +541,7 @@ footer { text-align: center; margin-top: 40px; color: var(--muted); font-size: 1
   margin-bottom: 18px;
 }
 
-.panel.kids .art { font-size: clamp(56px, 20vw, 110px); line-height: 1.15; letter-spacing: 6px; margin: 6px 0 18px; }
+.panel.kids .art { font-size: clamp(64px, 23vw, 128px); line-height: 1.12; letter-spacing: 6px; margin: 6px 0 18px; }
 .panel.kids .art svg { width: clamp(90px, 26vw, 140px); height: auto; }
 
 .panel.kids .question { display: none; }          /* bé chưa cần ô đáp án dạng chữ */
@@ -2208,7 +2208,7 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
    bấm. preserve-3d phải đặt ở khối ngoài, không thì hai mặt bẹt vào nhau. */
 .the-tu {
   position: relative;
-  height: 300px;
+  height: clamp(340px, 52vh, 420px);
   margin: 0 auto 18px;
   max-width: 420px;
   cursor: pointer;
@@ -2239,7 +2239,7 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
   color: #fff;
 }
 
-.the-tu .anh-the { font-size: 148px; line-height: 1; }
+.the-tu .anh-the { font-size: 240px; line-height: 1; }
 .the-tu .goi-y { color: var(--muted); font-size: 14.5px; font-weight: 800; }
 
 .the-tu .tu-anh-to {
@@ -2250,7 +2250,7 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 }
 
 .the-tu .nghia-viet { font-size: 19px; color: rgba(255, 255, 255, 0.9); }
-.the-tu .anh-nho { font-size: 64px; line-height: 1; margin-top: 4px; }
+.the-tu .anh-nho { font-size: 82px; line-height: 1; margin-top: 6px; }
 
 .hang-nut {
   display: flex;
@@ -2279,8 +2279,9 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 .prompt .tu-anh { color: var(--grape-dark); }
 
 @media (max-width: 480px) {
-  .the-tu { height: 248px; }
-  .the-tu .anh-the { font-size: 118px; }
+  /* thẻ cao thêm và hình to hẳn lên — trước thừa nhiều khoảng trống quá */
+  .the-tu { height: clamp(300px, 46vh, 360px); }
+  .the-tu .anh-the { font-size: 215px; }
   .the-khung { padding: 16px 12px 18px; }
   .hang-nut .btn { padding: 12px 16px; font-size: 16px; }
 }
@@ -3540,8 +3541,8 @@ body.khoa-cuon { overflow: hidden; }
 }
 
 /* Hình vẽ thay emoji: cho to hơn nữa, bé nhìn rõ mới thích */
-.panel.kids .art .hinh-ve { height: 1.34em; }
-.panel.kids.khong-chu .choice .hinh-ve { height: 1.28em; }
+.panel.kids .art .hinh-ve { height: 1.62em; }
+.panel.kids.khong-chu .choice .hinh-ve { height: 1.46em; }
 
 /* ===== Phiên âm tiếng Anh ===== */
 
@@ -3643,7 +3644,7 @@ body.khoa-cuon { overflow: hidden; }
 
 .dai-cua {
   position: relative;
-  height: 58px;
+  height: 76px;
   margin-bottom: 2px;
 }
 
@@ -3651,32 +3652,41 @@ body.khoa-cuon { overflow: hidden; }
   position: absolute;
   top: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 2px;
   width: 30%;
   max-width: 116px;
-  height: 58px;
   transform: translateX(-50%);
-  background: var(--cua-thuong) no-repeat center / 100% 100%;
+}
+
+/* Khung cửa vẽ đứng; ép vào một ô ngang thì hai trụ bên phình ra che mất chữ
+   số. Nên giữ đúng tỉ lệ ảnh, còn số thì nằm trên một dải riêng bên dưới. */
+.mot-cua .cua-khung {
+  display: block;
+  width: 38px;
+  height: 48px;
+  background: var(--cua-thuong) no-repeat center / contain;
+}
+
+.mot-cua .cua-nhan {
+  display: block;
+  max-width: 100%;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
   color: #15306b;
   font-family: "Baloo 2", sans-serif;
   font-size: 17px;
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 1.25;
 }
 
-.mot-cua .cua-nhan {
-  margin-top: 6%;
-  padding: 0 6px;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
-}
+.dai-cua.nhan-dai .cua-nhan { font-size: 13.5px; }
+.dai-cua.nhan-rat-dai .cua-nhan { font-size: 11.5px; }
 
-.dai-cua.nhan-dai .mot-cua { font-size: 13.5px; }
-.dai-cua.nhan-dai .cua-nhan { white-space: normal; line-height: 1.15; }
-.dai-cua.nhan-rat-dai .mot-cua { font-size: 11.5px; }
-
-.mot-cua.mo-ra { background-image: var(--cua-mo); }
-.mot-cua.chan-lai { background-image: var(--cua-chan); }
+.mot-cua.mo-ra .cua-khung { background-image: var(--cua-mo); }
+.mot-cua.chan-lai .cua-khung { background-image: var(--cua-chan); }
 .mot-cua.chi-ra { animation: cua-chi 0.9s ease 3; }
 
 @keyframes cua-chi {
@@ -3687,8 +3697,8 @@ body.khoa-cuon { overflow: hidden; }
 
 .san-dau.luoi-me {
   flex: 1 1 auto;
-  min-height: 250px;
-  max-height: 520px;
+  min-height: 170px;
+  max-height: 420px;
 }
 
 .lop-me { position: absolute; }
@@ -3745,7 +3755,12 @@ body.khoa-cuon { overflow: hidden; }
 
 /* --- khoá tay lái tới khi bé bấm "mình tính ra rồi" --- */
 
-.nut-mo-me { align-self: center; margin: 8px 0 2px; }
+.nut-mo-me {
+  position: relative;
+  z-index: 5;
+  align-self: center;
+  margin: -52px 0 10px;
+}
 
 .san-me-cung .tay-lai,
 .san-me-cung .meo-choi { opacity: 0.4; pointer-events: none; }
@@ -3756,7 +3771,7 @@ body.khoa-cuon { overflow: hidden; }
 .san-me-cung:not(.da-mo) .luoi-me::after {
   content: "Tính xong rồi bấm nút bên dưới nhé";
   position: absolute;
-  inset: auto 8px 8px;
+  inset: 8px 8px auto;
   padding: 6px;
   border-radius: 10px;
   background: rgba(10, 12, 36, 0.72);
@@ -3794,3 +3809,42 @@ body.khoa-cuon { overflow: hidden; }
   .canh-roi .phg-roi, .mot-cua.chi-ra, .lop-me .phg-me.bi-can { animation: none; }
   .lop-me .phg-me, .lop-me .con-ran { transition: none; }
 }
+
+/* Mê cung: bốn phím to hơn — ngón tay bé nhỏ mà ô lưới lại bé, bấm hụt là ức chế */
+.san-me-cung .tay-lai.bon-huong {
+  gap: 10px;
+  /* margin: 0 auto trong một cột flex làm hàng nút co lại bằng bề ngang chữ;
+     phải cho hẳn width thì ba cột 1fr mới trải ra được */
+  width: 100%;
+  max-width: 320px;
+}
+
+.san-me-cung .tay-lai.bon-huong .nut-lai {
+  min-height: 72px;
+  font-size: 30px;
+}
+
+@media (max-width: 380px) {
+  .san-me-cung .tay-lai.bon-huong .nut-lai { min-height: 64px; font-size: 27px; }
+}
+
+/* Chỗ hiện hình to: ảnh phải vừa CẢ chiều cao lẫn bề ngang.
+   Chỉ ràng chiều cao thì con nào nằm ngang (cá sấu, cá voi, xe tải) sẽ rộng
+   quá khung mà bị cắt mất đầu đuôi. */
+.panel.kids .art .hinh-ve,
+.panel.kids.khong-chu .choice .hinh-ve,
+.the-tu .anh-the .hinh-ve,
+.the-tu .anh-nho .hinh-ve,
+.art .anh-to .hinh-ve,
+.choice .anh-tu .hinh-ve {
+  height: auto;
+  width: auto;
+  max-width: 94%;
+}
+
+.panel.kids .art .hinh-ve { max-height: 1.62em; }
+.panel.kids.khong-chu .choice .hinh-ve { max-height: 1.46em; }
+.the-tu .anh-the .hinh-ve { max-height: 1em; }
+.the-tu .anh-nho .hinh-ve { max-height: 1em; }
+.art .anh-to .hinh-ve { max-height: 1em; }
+.choice .anh-tu .hinh-ve { max-height: 1em; }

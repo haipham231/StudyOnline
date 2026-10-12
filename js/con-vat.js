@@ -25,7 +25,46 @@
     { ten: 'con ngựa',   e: '🐴', an: { ten: 'bó cỏ',        e: '🌿' }, o: 'can',  keu: 'hí hí' },
     { ten: 'con bướm',   e: '🦋', an: { ten: 'bông hoa',     e: '🌼' }, o: 'troi', keu: null },
     { ten: 'con rùa',    e: '🐢', an: { ten: 'lá rau',       e: '🥬' }, o: 'nuoc', keu: null },
-    { ten: 'con sóc',    e: '🐿️', an: { ten: 'hạt dẻ',      e: '🌰' }, o: 'can',  keu: null }
+    { ten: 'con sóc',    e: '🐿️', an: { ten: 'hạt dẻ',      e: '🌰' }, o: 'can',  keu: null },
+
+    /* --- dưới biển --- */
+    { ten: 'cá heo',     e: '🐬', an: { ten: 'con cá nhỏ',  e: '🐠' }, o: 'nuoc', keu: null },
+    { ten: 'cá voi',     e: '🐳', an: { ten: 'con tôm',     e: '🦐' }, o: 'nuoc', keu: null },
+    { ten: 'cá mập',     e: '🦈', an: { ten: 'con cá nhỏ',  e: '🐠' }, o: 'nuoc', keu: null },
+    { ten: 'bạch tuộc',  e: '🐙', an: { ten: 'con cua',     e: '🦀' }, o: 'nuoc', keu: null },
+    { ten: 'con cua',    e: '🦀', an: { ten: 'con tôm',     e: '🦐' }, o: 'nuoc', keu: null },
+    { ten: 'con tôm',    e: '🦐', an: { ten: 'lá rau',      e: '🥬' }, o: 'nuoc', keu: null },
+    { ten: 'con mực',    e: '🦑', an: { ten: 'con tôm',     e: '🦐' }, o: 'nuoc', keu: null },
+    { ten: 'con sứa',    e: '🪼', an: { ten: 'con tôm',     e: '🦐' }, o: 'nuoc', keu: null },
+    { ten: 'hải cẩu',    e: '🦭', an: { ten: 'con cá nhỏ',  e: '🐠' }, o: 'nuoc', keu: null },
+    { ten: 'cá sấu',     e: '🐊', an: { ten: 'con cá nhỏ',  e: '🐠' }, o: 'nuoc', keu: null },
+    { ten: 'chim cánh cụt', e: '🐧', an: { ten: 'con cá nhỏ', e: '🐠' }, o: 'nuoc', keu: null },
+
+    /* --- thú rừng --- */
+    { ten: 'con sói',    e: '🐺', an: { ten: 'miếng thịt',  e: '🥩' }, o: 'can',  keu: 'hú u u' },
+    { ten: 'con cáo',    e: '🦊', an: { ten: 'quả nho',     e: '🍇' }, o: 'can',  keu: null },
+    { ten: 'con nai',    e: '🦌', an: { ten: 'lá cây',      e: '🍃' }, o: 'can',  keu: null },
+    { ten: 'ngựa vằn',   e: '🦓', an: { ten: 'bó cỏ',       e: '🌿' }, o: 'can',  keu: null },
+    { ten: 'tê giác',    e: '🦏', an: { ten: 'bó cỏ',       e: '🌿' }, o: 'can',  keu: null },
+    { ten: 'hà mã',      e: '🦛', an: { ten: 'quả dưa hấu', e: '🍉' }, o: 'can',  keu: null },
+    { ten: 'lạc đà',     e: '🐫', an: { ten: 'lá cây',      e: '🍃' }, o: 'can',  keu: null },
+    { ten: 'kangaroo',   e: '🦘', an: { ten: 'bó cỏ',       e: '🌿' }, o: 'can',  keu: null },
+    { ten: 'con lười',   e: '🦥', an: { ten: 'lá cây',      e: '🍃' }, o: 'can',  keu: null },
+    { ten: 'con nhím',   e: '🦔', an: { ten: 'quả táo',     e: '🍎' }, o: 'can',  keu: null },
+    { ten: 'khỉ đột',    e: '🦍', an: { ten: 'quả chuối',   e: '🍌' }, o: 'can',  keu: null },
+    { ten: 'hươu cao cổ', e: '🦒', an: { ten: 'lá cây',     e: '🍃' }, o: 'can',  keu: null },
+    { ten: 'con rắn',    e: '🐍', an: { ten: 'con chuột',   e: '🐭' }, o: 'can',  keu: 'xì xì' },
+    { ten: 'con dê',     e: '🐐', an: { ten: 'bó cỏ',       e: '🌿' }, o: 'can',  keu: 'be he' },
+
+    /* --- trên trời --- */
+    { ten: 'đại bàng',   e: '🦅', an: { ten: 'con chuột',   e: '🐭' }, o: 'troi', keu: null },
+    { ten: 'con cú',     e: '🦉', an: { ten: 'con chuột',   e: '🐭' }, o: 'troi', keu: 'cú cú' },
+    { ten: 'con công',   e: '🦚', an: { ten: 'bắp ngô',     e: '🌽' }, o: 'troi', keu: null },
+    { ten: 'con vẹt',    e: '🦜', an: { ten: 'quả xoài',    e: '🥭' }, o: 'troi', keu: null },
+    { ten: 'con dơi',    e: '🦇', an: { ten: 'quả xoài',    e: '🥭' }, o: 'troi', keu: null },
+    { ten: 'con kiến',   e: '🐜', an: { ten: 'quả dâu tây', e: '🍓' }, o: 'can',  keu: null },
+    { ten: 'bọ rùa',     e: '🐞', an: { ten: 'lá cây',      e: '🍃' }, o: 'can',  keu: null },
+    { ten: 'ốc sên',     e: '🐌', an: { ten: 'quả dưa chuột', e: '🥒' }, o: 'can', keu: null }
   ];
 
   var NOI_SONG = {
