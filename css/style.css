@@ -541,7 +541,7 @@ footer { text-align: center; margin-top: 40px; color: var(--muted); font-size: 1
   margin-bottom: 18px;
 }
 
-.panel.kids .art { font-size: clamp(64px, 23vw, 128px); line-height: 1.12; letter-spacing: 6px; margin: 6px 0 18px; }
+.panel.kids .art { font-size: clamp(60px, 21vw, 112px); line-height: 1.12; letter-spacing: 6px; margin: 6px 0 18px; }
 .panel.kids .art svg { width: clamp(90px, 26vw, 140px); height: auto; }
 
 .panel.kids .question { display: none; }          /* bé chưa cần ô đáp án dạng chữ */
@@ -2239,7 +2239,7 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
   color: #fff;
 }
 
-.the-tu .anh-the { font-size: 240px; line-height: 1; }
+.the-tu .anh-the { font-size: 186px; line-height: 1; }
 .the-tu .goi-y { color: var(--muted); font-size: 14.5px; font-weight: 800; }
 
 .the-tu .tu-anh-to {
@@ -2270,7 +2270,7 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 .btn.tron-lai { margin-top: 12px; background: var(--soft); color: var(--ink); box-shadow: 0 5px 0 var(--line); }
 
 /* hình trong câu hỏi và trong ô chọn */
-.anh-to { font-size: clamp(96px, 27vw, 150px); line-height: 1.05; }
+.anh-to { font-size: clamp(88px, 24vw, 132px); line-height: 1.05; }
 .choice .anh-tu { display: block; font-size: clamp(44px, 13vw, 62px); line-height: 1.15; }
 
 /* nhãn tiếng Anh dưới hình: ba cột trên khổ 360px chỉ còn ~100px mỗi ô nên
@@ -2281,7 +2281,7 @@ h2.nhom.viet-kieu::before { background: var(--coral); }
 @media (max-width: 480px) {
   /* thẻ cao thêm và hình to hẳn lên — trước thừa nhiều khoảng trống quá */
   .the-tu { height: clamp(300px, 46vh, 360px); }
-  .the-tu .anh-the { font-size: 215px; }
+  .the-tu .anh-the { font-size: 168px; }
   .the-khung { padding: 16px 12px 18px; }
   .hang-nut .btn { padding: 12px 16px; font-size: 16px; }
 }

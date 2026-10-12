@@ -86,7 +86,7 @@
   ];
 
   var NOI_SONG = {
-    nuoc: { e: '💧', ten: 'dưới nước' },
+    nuoc: { e: '🌊', ten: 'dưới nước' },
     can:  { e: '🌳', ten: 'trên cạn' },
     troi: { e: '☁️', ten: 'trên trời' }
   };

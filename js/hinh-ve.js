@@ -93,7 +93,16 @@
     /* thêm thú và sinh vật biển */
     '🐋': 'them/ca-voi-xanh', '🐅': 'them/ho', '🐆': 'them/bao',
     '🐻‍❄️': 'them/gau-bac-cuc', '🦝': 'them/gau-meo', '🦫': 'them/hai-ly',
-    '🫎': 'them/nai-sung-tam'
+    '🫎': 'them/nai-sung-tam',
+
+    /* màu sắc, thời tiết và nơi sống */
+    '🟥': 'mau-troi/mau-do', '🟨': 'mau-troi/mau-vang',
+    '🟩': 'mau-troi/mau-xanh-la', '🟦': 'mau-troi/mau-xanh-duong',
+    '🟪': 'mau-troi/mau-tim', '🟧': 'mau-troi/mau-cam',
+    '🟫': 'mau-troi/mau-nau', '⬛': 'mau-troi/mau-den',
+    '☀️': 'mau-troi/nang', '🌧️': 'mau-troi/mua', '☁️': 'mau-troi/may',
+    '🌈': 'mau-troi/cau-vong', '❄️': 'mau-troi/tuyet', '💨': 'mau-troi/gio',
+    '🌊': 'mau-troi/song-bien', '🌳': 'mau-troi/doi-co'
   };
 
   // Emoji có thể kèm hoặc không kèm ký tự biến thể U+FE0F; tra cả hai kiểu.
