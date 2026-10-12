@@ -1,0 +1,32 @@
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. turn right
+2. go straight
+3. stop
+4. cross the road
+5. traffic light
+6. pavement
+7. directions
+8. get lost
+9. take a lift
+10. ticket
+11. trip
+12. a flock of birds
+13. nest
+14. feather
+15. tail
+16. wing
+
+Important for the subjects above:
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.

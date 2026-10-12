@@ -1,0 +1,29 @@
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. door
+2. window
+3. mirror
+4. sofa
+5. candle
+6. broom
+7. toilet paper
+8. soap
+9. bathtub
+10. shower
+11. toothbrush
+12. lock
+13. stairs
+14. pot
+15. pan
+16. knife
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.

@@ -1,0 +1,29 @@
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. hamster
+2. goose
+3. donkey
+4. spider
+5. mosquito
+6. pear
+7. peach
+8. cherry
+9. lemon
+10. coconut
+11. avocado
+12. kiwi
+13. blueberry
+14. olive
+15. melon
+16. onion
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.

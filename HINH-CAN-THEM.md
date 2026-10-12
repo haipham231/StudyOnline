@@ -16,6 +16,9 @@ nền phải **trong suốt thật**, và **tuyệt đối không kẻ khung ô*
 
 Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lượt.
 
+Ngại cuộn tìm thì mỗi tấm còn có một tệp riêng trong thư mục `promp-hinh/`
+(`tam-01.txt`, `tam-02.txt`…) — mở ra chọn tất rồi dán.
+
 ---
 
 ## Tấm 1 — thú nuôi, côn trùng, trái cây thêm, rau củ thêm  (16 hình)
@@ -39,37 +42,39 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | melon | quả dưa gang | `trai-cay-them/melon.png` |
 | 16 | onion | củ hành | `rau-cu-them/onion.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. hamster
-> 2. goose
-> 3. donkey
-> 4. spider
-> 5. mosquito
-> 6. pear
-> 7. peach
-> 8. cherry
-> 9. lemon
-> 10. coconut
-> 11. avocado
-> 12. kiwi
-> 13. blueberry
-> 14. olive
-> 15. melon
-> 16. onion
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. hamster
+2. goose
+3. donkey
+4. spider
+5. mosquito
+6. pear
+7. peach
+8. cherry
+9. lemon
+10. coconut
+11. avocado
+12. kiwi
+13. blueberry
+14. olive
+15. melon
+16. onion
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -94,37 +99,39 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | chocolate | thanh sô cô la | `do-an-them/chocolate.png` |
 | 16 | birthday cake | cái bánh sinh nhật | `do-an-them/birthday-cake.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. garlic
-> 2. peanut
-> 3. ginger
-> 4. pumpkin
-> 5. sandwich
-> 6. burger
-> 7. pizza
-> 8. chips
-> 9. sausage
-> 10. fried chicken
-> 11. noodles
-> 12. pancake
-> 13. biscuit
-> 14. ice cream
-> 15. chocolate
-> 16. birthday cake
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. garlic
+2. peanut
+3. ginger
+4. pumpkin
+5. sandwich
+6. burger
+7. pizza
+8. chips
+9. sausage
+10. fried chicken
+11. noodles
+12. pancake
+13. biscuit
+14. ice cream
+15. chocolate
+16. birthday cake
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -149,37 +156,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | heart (organ) | trái tim | `co-the-them/heart-organ.png` |
 | 16 | lungs | lá phổi | `co-the-them/lungs.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. salad
-> 2. bun
-> 3. juice
-> 4. tea
-> 5. coffee
-> 6. bubble tea
-> 7. bottle
-> 8. ice
-> 9. the colour white — a simple rounded square colour swatch, solid white, nothing else
-> 10. the colour grey — a simple rounded square colour swatch, solid grey, nothing else
-> 11. the colour pink — a simple rounded square colour swatch, solid pink, nothing else
-> 12. the colour light blue — a simple rounded square colour swatch, solid light blue, nothing else
-> 13. tongue
-> 14. brain
-> 15. heart
-> 16. lungs
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. salad
+2. bun
+3. juice
+4. tea
+5. coffee
+6. bubble tea
+7. bottle
+8. ice
+9. white
+10. grey
+11. pink
+12. light blue
+13. tongue
+14. brain
+15. heart
+16. lungs
+
+Important for the subjects above:
+- For the colour words: draw a plain rounded square swatch filled with that solid colour, nothing else in the cell.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -204,37 +216,39 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | boots | đôi bốt | `quan-ao-them/boots.png` |
 | 16 | sun hat | cái mũ rộng vành | `quan-ao-them/sun-hat.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. arm
-> 2. leg
-> 3. finger
-> 4. family
-> 5. brothers
-> 6. sisters
-> 7. bride
-> 8. friend
-> 9. cradle
-> 10. coat
-> 11. sweater
-> 12. shorts
-> 13. swimsuit
-> 14. sandals
-> 15. boots
-> 16. sun hat
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. arm
+2. leg
+3. finger
+4. family
+5. brothers
+6. sisters
+7. bride
+8. friend
+9. cradle
+10. coat
+11. sweater
+12. shorts
+13. swimsuit
+14. sandals
+15. boots
+16. sun hat
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -259,37 +273,39 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | paper clip | cái ghim giấy | `do-dung-hoc-tap/paper-clip.png` |
 | 16 | bin | cái thùng rác | `do-dung-hoc-tap/bin.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. tie
-> 2. glasses
-> 3. ring
-> 4. handbag
-> 5. wallet
-> 6. fountain pen
-> 7. ruler
-> 8. set square
-> 9. scissors
-> 10. notebook
-> 11. paper
-> 12. folder
-> 13. blackboard
-> 14. crayons
-> 15. paper clip
-> 16. bin
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. tie
+2. glasses
+3. ring
+4. handbag
+5. wallet
+6. fountain pen
+7. ruler
+8. set square
+9. scissors
+10. notebook
+11. paper
+12. folder
+13. blackboard
+14. crayons
+15. paper clip
+16. bin
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -314,37 +330,39 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | pan | cái chảo | `nha-bep/pan.png` |
 | 16 | knife | cái dao | `nha-bep/knife.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. door
-> 2. window
-> 3. mirror
-> 4. sofa
-> 5. candle
-> 6. broom
-> 7. toilet paper
-> 8. soap
-> 9. bathtub
-> 10. shower
-> 11. toothbrush
-> 12. lock
-> 13. stairs
-> 14. pot
-> 15. pan
-> 16. knife
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. door
+2. window
+3. mirror
+4. sofa
+5. candle
+6. broom
+7. toilet paper
+8. soap
+9. bathtub
+10. shower
+11. toothbrush
+12. lock
+13. stairs
+14. pot
+15. pan
+16. knife
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -369,37 +387,39 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | seed | hạt giống | `thien-nhien-them/seed.png` |
 | 16 | rose | bông hoa hồng | `thien-nhien-them/rose.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. fork
-> 2. plate
-> 3. salt
-> 4. teapot
-> 5. rocket
-> 6. scooter
-> 7. skateboard
-> 8. hill
-> 9. desert
-> 10. forest
-> 11. beach
-> 12. volcano
-> 13. island
-> 14. cactus
-> 15. seed
-> 16. rose
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. fork
+2. plate
+3. salt
+4. teapot
+5. rocket
+6. scooter
+7. skateboard
+8. hill
+9. desert
+10. forest
+11. beach
+12. volcano
+13. island
+14. cactus
+15. seed
+16. rose
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -424,37 +444,39 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | cycling | đạp xe | `the-thao/cycling.png` |
 | 16 | medal | cái huy chương | `the-thao/medal.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. tulip
-> 2. palm tree
-> 3. storm
-> 4. lightning
-> 5. fog
-> 6. snowman
-> 7. thermometer
-> 8. basketball
-> 9. volleyball
-> 10. rugby ball
-> 11. tennis
-> 12. badminton
-> 13. swimming
-> 14. running
-> 15. cycling
-> 16. medal
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. tulip
+2. palm tree
+3. storm
+4. lightning
+5. fog
+6. snowman
+7. thermometer
+8. basketball
+9. volleyball
+10. rugby ball
+11. tennis
+12. badminton
+13. swimming
+14. running
+15. cycling
+16. medal
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -479,37 +501,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | pilot | chú phi công | `nghe-nghiep/pilot.png` |
 | 16 | astronaut | nhà du hành vũ trụ | `nghe-nghiep/astronaut.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. trophy
-> 2. guitar
-> 3. piano
-> 4. violin
-> 5. drum
-> 6. trumpet
-> 7. flute
-> 8. microphone
-> 9. music note
-> 10. a friendly cartoon doctor, full body, holding or wearing something that makes the job obvious
-> 11. a friendly cartoon teacher, full body, holding or wearing something that makes the job obvious
-> 12. a friendly cartoon farmer, full body, holding or wearing something that makes the job obvious
-> 13. a friendly cartoon chef, full body, holding or wearing something that makes the job obvious
-> 14. a friendly cartoon firefighter, full body, holding or wearing something that makes the job obvious
-> 15. a friendly cartoon pilot, full body, holding or wearing something that makes the job obvious
-> 16. a friendly cartoon astronaut, full body, holding or wearing something that makes the job obvious
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. trophy
+2. guitar
+3. piano
+4. violin
+5. drum
+6. trumpet
+7. flute
+8. microphone
+9. music note
+10. doctor
+11. teacher
+12. farmer
+13. chef
+14. firefighter
+15. pilot
+16. astronaut
+
+Important for the subjects above:
+- For the job words: draw a friendly full-body character holding or wearing something that makes the job obvious at a glance.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -534,37 +561,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | castle | lâu đài | `noi-chon/castle.png` |
 | 16 | bridge | cây cầu | `noi-chon/bridge.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. a friendly cartoon worker, full body, holding or wearing something that makes the job obvious
-> 2. a friendly cartoon scientist, full body, holding or wearing something that makes the job obvious
-> 3. a friendly cartoon artist, full body, holding or wearing something that makes the job obvious
-> 4. a friendly cartoon mechanic, full body, holding or wearing something that makes the job obvious
-> 5. a friendly cartoon police officer, full body, holding or wearing something that makes the job obvious
-> 6. house
-> 7. school
-> 8. hospital
-> 9. shop
-> 10. bank
-> 11. church
-> 12. park
-> 13. stadium
-> 14. factory
-> 15. castle
-> 16. bridge
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. worker
+2. scientist
+3. artist
+4. mechanic
+5. police officer
+6. house
+7. school
+8. hospital
+9. shop
+10. bank
+11. church
+12. park
+13. stadium
+14. factory
+15. castle
+16. bridge
+
+Important for the subjects above:
+- For the job words: draw a friendly full-body character holding or wearing something that makes the job obvious at a glance.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -589,37 +621,39 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | fireworks | pháo hoa | `do-choi-va-le-hoi/fireworks.png` |
 | 16 | Christmas tree | cây thông Noel | `do-choi-va-le-hoi/christmas-tree.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. bus stop
-> 2. phone
-> 3. computer
-> 4. television
-> 5. camera
-> 6. headphones
-> 7. radio
-> 8. battery
-> 9. torch
-> 10. kite
-> 11. doll
-> 12. puzzle
-> 13. chess
-> 14. present
-> 15. fireworks
-> 16. Christmas tree
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. bus stop
+2. phone
+3. computer
+4. television
+5. camera
+6. headphones
+7. radio
+8. battery
+9. torch
+10. kite
+11. doll
+12. puzzle
+13. chess
+14. present
+15. fireworks
+16. Christmas tree
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -644,37 +678,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | alarm clock | đồng hồ báo thức | `thoi-gian/alarm-clock.png` |
 | 16 | bucket | cái xô | `vuon-va-cong-cu/bucket.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. Santa
-> 2. a cute child whose face and whole body clearly show the feeling "happy"
-> 3. a cute child whose face and whole body clearly show the feeling "sad"
-> 4. a cute child whose face and whole body clearly show the feeling "angry"
-> 5. a cute child whose face and whole body clearly show the feeling "surprised"
-> 6. a cute child whose face and whole body clearly show the feeling "sleepy"
-> 7. a cute child whose face and whole body clearly show the feeling "scared"
-> 8. a cute child whose face and whole body clearly show the feeling "sick"
-> 9. a cute child whose face and whole body clearly show the feeling "laughing"
-> 10. morning
-> 11. evening
-> 12. night
-> 13. calendar
-> 14. hourglass
-> 15. alarm clock
-> 16. bucket
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. Santa
+2. happy
+3. sad
+4. angry
+5. surprised
+6. sleepy
+7. scared
+8. sick
+9. laughing
+10. morning
+11. evening
+12. night
+13. calendar
+14. hourglass
+15. alarm clock
+16. bucket
+
+Important for the subjects above:
+- For the feeling words: draw a cute child whose face AND whole body clearly show that feeling.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -699,37 +738,39 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | receipt | cái hoá đơn | `tien-va-mua-sam/receipt.png` |
 | 16 | the Earth | trái đất | `vu-tru/the-earth.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. hammer
-> 2. saw
-> 3. screwdriver
-> 4. spanner
-> 5. screw
-> 6. spade
-> 7. watering can
-> 8. plant pot
-> 9. parasol
-> 10. coin
-> 11. banknote
-> 12. bank card
-> 13. basket
-> 14. price tag
-> 15. receipt
-> 16. the Earth
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. hammer
+2. saw
+3. screwdriver
+4. spanner
+5. screw
+6. spade
+7. watering can
+8. plant pot
+9. parasol
+10. coin
+11. banknote
+12. bank card
+13. basket
+14. price tag
+15. receipt
+16. the Earth
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -754,37 +795,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | circle | hình tròn | `hinh-khoi/circle.png` |
 | 16 | triangle | hình tam giác | `hinh-khoi/triangle.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. planet
-> 2. galaxy
-> 3. comet
-> 4. UFO
-> 5. satellite
-> 6. telescope
-> 7. microscope
-> 8. map
-> 9. globe
-> 10. test tube
-> 11. magnet
-> 12. calculator
-> 13. certificate
-> 14. bell
-> 15. a plain circle shape, solid bright colour with a thick dark outline, nothing else
-> 16. a plain triangle shape, solid bright colour with a thick dark outline, nothing else
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. planet
+2. galaxy
+3. comet
+4. UFO
+5. satellite
+6. telescope
+7. microscope
+8. map
+9. globe
+10. test tube
+11. magnet
+12. calculator
+13. certificate
+14. bell
+15. circle
+16. triangle
+
+Important for the subjects above:
+- For the shape words: draw the plain flat shape in one bright colour with a thick dark outline, nothing else in the cell.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -809,37 +855,43 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | do homework | làm bài tập | `viec-hang-ngay/do-homework.png` |
 | 16 | tidy up | dọn phòng | `viec-hang-ngay/tidy-up.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. a plain diamond shape, solid bright colour with a thick dark outline, nothing else
-> 2. a plain star shape, solid bright colour with a thick dark outline, nothing else
-> 3. a plain heart shape, solid bright colour with a thick dark outline, nothing else
-> 4. wake up — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 5. go to bed — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 6. wash your face — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 7. brush your teeth — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 8. take a shower — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 9. get dressed — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 10. have breakfast — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. have lunch — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 12. have dinner — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 13. go to school — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 14. go home — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 15. do homework — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 16. tidy up — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. diamond
+2. star
+3. heart
+4. wake up
+5. go to bed
+6. wash your face
+7. brush your teeth
+8. take a shower
+9. get dressed
+10. have breakfast
+11. have lunch
+12. have dinner
+13. go to school
+14. go home
+15. do homework
+16. tidy up
+
+Important for the subjects above:
+- For the shape words: draw the plain flat shape in one bright colour with a thick dark outline, nothing else in the cell.
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -864,37 +916,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | lie down | nằm | `dong-tu-thuong-gap/lie-down.png` |
 | 16 | eat | ăn | `dong-tu-thuong-gap/eat.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. wash the dishes — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 2. cook — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 3. sweep the floor — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 4. do the laundry — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 5. go shopping — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 6. rest — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 7. wait — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 8. go — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 9. come — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 10. run — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. jump — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 12. walk — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 13. sit — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 14. stand — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 15. lie down — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 16. eat — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. wash the dishes
+2. cook
+3. sweep the floor
+4. do the laundry
+5. go shopping
+6. rest
+7. wait
+8. go
+9. come
+10. run
+11. jump
+12. walk
+13. sit
+14. stand
+15. lie down
+16. eat
+
+Important for the subjects above:
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -919,37 +976,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | open | mở | `dong-tu-thuong-gap/open.png` |
 | 16 | close | đóng | `dong-tu-thuong-gap/close.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. drink — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 2. sleep — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 3. speak — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 4. listen — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 5. look — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 6. watch — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 7. read — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 8. write — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 9. draw — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 10. sing — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. dance — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 12. play — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 13. smile — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 14. cry — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 15. open — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 16. close — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. drink
+2. sleep
+3. speak
+4. listen
+5. look
+6. watch
+7. read
+8. write
+9. draw
+10. sing
+11. dance
+12. play
+13. smile
+14. cry
+15. open
+16. close
+
+Important for the subjects above:
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -974,37 +1036,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | hate | ghét | `dong-tu-thuong-gap/hate.png` |
 | 16 | want | muốn | `dong-tu-thuong-gap/want.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. give — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 2. take — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 3. buy — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 4. sell — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 5. find — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 6. help — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 7. ask — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 8. answer — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 9. remember — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 10. forget — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. know — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 12. think — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 13. like — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 14. love — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 15. hate — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 16. want — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. give
+2. take
+3. buy
+4. sell
+5. find
+6. help
+7. ask
+8. answer
+9. remember
+10. forget
+11. know
+12. think
+13. like
+14. love
+15. hate
+16. want
+
+Important for the subjects above:
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1029,37 +1096,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | wash | rửa | `dong-tu-thuong-gap/wash.png` |
 | 16 | wipe | lau | `dong-tu-thuong-gap/wipe.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. need — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 2. start — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 3. finish — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 4. try — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 5. make — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 6. bring — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 7. fly — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 8. swim — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 9. climb — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 10. throw — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. catch — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 12. push — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 13. pull — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 14. cut — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 15. wash — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 16. wipe — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. need
+2. start
+3. finish
+4. try
+5. make
+6. bring
+7. fly
+8. swim
+9. climb
+10. throw
+11. catch
+12. push
+13. pull
+14. cut
+15. wash
+16. wipe
+
+Important for the subjects above:
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1084,37 +1156,43 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | cold | lạnh | `tinh-tu-thuong-gap/cold.png` |
 | 16 | warm | ấm | `tinh-tu-thuong-gap/warm.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. pack — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 2. count — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 3. share — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 4. "big" — two of the same object side by side so the contrast makes the meaning obvious
-> 5. "small" — two of the same object side by side so the contrast makes the meaning obvious
-> 6. "long" — two of the same object side by side so the contrast makes the meaning obvious
-> 7. "short" — two of the same object side by side so the contrast makes the meaning obvious
-> 8. "tall" — two of the same object side by side so the contrast makes the meaning obvious
-> 9. "low" — two of the same object side by side so the contrast makes the meaning obvious
-> 10. "heavy" — two of the same object side by side so the contrast makes the meaning obvious
-> 11. "light" — two of the same object side by side so the contrast makes the meaning obvious
-> 12. "fast" — two of the same object side by side so the contrast makes the meaning obvious
-> 13. "slow" — two of the same object side by side so the contrast makes the meaning obvious
-> 14. "hot" — two of the same object side by side so the contrast makes the meaning obvious
-> 15. "cold" — two of the same object side by side so the contrast makes the meaning obvious
-> 16. "warm" — two of the same object side by side so the contrast makes the meaning obvious
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. pack
+2. count
+3. share
+4. big
+5. small
+6. long
+7. short
+8. tall
+9. low
+10. heavy
+11. light
+12. fast
+13. slow
+14. hot
+15. cold
+16. warm
+
+Important for the subjects above:
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+- For the adjective words: draw two copies of the same object side by side so the contrast makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1139,37 +1217,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | empty | rỗng | `tinh-tu-thuong-gap/empty.png` |
 | 16 | noisy | ồn ào | `tinh-tu-thuong-gap/noisy.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. "cool" — two of the same object side by side so the contrast makes the meaning obvious
-> 2. "new" — two of the same object side by side so the contrast makes the meaning obvious
-> 3. "old" — two of the same object side by side so the contrast makes the meaning obvious
-> 4. "clean" — two of the same object side by side so the contrast makes the meaning obvious
-> 5. "dirty" — two of the same object side by side so the contrast makes the meaning obvious
-> 6. "beautiful" — two of the same object side by side so the contrast makes the meaning obvious
-> 7. "ugly" — two of the same object side by side so the contrast makes the meaning obvious
-> 8. "good" — two of the same object side by side so the contrast makes the meaning obvious
-> 9. "bad" — two of the same object side by side so the contrast makes the meaning obvious
-> 10. "easy" — two of the same object side by side so the contrast makes the meaning obvious
-> 11. "difficult" — two of the same object side by side so the contrast makes the meaning obvious
-> 12. "right" — two of the same object side by side so the contrast makes the meaning obvious
-> 13. "wrong" — two of the same object side by side so the contrast makes the meaning obvious
-> 14. "full" — two of the same object side by side so the contrast makes the meaning obvious
-> 15. "empty" — two of the same object side by side so the contrast makes the meaning obvious
-> 16. "noisy" — two of the same object side by side so the contrast makes the meaning obvious
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. cool
+2. new
+3. old
+4. clean
+5. dirty
+6. beautiful
+7. ugly
+8. good
+9. bad
+10. easy
+11. difficult
+12. right
+13. wrong
+14. full
+15. empty
+16. noisy
+
+Important for the subjects above:
+- For the adjective words: draw two copies of the same object side by side so the contrast makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1194,37 +1277,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | hard | cứng | `tinh-tu-thuong-gap/hard.png` |
 | 16 | wet | ướt | `tinh-tu-thuong-gap/wet.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. "quiet" — two of the same object side by side so the contrast makes the meaning obvious
-> 2. "strong" — two of the same object side by side so the contrast makes the meaning obvious
-> 3. "weak" — two of the same object side by side so the contrast makes the meaning obvious
-> 4. "rich" — two of the same object side by side so the contrast makes the meaning obvious
-> 5. "poor" — two of the same object side by side so the contrast makes the meaning obvious
-> 6. "funny" — two of the same object side by side so the contrast makes the meaning obvious
-> 7. "boring" — two of the same object side by side so the contrast makes the meaning obvious
-> 8. "sweet" — two of the same object side by side so the contrast makes the meaning obvious
-> 9. "sour" — two of the same object side by side so the contrast makes the meaning obvious
-> 10. "salty" — two of the same object side by side so the contrast makes the meaning obvious
-> 11. "spicy" — two of the same object side by side so the contrast makes the meaning obvious
-> 12. "bitter" — two of the same object side by side so the contrast makes the meaning obvious
-> 13. "delicious" — two of the same object side by side so the contrast makes the meaning obvious
-> 14. "soft" — two of the same object side by side so the contrast makes the meaning obvious
-> 15. "hard" — two of the same object side by side so the contrast makes the meaning obvious
-> 16. "wet" — two of the same object side by side so the contrast makes the meaning obvious
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. quiet
+2. strong
+3. weak
+4. rich
+5. poor
+6. funny
+7. boring
+8. sweet
+9. sour
+10. salty
+11. spicy
+12. bitter
+13. delicious
+14. soft
+15. hard
+16. wet
+
+Important for the subjects above:
+- For the adjective words: draw two copies of the same object side by side so the contrast makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1249,37 +1337,43 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | brave | dũng cảm | `tinh-tu-thuong-gap/brave.png` |
 | 16 | Monday | thứ hai | `ngay-thang-mua/monday.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. "dry" — two of the same object side by side so the contrast makes the meaning obvious
-> 2. "bright" — two of the same object side by side so the contrast makes the meaning obvious
-> 3. "dark" — two of the same object side by side so the contrast makes the meaning obvious
-> 4. "wide" — two of the same object side by side so the contrast makes the meaning obvious
-> 5. "narrow" — two of the same object side by side so the contrast makes the meaning obvious
-> 6. "deep" — two of the same object side by side so the contrast makes the meaning obvious
-> 7. "shallow" — two of the same object side by side so the contrast makes the meaning obvious
-> 8. "busy" — two of the same object side by side so the contrast makes the meaning obvious
-> 9. "free" — two of the same object side by side so the contrast makes the meaning obvious
-> 10. "clever" — two of the same object side by side so the contrast makes the meaning obvious
-> 11. "polite" — two of the same object side by side so the contrast makes the meaning obvious
-> 12. "kind" — two of the same object side by side so the contrast makes the meaning obvious
-> 13. "lazy" — two of the same object side by side so the contrast makes the meaning obvious
-> 14. "hard-working" — two of the same object side by side so the contrast makes the meaning obvious
-> 15. "brave" — two of the same object side by side so the contrast makes the meaning obvious
-> 16. Monday — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. dry
+2. bright
+3. dark
+4. wide
+5. narrow
+6. deep
+7. shallow
+8. busy
+9. free
+10. clever
+11. polite
+12. kind
+13. lazy
+14. hard-working
+15. brave
+16. Monday
+
+Important for the subjects above:
+- For the adjective words: draw two copies of the same object side by side so the contrast makes the meaning obvious.
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1304,37 +1398,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | September | tháng chín | `ngay-thang-mua/september.png` |
 | 16 | October | tháng mười | `ngay-thang-mua/october.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. Tuesday — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 2. Wednesday — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 3. Thursday — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 4. Friday — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 5. Saturday — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 6. Sunday — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 7. January — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 8. February — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 9. March — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 10. April — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. May — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 12. June — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 13. July — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 14. August — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 15. September — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 16. October — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. Tuesday
+2. Wednesday
+3. Thursday
+4. Friday
+5. Saturday
+6. Sunday
+7. January
+8. February
+9. March
+10. April
+11. May
+12. June
+13. July
+14. August
+15. September
+16. October
+
+Important for the subjects above:
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1359,37 +1458,43 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | second | giây | `ngay-thang-mua/second.png` |
 | 16 | eleven | mười một | `so-lon-va-thu-tu/eleven.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. November — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 2. December — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 3. spring — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 4. summer — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 5. autumn — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 6. winter — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 7. today — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 8. yesterday — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 9. tomorrow — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 10. week — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. month — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 12. year — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 13. hour — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 14. minute — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 15. second — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 16. eleven — show the quantity by drawing that many identical small objects, never by writing a numeral
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. November
+2. December
+3. spring
+4. summer
+5. autumn
+6. winter
+7. today
+8. yesterday
+9. tomorrow
+10. week
+11. month
+12. year
+13. hour
+14. minute
+15. second
+16. eleven
+
+Important for the subjects above:
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+- For the quantity words: show the amount by drawing that many identical small objects. Never write a numeral.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1414,37 +1519,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | first | thứ nhất | `so-lon-va-thu-tu/first.png` |
 | 16 | second (order) | thứ hai (thứ tự) | `so-lon-va-thu-tu/second-order.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. twelve — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 2. thirteen — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 3. fourteen — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 4. fifteen — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 5. sixteen — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 6. seventeen — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 7. eighteen — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 8. nineteen — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 9. twenty — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 10. thirty — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 11. forty — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 12. fifty — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 13. one hundred — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 14. one thousand — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 15. first — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 16. second — show the quantity by drawing that many identical small objects, never by writing a numeral
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. twelve
+2. thirteen
+3. fourteen
+4. fifteen
+5. sixteen
+6. seventeen
+7. eighteen
+8. nineteen
+9. twenty
+10. thirty
+11. forty
+12. fifty
+13. one hundred
+14. one thousand
+15. first
+16. second
+
+Important for the subjects above:
+- For the quantity words: show the amount by drawing that many identical small objects. Never write a numeral.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1469,37 +1579,43 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | far | xa | `vi-tri-va-huong/far.png` |
 | 16 | up | lên | `vi-tri-va-huong/up.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. third — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 2. last — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 3. half — show the quantity by drawing that many identical small objects, never by writing a numeral
-> 4. "on" — a cute cat and a simple box arranged so the position is unmistakable
-> 5. "under" — a cute cat and a simple box arranged so the position is unmistakable
-> 6. "in" — a cute cat and a simple box arranged so the position is unmistakable
-> 7. "outside" — a cute cat and a simple box arranged so the position is unmistakable
-> 8. "next to" — a cute cat and a simple box arranged so the position is unmistakable
-> 9. "in front of" — a cute cat and a simple box arranged so the position is unmistakable
-> 10. "behind" — a cute cat and a simple box arranged so the position is unmistakable
-> 11. "between" — a cute cat and a simple box arranged so the position is unmistakable
-> 12. "left" — a cute cat and a simple box arranged so the position is unmistakable
-> 13. "right" — a cute cat and a simple box arranged so the position is unmistakable
-> 14. "near" — a cute cat and a simple box arranged so the position is unmistakable
-> 15. "far" — a cute cat and a simple box arranged so the position is unmistakable
-> 16. "up" — a cute cat and a simple box arranged so the position is unmistakable
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. third
+2. last
+3. half
+4. on
+5. under
+6. in
+7. outside
+8. next to
+9. in front of
+10. behind
+11. between
+12. left
+13. right
+14. near
+15. far
+16. up
+
+Important for the subjects above:
+- For the quantity words: show the amount by drawing that many identical small objects. Never write a numeral.
+- For the position words: draw a cute cat and a simple box arranged so the position is unmistakable.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1524,37 +1640,43 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | please | làm ơn | `cau-chao-va-le-phep/please.png` |
 | 16 | how are you? | bạn khoẻ không? | `cau-chao-va-le-phep/how-are-you.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. "down" — a cute cat and a simple box arranged so the position is unmistakable
-> 2. "into" — a cute cat and a simple box arranged so the position is unmistakable
-> 3. "out" — a cute cat and a simple box arranged so the position is unmistakable
-> 4. "around" — a cute cat and a simple box arranged so the position is unmistakable
-> 5. "across" — a cute cat and a simple box arranged so the position is unmistakable
-> 6. "here" — a cute cat and a simple box arranged so the position is unmistakable
-> 7. "there" — a cute cat and a simple box arranged so the position is unmistakable
-> 8. hello — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 9. goodbye — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 10. good morning — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. good night — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 12. thank you — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 13. you're welcome — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 14. sorry — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 15. please — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 16. how are you? — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. down
+2. into
+3. out
+4. around
+5. across
+6. here
+7. there
+8. hello
+9. goodbye
+10. good morning
+11. good night
+12. thank you
+13. you're welcome
+14. sorry
+15. please
+16. how are you?
+
+Important for the subjects above:
+- For the position words: draw a cute cat and a simple box arranged so the position is unmistakable.
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1579,37 +1701,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | no | không | `cau-chao-va-le-phep/no.png` |
 | 16 | stand up | đứng lên | `cau-trong-lop-hoc/stand-up.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. I'm fine — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 2. what's your name? — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 3. my name is… — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 4. nice to meet you — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 5. see you — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 6. good luck — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 7. happy birthday — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 8. how old are you? — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 9. I'm … years old — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 10. where do you live? — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. I don't know — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 12. I understand — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 13. say it again, please — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 14. yes — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 15. no — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 16. stand up — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. I'm fine
+2. what's your name?
+3. my name is…
+4. nice to meet you
+5. see you
+6. good luck
+7. happy birthday
+8. how old are you?
+9. I'm … years old
+10. where do you live?
+11. I don't know
+12. I understand
+13. say it again, please
+14. yes
+15. no
+16. stand up
+
+Important for the subjects above:
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1634,37 +1761,43 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | home time | tan học | `cau-trong-lop-hoc/home-time.png` |
 | 16 | inside — outside | bên trong — bên ngoài | `nguoc-nghia/inside-outside.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. sit down — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 2. be quiet — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 3. listen to me — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 4. look at the board — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 5. open your book — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 6. close your book — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 7. put your hand up — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 8. repeat after me — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 9. well done — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 10. try again — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. line up — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 12. work in groups — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 13. it's your turn — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 14. break time — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 15. home time — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 16. "inside — outside" — two of the same object side by side so the contrast makes the meaning obvious
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. sit down
+2. be quiet
+3. listen to me
+4. look at the board
+5. open your book
+6. close your book
+7. put your hand up
+8. repeat after me
+9. well done
+10. try again
+11. line up
+12. work in groups
+13. it's your turn
+14. break time
+15. home time
+16. inside — outside
+
+Important for the subjects above:
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+- For the adjective words: draw two copies of the same object side by side so the contrast makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1689,37 +1822,43 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | art | môn mĩ thuật | `mon-hoc/art.png` |
 | 16 | music | môn âm nhạc | `mon-hoc/music.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. "before — after" — two of the same object side by side so the contrast makes the meaning obvious
-> 2. "early — late" — two of the same object side by side so the contrast makes the meaning obvious
-> 3. "more — less" — two of the same object side by side so the contrast makes the meaning obvious
-> 4. "same — different" — two of the same object side by side so the contrast makes the meaning obvious
-> 5. "begin — end" — two of the same object side by side so the contrast makes the meaning obvious
-> 6. "remember — forget" — two of the same object side by side so the contrast makes the meaning obvious
-> 7. "lose — find" — two of the same object side by side so the contrast makes the meaning obvious
-> 8. "win — lose" — two of the same object side by side so the contrast makes the meaning obvious
-> 9. "safe — dangerous" — two of the same object side by side so the contrast makes the meaning obvious
-> 10. maths — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. English — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 12. science — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 13. history — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 14. geography — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 15. art — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 16. music — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. before — after
+2. early — late
+3. more — less
+4. same — different
+5. begin — end
+6. remember — forget
+7. lose — find
+8. win — lose
+9. safe — dangerous
+10. maths
+11. English
+12. science
+13. history
+14. geography
+15. art
+16. music
+
+Important for the subjects above:
+- For the adjective words: draw two copies of the same object side by side so the contrast makes the meaning obvious.
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1744,37 +1883,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | change | tiền thừa | `o-nha-hang-va-cua-hang/change.png` |
 | 16 | turn left | rẽ trái | `di-duong/turn-left.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. PE — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 2. test — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 3. mark — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 4. homework — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 5. timetable — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 6. menu — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 7. order — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 8. how much is it? — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 9. it's too expensive — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 10. cheap — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. can I have… — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 12. it's delicious — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 13. I'm full — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 14. pay — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 15. change — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 16. turn left — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. PE
+2. test
+3. mark
+4. homework
+5. timetable
+6. menu
+7. order
+8. how much is it?
+9. it's too expensive
+10. cheap
+11. can I have…
+12. it's delicious
+13. I'm full
+14. pay
+15. change
+16. turn left
+
+Important for the subjects above:
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1799,37 +1943,42 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | tail | cái đuôi | `thien-nhien-va-con-vat-chu/tail.png` |
 | 16 | wing | cái cánh | `thien-nhien-va-con-vat-chu/wing.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. turn right — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 2. go straight — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 3. stop — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 4. cross the road — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 5. traffic light — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 6. pavement — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 7. directions — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 8. get lost — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 9. take a lift — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 10. ticket — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. trip — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 12. a flock of birds — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 13. nest — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 14. feather — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 15. tail — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 16. wing — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. turn right
+2. go straight
+3. stop
+4. cross the road
+5. traffic light
+6. pavement
+7. directions
+8. get lost
+9. take a lift
+10. ticket
+11. trip
+12. a flock of birds
+13. nest
+14. feather
+15. tail
+16. wing
+
+Important for the subjects above:
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1854,37 +2003,43 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | sand | cát | `thien-nhien-va-con-vat-chu/sand.png` |
 | 16 | glad | hạnh phúc | `cam-xuc-va-tinh-cach-chu/glad.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. horn — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 2. fur — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 3. scale — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 4. cave — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 5. cage — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 6. pet food — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 7. zoo — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 8. farm — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 9. field — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 10. river — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. lake — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 12. sky — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 13. ground — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 14. air — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 15. sand — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 16. a cute child whose face and whole body clearly show the feeling "glad"
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. horn
+2. fur
+3. scale
+4. cave
+5. cage
+6. pet food
+7. zoo
+8. farm
+9. field
+10. river
+11. lake
+12. sky
+13. ground
+14. air
+15. sand
+16. glad
+
+Important for the subjects above:
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+- For the feeling words: draw a cute child whose face AND whole body clearly show that feeling.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1909,37 +2064,43 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 15 | serious | nghiêm túc | `cam-xuc-va-tinh-cach-chu/serious.png` |
 | 16 | headache | đau đầu | `suc-khoe/headache.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. a cute child whose face and whole body clearly show the feeling "worried"
-> 2. a cute child whose face and whole body clearly show the feeling "excited"
-> 3. a cute child whose face and whole body clearly show the feeling "calm"
-> 4. a cute child whose face and whole body clearly show the feeling "shy"
-> 5. a cute child whose face and whole body clearly show the feeling "proud"
-> 6. a cute child whose face and whole body clearly show the feeling "disappointed"
-> 7. a cute child whose face and whole body clearly show the feeling "confused"
-> 8. a cute child whose face and whole body clearly show the feeling "pleased"
-> 9. a cute child whose face and whole body clearly show the feeling "amazed"
-> 10. a cute child whose face and whole body clearly show the feeling "friendly"
-> 11. a cute child whose face and whole body clearly show the feeling "honest"
-> 12. a cute child whose face and whole body clearly show the feeling "patient"
-> 13. a cute child whose face and whole body clearly show the feeling "selfish"
-> 14. a cute child whose face and whole body clearly show the feeling "generous"
-> 15. a cute child whose face and whole body clearly show the feeling "serious"
-> 16. headache — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 16 separate cute cartoon illustrations arranged in a 4x4 grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. worried
+2. excited
+3. calm
+4. shy
+5. proud
+6. disappointed
+7. confused
+8. pleased
+9. amazed
+10. friendly
+11. honest
+12. patient
+13. selfish
+14. generous
+15. serious
+16. headache
+
+Important for the subjects above:
+- For the feeling words: draw a cute child whose face AND whole body clearly show that feeling.
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
@@ -1959,32 +2120,37 @@ Gửi lại tấm nào tôi cắt tấm đó, không cần đủ hết một lư
 | 10 | medicine | viên thuốc | `suc-khoe/medicine.png` |
 | 11 | be off sick | nghỉ ốm | `suc-khoe/be-off-sick.png` |
 
-**Prompt (dán nguyên khối này):**
+**Prompt — bấm nút copy ở góc phải khối dưới:**
 
-> A single image containing exactly 11 separate cute cartoon illustrations arranged in a 4 columns x 3 rows grid, for a children's English learning app.
->
-> Subjects, in reading order (left to right, top to bottom):
-> 1. stomach ache — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 2. toothache — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 3. fever — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 4. cough — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 5. cold — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 6. tired — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 7. hungry — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 8. thirsty — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 9. healthy — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 10. medicine — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
-> 11. be off sick — a cute child clearly doing this, or a simple scene that makes the meaning obvious, with no words
->
-> Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
->
-> Layout rules — these matter most:
-> - Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-> - NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
-> - NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
-> - Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
-> - Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
-> - Image size 2048 x 2048 pixels.
+```text
+A single image containing exactly 11 separate cute cartoon illustrations arranged in a 4 columns x 3 rows grid, for a children's English learning app.
+
+Subjects, in reading order (left to right, top to bottom):
+1. stomach ache
+2. toothache
+3. fever
+4. cough
+5. cold
+6. tired
+7. hungry
+8. thirsty
+9. healthy
+10. medicine
+11. be off sick
+
+Important for the subjects above:
+- For the action words: draw a cute child clearly in the middle of doing it, or a simple scene that makes the meaning obvious.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly eyes where a face makes sense, rounded shapes, no gradients in the background.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO separators of any kind between the cells.
+- NO text, NO letters, NO numbers, NO labels, NO watermark anywhere in the image.
+- Each subject centred inside its own cell with clear empty space around it. Subjects must NOT touch each other and must NOT touch the edge of the image.
+- Every subject drawn at roughly the same visual size, all in the same style, same outline thickness, same palette.
+- Image size 2048 x 2048 pixels.
+```
 
 ---
 
