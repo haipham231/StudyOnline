@@ -3866,6 +3866,13 @@ body.khoa-cuon { overflow: hidden; }
 
 /* ===== Khu Bé ngoan: kể chuyện đạo đức cho mầm non ===== */
 
+/* Bỏ chiều cao tối thiểu mà .quiz đặt sẵn cho các màn chơi toàn màn hình.
+   Trang kể chuyện tự lo chiều cao bằng .san-truyen rồi; để cả hai cùng đặt
+   thì chúng cộng vào nhau, trang dài hơn màn hình và bé phải cuộn mới thấy
+   nút Tiếp. Máy cũ không hiểu :has() thì cùng lắm là cuộn được chút, chứ
+   không vỡ gì. */
+.quiz:has(.san-truyen) { min-height: 0; }
+
 .san-truyen {
   background: #fff;
   border-radius: 26px;
@@ -3873,9 +3880,10 @@ body.khoa-cuon { overflow: hidden; }
   padding: 14px 16px 18px;
   max-width: 560px;
   margin: 0 auto;
-  /* Màn hình điện thoại phải chứa trọn một cảnh: hình, lời kể và ba nút.
-     Bé hai tuổi không biết cuộn trang. */
-  min-height: calc(100dvh - 128px);
+  /* Màn hình điện thoại phải chứa TRỌN một cảnh: hình, lời kể và ba nút, bé
+     hai tuổi không biết cuộn trang. Trừ 121px là 65px thanh tiêu đề cộng
+     56px lề đáy của body. */
+  min-height: calc(100dvh - 121px);
   display: flex;
   flex-direction: column;
 }
@@ -3895,21 +3903,30 @@ body.khoa-cuon { overflow: hidden; }
 .khung-canh {
   flex: 0 0 auto;
   margin-top: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 190px;
+  display: block;
   cursor: pointer;
 }
 
-/* Hình hiện lên hơi phóng to rồi về cỡ thật, cho bé thấy "sang cảnh mới".
-   Giữ nhẹ thôi — hoạt ảnh mạnh quá thì bé nhìn mỏi mắt. */
+/* Cảnh truyện là TRANH VẼ KÍN NỀN, không phải hình dán nền trong suốt như
+   hình trong các ô trả lời. Vì vậy vẽ thành một khung ảnh bo góc chiếm gần
+   trọn bề ngang thẻ, chứ không thả trôi giữa khoảng trắng.
+
+   Trần 320px bề ngang là vì ảnh gốc rộng 640px: màn hình DPR 2 vẽ 320px là
+   vừa hết pixel thật. Thêm trần 46vh chiều cao cho máy màn ngắn — iPhone SE
+   cao 667px mà ảnh tỉ lệ 3:4 thì không hạ xuống là tràn mất hàng nút.
+
+   Hình hiện lên hơi phóng to rồi về cỡ thật, cho bé thấy "sang cảnh mới".
+   Giữ nhẹ thôi, hoạt ảnh mạnh quá thì bé nhìn mỏi mắt. */
 .khung-canh .hinh-canh {
+  display: block;
   height: auto; width: auto;
-  max-width: min(94%, 200px);
-  max-height: min(42vh, 200px);
+  max-width: min(100%, 320px);
+  max-height: 46vh;
+  margin: 0 auto;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(37, 46, 92, .18);
   opacity: 0;
-  transform: scale(.92);
+  transform: scale(.96);
 }
 .khung-canh.hien .hinh-canh {
   opacity: 1; transform: scale(1);
@@ -3984,6 +4001,13 @@ body.khoa-cuon { overflow: hidden; }
 .dau-xong { font-size: .9em; }
 
 @media (max-width: 430px) {
-  .san-truyen { padding: 12px 12px 14px; border-radius: 20px; }
+  /* Bỏ chiều cao tối thiểu mà .quiz đặt sẵn cho các màn chơi toàn màn hình.
+   Trang kể chuyện tự lo chiều cao bằng .san-truyen rồi; để cả hai cùng đặt
+   thì chúng cộng vào nhau, trang dài hơn màn hình và bé phải cuộn mới thấy
+   nút Tiếp. Máy cũ không hiểu :has() thì cùng lắm là cuộn được chút, chứ
+   không vỡ gì. */
+.quiz:has(.san-truyen) { min-height: 0; }
+
+.san-truyen { padding: 12px 12px 14px; border-radius: 20px; }
   .luong-vuon { grid-template-columns: repeat(5, 1fr); gap: 6px; padding: 10px 8px; }
 }

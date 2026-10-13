@@ -16,7 +16,11 @@
    Trường "nhan" của mỗi lựa chọn KHÔNG hiện ra cho bé — ô trả lời chỉ có
    hình. Nó để cho người lớn đọc bản kê và cho bộ test soi.
 
-   Hình đều lấy từ assets/sinh-vat, bộ test check-dao-duc kiểm từng tệp.
+   Hình của CẢNH nằm ở assets/sinh-vat/canh/ — tranh vẽ kín nền, mỗi truyện
+   một bộ ba vẽ riêng, cùng nhân vật xuyên suốt. Khác hẳn hình của các ô trả
+   lời bên dưới: những hình đó là vật đơn lẻ nền trong suốt lấy từ kho chung.
+
+   Bộ test check-dao-duc kiểm từng tệp.
 */
 (function (global) {
   'use strict';
@@ -25,9 +29,9 @@
     {
       ma: 'hai-qua-tao', doDu: 1, ten: 'Hai quả táo', duc: 'chia sẻ', tuoi: [2, 3],
       canh: [
-        { hinh: 'qua-rau/tao', loi: 'Thỏ có hai quả táo đỏ. Bạn Sóc đi ngang, bụng đói meo, cứ nhìn mãi.' },
-        { hinh: 'dong-tu-thuong-gap/think', loi: 'Thỏ nhìn Sóc, rồi nhìn hai quả táo. Thỏ nghĩ mãi: chia hay là ăn hết đây?' },
-        { hinh: 'dong-tu-thuong-gap/share', loi: 'Thỏ đưa cho Sóc một quả. Thỏ chỉ ăn một quả thôi, mà vui gấp đôi.' }
+        { hinh: 'canh/hai-qua-tao-1', loi: 'Thỏ có hai quả táo đỏ. Bạn Sóc đi ngang, bụng đói meo, cứ nhìn mãi.' },
+        { hinh: 'canh/hai-qua-tao-2', loi: 'Thỏ nhìn Sóc, rồi nhìn hai quả táo. Thỏ nghĩ mãi: chia hay là ăn hết đây?' },
+        { hinh: 'canh/hai-qua-tao-3', loi: 'Thỏ đưa cho Sóc một quả. Thỏ chỉ ăn một quả thôi, mà vui gấp đôi.' }
       ],
       baiHoc: 'Chia cho bạn một chút, niềm vui lại nhiều thêm.',
       hoi: [
@@ -49,9 +53,9 @@
     {
       ma: 'vet-mau-tren-ao', doDu: 1, ten: 'Vết màu trên áo bạn', duc: 'biết xin lỗi', tuoi: [3, 4],
       canh: [
-        { hinh: 'tinh-tu-thuong-gap/dirty', loi: 'Na quay người lại khoe tranh. Cây bút quệt vào áo bạn Bo, để lại một vết xanh dài.' },
-        { hinh: 'cam-xuc/scared', loi: 'Bo nhìn cái áo, mắt đỏ hoe. Na sợ quá, định lủi đi chỗ khác cho xong.' },
-        { hinh: 'cau-chao-va-le-phep/sorry', loi: 'Nhưng Na quay lại: "Bo ơi, mình xin lỗi bạn." Hai bạn lại ngồi vẽ chung.' }
+        { hinh: 'canh/vet-mau-tren-ao-1', loi: 'Na quay người lại khoe tranh. Cây bút quệt vào áo bạn Bo, để lại một vết xanh dài.' },
+        { hinh: 'canh/vet-mau-tren-ao-2', loi: 'Bo nhìn cái áo, mắt đỏ hoe. Na sợ quá, định lủi đi chỗ khác cho xong.' },
+        { hinh: 'canh/vet-mau-tren-ao-3', loi: 'Nhưng Na quay lại: "Bo ơi, mình xin lỗi bạn." Hai bạn lại ngồi vẽ chung.' }
       ],
       baiHoc: 'Lỡ làm sai thì nói xin lỗi ngay, đừng bỏ chạy.',
       hoi: [
@@ -73,9 +77,9 @@
     {
       ma: 'ly-nuoc-cho-ba', doDu: 1, ten: 'Ly nước cho bà', duc: 'thương ông bà', tuoi: [3, 4],
       canh: [
-        { hinh: 'suc-khoe/thirsty', loi: 'Bà ngồi trong nhà, khát nước, gọi khẽ: "Mun ơi…". Mun đang chơi búp bê ngoài sân.' },
-        { hinh: 'dong-tu-thuong-gap/think', loi: 'Mun nghe tiếng bà. Mun nghĩ mãi: chạy vào với bà hay là chơi tiếp đây?' },
-        { hinh: 'dong-tu-thuong-gap/bring', loi: 'Mun bưng ly nước bằng hai tay đưa cho bà. Bà xoa đầu Mun, Mun thấy ấm cả bụng.' }
+        { hinh: 'canh/ly-nuoc-cho-ba-1', loi: 'Bà ngồi trong nhà, khát nước, gọi khẽ: "Mun ơi…". Mun đang chơi búp bê ngoài sân.' },
+        { hinh: 'canh/ly-nuoc-cho-ba-2', loi: 'Mun nghe tiếng bà. Mun nghĩ mãi: chạy vào với bà hay là chơi tiếp đây?' },
+        { hinh: 'canh/ly-nuoc-cho-ba-3', loi: 'Mun bưng ly nước bằng hai tay đưa cho bà. Bà xoa đầu Mun, Mun thấy ấm cả bụng.' }
       ],
       baiHoc: 'Ông bà cần mình, mình để đồ chơi xuống một lát cũng không sao.',
       hoi: [
@@ -97,9 +101,9 @@
     {
       ma: 'chau-hoa-cua-me', doDu: 1, ten: 'Chậu hoa của mẹ', duc: 'trung thực, dám nhận lỗi', tuoi: [4, 5],
       canh: [
-        { hinh: 'cam-xuc/surprised', loi: 'Tin đá bóng trong nhà. Bụp! Quả bóng trúng chậu hoa của mẹ, chậu rơi xuống đất.' },
-        { hinh: 'dong-tu-thuong-gap/think', loi: 'Mẹ hỏi: "Ai làm đổ chậu hoa thế này?" Tin nhìn con mèo đang ngủ, định bảo mèo làm.' },
-        { hinh: 'cam-xuc-va-tinh-cach-chu/honest', loi: 'Tin hít một hơi thật sâu: "Con ạ." Mẹ ôm Tin: "Con nói thật, mẹ vui hơn nhiều."' }
+        { hinh: 'canh/chau-hoa-cua-me-1', loi: 'Tin đá bóng trong nhà. Bụp! Quả bóng trúng chậu hoa của mẹ, chậu rơi xuống đất.' },
+        { hinh: 'canh/chau-hoa-cua-me-2', loi: 'Mẹ hỏi: "Ai làm đổ chậu hoa thế này?" Tin nhìn con mèo đang ngủ, định bảo mèo làm.' },
+        { hinh: 'canh/chau-hoa-cua-me-3', loi: 'Tin hít một hơi thật sâu: "Con ạ." Mẹ ôm Tin: "Con nói thật, mẹ vui hơn nhiều."' }
       ],
       baiHoc: 'Nói thật thì khó, nhưng nói xong lòng mình nhẹ hẳn.',
       hoi: [
@@ -121,9 +125,9 @@
     {
       ma: 'ban-moi-trong-lop', doDu: 1, ten: 'Bạn mới trong lớp', duc: 'thân thiện với bạn mới', tuoi: [4, 5],
       canh: [
-        { hinh: 'cam-xuc-va-tinh-cach-chu/shy', loi: 'Lớp có bạn mới tên Mi. Mi ngồi một mình cuối lớp, chẳng ai nhìn tới.' },
-        { hinh: 'dong-tu-thuong-gap/think', loi: 'Bo nhìn thấy Mi. Bo nghĩ: chạy ra chơi tiếp, hay là tới rủ bạn ấy nhỉ?' },
-        { hinh: 'cau-trong-lop-hoc/work-in-groups', loi: 'Bo chạy tới: "Chơi với bọn mình nhé!" Cả nhóm xếp hình, Mi cười thật tươi.' }
+        { hinh: 'canh/ban-moi-trong-lop-1', loi: 'Lớp có bạn mới tên Mi. Mi ngồi một mình cuối lớp, chẳng ai nhìn tới.' },
+        { hinh: 'canh/ban-moi-trong-lop-2', loi: 'Bo nhìn thấy Mi. Bo nghĩ: chạy ra chơi tiếp, hay là tới rủ bạn ấy nhỉ?' },
+        { hinh: 'canh/ban-moi-trong-lop-3', loi: 'Bo chạy tới: "Chơi với bọn mình nhé!" Cả nhóm xếp hình, Mi cười thật tươi.' }
       ],
       baiHoc: 'Bạn mới sẽ bớt sợ, nếu có một người bước tới trước.',
       hoi: [
@@ -145,9 +149,9 @@
     {
       ma: 'gau-quen-chao', doDu: 1, ten: 'Chú gấu quên chào', duc: 'chào hỏi', tuoi: [2, 3],
       canh: [
-        { hinh: 'dong-tu-thuong-gap/walk', loi: 'Bác Voi vẫy vòi: "Chào Gấu con!" Gấu mải nghĩ chuyện khác, cứ cắm cúi đi.' },
-        { hinh: 'dong-tu-thuong-gap/think', loi: 'Đi được mấy bước, Gấu chợt nhớ ra. Quay lại chào, hay là đi luôn nhỉ?' },
-        { hinh: 'cau-chao-va-le-phep/hello', loi: 'Gấu chạy lại: "Cháu chào bác Voi ạ!" Bác Voi cười thật tươi.' }
+        { hinh: 'canh/gau-quen-chao-1', loi: 'Bác Voi vẫy vòi: "Chào Gấu con!" Gấu mải nghĩ chuyện khác, cứ cắm cúi đi.' },
+        { hinh: 'canh/gau-quen-chao-2', loi: 'Đi được mấy bước, Gấu chợt nhớ ra. Quay lại chào, hay là đi luôn nhỉ?' },
+        { hinh: 'canh/gau-quen-chao-3', loi: 'Gấu chạy lại: "Cháu chào bác Voi ạ!" Bác Voi cười thật tươi.' }
       ],
       baiHoc: 'Một tiếng chào thôi mà ai cũng vui.',
       hoi: [
@@ -169,9 +173,9 @@
     {
       ma: 'kien-khieng-la', doDu: 1, ten: 'Bạn kiến khiêng lá', duc: 'giúp đỡ', tuoi: [3, 4],
       canh: [
-        { hinh: 'dong-tu-thuong-gap/pull', loi: 'Kiến bé tí kéo mãi một chiếc lá to. Lá chẳng nhúc nhích, Kiến ngồi thở, sắp khóc.' },
-        { hinh: 'dong-tu-thuong-gap/think', loi: 'Bọ Rùa bay ngang, đang vội về nhà. Bọ Rùa nhìn Kiến, rồi nhìn đường về, nghĩ một giây.' },
-        { hinh: 'dong-tu-thuong-gap/help', loi: 'Bọ Rùa đáp xuống đẩy phụ. Một bạn kéo, một bạn đẩy, chiếc lá trôi băng băng.' }
+        { hinh: 'canh/kien-khieng-la-1', loi: 'Kiến bé tí kéo mãi một chiếc lá to. Lá chẳng nhúc nhích, Kiến ngồi thở, sắp khóc.' },
+        { hinh: 'canh/kien-khieng-la-2', loi: 'Bọ Rùa bay ngang, đang vội về nhà. Bọ Rùa nhìn Kiến, rồi nhìn đường về, nghĩ một giây.' },
+        { hinh: 'canh/kien-khieng-la-3', loi: 'Bọ Rùa đáp xuống đẩy phụ. Một bạn kéo, một bạn đẩy, chiếc lá trôi băng băng.' }
       ],
       baiHoc: 'Một mình thì nặng, hai mình thì nhẹ.',
       hoi: [
@@ -193,9 +197,9 @@
     {
       ma: 'goc-do-choi', doDu: 1, ten: 'Góc đồ chơi của bé', duc: 'tự dọn dẹp', tuoi: [3, 4],
       canh: [
-        { hinh: 'do-choi-va-le-hoi/puzzle', loi: 'Bi chơi suốt cả buổi chiều. Đồ chơi vương khắp sàn nhà.' },
-        { hinh: 'dong-tu-thuong-gap/think', loi: 'Mẹ gọi: "Tới giờ ăn cơm rồi!" Bi nhìn đống đồ chơi, định bỏ đó mà chạy đi.' },
-        { hinh: 'viec-hang-ngay/tidy-up', loi: 'Bi ngồi xuống nhặt từng món bỏ vào giỏ. Sàn nhà sạch bong, Bi thấy mình giỏi ghê.' }
+        { hinh: 'canh/goc-do-choi-1', loi: 'Bi chơi suốt cả buổi chiều. Đồ chơi vương khắp sàn nhà.' },
+        { hinh: 'canh/goc-do-choi-2', loi: 'Mẹ gọi: "Tới giờ ăn cơm rồi!" Bi nhìn đống đồ chơi, định bỏ đó mà chạy đi.' },
+        { hinh: 'canh/goc-do-choi-3', loi: 'Bi ngồi xuống nhặt từng món bỏ vào giỏ. Sàn nhà sạch bong, Bi thấy mình giỏi ghê.' }
       ],
       baiHoc: 'Chơi xong mà cất đồ, lần sau tìm là thấy ngay.',
       hoi: [
@@ -217,9 +221,9 @@
     {
       ma: 'xep-hang-lay-sua', doDu: 1, ten: 'Xếp hàng lấy sữa', duc: 'chờ đến lượt', tuoi: [4, 5],
       canh: [
-        { hinh: 'cau-trong-lop-hoc/line-up', loi: 'Cô mang sữa ra, cả lớp xếp thành một hàng dài. Tí đứng cuối, sốt ruột lắm.' },
-        { hinh: 'cam-xuc-va-tinh-cach-chu/selfish', loi: 'Tí nghĩ: hay là mình chen lên trước nhỉ? Nhưng các bạn sẽ nhăn mặt mất.' },
-        { hinh: 'cam-xuc-va-tinh-cach-chu/patient', loi: 'Tí đứng yên chờ. Đến lượt Tí, ly sữa vẫn còn đó, mát lạnh.' }
+        { hinh: 'canh/xep-hang-lay-sua-1', loi: 'Cô mang sữa ra, cả lớp xếp thành một hàng dài. Tí đứng cuối, sốt ruột lắm.' },
+        { hinh: 'canh/xep-hang-lay-sua-2', loi: 'Tí nghĩ: hay là mình chen lên trước nhỉ? Nhưng các bạn sẽ nhăn mặt mất.' },
+        { hinh: 'canh/xep-hang-lay-sua-3', loi: 'Tí đứng yên chờ. Đến lượt Tí, ly sữa vẫn còn đó, mát lạnh.' }
       ],
       baiHoc: 'Chờ một chút thôi, phần của mình không mất đi đâu cả.',
       hoi: [
@@ -241,9 +245,9 @@
     {
       ma: 'hen-ban-goc-cay', doDu: 1, ten: 'Hẹn bạn ở gốc cây', duc: 'giữ lời hứa', tuoi: [4, 5],
       canh: [
-        { hinh: 'mau-troi/mua', loi: 'Bo hẹn Na: "Mai mình chờ bạn ở gốc cây nhé!" Sáng hôm sau, trời đổ mưa to.' },
-        { hinh: 'dong-tu-thuong-gap/think', loi: 'Bo nằm trong chăn ấm, nhớ ra lời hẹn. Mưa thế này, chắc Na cũng chẳng đi đâu.' },
-        { hinh: 'dong-tu-thuong-gap/run', loi: 'Bo mặc áo mưa chạy ra gốc cây. Na vẫn đứng đó chờ, ướt hết cả tóc.' }
+        { hinh: 'canh/hen-ban-goc-cay-1', loi: 'Bo hẹn Na: "Mai mình chờ bạn ở gốc cây nhé!" Sáng hôm sau, trời đổ mưa to.' },
+        { hinh: 'canh/hen-ban-goc-cay-2', loi: 'Bo nằm trong chăn ấm, nhớ ra lời hẹn. Mưa thế này, chắc Na cũng chẳng đi đâu.' },
+        { hinh: 'canh/hen-ban-goc-cay-3', loi: 'Bo mặc áo mưa chạy ra gốc cây. Na vẫn đứng đó chờ, ướt hết cả tóc.' }
       ],
       baiHoc: 'Đã hứa với bạn thì tới, dù trời mưa.',
       hoi: [
