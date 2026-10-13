@@ -1,0 +1,16 @@
+A single image containing exactly 3 separate cute cartoon scenes arranged in a 2x2 (leave the fourth cell completely empty) grid, for a Vietnamese children's app that teaches good manners. The 3 scenes tell one short story in order and must share the SAME characters, same faces, same clothes and same colours across all of them.
+
+Scenes, in reading order (left to right, top to bottom):
+1. A preschool classroom. A teacher stands at a table with cartons of milk. Four children queue in a neat line in front of the table. The last child in the line fidgets impatiently, standing on tiptoe to see.
+2. Close on the impatient child at the back of the queue, eyebrows knitted. Two thought bubbles above: in one the child barges to the front of the line while the others frown, in the other the child stays put and waits calmly.
+3. The same child now at the front of the queue, receiving a carton of milk from the teacher with both hands, beaming. The other children stand behind, all happy.
+
+Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly expressive eyes, rounded shapes. Faces must clearly show the feeling described. Warm and gentle throughout - nobody is scary, nobody is being punished.
+
+Layout rules - these matter most:
+- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
+- NO grid lines, NO frames, NO borders, NO panel dividers of any kind between the scenes.
+- NO text, NO letters, NO numbers, NO speech bubbles with writing, NO watermark anywhere in the image.
+- Thought bubbles must contain only small pictures, never words.
+- Each scene centred in its own cell with clear empty space around it. Scenes must NOT touch each other and must NOT touch the edge of the image.
+- Image size 2048 x 2048 pixels.
