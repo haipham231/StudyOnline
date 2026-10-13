@@ -1,16 +1,20 @@
-A single image containing exactly 3 separate cute cartoon scenes arranged in a 2x2 (leave the fourth cell completely empty) grid, for a Vietnamese children's app that teaches good manners. The 3 scenes tell one short story in order and must share the SAME characters, same faces, same clothes and same colours across all of them.
+A single image for a Vietnamese children's storybook app: exactly 3 illustrated scenes of one short story, placed side by side in one horizontal row, equal width, in reading order from left to right.
 
-Scenes, in reading order (left to right, top to bottom):
-1. A preschool classroom. In the foreground a new girl sits alone on a chair, hands in her lap, head low, looking left out. In the background three other children play together with blocks, none of them looking at her.
-2. A boy among the playing children has stopped and turned his head to look at the lonely girl. Two thought bubbles above him: in one he keeps playing with the blocks, in the other he walks over and waves at her.
-3. The boy waving hello at the new girl, who is smiling now. All four children sit together around a puzzle on the floor, happy.
+All three scenes must show the SAME characters with the same faces, the same fur and colours and the same proportions. They are one story, not three separate pictures.
 
-Style: cute kawaii children's storybook illustration, thick dark outlines, flat bright colours, soft simple shading, big friendly expressive eyes, rounded shapes. Faces must clearly show the feeling described. Warm and gentle throughout - nobody is scary, nobody is being punished.
+Scene 1: A preschool classroom. In the foreground a new girl sits alone on a chair, hands in her lap, head low, looking left out. In the background three other children play together with blocks, none of them looking at her.
 
-Layout rules - these matter most:
-- Transparent background (PNG with real alpha). No white box, no paper texture, no drop shadow on the background.
-- NO grid lines, NO frames, NO borders, NO panel dividers of any kind between the scenes.
-- NO text, NO letters, NO numbers, NO speech bubbles with writing, NO watermark anywhere in the image.
-- Thought bubbles must contain only small pictures, never words.
-- Each scene centred in its own cell with clear empty space around it. Scenes must NOT touch each other and must NOT touch the edge of the image.
-- Image size 2048 x 2048 pixels.
+Scene 2: A boy among the playing children has stopped and turned his head to look at the lonely girl. Two thought bubbles above him: in one he keeps playing with the blocks, in the other he walks over and waves at her.
+
+Scene 3: The boy waving hello at the new girl, who is smiling now. All four children sit together around a puzzle on the floor, happy.
+
+Framing - this is the part to get right:
+- The characters must fill most of each panel. Leave only a little empty space above and below them.
+- Show them close enough that their faces are easy to read.
+- Keep the whole of every thought bubble well inside the panel, clearly away from the top edge, never touching it.
+
+Style: soft 3D-rendered children's animation look, like a still from a modern animated film. Rounded friendly character design, big expressive shining eyes, soft warm lighting, background gently blurred behind the characters. Faces must clearly show the feeling described. Warm and gentle throughout - nobody is scary, nobody is being punished. All three panels in exactly this same style, the same lighting and the same character design.
+
+Rules:
+- NO text, NO letters, NO numbers, NO words anywhere in the image, and none inside the thought bubbles. Thought bubbles hold only small pictures.
+- A thin plain white gap between the three panels is fine. No borders, no frames, no drawn outlines around the panels.
