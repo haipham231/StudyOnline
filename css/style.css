@@ -3888,14 +3888,27 @@ body.khoa-cuon { overflow: hidden; }
   flex-direction: column;
 }
 
-/* dãy chấm cho biết truyện còn dài bao nhiêu */
-.thanh-canh { display: flex; gap: 5px; justify-content: center; margin-bottom: 12px; }
+/* Dãy chấm cho biết truyện còn dài bao nhiêu. Chấm là nút bấm được: người
+   lớn đọc cho bé thì hay phải nhảy thẳng về trang bé thích. Vùng bấm nới
+   rộng ra bằng lề trong suốt chứ không phóng to cái chấm. */
+.thanh-canh { display: flex; gap: 2px; justify-content: center; margin-bottom: 10px; }
 .cham-canh {
-  width: 9px; height: 9px; border-radius: 50%;
-  background: var(--line); transition: background .2s, transform .2s;
+  appearance: none;
+  border: 0;
+  padding: 6px;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
 }
-.cham-canh.qua { background: var(--mint, #2fcf90); }
-.cham-canh.nay { background: var(--tim, #8b7bf7); transform: scale(1.5); }
+.cham-canh::before {
+  content: '';
+  display: block;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--line);
+  transition: background .2s, transform .2s;
+}
+.cham-canh.qua::before { background: var(--mint, #2fcf90); }
+.cham-canh.nay::before { background: var(--tim, #8b7bf7); transform: scale(1.5); }
 
 /* Hình và lời kể phải dính vào nhau rồi cả cụm mới nằm giữa màn hình. Cho
    .khung-canh co giãn thì hình nổi lên giữa còn chữ tụt xuống tận đáy, nhìn
@@ -3947,6 +3960,18 @@ body.khoa-cuon { overflow: hidden; }
 .nut-truyen { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
 .nut-truyen .btn { padding: 12px 16px; font-size: 16px; }
 .loa-truyen { font-size: 15px; }
+
+/* Ở trang đầu thì nút Trước mờ đi chứ không biến mất: nút biến mất là hàng
+   nút nhảy chỗ, người lớn đang quen tay bấm sẽ bấm trượt sang nút khác. */
+.nut-truyen .btn:disabled {
+  opacity: .38;
+  cursor: default;
+  box-shadow: 0 3px 0 var(--line);
+  transform: translateY(2px);
+}
+
+.khoi-bai-hoc { display: flex; flex-direction: column; flex: 1 1 auto; }
+.khoi-bai-hoc .nut-truyen { margin-top: 18px; }
 
 /* thẻ bài học cuối truyện */
 .the-bai-hoc {
