@@ -9,7 +9,7 @@
    câu hỏi, nên cắt cảnh cũng đọc cho cùng một nhịp.
 
    Tranh cắt cảnh có hai dạng:
-   - hinh: tranh vẽ kín nền (assets/sinh-vat/<hinh>.webp), phủ trọn khung.
+   - hinh: tranh vẽ kín nền (assets/hinh/tranh/cat-canh/…), phủ trọn khung.
    - hinhTam: mảng mấy hình dán trong kho, xếp thành hàng trên nền màu. Dùng
      tạm lúc chưa có tranh, để game vẫn chạy được trọn vẹn.
 */

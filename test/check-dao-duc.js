@@ -20,7 +20,7 @@ const T = g.TruyenDaoDuc;
 
 console.log('── Khu Bé ngoan ──');
 
-const coAnh = p => fs.existsSync(ROOT + '/assets/sinh-vat/' + p + '.webp');
+const coAnh = p => fs.existsSync(ROOT + '/assets/hinh/' + p + '.webp');
 
 /* ---- 1. mọi hình phải có thật ---- */
 let soHinh = 0;

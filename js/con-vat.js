@@ -67,22 +67,22 @@
     { ten: 'ốc sên',     e: '🐌', an: { ten: 'quả dưa chuột', e: '🥒' }, o: 'can', keu: null },
 
     /* --- có hình riêng, không emoji nào tả đúng --- */
-    { ten: 'con hổ',        hinh: 'them/ho',             an: { ten: 'miếng thịt', e: '🥩' }, o: 'can',  keu: 'gầm' },
-    { ten: 'con báo',       hinh: 'them/bao',            an: { ten: 'miếng thịt', e: '🥩' }, o: 'can',  keu: null },
-    { ten: 'gấu bắc cực',   hinh: 'them/gau-bac-cuc',    an: { ten: 'con cá',     e: '🐟' }, o: 'can',  keu: null },
-    { ten: 'gấu nâu',       hinh: 'them/gau-nau',        an: { ten: 'mật ong',    e: '🍯' }, o: 'can',  keu: null },
-    { ten: 'gấu mèo',       hinh: 'them/gau-meo',        an: { ten: 'quả táo',    e: '🍎' }, o: 'can',  keu: null },
-    { ten: 'con hải ly',    hinh: 'them/hai-ly',         an: { ten: 'cây tre',    e: '🎋' }, o: 'nuoc', keu: null },
-    { ten: 'nai sừng tấm',  hinh: 'them/nai-sung-tam',   an: { ten: 'lá cây',     e: '🍃' }, o: 'can',  keu: null },
-    { ten: 'sóc đỏ',        hinh: 'them/soc-do',         an: { ten: 'hạt dẻ',     e: '🌰' }, o: 'can',  keu: null },
-    { ten: 'cá voi xanh',   hinh: 'them/ca-voi-xanh',    an: { ten: 'con tôm',    e: '🦐' }, o: 'nuoc', keu: null },
-    { ten: 'cá voi lưng gù', hinh: 'them/ca-voi-lung-gu', an: { ten: 'con tôm',   e: '🦐' }, o: 'nuoc', keu: null },
-    { ten: 'cá nhà táng',   hinh: 'them/ca-nha-tang',    an: { ten: 'con mực',    e: '🦑' }, o: 'nuoc', keu: null },
-    { ten: 'cá voi sát thủ', hinh: 'them/ca-voi-sat-thu', an: { ten: 'con cá nhỏ', e: '🐠' }, o: 'nuoc', keu: null },
-    { ten: 'lươn biển',     hinh: 'them/luon-bien',      an: { ten: 'con tôm',    e: '🦐' }, o: 'nuoc', keu: null },
-    { ten: 'sao biển',      hinh: 'them/sao-bien',       an: { ten: 'con sò',     e: '🐚' }, o: 'nuoc', keu: null },
-    { ten: 'nhím biển',     hinh: 'them/nhim-bien',      an: { ten: 'lá rau',     e: '🥬' }, o: 'nuoc', keu: null },
-    { ten: 'cá đuối',       hinh: 'them/ca-duoi',        an: { ten: 'con cua',    e: '🦀' }, o: 'nuoc', keu: null }
+    { ten: 'con hổ',        hinh: 'dan/con-vat/ho',             an: { ten: 'miếng thịt', e: '🥩' }, o: 'can',  keu: 'gầm' },
+    { ten: 'con báo',       hinh: 'dan/con-vat/bao',            an: { ten: 'miếng thịt', e: '🥩' }, o: 'can',  keu: null },
+    { ten: 'gấu bắc cực',   hinh: 'dan/con-vat/gau-bac-cuc',    an: { ten: 'con cá',     e: '🐟' }, o: 'can',  keu: null },
+    { ten: 'gấu nâu',       hinh: 'dan/con-vat/gau-nau',        an: { ten: 'mật ong',    e: '🍯' }, o: 'can',  keu: null },
+    { ten: 'gấu mèo',       hinh: 'dan/con-vat/gau-meo',        an: { ten: 'quả táo',    e: '🍎' }, o: 'can',  keu: null },
+    { ten: 'con hải ly',    hinh: 'dan/con-vat/hai-ly',         an: { ten: 'cây tre',    e: '🎋' }, o: 'nuoc', keu: null },
+    { ten: 'nai sừng tấm',  hinh: 'dan/con-vat/nai-sung-tam',   an: { ten: 'lá cây',     e: '🍃' }, o: 'can',  keu: null },
+    { ten: 'sóc đỏ',        hinh: 'dan/con-vat/soc-do',         an: { ten: 'hạt dẻ',     e: '🌰' }, o: 'can',  keu: null },
+    { ten: 'cá voi xanh',   hinh: 'dan/con-vat/ca-voi-xanh',    an: { ten: 'con tôm',    e: '🦐' }, o: 'nuoc', keu: null },
+    { ten: 'cá voi lưng gù', hinh: 'dan/con-vat/ca-voi-lung-gu', an: { ten: 'con tôm',   e: '🦐' }, o: 'nuoc', keu: null },
+    { ten: 'cá nhà táng',   hinh: 'dan/con-vat/ca-nha-tang',    an: { ten: 'con mực',    e: '🦑' }, o: 'nuoc', keu: null },
+    { ten: 'cá voi sát thủ', hinh: 'dan/con-vat/ca-voi-sat-thu', an: { ten: 'con cá nhỏ', e: '🐠' }, o: 'nuoc', keu: null },
+    { ten: 'lươn biển',     hinh: 'dan/con-vat/luon-bien',      an: { ten: 'con tôm',    e: '🦐' }, o: 'nuoc', keu: null },
+    { ten: 'sao biển',      hinh: 'dan/con-vat/sao-bien',       an: { ten: 'con sò',     e: '🐚' }, o: 'nuoc', keu: null },
+    { ten: 'nhím biển',     hinh: 'dan/con-vat/nhim-bien',      an: { ten: 'lá rau',     e: '🥬' }, o: 'nuoc', keu: null },
+    { ten: 'cá đuối',       hinh: 'dan/con-vat/ca-duoi',        an: { ten: 'con cua',    e: '🦀' }, o: 'nuoc', keu: null }
   ];
 
   var NOI_SONG = {
@@ -105,16 +105,16 @@
            chọn sai cùng nhau — con khỉ ở rừng nhiệt đới mà đưa thêm ô rừng
            thường thì người lớn còn ngập ngừng, nói gì bé ba tuổi. */
   var NOI = {
-    bien:   { ten: 'dưới biển',      hinh: 'mau-troi/song-bien',                nen: '#bfe7ff', gan: ['ao'] },
-    ao:     { ten: 'ở ao hồ',        hinh: 'thien-nhien-va-con-vat-chu/lake',   nen: '#cdeedd', gan: ['bien'] },
-    bang:   { ten: 'ở xứ băng giá',  hinh: 'mau-troi/tuyet',                    nen: '#e8f4ff', gan: [] },
-    rungND: { ten: 'trong rừng nhiệt đới', hinh: 'thien-nhien-them/palm-tree',  nen: '#c9efc4', gan: ['rung'] },
-    thao:   { ten: 'trên thảo nguyên', hinh: 'thien-nhien-va-con-vat-chu/field', nen: '#fbe9b0', gan: ['saMac'] },
-    saMac:  { ten: 'ở sa mạc',       hinh: 'thien-nhien-them/desert',           nen: '#fde3b0', gan: ['thao'] },
-    rung:   { ten: 'trong rừng',     hinh: 'thien-nhien-them/forest',           nen: '#d4ecd0', gan: ['rungND'] },
-    trai:   { ten: 'ở nông trại',    hinh: 'thien-nhien-va-con-vat-chu/farm',   nen: '#f7e3cf', gan: [] },
-    nha:    { ten: 'ở trong nhà',    hinh: 'noi-chon/house',                    nen: '#fde7ef', gan: [] },
-    vuon:   { ten: 'trong vườn hoa', hinh: 'thien-nhien-them/tulip',            nen: '#ffe9f6', gan: [] }
+    bien:   { ten: 'dưới biển',      hinh: 'dan/thien-nhien/song-bien',                nen: '#bfe7ff', gan: ['ao'] },
+    ao:     { ten: 'ở ao hồ',        hinh: 'dan/thien-nhien/lake',   nen: '#cdeedd', gan: ['bien'] },
+    bang:   { ten: 'ở xứ băng giá',  hinh: 'dan/thien-nhien/tuyet',                    nen: '#e8f4ff', gan: [] },
+    rungND: { ten: 'trong rừng nhiệt đới', hinh: 'dan/thien-nhien/palm-tree',  nen: '#c9efc4', gan: ['rung'] },
+    thao:   { ten: 'trên thảo nguyên', hinh: 'dan/thien-nhien/field', nen: '#fbe9b0', gan: ['saMac'] },
+    saMac:  { ten: 'ở sa mạc',       hinh: 'dan/thien-nhien/desert',           nen: '#fde3b0', gan: ['thao'] },
+    rung:   { ten: 'trong rừng',     hinh: 'dan/thien-nhien/forest',           nen: '#d4ecd0', gan: ['rungND'] },
+    trai:   { ten: 'ở nông trại',    hinh: 'dan/thien-nhien/farm',   nen: '#f7e3cf', gan: [] },
+    nha:    { ten: 'ở trong nhà',    hinh: 'dan/noi-chon/house',                    nen: '#fde7ef', gan: [] },
+    vuon:   { ten: 'trong vườn hoa', hinh: 'dan/thien-nhien/tulip',            nen: '#ffe9f6', gan: [] }
   };
 
   /* Nhà của từng con. Để riêng một bảng theo tên chứ không thêm trường vào

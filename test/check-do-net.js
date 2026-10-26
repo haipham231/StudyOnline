@@ -40,8 +40,8 @@ function coAnh(p) { return /\.webp$/i.test(p) ? coWEBP(p) : coPNG(p); }
    Lấy từ css/style.css — sửa cỡ hiển thị thì sửa cả bảng này.
    Thư mục nào vẽ nhỏ thì ngưỡng nhỏ, không bắt ảnh phải to vô ích. */
 const DUNG_O = {
-  'sinh-vat/canh': 320,         // tranh cảnh truyện, vẽ gần trọn bề ngang thẻ
-  'sinh-vat': 200,              // trần cứng .hinh-ve trong css/style.css
+  'hinh/tranh': 320,            // tranh kín nền: cảnh truyện, nơi sống, cắt cảnh
+  'hinh/dan': 200,              // hình dán — trần cứng .hinh-ve trong css/style.css
   'halloween/canh': 140,        // nhân vật trong cảnh cắt
   'halloween/do': 95,           // khung hộp đáp án
   'halloween': 80,              // quái canh ải

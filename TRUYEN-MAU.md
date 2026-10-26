@@ -29,9 +29,9 @@ non chưa biết đọc — cột "ba hình để chọn" dưới đây là đ�
 
 | | Hình | Lời kể |
 |---|---|---|
-| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/hai-qua-tao-1.webp" width="90"> | Thỏ có hai quả táo đỏ. Bạn Sóc đi ngang, bụng đói meo, cứ nhìn mãi. |
-| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/hai-qua-tao-2.webp" width="90"> | Thỏ nhìn Sóc, rồi nhìn hai quả táo. Thỏ nghĩ mãi: chia hay là ăn hết đây? ⟵ *cảnh do dự* |
-| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/hai-qua-tao-3.webp" width="90"> | Thỏ đưa cho Sóc một quả. Thỏ chỉ ăn một quả thôi, mà vui gấp đôi. |
+| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/hai-qua-tao-1.webp" width="90"> | Thỏ có hai quả táo đỏ. Bạn Sóc đi ngang, bụng đói meo, cứ nhìn mãi. |
+| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/hai-qua-tao-2.webp" width="90"> | Thỏ nhìn Sóc, rồi nhìn hai quả táo. Thỏ nghĩ mãi: chia hay là ăn hết đây? ⟵ *cảnh do dự* |
+| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/hai-qua-tao-3.webp" width="90"> | Thỏ đưa cho Sóc một quả. Thỏ chỉ ăn một quả thôi, mà vui gấp đôi. |
 
 > **Bài học hôm nay:** Chia cho bạn một chút, niềm vui lại nhiều thêm.
 
@@ -50,9 +50,9 @@ non chưa biết đọc — cột "ba hình để chọn" dưới đây là đ�
 
 | | Hình | Lời kể |
 |---|---|---|
-| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/vet-mau-tren-ao-1.webp" width="90"> | Na quay người lại khoe tranh. Cây bút quệt vào áo bạn Bo, để lại một vết xanh dài. |
-| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/vet-mau-tren-ao-2.webp" width="90"> | Bo nhìn cái áo, mắt đỏ hoe. Na sợ quá, định lủi đi chỗ khác cho xong. ⟵ *cảnh do dự* |
-| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/vet-mau-tren-ao-3.webp" width="90"> | Nhưng Na quay lại: "Bo ơi, mình xin lỗi bạn." Hai bạn lại ngồi vẽ chung. |
+| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/vet-mau-tren-ao-1.webp" width="90"> | Na quay người lại khoe tranh. Cây bút quệt vào áo bạn Bo, để lại một vết xanh dài. |
+| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/vet-mau-tren-ao-2.webp" width="90"> | Bo nhìn cái áo, mắt đỏ hoe. Na sợ quá, định lủi đi chỗ khác cho xong. ⟵ *cảnh do dự* |
+| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/vet-mau-tren-ao-3.webp" width="90"> | Nhưng Na quay lại: "Bo ơi, mình xin lỗi bạn." Hai bạn lại ngồi vẽ chung. |
 
 > **Bài học hôm nay:** Lỡ làm sai thì nói xin lỗi ngay, đừng bỏ chạy.
 
@@ -71,9 +71,9 @@ non chưa biết đọc — cột "ba hình để chọn" dưới đây là đ�
 
 | | Hình | Lời kể |
 |---|---|---|
-| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/ly-nuoc-cho-ba-1.webp" width="90"> | Bà ngồi trong nhà, khát nước, gọi khẽ: "Mun ơi…". Mun đang chơi búp bê ngoài sân. |
-| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/ly-nuoc-cho-ba-2.webp" width="90"> | Mun nghe tiếng bà. Mun nghĩ mãi: chạy vào với bà hay là chơi tiếp đây? ⟵ *cảnh do dự* |
-| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/ly-nuoc-cho-ba-3.webp" width="90"> | Mun bưng ly nước bằng hai tay đưa cho bà. Bà xoa đầu Mun, Mun thấy ấm cả bụng. |
+| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/ly-nuoc-cho-ba-1.webp" width="90"> | Bà ngồi trong nhà, khát nước, gọi khẽ: "Mun ơi…". Mun đang chơi búp bê ngoài sân. |
+| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/ly-nuoc-cho-ba-2.webp" width="90"> | Mun nghe tiếng bà. Mun nghĩ mãi: chạy vào với bà hay là chơi tiếp đây? ⟵ *cảnh do dự* |
+| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/ly-nuoc-cho-ba-3.webp" width="90"> | Mun bưng ly nước bằng hai tay đưa cho bà. Bà xoa đầu Mun, Mun thấy ấm cả bụng. |
 
 > **Bài học hôm nay:** Ông bà cần mình, mình để đồ chơi xuống một lát cũng không sao.
 
@@ -92,9 +92,9 @@ non chưa biết đọc — cột "ba hình để chọn" dưới đây là đ�
 
 | | Hình | Lời kể |
 |---|---|---|
-| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/chau-hoa-cua-me-1.webp" width="90"> | Tin đá bóng trong nhà. Bụp! Quả bóng trúng chậu hoa của mẹ, chậu rơi xuống đất. |
-| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/chau-hoa-cua-me-2.webp" width="90"> | Mẹ hỏi: "Ai làm đổ chậu hoa thế này?" Tin nhìn con mèo đang ngủ, định bảo mèo làm. ⟵ *cảnh do dự* |
-| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/chau-hoa-cua-me-3.webp" width="90"> | Tin hít một hơi thật sâu: "Con ạ." Mẹ ôm Tin: "Con nói thật, mẹ vui hơn nhiều." |
+| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/chau-hoa-cua-me-1.webp" width="90"> | Tin đá bóng trong nhà. Bụp! Quả bóng trúng chậu hoa của mẹ, chậu rơi xuống đất. |
+| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/chau-hoa-cua-me-2.webp" width="90"> | Mẹ hỏi: "Ai làm đổ chậu hoa thế này?" Tin nhìn con mèo đang ngủ, định bảo mèo làm. ⟵ *cảnh do dự* |
+| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/chau-hoa-cua-me-3.webp" width="90"> | Tin hít một hơi thật sâu: "Con ạ." Mẹ ôm Tin: "Con nói thật, mẹ vui hơn nhiều." |
 
 > **Bài học hôm nay:** Nói thật thì khó, nhưng nói xong lòng mình nhẹ hẳn.
 
@@ -113,9 +113,9 @@ non chưa biết đọc — cột "ba hình để chọn" dưới đây là đ�
 
 | | Hình | Lời kể |
 |---|---|---|
-| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/ban-moi-trong-lop-1.webp" width="90"> | Lớp có bạn mới tên Mi. Mi ngồi một mình cuối lớp, chẳng ai nhìn tới. |
-| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/ban-moi-trong-lop-2.webp" width="90"> | Bo nhìn thấy Mi. Bo nghĩ: chạy ra chơi tiếp, hay là tới rủ bạn ấy nhỉ? ⟵ *cảnh do dự* |
-| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/ban-moi-trong-lop-3.webp" width="90"> | Bo chạy tới: "Chơi với bọn mình nhé!" Cả nhóm xếp hình, Mi cười thật tươi. |
+| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/ban-moi-trong-lop-1.webp" width="90"> | Lớp có bạn mới tên Mi. Mi ngồi một mình cuối lớp, chẳng ai nhìn tới. |
+| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/ban-moi-trong-lop-2.webp" width="90"> | Bo nhìn thấy Mi. Bo nghĩ: chạy ra chơi tiếp, hay là tới rủ bạn ấy nhỉ? ⟵ *cảnh do dự* |
+| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/ban-moi-trong-lop-3.webp" width="90"> | Bo chạy tới: "Chơi với bọn mình nhé!" Cả nhóm xếp hình, Mi cười thật tươi. |
 
 > **Bài học hôm nay:** Bạn mới sẽ bớt sợ, nếu có một người bước tới trước.
 
@@ -134,9 +134,9 @@ non chưa biết đọc — cột "ba hình để chọn" dưới đây là đ�
 
 | | Hình | Lời kể |
 |---|---|---|
-| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/gau-quen-chao-1.webp" width="90"> | Bác Voi vẫy vòi: "Chào Gấu con!" Gấu mải nghĩ chuyện khác, cứ cắm cúi đi. |
-| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/gau-quen-chao-2.webp" width="90"> | Đi được mấy bước, Gấu chợt nhớ ra. Quay lại chào, hay là đi luôn nhỉ? ⟵ *cảnh do dự* |
-| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/gau-quen-chao-3.webp" width="90"> | Gấu chạy lại: "Cháu chào bác Voi ạ!" Bác Voi cười thật tươi. |
+| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/gau-quen-chao-1.webp" width="90"> | Bác Voi vẫy vòi: "Chào Gấu con!" Gấu mải nghĩ chuyện khác, cứ cắm cúi đi. |
+| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/gau-quen-chao-2.webp" width="90"> | Đi được mấy bước, Gấu chợt nhớ ra. Quay lại chào, hay là đi luôn nhỉ? ⟵ *cảnh do dự* |
+| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/gau-quen-chao-3.webp" width="90"> | Gấu chạy lại: "Cháu chào bác Voi ạ!" Bác Voi cười thật tươi. |
 
 > **Bài học hôm nay:** Một tiếng chào thôi mà ai cũng vui.
 
@@ -155,9 +155,9 @@ non chưa biết đọc — cột "ba hình để chọn" dưới đây là đ�
 
 | | Hình | Lời kể |
 |---|---|---|
-| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/kien-khieng-la-1.webp" width="90"> | Kiến bé tí kéo mãi một chiếc lá to. Lá chẳng nhúc nhích, Kiến ngồi thở, sắp khóc. |
-| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/kien-khieng-la-2.webp" width="90"> | Bọ Rùa bay ngang, đang vội về nhà. Bọ Rùa nhìn Kiến, rồi nhìn đường về, nghĩ một giây. ⟵ *cảnh do dự* |
-| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/kien-khieng-la-3.webp" width="90"> | Bọ Rùa đáp xuống đẩy phụ. Một bạn kéo, một bạn đẩy, chiếc lá trôi băng băng. |
+| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/kien-khieng-la-1.webp" width="90"> | Kiến bé tí kéo mãi một chiếc lá to. Lá chẳng nhúc nhích, Kiến ngồi thở, sắp khóc. |
+| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/kien-khieng-la-2.webp" width="90"> | Bọ Rùa bay ngang, đang vội về nhà. Bọ Rùa nhìn Kiến, rồi nhìn đường về, nghĩ một giây. ⟵ *cảnh do dự* |
+| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/kien-khieng-la-3.webp" width="90"> | Bọ Rùa đáp xuống đẩy phụ. Một bạn kéo, một bạn đẩy, chiếc lá trôi băng băng. |
 
 > **Bài học hôm nay:** Một mình thì nặng, hai mình thì nhẹ.
 
@@ -176,9 +176,9 @@ non chưa biết đọc — cột "ba hình để chọn" dưới đây là đ�
 
 | | Hình | Lời kể |
 |---|---|---|
-| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/goc-do-choi-1.webp" width="90"> | Bi chơi suốt cả buổi chiều. Đồ chơi vương khắp sàn nhà. |
-| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/goc-do-choi-2.webp" width="90"> | Mẹ gọi: "Tới giờ ăn cơm rồi!" Bi nhìn đống đồ chơi, định bỏ đó mà chạy đi. ⟵ *cảnh do dự* |
-| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/goc-do-choi-3.webp" width="90"> | Bi ngồi xuống nhặt từng món bỏ vào giỏ. Sàn nhà sạch bong, Bi thấy mình giỏi ghê. |
+| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/goc-do-choi-1.webp" width="90"> | Bi chơi suốt cả buổi chiều. Đồ chơi vương khắp sàn nhà. |
+| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/goc-do-choi-2.webp" width="90"> | Mẹ gọi: "Tới giờ ăn cơm rồi!" Bi nhìn đống đồ chơi, định bỏ đó mà chạy đi. ⟵ *cảnh do dự* |
+| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/goc-do-choi-3.webp" width="90"> | Bi ngồi xuống nhặt từng món bỏ vào giỏ. Sàn nhà sạch bong, Bi thấy mình giỏi ghê. |
 
 > **Bài học hôm nay:** Chơi xong mà cất đồ, lần sau tìm là thấy ngay.
 
@@ -197,9 +197,9 @@ non chưa biết đọc — cột "ba hình để chọn" dưới đây là đ�
 
 | | Hình | Lời kể |
 |---|---|---|
-| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/xep-hang-lay-sua-1.webp" width="90"> | Cô mang sữa ra, cả lớp xếp thành một hàng dài. Tí đứng cuối, sốt ruột lắm. |
-| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/xep-hang-lay-sua-2.webp" width="90"> | Tí nghĩ: hay là mình chen lên trước nhỉ? Nhưng các bạn sẽ nhăn mặt mất. ⟵ *cảnh do dự* |
-| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/xep-hang-lay-sua-3.webp" width="90"> | Tí đứng yên chờ. Đến lượt Tí, ly sữa vẫn còn đó, mát lạnh. |
+| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/xep-hang-lay-sua-1.webp" width="90"> | Cô mang sữa ra, cả lớp xếp thành một hàng dài. Tí đứng cuối, sốt ruột lắm. |
+| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/xep-hang-lay-sua-2.webp" width="90"> | Tí nghĩ: hay là mình chen lên trước nhỉ? Nhưng các bạn sẽ nhăn mặt mất. ⟵ *cảnh do dự* |
+| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/xep-hang-lay-sua-3.webp" width="90"> | Tí đứng yên chờ. Đến lượt Tí, ly sữa vẫn còn đó, mát lạnh. |
 
 > **Bài học hôm nay:** Chờ một chút thôi, phần của mình không mất đi đâu cả.
 
@@ -218,9 +218,9 @@ non chưa biết đọc — cột "ba hình để chọn" dưới đây là đ�
 
 | | Hình | Lời kể |
 |---|---|---|
-| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/hen-ban-goc-cay-1.webp" width="90"> | Bo hẹn Na: "Mai mình chờ bạn ở gốc cây nhé!" Sáng hôm sau, trời đổ mưa to. |
-| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/hen-ban-goc-cay-2.webp" width="90"> | Bo nằm trong chăn ấm, nhớ ra lời hẹn. Mưa thế này, chắc Na cũng chẳng đi đâu. ⟵ *cảnh do dự* |
-| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/sinh-vat/canh/hen-ban-goc-cay-3.webp" width="90"> | Bo mặc áo mưa chạy ra gốc cây. Na vẫn đứng đó chờ, ướt hết cả tóc. |
+| 1 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/hen-ban-goc-cay-1.webp" width="90"> | Bo hẹn Na: "Mai mình chờ bạn ở gốc cây nhé!" Sáng hôm sau, trời đổ mưa to. |
+| 2 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/hen-ban-goc-cay-2.webp" width="90"> | Bo nằm trong chăn ấm, nhớ ra lời hẹn. Mưa thế này, chắc Na cũng chẳng đi đâu. ⟵ *cảnh do dự* |
+| 3 | <img src="https://haipham231.github.io/StudyOnline/assets/hinh/tranh/truyen/hen-ban-goc-cay-3.webp" width="90"> | Bo mặc áo mưa chạy ra gốc cây. Na vẫn đứng đó chờ, ướt hết cả tóc. |
 
 > **Bài học hôm nay:** Đã hứa với bạn thì tới, dù trời mưa.
 

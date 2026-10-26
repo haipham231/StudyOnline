@@ -3843,7 +3843,7 @@ body.khoa-cuon { overflow: hidden; }
   width: auto;
   /* Trần cứng 200px cho cạnh dài.
 
-     Ảnh trong kho sinh-vat có cạnh dài 400px. Màn hình điện thoại thường là
+     Hình dán trong assets/hinh/dan có cạnh dài 400px. Màn hình điện thoại thường là
      DPR 2, tức vẽ 200px CSS là đã ăn hết 400 pixel thật — vẽ to hơn nữa thì
      trình duyệt phải phóng lên, viền nhoè ra đúng kiểu "bị bể". Bé thích hình
      to, nhưng to mà bể thì không còn đẹp, nên chặn ở ngưỡng vừa đủ nét.

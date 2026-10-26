@@ -149,7 +149,7 @@ if (!/KIEU\.length/.test(gv) || !/'me-cung'/.test(gv)) bao('kieuMan chưa xoay v
 });
 
 /* ---- 6. ảnh dùng trong mê cung phải có thật ---- */
-['assets/sinh-vat/rung/ran.webp', 'assets/vu-tru/phi-hanh-gia.png',
+['assets/hinh/dan/con-vat/ran.webp', 'assets/vu-tru/phi-hanh-gia.png',
  'assets/vu-tru/phg-trung.png', 'assets/vu-tru/phg-nga.png',
  'assets/vu-tru/thuyen/den-hieu.png', 'assets/vu-tru/thuyen/cong-thuong.png',
  'assets/vu-tru/thuyen/cong-mo.png', 'assets/vu-tru/thuyen/cong-chan.png']

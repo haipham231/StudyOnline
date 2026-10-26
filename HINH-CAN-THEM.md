@@ -31,22 +31,22 @@ giữ dòng đòi nền trong suốt, được thì đỡ việc.
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | hamster | con chuột lang | `thu-nuoi/hamster.png` |
-| 2 | goose | con ngỗng | `thu-nuoi/goose.png` |
-| 3 | donkey | con lừa | `thu-nuoi/donkey.png` |
-| 4 | spider | con nhện | `con-trung/spider.png` |
-| 5 | mosquito | con muỗi | `con-trung/mosquito.png` |
-| 6 | pear | quả lê | `trai-cay-them/pear.png` |
-| 7 | peach | quả đào | `trai-cay-them/peach.png` |
-| 8 | cherry | quả anh đào | `trai-cay-them/cherry.png` |
-| 9 | lemon | quả chanh | `trai-cay-them/lemon.png` |
-| 10 | coconut | quả dừa | `trai-cay-them/coconut.png` |
-| 11 | avocado | quả bơ | `trai-cay-them/avocado.png` |
-| 12 | kiwi | quả kiwi | `trai-cay-them/kiwi.png` |
-| 13 | blueberry | quả việt quất | `trai-cay-them/blueberry.png` |
-| 14 | olive | quả ô liu | `trai-cay-them/olive.png` |
-| 15 | melon | quả dưa gang | `trai-cay-them/melon.png` |
-| 16 | onion | củ hành | `rau-cu-them/onion.png` |
+| 1 | hamster | con chuột lang | `dan/con-vat/hamster.webp` |
+| 2 | goose | con ngỗng | `dan/con-vat/goose.webp` |
+| 3 | donkey | con lừa | `dan/con-vat/donkey.webp` |
+| 4 | spider | con nhện | `dan/con-vat/spider.webp` |
+| 5 | mosquito | con muỗi | `dan/con-vat/mosquito.webp` |
+| 6 | pear | quả lê | `dan/an-uong/pear.webp` |
+| 7 | peach | quả đào | `dan/an-uong/peach.webp` |
+| 8 | cherry | quả anh đào | `dan/an-uong/cherry.webp` |
+| 9 | lemon | quả chanh | `dan/an-uong/lemon.webp` |
+| 10 | coconut | quả dừa | `dan/an-uong/coconut.webp` |
+| 11 | avocado | quả bơ | `dan/an-uong/avocado.webp` |
+| 12 | kiwi | quả kiwi | `dan/an-uong/kiwi.webp` |
+| 13 | blueberry | quả việt quất | `dan/an-uong/blueberry.webp` |
+| 14 | olive | quả ô liu | `dan/an-uong/olive.webp` |
+| 15 | melon | quả dưa gang | `dan/an-uong/melon.webp` |
+| 16 | onion | củ hành | `dan/an-uong/onion.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -88,22 +88,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | garlic | củ tỏi | `rau-cu-them/garlic.png` |
-| 2 | peanut | hạt đậu phộng | `rau-cu-them/peanut.png` |
-| 3 | ginger | củ gừng | `rau-cu-them/ginger.png` |
-| 4 | pumpkin | quả bí ngô | `rau-cu-them/pumpkin.png` |
-| 5 | sandwich | cái bánh mì kẹp | `do-an-them/sandwich.png` |
-| 6 | burger | cái bánh hamburger | `do-an-them/burger.png` |
-| 7 | pizza | miếng pizza | `do-an-them/pizza.png` |
-| 8 | chips | khoai tây chiên | `do-an-them/chips.png` |
-| 9 | sausage | cái xúc xích | `do-an-them/sausage.png` |
-| 10 | fried chicken | con gà rán | `do-an-them/fried-chicken.png` |
-| 11 | noodles | bát mì | `do-an-them/noodles.png` |
-| 12 | pancake | cái bánh kếp | `do-an-them/pancake.png` |
-| 13 | biscuit | cái bánh quy | `do-an-them/biscuit.png` |
-| 14 | ice cream | cây kem | `do-an-them/ice-cream.png` |
-| 15 | chocolate | thanh sô cô la | `do-an-them/chocolate.png` |
-| 16 | birthday cake | cái bánh sinh nhật | `do-an-them/birthday-cake.png` |
+| 1 | garlic | củ tỏi | `dan/an-uong/garlic.webp` |
+| 2 | peanut | hạt đậu phộng | `dan/an-uong/peanut.webp` |
+| 3 | ginger | củ gừng | `dan/an-uong/ginger.webp` |
+| 4 | pumpkin | quả bí ngô | `dan/an-uong/pumpkin.webp` |
+| 5 | sandwich | cái bánh mì kẹp | `dan/an-uong/sandwich.webp` |
+| 6 | burger | cái bánh hamburger | `dan/an-uong/burger.webp` |
+| 7 | pizza | miếng pizza | `dan/an-uong/pizza.webp` |
+| 8 | chips | khoai tây chiên | `dan/an-uong/chips.webp` |
+| 9 | sausage | cái xúc xích | `dan/an-uong/sausage.webp` |
+| 10 | fried chicken | con gà rán | `dan/an-uong/fried-chicken.webp` |
+| 11 | noodles | bát mì | `dan/an-uong/noodles.webp` |
+| 12 | pancake | cái bánh kếp | `dan/an-uong/pancake.webp` |
+| 13 | biscuit | cái bánh quy | `dan/an-uong/biscuit.webp` |
+| 14 | ice cream | cây kem | `dan/an-uong/ice-cream.webp` |
+| 15 | chocolate | thanh sô cô la | `dan/an-uong/chocolate.webp` |
+| 16 | birthday cake | cái bánh sinh nhật | `dan/an-uong/birthday-cake.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -145,22 +145,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | salad | bát salad | `do-an-them/salad.png` |
-| 2 | bun | cái bánh bao | `do-an-them/bun.png` |
-| 3 | juice | cốc nước cam | `do-uong/juice.png` |
-| 4 | tea | cốc trà | `do-uong/tea.png` |
-| 5 | coffee | cốc cà phê | `do-uong/coffee.png` |
-| 6 | bubble tea | cốc trà sữa | `do-uong/bubble-tea.png` |
-| 7 | bottle | chai nước | `do-uong/bottle.png` |
-| 8 | ice | cục đá | `do-uong/ice.png` |
-| 9 | white | màu trắng | `mau-sac-them/white.png` |
-| 10 | grey | màu xám | `mau-sac-them/grey.png` |
-| 11 | pink | màu hồng | `mau-sac-them/pink.png` |
-| 12 | light blue | màu xanh nhạt | `mau-sac-them/light-blue.png` |
-| 13 | tongue | cái lưỡi | `co-the-them/tongue.png` |
-| 14 | brain | bộ não | `co-the-them/brain.png` |
-| 15 | heart (organ) | trái tim | `co-the-them/heart-organ.png` |
-| 16 | lungs | lá phổi | `co-the-them/lungs.png` |
+| 1 | salad | bát salad | `dan/an-uong/salad.webp` |
+| 2 | bun | cái bánh bao | `dan/an-uong/bun.webp` |
+| 3 | juice | cốc nước cam | `dan/an-uong/juice.webp` |
+| 4 | tea | cốc trà | `dan/an-uong/tea.webp` |
+| 5 | coffee | cốc cà phê | `dan/an-uong/coffee.webp` |
+| 6 | bubble tea | cốc trà sữa | `dan/an-uong/bubble-tea.webp` |
+| 7 | bottle | chai nước | `dan/an-uong/bottle.webp` |
+| 8 | ice | cục đá | `dan/an-uong/ice.webp` |
+| 9 | white | màu trắng | `dan/mau-hinh/white.webp` |
+| 10 | grey | màu xám | `dan/mau-hinh/grey.webp` |
+| 11 | pink | màu hồng | `dan/mau-hinh/pink.webp` |
+| 12 | light blue | màu xanh nhạt | `dan/mau-hinh/light-blue.webp` |
+| 13 | tongue | cái lưỡi | `dan/nguoi/tongue.webp` |
+| 14 | brain | bộ não | `dan/nguoi/brain.webp` |
+| 15 | heart (organ) | trái tim | `dan/nguoi/heart-organ.webp` |
+| 16 | lungs | lá phổi | `dan/nguoi/lungs.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -205,22 +205,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | arm | cánh tay | `co-the-them/arm.png` |
-| 2 | leg | cái chân | `co-the-them/leg.png` |
-| 3 | finger | ngón tay | `co-the-them/finger.png` |
-| 4 | family | cả nhà | `gia-dinh-them/family.png` |
-| 5 | brothers | hai anh em | `gia-dinh-them/brothers.png` |
-| 6 | sisters | hai chị em | `gia-dinh-them/sisters.png` |
-| 7 | bride | cô dâu | `gia-dinh-them/bride.png` |
-| 8 | friend | bạn thân | `gia-dinh-them/friend.png` |
-| 9 | cradle | cái nôi | `gia-dinh-them/cradle.png` |
-| 10 | coat | cái áo khoác | `quan-ao-them/coat.png` |
-| 11 | sweater | cái áo len | `quan-ao-them/sweater.png` |
-| 12 | shorts | cái quần đùi | `quan-ao-them/shorts.png` |
-| 13 | swimsuit | cái áo tắm | `quan-ao-them/swimsuit.png` |
-| 14 | sandals | đôi dép | `quan-ao-them/sandals.png` |
-| 15 | boots | đôi bốt | `quan-ao-them/boots.png` |
-| 16 | sun hat | cái mũ rộng vành | `quan-ao-them/sun-hat.png` |
+| 1 | arm | cánh tay | `dan/nguoi/arm.webp` |
+| 2 | leg | cái chân | `dan/nguoi/leg.webp` |
+| 3 | finger | ngón tay | `dan/nguoi/finger.webp` |
+| 4 | family | cả nhà | `dan/nguoi/family.webp` |
+| 5 | brothers | hai anh em | `dan/nguoi/brothers.webp` |
+| 6 | sisters | hai chị em | `dan/nguoi/sisters.webp` |
+| 7 | bride | cô dâu | `dan/nguoi/bride.webp` |
+| 8 | friend | bạn thân | `dan/nguoi/friend.webp` |
+| 9 | cradle | cái nôi | `dan/nguoi/cradle.webp` |
+| 10 | coat | cái áo khoác | `dan/quan-ao/coat.webp` |
+| 11 | sweater | cái áo len | `dan/quan-ao/sweater.webp` |
+| 12 | shorts | cái quần đùi | `dan/quan-ao/shorts.webp` |
+| 13 | swimsuit | cái áo tắm | `dan/quan-ao/swimsuit.webp` |
+| 14 | sandals | đôi dép | `dan/quan-ao/sandals.webp` |
+| 15 | boots | đôi bốt | `dan/quan-ao/boots.webp` |
+| 16 | sun hat | cái mũ rộng vành | `dan/quan-ao/sun-hat.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -262,22 +262,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | tie | cái cà vạt | `quan-ao-them/tie.png` |
-| 2 | glasses | cái kính | `quan-ao-them/glasses.png` |
-| 3 | ring | cái nhẫn | `quan-ao-them/ring.png` |
-| 4 | handbag | cái túi xách | `quan-ao-them/handbag.png` |
-| 5 | wallet | cái ví | `quan-ao-them/wallet.png` |
-| 6 | fountain pen | cây bút mực | `do-dung-hoc-tap/fountain-pen.png` |
-| 7 | ruler | cái thước kẻ | `do-dung-hoc-tap/ruler.png` |
-| 8 | set square | cái ê ke | `do-dung-hoc-tap/set-square.png` |
-| 9 | scissors | cái kéo | `do-dung-hoc-tap/scissors.png` |
-| 10 | notebook | quyển vở | `do-dung-hoc-tap/notebook.png` |
-| 11 | paper | tập giấy | `do-dung-hoc-tap/paper.png` |
-| 12 | folder | cái cặp tài liệu | `do-dung-hoc-tap/folder.png` |
-| 13 | blackboard | cái bảng đen | `do-dung-hoc-tap/blackboard.png` |
-| 14 | crayons | hộp bút màu | `do-dung-hoc-tap/crayons.png` |
-| 15 | paper clip | cái ghim giấy | `do-dung-hoc-tap/paper-clip.png` |
-| 16 | bin | cái thùng rác | `do-dung-hoc-tap/bin.png` |
+| 1 | tie | cái cà vạt | `dan/quan-ao/tie.webp` |
+| 2 | glasses | cái kính | `dan/quan-ao/glasses.webp` |
+| 3 | ring | cái nhẫn | `dan/quan-ao/ring.webp` |
+| 4 | handbag | cái túi xách | `dan/quan-ao/handbag.webp` |
+| 5 | wallet | cái ví | `dan/quan-ao/wallet.webp` |
+| 6 | fountain pen | cây bút mực | `dan/truong-hoc/fountain-pen.webp` |
+| 7 | ruler | cái thước kẻ | `dan/truong-hoc/ruler.webp` |
+| 8 | set square | cái ê ke | `dan/truong-hoc/set-square.webp` |
+| 9 | scissors | cái kéo | `dan/truong-hoc/scissors.webp` |
+| 10 | notebook | quyển vở | `dan/truong-hoc/notebook.webp` |
+| 11 | paper | tập giấy | `dan/truong-hoc/paper.webp` |
+| 12 | folder | cái cặp tài liệu | `dan/truong-hoc/folder.webp` |
+| 13 | blackboard | cái bảng đen | `dan/truong-hoc/blackboard.webp` |
+| 14 | crayons | hộp bút màu | `dan/truong-hoc/crayons.webp` |
+| 15 | paper clip | cái ghim giấy | `dan/truong-hoc/paper-clip.webp` |
+| 16 | bin | cái thùng rác | `dan/truong-hoc/bin.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -319,22 +319,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | door | cái cửa | `trong-nha-them/door.png` |
-| 2 | window | cái cửa sổ | `trong-nha-them/window.png` |
-| 3 | mirror | cái gương | `trong-nha-them/mirror.png` |
-| 4 | sofa | cái ghế sofa | `trong-nha-them/sofa.png` |
-| 5 | candle | cái nến | `trong-nha-them/candle.png` |
-| 6 | broom | cái chổi | `trong-nha-them/broom.png` |
-| 7 | toilet paper | cuộn giấy vệ sinh | `trong-nha-them/toilet-paper.png` |
-| 8 | soap | cục xà phòng | `trong-nha-them/soap.png` |
-| 9 | bathtub | cái bồn tắm | `trong-nha-them/bathtub.png` |
-| 10 | shower | cái vòi sen | `trong-nha-them/shower.png` |
-| 11 | toothbrush | bàn chải đánh răng | `trong-nha-them/toothbrush.png` |
-| 12 | lock | cái ổ khoá | `trong-nha-them/lock.png` |
-| 13 | stairs | cái cầu thang | `trong-nha-them/stairs.png` |
-| 14 | pot | cái nồi | `nha-bep/pot.png` |
-| 15 | pan | cái chảo | `nha-bep/pan.png` |
-| 16 | knife | cái dao | `nha-bep/knife.png` |
+| 1 | door | cái cửa | `dan/do-dung/door.webp` |
+| 2 | window | cái cửa sổ | `dan/do-dung/window.webp` |
+| 3 | mirror | cái gương | `dan/do-dung/mirror.webp` |
+| 4 | sofa | cái ghế sofa | `dan/do-dung/sofa.webp` |
+| 5 | candle | cái nến | `dan/do-dung/candle.webp` |
+| 6 | broom | cái chổi | `dan/do-dung/broom.webp` |
+| 7 | toilet paper | cuộn giấy vệ sinh | `dan/do-dung/toilet-paper.webp` |
+| 8 | soap | cục xà phòng | `dan/do-dung/soap.webp` |
+| 9 | bathtub | cái bồn tắm | `dan/do-dung/bathtub.webp` |
+| 10 | shower | cái vòi sen | `dan/do-dung/shower.webp` |
+| 11 | toothbrush | bàn chải đánh răng | `dan/do-dung/toothbrush.webp` |
+| 12 | lock | cái ổ khoá | `dan/do-dung/lock.webp` |
+| 13 | stairs | cái cầu thang | `dan/do-dung/stairs.webp` |
+| 14 | pot | cái nồi | `dan/do-dung/pot.webp` |
+| 15 | pan | cái chảo | `dan/do-dung/pan.webp` |
+| 16 | knife | cái dao | `dan/do-dung/knife.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -376,22 +376,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | fork | cái nĩa | `nha-bep/fork.png` |
-| 2 | plate | cái đĩa | `nha-bep/plate.png` |
-| 3 | salt | hạt muối | `nha-bep/salt.png` |
-| 4 | teapot | cái bình trà | `nha-bep/teapot.png` |
-| 5 | rocket | tên lửa | `phuong-tien-them/rocket.png` |
-| 6 | scooter | xe trượt scooter | `phuong-tien-them/scooter.png` |
-| 7 | skateboard | ván trượt | `phuong-tien-them/skateboard.png` |
-| 8 | hill | ngọn đồi | `thien-nhien-them/hill.png` |
-| 9 | desert | sa mạc | `thien-nhien-them/desert.png` |
-| 10 | forest | khu rừng | `thien-nhien-them/forest.png` |
-| 11 | beach | bãi biển | `thien-nhien-them/beach.png` |
-| 12 | volcano | núi lửa | `thien-nhien-them/volcano.png` |
-| 13 | island | hòn đảo | `thien-nhien-them/island.png` |
-| 14 | cactus | cây xương rồng | `thien-nhien-them/cactus.png` |
-| 15 | seed | hạt giống | `thien-nhien-them/seed.png` |
-| 16 | rose | bông hoa hồng | `thien-nhien-them/rose.png` |
+| 1 | fork | cái nĩa | `dan/do-dung/fork.webp` |
+| 2 | plate | cái đĩa | `dan/do-dung/plate.webp` |
+| 3 | salt | hạt muối | `dan/do-dung/salt.webp` |
+| 4 | teapot | cái bình trà | `dan/do-dung/teapot.webp` |
+| 5 | rocket | tên lửa | `dan/xe-co/rocket.webp` |
+| 6 | scooter | xe trượt scooter | `dan/xe-co/scooter.webp` |
+| 7 | skateboard | ván trượt | `dan/xe-co/skateboard.webp` |
+| 8 | hill | ngọn đồi | `dan/thien-nhien/hill.webp` |
+| 9 | desert | sa mạc | `dan/thien-nhien/desert.webp` |
+| 10 | forest | khu rừng | `dan/thien-nhien/forest.webp` |
+| 11 | beach | bãi biển | `dan/thien-nhien/beach.webp` |
+| 12 | volcano | núi lửa | `dan/thien-nhien/volcano.webp` |
+| 13 | island | hòn đảo | `dan/thien-nhien/island.webp` |
+| 14 | cactus | cây xương rồng | `dan/thien-nhien/cactus.webp` |
+| 15 | seed | hạt giống | `dan/thien-nhien/seed.webp` |
+| 16 | rose | bông hoa hồng | `dan/thien-nhien/rose.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -433,22 +433,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | tulip | bông hoa tulip | `thien-nhien-them/tulip.png` |
-| 2 | palm tree | cây dừa | `thien-nhien-them/palm-tree.png` |
-| 3 | storm | cơn bão | `thoi-tiet-them/storm.png` |
-| 4 | lightning | tia sét | `thoi-tiet-them/lightning.png` |
-| 5 | fog | sương mù | `thoi-tiet-them/fog.png` |
-| 6 | snowman | người tuyết | `thoi-tiet-them/snowman.png` |
-| 7 | thermometer | cái nhiệt kế | `thoi-tiet-them/thermometer.png` |
-| 8 | basketball | bóng rổ | `the-thao/basketball.png` |
-| 9 | volleyball | bóng chuyền | `the-thao/volleyball.png` |
-| 10 | rugby ball | bóng bầu dục | `the-thao/rugby-ball.png` |
-| 11 | tennis | quả bóng tennis | `the-thao/tennis.png` |
-| 12 | badminton | quả cầu lông | `the-thao/badminton.png` |
-| 13 | swimming | bơi lội | `the-thao/swimming.png` |
-| 14 | running | chạy bộ | `the-thao/running.png` |
-| 15 | cycling | đạp xe | `the-thao/cycling.png` |
-| 16 | medal | cái huy chương | `the-thao/medal.png` |
+| 1 | tulip | bông hoa tulip | `dan/thien-nhien/tulip.webp` |
+| 2 | palm tree | cây dừa | `dan/thien-nhien/palm-tree.webp` |
+| 3 | storm | cơn bão | `dan/thien-nhien/storm.webp` |
+| 4 | lightning | tia sét | `dan/thien-nhien/lightning.webp` |
+| 5 | fog | sương mù | `dan/thien-nhien/fog.webp` |
+| 6 | snowman | người tuyết | `dan/thien-nhien/snowman.webp` |
+| 7 | thermometer | cái nhiệt kế | `dan/thien-nhien/thermometer.webp` |
+| 8 | basketball | bóng rổ | `dan/vui-choi/basketball.webp` |
+| 9 | volleyball | bóng chuyền | `dan/vui-choi/volleyball.webp` |
+| 10 | rugby ball | bóng bầu dục | `dan/vui-choi/rugby-ball.webp` |
+| 11 | tennis | quả bóng tennis | `dan/vui-choi/tennis.webp` |
+| 12 | badminton | quả cầu lông | `dan/vui-choi/badminton.webp` |
+| 13 | swimming | bơi lội | `dan/vui-choi/swimming.webp` |
+| 14 | running | chạy bộ | `dan/vui-choi/running.webp` |
+| 15 | cycling | đạp xe | `dan/vui-choi/cycling.webp` |
+| 16 | medal | cái huy chương | `dan/vui-choi/medal.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -490,22 +490,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | trophy | cái cúp | `the-thao/trophy.png` |
-| 2 | guitar | cây đàn ghi ta | `nhac-cu/guitar.png` |
-| 3 | piano | cây đàn piano | `nhac-cu/piano.png` |
-| 4 | violin | cây đàn vi ô lông | `nhac-cu/violin.png` |
-| 5 | drum | cái trống | `nhac-cu/drum.png` |
-| 6 | trumpet | cây kèn | `nhac-cu/trumpet.png` |
-| 7 | flute | cây sáo | `nhac-cu/flute.png` |
-| 8 | microphone | cái micro | `nhac-cu/microphone.png` |
-| 9 | music note | nốt nhạc | `nhac-cu/music-note.png` |
-| 10 | doctor | bác sĩ | `nghe-nghiep/doctor.png` |
-| 11 | teacher | thầy cô giáo | `nghe-nghiep/teacher.png` |
-| 12 | farmer | bác nông dân | `nghe-nghiep/farmer.png` |
-| 13 | chef | chú đầu bếp | `nghe-nghiep/chef.png` |
-| 14 | firefighter | chú lính cứu hoả | `nghe-nghiep/firefighter.png` |
-| 15 | pilot | chú phi công | `nghe-nghiep/pilot.png` |
-| 16 | astronaut | nhà du hành vũ trụ | `nghe-nghiep/astronaut.png` |
+| 1 | trophy | cái cúp | `dan/vui-choi/trophy.webp` |
+| 2 | guitar | cây đàn ghi ta | `dan/vui-choi/guitar.webp` |
+| 3 | piano | cây đàn piano | `dan/vui-choi/piano.webp` |
+| 4 | violin | cây đàn vi ô lông | `dan/vui-choi/violin.webp` |
+| 5 | drum | cái trống | `dan/vui-choi/drum.webp` |
+| 6 | trumpet | cây kèn | `dan/vui-choi/trumpet.webp` |
+| 7 | flute | cây sáo | `dan/vui-choi/flute.webp` |
+| 8 | microphone | cái micro | `dan/vui-choi/microphone.webp` |
+| 9 | music note | nốt nhạc | `dan/vui-choi/music-note.webp` |
+| 10 | doctor | bác sĩ | `dan/nguoi/doctor.webp` |
+| 11 | teacher | thầy cô giáo | `dan/nguoi/teacher.webp` |
+| 12 | farmer | bác nông dân | `dan/nguoi/farmer.webp` |
+| 13 | chef | chú đầu bếp | `dan/nguoi/chef.webp` |
+| 14 | firefighter | chú lính cứu hoả | `dan/nguoi/firefighter.webp` |
+| 15 | pilot | chú phi công | `dan/nguoi/pilot.webp` |
+| 16 | astronaut | nhà du hành vũ trụ | `dan/nguoi/astronaut.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -550,22 +550,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | worker | chú công nhân | `nghe-nghiep/worker.png` |
-| 2 | scientist | nhà khoa học | `nghe-nghiep/scientist.png` |
-| 3 | artist | hoạ sĩ | `nghe-nghiep/artist.png` |
-| 4 | mechanic | thợ máy | `nghe-nghiep/mechanic.png` |
-| 5 | police officer | chú cảnh sát | `nghe-nghiep/police-officer.png` |
-| 6 | house | ngôi nhà | `noi-chon/house.png` |
-| 7 | school | trường học | `noi-chon/school.png` |
-| 8 | hospital | bệnh viện | `noi-chon/hospital.png` |
-| 9 | shop | cửa hàng | `noi-chon/shop.png` |
-| 10 | bank | ngân hàng | `noi-chon/bank.png` |
-| 11 | church | nhà thờ | `noi-chon/church.png` |
-| 12 | park | công viên | `noi-chon/park.png` |
-| 13 | stadium | sân vận động | `noi-chon/stadium.png` |
-| 14 | factory | nhà máy | `noi-chon/factory.png` |
-| 15 | castle | lâu đài | `noi-chon/castle.png` |
-| 16 | bridge | cây cầu | `noi-chon/bridge.png` |
+| 1 | worker | chú công nhân | `dan/nguoi/worker.webp` |
+| 2 | scientist | nhà khoa học | `dan/nguoi/scientist.webp` |
+| 3 | artist | hoạ sĩ | `dan/nguoi/artist.webp` |
+| 4 | mechanic | thợ máy | `dan/nguoi/mechanic.webp` |
+| 5 | police officer | chú cảnh sát | `dan/nguoi/police-officer.webp` |
+| 6 | house | ngôi nhà | `dan/noi-chon/house.webp` |
+| 7 | school | trường học | `dan/noi-chon/school.webp` |
+| 8 | hospital | bệnh viện | `dan/noi-chon/hospital.webp` |
+| 9 | shop | cửa hàng | `dan/noi-chon/shop.webp` |
+| 10 | bank | ngân hàng | `dan/noi-chon/bank.webp` |
+| 11 | church | nhà thờ | `dan/noi-chon/church.webp` |
+| 12 | park | công viên | `dan/noi-chon/park.webp` |
+| 13 | stadium | sân vận động | `dan/noi-chon/stadium.webp` |
+| 14 | factory | nhà máy | `dan/noi-chon/factory.webp` |
+| 15 | castle | lâu đài | `dan/noi-chon/castle.webp` |
+| 16 | bridge | cây cầu | `dan/noi-chon/bridge.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -610,22 +610,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | bus stop | bến xe buýt | `noi-chon/bus-stop.png` |
-| 2 | phone | cái điện thoại | `do-cong-nghe/phone.png` |
-| 3 | computer | cái máy tính | `do-cong-nghe/computer.png` |
-| 4 | television | cái ti vi | `do-cong-nghe/television.png` |
-| 5 | camera | cái máy ảnh | `do-cong-nghe/camera.png` |
-| 6 | headphones | cái tai nghe | `do-cong-nghe/headphones.png` |
-| 7 | radio | cái radio | `do-cong-nghe/radio.png` |
-| 8 | battery | cục pin | `do-cong-nghe/battery.png` |
-| 9 | torch | cái đèn pin | `do-cong-nghe/torch.png` |
-| 10 | kite | con diều | `do-choi-va-le-hoi/kite.png` |
-| 11 | doll | con búp bê | `do-choi-va-le-hoi/doll.png` |
-| 12 | puzzle | bộ xếp hình | `do-choi-va-le-hoi/puzzle.png` |
-| 13 | chess | quân cờ | `do-choi-va-le-hoi/chess.png` |
-| 14 | present | hộp quà | `do-choi-va-le-hoi/present.png` |
-| 15 | fireworks | pháo hoa | `do-choi-va-le-hoi/fireworks.png` |
-| 16 | Christmas tree | cây thông Noel | `do-choi-va-le-hoi/christmas-tree.png` |
+| 1 | bus stop | bến xe buýt | `dan/noi-chon/bus-stop.webp` |
+| 2 | phone | cái điện thoại | `dan/do-dung/phone.webp` |
+| 3 | computer | cái máy tính | `dan/do-dung/computer.webp` |
+| 4 | television | cái ti vi | `dan/do-dung/television.webp` |
+| 5 | camera | cái máy ảnh | `dan/do-dung/camera.webp` |
+| 6 | headphones | cái tai nghe | `dan/do-dung/headphones.webp` |
+| 7 | radio | cái radio | `dan/do-dung/radio.webp` |
+| 8 | battery | cục pin | `dan/do-dung/battery.webp` |
+| 9 | torch | cái đèn pin | `dan/do-dung/torch.webp` |
+| 10 | kite | con diều | `dan/vui-choi/kite.webp` |
+| 11 | doll | con búp bê | `dan/vui-choi/doll.webp` |
+| 12 | puzzle | bộ xếp hình | `dan/vui-choi/puzzle.webp` |
+| 13 | chess | quân cờ | `dan/vui-choi/chess.webp` |
+| 14 | present | hộp quà | `dan/vui-choi/present.webp` |
+| 15 | fireworks | pháo hoa | `dan/vui-choi/fireworks.webp` |
+| 16 | Christmas tree | cây thông Noel | `dan/vui-choi/christmas-tree.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -667,22 +667,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | Santa | ông già Noel | `do-choi-va-le-hoi/santa.png` |
-| 2 | happy | vui vẻ | `cam-xuc/happy.png` |
-| 3 | sad | buồn bã | `cam-xuc/sad.png` |
-| 4 | angry | tức giận | `cam-xuc/angry.png` |
-| 5 | surprised | ngạc nhiên | `cam-xuc/surprised.png` |
-| 6 | sleepy | buồn ngủ | `cam-xuc/sleepy.png` |
-| 7 | scared | sợ hãi | `cam-xuc/scared.png` |
-| 8 | sick | bị ốm | `cam-xuc/sick.png` |
-| 9 | laughing | cười lớn | `cam-xuc/laughing.png` |
-| 10 | morning | buổi sáng | `thoi-gian/morning.png` |
-| 11 | evening | buổi tối | `thoi-gian/evening.png` |
-| 12 | night | ban đêm | `thoi-gian/night.png` |
-| 13 | calendar | quyển lịch | `thoi-gian/calendar.png` |
-| 14 | hourglass | đồng hồ cát | `thoi-gian/hourglass.png` |
-| 15 | alarm clock | đồng hồ báo thức | `thoi-gian/alarm-clock.png` |
-| 16 | bucket | cái xô | `vuon-va-cong-cu/bucket.png` |
+| 1 | Santa | ông già Noel | `dan/vui-choi/santa.webp` |
+| 2 | happy | vui vẻ | `dan/cam-xuc/happy.webp` |
+| 3 | sad | buồn bã | `dan/cam-xuc/sad.webp` |
+| 4 | angry | tức giận | `dan/cam-xuc/angry.webp` |
+| 5 | surprised | ngạc nhiên | `dan/cam-xuc/surprised.webp` |
+| 6 | sleepy | buồn ngủ | `dan/cam-xuc/sleepy.webp` |
+| 7 | scared | sợ hãi | `dan/cam-xuc/scared.webp` |
+| 8 | sick | bị ốm | `dan/cam-xuc/sick.webp` |
+| 9 | laughing | cười lớn | `dan/cam-xuc/laughing.webp` |
+| 10 | morning | buổi sáng | `dan/thoi-gian/morning.webp` |
+| 11 | evening | buổi tối | `dan/thoi-gian/evening.webp` |
+| 12 | night | ban đêm | `dan/thoi-gian/night.webp` |
+| 13 | calendar | quyển lịch | `dan/thoi-gian/calendar.webp` |
+| 14 | hourglass | đồng hồ cát | `dan/thoi-gian/hourglass.webp` |
+| 15 | alarm clock | đồng hồ báo thức | `dan/thoi-gian/alarm-clock.webp` |
+| 16 | bucket | cái xô | `dan/do-dung/bucket.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -727,22 +727,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | hammer | cái búa | `vuon-va-cong-cu/hammer.png` |
-| 2 | saw | cái cưa | `vuon-va-cong-cu/saw.png` |
-| 3 | screwdriver | cái tua vít | `vuon-va-cong-cu/screwdriver.png` |
-| 4 | spanner | cái cờ lê | `vuon-va-cong-cu/spanner.png` |
-| 5 | screw | cái đinh ốc | `vuon-va-cong-cu/screw.png` |
-| 6 | spade | cái xẻng | `vuon-va-cong-cu/spade.png` |
-| 7 | watering can | cái bình tưới | `vuon-va-cong-cu/watering-can.png` |
-| 8 | plant pot | cái chậu cây | `vuon-va-cong-cu/plant-pot.png` |
-| 9 | parasol | cái ô dù | `vuon-va-cong-cu/parasol.png` |
-| 10 | coin | đồng tiền xu | `tien-va-mua-sam/coin.png` |
-| 11 | banknote | tờ tiền | `tien-va-mua-sam/banknote.png` |
-| 12 | bank card | cái thẻ ngân hàng | `tien-va-mua-sam/bank-card.png` |
-| 13 | basket | cái giỏ mua hàng | `tien-va-mua-sam/basket.png` |
-| 14 | price tag | cái nhãn giá | `tien-va-mua-sam/price-tag.png` |
-| 15 | receipt | cái hoá đơn | `tien-va-mua-sam/receipt.png` |
-| 16 | the Earth | trái đất | `vu-tru/the-earth.png` |
+| 1 | hammer | cái búa | `dan/do-dung/hammer.webp` |
+| 2 | saw | cái cưa | `dan/do-dung/saw.webp` |
+| 3 | screwdriver | cái tua vít | `dan/do-dung/screwdriver.webp` |
+| 4 | spanner | cái cờ lê | `dan/do-dung/spanner.webp` |
+| 5 | screw | cái đinh ốc | `dan/do-dung/screw.webp` |
+| 6 | spade | cái xẻng | `dan/do-dung/spade.webp` |
+| 7 | watering can | cái bình tưới | `dan/do-dung/watering-can.webp` |
+| 8 | plant pot | cái chậu cây | `dan/do-dung/plant-pot.webp` |
+| 9 | parasol | cái ô dù | `dan/do-dung/parasol.webp` |
+| 10 | coin | đồng tiền xu | `dan/mua-ban/coin.webp` |
+| 11 | banknote | tờ tiền | `dan/mua-ban/banknote.webp` |
+| 12 | bank card | cái thẻ ngân hàng | `dan/mua-ban/bank-card.webp` |
+| 13 | basket | cái giỏ mua hàng | `dan/mua-ban/basket.webp` |
+| 14 | price tag | cái nhãn giá | `dan/mua-ban/price-tag.webp` |
+| 15 | receipt | cái hoá đơn | `dan/mua-ban/receipt.webp` |
+| 16 | the Earth | trái đất | `dan/vu-tru/the-earth.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -784,22 +784,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | planet | hành tinh | `vu-tru/planet.png` |
-| 2 | galaxy | thiên hà | `vu-tru/galaxy.png` |
-| 3 | comet | sao chổi | `vu-tru/comet.png` |
-| 4 | UFO | đĩa bay | `vu-tru/ufo.png` |
-| 5 | satellite | vệ tinh | `vu-tru/satellite.png` |
-| 6 | telescope | kính thiên văn | `vu-tru/telescope.png` |
-| 7 | microscope | kính hiển vi | `vu-tru/microscope.png` |
-| 8 | map | tấm bản đồ | `o-truong/map.png` |
-| 9 | globe | quả địa cầu | `o-truong/globe.png` |
-| 10 | test tube | cái cặp nhiệt | `o-truong/test-tube.png` |
-| 11 | magnet | cái nam châm | `o-truong/magnet.png` |
-| 12 | calculator | cái máy tính bỏ túi | `o-truong/calculator.png` |
-| 13 | certificate | tấm bằng khen | `o-truong/certificate.png` |
-| 14 | bell | cái chuông | `o-truong/bell.png` |
-| 15 | circle | hình tròn | `hinh-khoi/circle.png` |
-| 16 | triangle | hình tam giác | `hinh-khoi/triangle.png` |
+| 1 | planet | hành tinh | `dan/vu-tru/planet.webp` |
+| 2 | galaxy | thiên hà | `dan/vu-tru/galaxy.webp` |
+| 3 | comet | sao chổi | `dan/vu-tru/comet.webp` |
+| 4 | UFO | đĩa bay | `dan/vu-tru/ufo.webp` |
+| 5 | satellite | vệ tinh | `dan/vu-tru/satellite.webp` |
+| 6 | telescope | kính thiên văn | `dan/vu-tru/telescope.webp` |
+| 7 | microscope | kính hiển vi | `dan/vu-tru/microscope.webp` |
+| 8 | map | tấm bản đồ | `dan/truong-hoc/map.webp` |
+| 9 | globe | quả địa cầu | `dan/truong-hoc/globe.webp` |
+| 10 | test tube | cái cặp nhiệt | `dan/truong-hoc/test-tube.webp` |
+| 11 | magnet | cái nam châm | `dan/truong-hoc/magnet.webp` |
+| 12 | calculator | cái máy tính bỏ túi | `dan/truong-hoc/calculator.webp` |
+| 13 | certificate | tấm bằng khen | `dan/truong-hoc/certificate.webp` |
+| 14 | bell | cái chuông | `dan/truong-hoc/bell.webp` |
+| 15 | circle | hình tròn | `dan/mau-hinh/circle.webp` |
+| 16 | triangle | hình tam giác | `dan/mau-hinh/triangle.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -844,22 +844,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | diamond | hình thoi | `hinh-khoi/diamond.png` |
-| 2 | star shape | ngôi sao năm cánh | `hinh-khoi/star-shape.png` |
-| 3 | heart | hình trái tim | `hinh-khoi/heart.png` |
-| 4 | wake up | thức dậy | `viec-hang-ngay/wake-up.png` |
-| 5 | go to bed | đi ngủ | `viec-hang-ngay/go-to-bed.png` |
-| 6 | wash your face | rửa mặt | `viec-hang-ngay/wash-your-face.png` |
-| 7 | brush your teeth | đánh răng | `viec-hang-ngay/brush-your-teeth.png` |
-| 8 | take a shower | tắm | `viec-hang-ngay/take-a-shower.png` |
-| 9 | get dressed | mặc quần áo | `viec-hang-ngay/get-dressed.png` |
-| 10 | have breakfast | ăn sáng | `viec-hang-ngay/have-breakfast.png` |
-| 11 | have lunch | ăn trưa | `viec-hang-ngay/have-lunch.png` |
-| 12 | have dinner | ăn tối | `viec-hang-ngay/have-dinner.png` |
-| 13 | go to school | đi học | `viec-hang-ngay/go-to-school.png` |
-| 14 | go home | về nhà | `viec-hang-ngay/go-home.png` |
-| 15 | do homework | làm bài tập | `viec-hang-ngay/do-homework.png` |
-| 16 | tidy up | dọn phòng | `viec-hang-ngay/tidy-up.png` |
+| 1 | diamond | hình thoi | `dan/mau-hinh/diamond.webp` |
+| 2 | star shape | ngôi sao năm cánh | `dan/mau-hinh/star-shape.webp` |
+| 3 | heart | hình trái tim | `dan/mau-hinh/heart.webp` |
+| 4 | wake up | thức dậy | `dan/hanh-dong/wake-up.webp` |
+| 5 | go to bed | đi ngủ | `dan/hanh-dong/go-to-bed.webp` |
+| 6 | wash your face | rửa mặt | `dan/hanh-dong/wash-your-face.webp` |
+| 7 | brush your teeth | đánh răng | `dan/hanh-dong/brush-your-teeth.webp` |
+| 8 | take a shower | tắm | `dan/hanh-dong/take-a-shower.webp` |
+| 9 | get dressed | mặc quần áo | `dan/hanh-dong/get-dressed.webp` |
+| 10 | have breakfast | ăn sáng | `dan/hanh-dong/have-breakfast.webp` |
+| 11 | have lunch | ăn trưa | `dan/hanh-dong/have-lunch.webp` |
+| 12 | have dinner | ăn tối | `dan/hanh-dong/have-dinner.webp` |
+| 13 | go to school | đi học | `dan/hanh-dong/go-to-school.webp` |
+| 14 | go home | về nhà | `dan/hanh-dong/go-home.webp` |
+| 15 | do homework | làm bài tập | `dan/hanh-dong/do-homework.webp` |
+| 16 | tidy up | dọn phòng | `dan/hanh-dong/tidy-up.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -905,22 +905,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | wash the dishes | rửa bát | `viec-hang-ngay/wash-the-dishes.png` |
-| 2 | cook | nấu ăn | `viec-hang-ngay/cook.png` |
-| 3 | sweep the floor | quét nhà | `viec-hang-ngay/sweep-the-floor.png` |
-| 4 | do the laundry | giặt quần áo | `viec-hang-ngay/do-the-laundry.png` |
-| 5 | go shopping | đi chợ | `viec-hang-ngay/go-shopping.png` |
-| 6 | rest | nghỉ ngơi | `viec-hang-ngay/rest.png` |
-| 7 | wait | chờ đợi | `viec-hang-ngay/wait.png` |
-| 8 | go | đi | `dong-tu-thuong-gap/go.png` |
-| 9 | come | đến | `dong-tu-thuong-gap/come.png` |
-| 10 | run | chạy | `dong-tu-thuong-gap/run.png` |
-| 11 | jump | nhảy | `dong-tu-thuong-gap/jump.png` |
-| 12 | walk | đi bộ | `dong-tu-thuong-gap/walk.png` |
-| 13 | sit | ngồi | `dong-tu-thuong-gap/sit.png` |
-| 14 | stand | đứng | `dong-tu-thuong-gap/stand.png` |
-| 15 | lie down | nằm | `dong-tu-thuong-gap/lie-down.png` |
-| 16 | eat | ăn | `dong-tu-thuong-gap/eat.png` |
+| 1 | wash the dishes | rửa bát | `dan/hanh-dong/wash-the-dishes.webp` |
+| 2 | cook | nấu ăn | `dan/hanh-dong/cook.webp` |
+| 3 | sweep the floor | quét nhà | `dan/hanh-dong/sweep-the-floor.webp` |
+| 4 | do the laundry | giặt quần áo | `dan/hanh-dong/do-the-laundry.webp` |
+| 5 | go shopping | đi chợ | `dan/hanh-dong/go-shopping.webp` |
+| 6 | rest | nghỉ ngơi | `dan/hanh-dong/rest.webp` |
+| 7 | wait | chờ đợi | `dan/hanh-dong/wait.webp` |
+| 8 | go | đi | `dan/hanh-dong/go.webp` |
+| 9 | come | đến | `dan/hanh-dong/come.webp` |
+| 10 | run | chạy | `dan/hanh-dong/run.webp` |
+| 11 | jump | nhảy | `dan/hanh-dong/jump.webp` |
+| 12 | walk | đi bộ | `dan/hanh-dong/walk.webp` |
+| 13 | sit | ngồi | `dan/hanh-dong/sit.webp` |
+| 14 | stand | đứng | `dan/hanh-dong/stand.webp` |
+| 15 | lie down | nằm | `dan/hanh-dong/lie-down.webp` |
+| 16 | eat | ăn | `dan/hanh-dong/eat.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -965,22 +965,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | drink | uống | `dong-tu-thuong-gap/drink.png` |
-| 2 | sleep | ngủ | `dong-tu-thuong-gap/sleep.png` |
-| 3 | speak | nói | `dong-tu-thuong-gap/speak.png` |
-| 4 | listen | nghe | `dong-tu-thuong-gap/listen.png` |
-| 5 | look | nhìn | `dong-tu-thuong-gap/look.png` |
-| 6 | watch | xem | `dong-tu-thuong-gap/watch.png` |
-| 7 | read | đọc | `dong-tu-thuong-gap/read.png` |
-| 8 | write | viết | `dong-tu-thuong-gap/write.png` |
-| 9 | draw | vẽ | `dong-tu-thuong-gap/draw.png` |
-| 10 | sing | hát | `dong-tu-thuong-gap/sing.png` |
-| 11 | dance | múa | `dong-tu-thuong-gap/dance.png` |
-| 12 | play | chơi | `dong-tu-thuong-gap/play.png` |
-| 13 | smile | cười | `dong-tu-thuong-gap/smile.png` |
-| 14 | cry | khóc | `dong-tu-thuong-gap/cry.png` |
-| 15 | open | mở | `dong-tu-thuong-gap/open.png` |
-| 16 | close | đóng | `dong-tu-thuong-gap/close.png` |
+| 1 | drink | uống | `dan/hanh-dong/drink.webp` |
+| 2 | sleep | ngủ | `dan/hanh-dong/sleep.webp` |
+| 3 | speak | nói | `dan/hanh-dong/speak.webp` |
+| 4 | listen | nghe | `dan/hanh-dong/listen.webp` |
+| 5 | look | nhìn | `dan/hanh-dong/look.webp` |
+| 6 | watch | xem | `dan/hanh-dong/watch.webp` |
+| 7 | read | đọc | `dan/hanh-dong/read.webp` |
+| 8 | write | viết | `dan/hanh-dong/write.webp` |
+| 9 | draw | vẽ | `dan/hanh-dong/draw.webp` |
+| 10 | sing | hát | `dan/hanh-dong/sing.webp` |
+| 11 | dance | múa | `dan/hanh-dong/dance.webp` |
+| 12 | play | chơi | `dan/hanh-dong/play.webp` |
+| 13 | smile | cười | `dan/hanh-dong/smile.webp` |
+| 14 | cry | khóc | `dan/hanh-dong/cry.webp` |
+| 15 | open | mở | `dan/hanh-dong/open.webp` |
+| 16 | close | đóng | `dan/hanh-dong/close.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1025,22 +1025,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | give | cho | `dong-tu-thuong-gap/give.png` |
-| 2 | take | lấy | `dong-tu-thuong-gap/take.png` |
-| 3 | buy | mua | `dong-tu-thuong-gap/buy.png` |
-| 4 | sell | bán | `dong-tu-thuong-gap/sell.png` |
-| 5 | find | tìm | `dong-tu-thuong-gap/find.png` |
-| 6 | help | giúp | `dong-tu-thuong-gap/help.png` |
-| 7 | ask | hỏi | `dong-tu-thuong-gap/ask.png` |
-| 8 | answer | trả lời | `dong-tu-thuong-gap/answer.png` |
-| 9 | remember | nhớ | `dong-tu-thuong-gap/remember.png` |
-| 10 | forget | quên | `dong-tu-thuong-gap/forget.png` |
-| 11 | know | biết | `dong-tu-thuong-gap/know.png` |
-| 12 | think | nghĩ | `dong-tu-thuong-gap/think.png` |
-| 13 | like | thích | `dong-tu-thuong-gap/like.png` |
-| 14 | love | yêu | `dong-tu-thuong-gap/love.png` |
-| 15 | hate | ghét | `dong-tu-thuong-gap/hate.png` |
-| 16 | want | muốn | `dong-tu-thuong-gap/want.png` |
+| 1 | give | cho | `dan/hanh-dong/give.webp` |
+| 2 | take | lấy | `dan/hanh-dong/take.webp` |
+| 3 | buy | mua | `dan/hanh-dong/buy.webp` |
+| 4 | sell | bán | `dan/hanh-dong/sell.webp` |
+| 5 | find | tìm | `dan/hanh-dong/find.webp` |
+| 6 | help | giúp | `dan/hanh-dong/help.webp` |
+| 7 | ask | hỏi | `dan/hanh-dong/ask.webp` |
+| 8 | answer | trả lời | `dan/hanh-dong/answer.webp` |
+| 9 | remember | nhớ | `dan/hanh-dong/remember.webp` |
+| 10 | forget | quên | `dan/hanh-dong/forget.webp` |
+| 11 | know | biết | `dan/hanh-dong/know.webp` |
+| 12 | think | nghĩ | `dan/hanh-dong/think.webp` |
+| 13 | like | thích | `dan/hanh-dong/like.webp` |
+| 14 | love | yêu | `dan/hanh-dong/love.webp` |
+| 15 | hate | ghét | `dan/hanh-dong/hate.webp` |
+| 16 | want | muốn | `dan/hanh-dong/want.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1085,22 +1085,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | need | cần | `dong-tu-thuong-gap/need.png` |
-| 2 | start | bắt đầu | `dong-tu-thuong-gap/start.png` |
-| 3 | finish | kết thúc | `dong-tu-thuong-gap/finish.png` |
-| 4 | try | cố gắng | `dong-tu-thuong-gap/try.png` |
-| 5 | make | làm | `dong-tu-thuong-gap/make.png` |
-| 6 | bring | mang | `dong-tu-thuong-gap/bring.png` |
-| 7 | fly | bay | `dong-tu-thuong-gap/fly.png` |
-| 8 | swim | bơi | `dong-tu-thuong-gap/swim.png` |
-| 9 | climb | leo trèo | `dong-tu-thuong-gap/climb.png` |
-| 10 | throw | ném | `dong-tu-thuong-gap/throw.png` |
-| 11 | catch | bắt | `dong-tu-thuong-gap/catch.png` |
-| 12 | push | đẩy | `dong-tu-thuong-gap/push.png` |
-| 13 | pull | kéo | `dong-tu-thuong-gap/pull.png` |
-| 14 | cut | cắt | `dong-tu-thuong-gap/cut.png` |
-| 15 | wash | rửa | `dong-tu-thuong-gap/wash.png` |
-| 16 | wipe | lau | `dong-tu-thuong-gap/wipe.png` |
+| 1 | need | cần | `dan/hanh-dong/need.webp` |
+| 2 | start | bắt đầu | `dan/hanh-dong/start.webp` |
+| 3 | finish | kết thúc | `dan/hanh-dong/finish.webp` |
+| 4 | try | cố gắng | `dan/hanh-dong/try.webp` |
+| 5 | make | làm | `dan/hanh-dong/make.webp` |
+| 6 | bring | mang | `dan/hanh-dong/bring.webp` |
+| 7 | fly | bay | `dan/hanh-dong/fly.webp` |
+| 8 | swim | bơi | `dan/hanh-dong/swim.webp` |
+| 9 | climb | leo trèo | `dan/hanh-dong/climb.webp` |
+| 10 | throw | ném | `dan/hanh-dong/throw.webp` |
+| 11 | catch | bắt | `dan/hanh-dong/catch.webp` |
+| 12 | push | đẩy | `dan/hanh-dong/push.webp` |
+| 13 | pull | kéo | `dan/hanh-dong/pull.webp` |
+| 14 | cut | cắt | `dan/hanh-dong/cut.webp` |
+| 15 | wash | rửa | `dan/hanh-dong/wash.webp` |
+| 16 | wipe | lau | `dan/hanh-dong/wipe.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1145,22 +1145,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | pack | đóng gói | `dong-tu-thuong-gap/pack.png` |
-| 2 | count | đếm | `dong-tu-thuong-gap/count.png` |
-| 3 | share | chia sẻ | `dong-tu-thuong-gap/share.png` |
-| 4 | big | to | `tinh-tu-thuong-gap/big.png` |
-| 5 | small | nhỏ | `tinh-tu-thuong-gap/small.png` |
-| 6 | long | dài | `tinh-tu-thuong-gap/long.png` |
-| 7 | short | ngắn | `tinh-tu-thuong-gap/short.png` |
-| 8 | tall | cao | `tinh-tu-thuong-gap/tall.png` |
-| 9 | low | thấp | `tinh-tu-thuong-gap/low.png` |
-| 10 | heavy | nặng | `tinh-tu-thuong-gap/heavy.png` |
-| 11 | light | nhẹ | `tinh-tu-thuong-gap/light.png` |
-| 12 | fast | nhanh | `tinh-tu-thuong-gap/fast.png` |
-| 13 | slow | chậm | `tinh-tu-thuong-gap/slow.png` |
-| 14 | hot | nóng | `tinh-tu-thuong-gap/hot.png` |
-| 15 | cold | lạnh | `tinh-tu-thuong-gap/cold.png` |
-| 16 | warm | ấm | `tinh-tu-thuong-gap/warm.png` |
+| 1 | pack | đóng gói | `dan/hanh-dong/pack.webp` |
+| 2 | count | đếm | `dan/hanh-dong/count.webp` |
+| 3 | share | chia sẻ | `dan/hanh-dong/share.webp` |
+| 4 | big | to | `dan/tinh-tu/big.webp` |
+| 5 | small | nhỏ | `dan/tinh-tu/small.webp` |
+| 6 | long | dài | `dan/tinh-tu/long.webp` |
+| 7 | short | ngắn | `dan/tinh-tu/short.webp` |
+| 8 | tall | cao | `dan/tinh-tu/tall.webp` |
+| 9 | low | thấp | `dan/tinh-tu/low.webp` |
+| 10 | heavy | nặng | `dan/tinh-tu/heavy.webp` |
+| 11 | light | nhẹ | `dan/tinh-tu/light.webp` |
+| 12 | fast | nhanh | `dan/tinh-tu/fast.webp` |
+| 13 | slow | chậm | `dan/tinh-tu/slow.webp` |
+| 14 | hot | nóng | `dan/tinh-tu/hot.webp` |
+| 15 | cold | lạnh | `dan/tinh-tu/cold.webp` |
+| 16 | warm | ấm | `dan/tinh-tu/warm.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1206,22 +1206,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | cool | mát | `tinh-tu-thuong-gap/cool.png` |
-| 2 | new | mới | `tinh-tu-thuong-gap/new.png` |
-| 3 | old | cũ | `tinh-tu-thuong-gap/old.png` |
-| 4 | clean | sạch | `tinh-tu-thuong-gap/clean.png` |
-| 5 | dirty | bẩn | `tinh-tu-thuong-gap/dirty.png` |
-| 6 | beautiful | đẹp | `tinh-tu-thuong-gap/beautiful.png` |
-| 7 | ugly | xấu | `tinh-tu-thuong-gap/ugly.png` |
-| 8 | good | tốt | `tinh-tu-thuong-gap/good.png` |
-| 9 | bad | dở | `tinh-tu-thuong-gap/bad.png` |
-| 10 | easy | dễ | `tinh-tu-thuong-gap/easy.png` |
-| 11 | difficult | khó | `tinh-tu-thuong-gap/difficult.png` |
-| 12 | right | đúng | `tinh-tu-thuong-gap/right.png` |
-| 13 | wrong | sai | `tinh-tu-thuong-gap/wrong.png` |
-| 14 | full | đầy | `tinh-tu-thuong-gap/full.png` |
-| 15 | empty | rỗng | `tinh-tu-thuong-gap/empty.png` |
-| 16 | noisy | ồn ào | `tinh-tu-thuong-gap/noisy.png` |
+| 1 | cool | mát | `dan/tinh-tu/cool.webp` |
+| 2 | new | mới | `dan/tinh-tu/new.webp` |
+| 3 | old | cũ | `dan/tinh-tu/old.webp` |
+| 4 | clean | sạch | `dan/tinh-tu/clean.webp` |
+| 5 | dirty | bẩn | `dan/tinh-tu/dirty.webp` |
+| 6 | beautiful | đẹp | `dan/tinh-tu/beautiful.webp` |
+| 7 | ugly | xấu | `dan/tinh-tu/ugly.webp` |
+| 8 | good | tốt | `dan/tinh-tu/good.webp` |
+| 9 | bad | dở | `dan/tinh-tu/bad.webp` |
+| 10 | easy | dễ | `dan/tinh-tu/easy.webp` |
+| 11 | difficult | khó | `dan/tinh-tu/difficult.webp` |
+| 12 | right | đúng | `dan/tinh-tu/right.webp` |
+| 13 | wrong | sai | `dan/tinh-tu/wrong.webp` |
+| 14 | full | đầy | `dan/tinh-tu/full.webp` |
+| 15 | empty | rỗng | `dan/tinh-tu/empty.webp` |
+| 16 | noisy | ồn ào | `dan/tinh-tu/noisy.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1266,22 +1266,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | quiet | yên tĩnh | `tinh-tu-thuong-gap/quiet.png` |
-| 2 | strong | mạnh | `tinh-tu-thuong-gap/strong.png` |
-| 3 | weak | yếu | `tinh-tu-thuong-gap/weak.png` |
-| 4 | rich | giàu | `tinh-tu-thuong-gap/rich.png` |
-| 5 | poor | nghèo | `tinh-tu-thuong-gap/poor.png` |
-| 6 | funny | vui | `tinh-tu-thuong-gap/funny.png` |
-| 7 | boring | chán | `tinh-tu-thuong-gap/boring.png` |
-| 8 | sweet | ngọt | `tinh-tu-thuong-gap/sweet.png` |
-| 9 | sour | chua | `tinh-tu-thuong-gap/sour.png` |
-| 10 | salty | mặn | `tinh-tu-thuong-gap/salty.png` |
-| 11 | spicy | cay | `tinh-tu-thuong-gap/spicy.png` |
-| 12 | bitter | đắng | `tinh-tu-thuong-gap/bitter.png` |
-| 13 | delicious | ngon | `tinh-tu-thuong-gap/delicious.png` |
-| 14 | soft | mềm | `tinh-tu-thuong-gap/soft.png` |
-| 15 | hard | cứng | `tinh-tu-thuong-gap/hard.png` |
-| 16 | wet | ướt | `tinh-tu-thuong-gap/wet.png` |
+| 1 | quiet | yên tĩnh | `dan/tinh-tu/quiet.webp` |
+| 2 | strong | mạnh | `dan/tinh-tu/strong.webp` |
+| 3 | weak | yếu | `dan/tinh-tu/weak.webp` |
+| 4 | rich | giàu | `dan/tinh-tu/rich.webp` |
+| 5 | poor | nghèo | `dan/tinh-tu/poor.webp` |
+| 6 | funny | vui | `dan/tinh-tu/funny.webp` |
+| 7 | boring | chán | `dan/tinh-tu/boring.webp` |
+| 8 | sweet | ngọt | `dan/tinh-tu/sweet.webp` |
+| 9 | sour | chua | `dan/tinh-tu/sour.webp` |
+| 10 | salty | mặn | `dan/tinh-tu/salty.webp` |
+| 11 | spicy | cay | `dan/tinh-tu/spicy.webp` |
+| 12 | bitter | đắng | `dan/tinh-tu/bitter.webp` |
+| 13 | delicious | ngon | `dan/tinh-tu/delicious.webp` |
+| 14 | soft | mềm | `dan/tinh-tu/soft.webp` |
+| 15 | hard | cứng | `dan/tinh-tu/hard.webp` |
+| 16 | wet | ướt | `dan/tinh-tu/wet.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1326,22 +1326,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | dry | khô | `tinh-tu-thuong-gap/dry.png` |
-| 2 | bright | sáng | `tinh-tu-thuong-gap/bright.png` |
-| 3 | dark | tối | `tinh-tu-thuong-gap/dark.png` |
-| 4 | wide | rộng | `tinh-tu-thuong-gap/wide.png` |
-| 5 | narrow | hẹp | `tinh-tu-thuong-gap/narrow.png` |
-| 6 | deep | sâu | `tinh-tu-thuong-gap/deep.png` |
-| 7 | shallow | nông | `tinh-tu-thuong-gap/shallow.png` |
-| 8 | busy | bận | `tinh-tu-thuong-gap/busy.png` |
-| 9 | free | rảnh | `tinh-tu-thuong-gap/free.png` |
-| 10 | clever | thông minh | `tinh-tu-thuong-gap/clever.png` |
-| 11 | polite | lịch sự | `tinh-tu-thuong-gap/polite.png` |
-| 12 | kind | tử tế | `tinh-tu-thuong-gap/kind.png` |
-| 13 | lazy | lười | `tinh-tu-thuong-gap/lazy.png` |
-| 14 | hard-working | chăm chỉ | `tinh-tu-thuong-gap/hard-working.png` |
-| 15 | brave | dũng cảm | `tinh-tu-thuong-gap/brave.png` |
-| 16 | Monday | thứ hai | `ngay-thang-mua/monday.png` |
+| 1 | dry | khô | `dan/tinh-tu/dry.webp` |
+| 2 | bright | sáng | `dan/tinh-tu/bright.webp` |
+| 3 | dark | tối | `dan/tinh-tu/dark.webp` |
+| 4 | wide | rộng | `dan/tinh-tu/wide.webp` |
+| 5 | narrow | hẹp | `dan/tinh-tu/narrow.webp` |
+| 6 | deep | sâu | `dan/tinh-tu/deep.webp` |
+| 7 | shallow | nông | `dan/tinh-tu/shallow.webp` |
+| 8 | busy | bận | `dan/tinh-tu/busy.webp` |
+| 9 | free | rảnh | `dan/tinh-tu/free.webp` |
+| 10 | clever | thông minh | `dan/tinh-tu/clever.webp` |
+| 11 | polite | lịch sự | `dan/tinh-tu/polite.webp` |
+| 12 | kind | tử tế | `dan/tinh-tu/kind.webp` |
+| 13 | lazy | lười | `dan/tinh-tu/lazy.webp` |
+| 14 | hard-working | chăm chỉ | `dan/tinh-tu/hard-working.webp` |
+| 15 | brave | dũng cảm | `dan/tinh-tu/brave.webp` |
+| 16 | Monday | thứ hai | `dan/thoi-gian/monday.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1387,22 +1387,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | Tuesday | thứ ba | `ngay-thang-mua/tuesday.png` |
-| 2 | Wednesday | thứ tư | `ngay-thang-mua/wednesday.png` |
-| 3 | Thursday | thứ năm | `ngay-thang-mua/thursday.png` |
-| 4 | Friday | thứ sáu | `ngay-thang-mua/friday.png` |
-| 5 | Saturday | thứ bảy | `ngay-thang-mua/saturday.png` |
-| 6 | Sunday | chủ nhật | `ngay-thang-mua/sunday.png` |
-| 7 | January | tháng một | `ngay-thang-mua/january.png` |
-| 8 | February | tháng hai | `ngay-thang-mua/february.png` |
-| 9 | March | tháng ba | `ngay-thang-mua/march.png` |
-| 10 | April | tháng tư | `ngay-thang-mua/april.png` |
-| 11 | May | tháng năm | `ngay-thang-mua/may.png` |
-| 12 | June | tháng sáu | `ngay-thang-mua/june.png` |
-| 13 | July | tháng bảy | `ngay-thang-mua/july.png` |
-| 14 | August | tháng tám | `ngay-thang-mua/august.png` |
-| 15 | September | tháng chín | `ngay-thang-mua/september.png` |
-| 16 | October | tháng mười | `ngay-thang-mua/october.png` |
+| 1 | Tuesday | thứ ba | `dan/thoi-gian/tuesday.webp` |
+| 2 | Wednesday | thứ tư | `dan/thoi-gian/wednesday.webp` |
+| 3 | Thursday | thứ năm | `dan/thoi-gian/thursday.webp` |
+| 4 | Friday | thứ sáu | `dan/thoi-gian/friday.webp` |
+| 5 | Saturday | thứ bảy | `dan/thoi-gian/saturday.webp` |
+| 6 | Sunday | chủ nhật | `dan/thoi-gian/sunday.webp` |
+| 7 | January | tháng một | `dan/thoi-gian/january.webp` |
+| 8 | February | tháng hai | `dan/thoi-gian/february.webp` |
+| 9 | March | tháng ba | `dan/thoi-gian/march.webp` |
+| 10 | April | tháng tư | `dan/thoi-gian/april.webp` |
+| 11 | May | tháng năm | `dan/thoi-gian/may.webp` |
+| 12 | June | tháng sáu | `dan/thoi-gian/june.webp` |
+| 13 | July | tháng bảy | `dan/thoi-gian/july.webp` |
+| 14 | August | tháng tám | `dan/thoi-gian/august.webp` |
+| 15 | September | tháng chín | `dan/thoi-gian/september.webp` |
+| 16 | October | tháng mười | `dan/thoi-gian/october.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1447,22 +1447,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | November | tháng mười một | `ngay-thang-mua/november.png` |
-| 2 | December | tháng mười hai | `ngay-thang-mua/december.png` |
-| 3 | spring | mùa xuân | `ngay-thang-mua/spring.png` |
-| 4 | summer | mùa hè | `ngay-thang-mua/summer.png` |
-| 5 | autumn | mùa thu | `ngay-thang-mua/autumn.png` |
-| 6 | winter | mùa đông | `ngay-thang-mua/winter.png` |
-| 7 | today | hôm nay | `ngay-thang-mua/today.png` |
-| 8 | yesterday | hôm qua | `ngay-thang-mua/yesterday.png` |
-| 9 | tomorrow | ngày mai | `ngay-thang-mua/tomorrow.png` |
-| 10 | week | tuần | `ngay-thang-mua/week.png` |
-| 11 | month | tháng | `ngay-thang-mua/month.png` |
-| 12 | year | năm | `ngay-thang-mua/year.png` |
-| 13 | hour | giờ | `ngay-thang-mua/hour.png` |
-| 14 | minute | phút | `ngay-thang-mua/minute.png` |
-| 15 | second | giây | `ngay-thang-mua/second.png` |
-| 16 | eleven | mười một | `so-lon-va-thu-tu/eleven.png` |
+| 1 | November | tháng mười một | `dan/thoi-gian/november.webp` |
+| 2 | December | tháng mười hai | `dan/thoi-gian/december.webp` |
+| 3 | spring | mùa xuân | `dan/thoi-gian/spring.webp` |
+| 4 | summer | mùa hè | `dan/thoi-gian/summer.webp` |
+| 5 | autumn | mùa thu | `dan/thoi-gian/autumn.webp` |
+| 6 | winter | mùa đông | `dan/thoi-gian/winter.webp` |
+| 7 | today | hôm nay | `dan/thoi-gian/today.webp` |
+| 8 | yesterday | hôm qua | `dan/thoi-gian/yesterday.webp` |
+| 9 | tomorrow | ngày mai | `dan/thoi-gian/tomorrow.webp` |
+| 10 | week | tuần | `dan/thoi-gian/week.webp` |
+| 11 | month | tháng | `dan/thoi-gian/month.webp` |
+| 12 | year | năm | `dan/thoi-gian/year.webp` |
+| 13 | hour | giờ | `dan/thoi-gian/hour.webp` |
+| 14 | minute | phút | `dan/thoi-gian/minute.webp` |
+| 15 | second | giây | `dan/thoi-gian/second.webp` |
+| 16 | eleven | mười một | `dan/so-dem/eleven.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1508,22 +1508,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | twelve | mười hai | `so-lon-va-thu-tu/twelve.png` |
-| 2 | thirteen | mười ba | `so-lon-va-thu-tu/thirteen.png` |
-| 3 | fourteen | mười bốn | `so-lon-va-thu-tu/fourteen.png` |
-| 4 | fifteen | mười lăm | `so-lon-va-thu-tu/fifteen.png` |
-| 5 | sixteen | mười sáu | `so-lon-va-thu-tu/sixteen.png` |
-| 6 | seventeen | mười bảy | `so-lon-va-thu-tu/seventeen.png` |
-| 7 | eighteen | mười tám | `so-lon-va-thu-tu/eighteen.png` |
-| 8 | nineteen | mười chín | `so-lon-va-thu-tu/nineteen.png` |
-| 9 | twenty | hai mươi | `so-lon-va-thu-tu/twenty.png` |
-| 10 | thirty | ba mươi | `so-lon-va-thu-tu/thirty.png` |
-| 11 | forty | bốn mươi | `so-lon-va-thu-tu/forty.png` |
-| 12 | fifty | năm mươi | `so-lon-va-thu-tu/fifty.png` |
-| 13 | one hundred | một trăm | `so-lon-va-thu-tu/one-hundred.png` |
-| 14 | one thousand | một nghìn | `so-lon-va-thu-tu/one-thousand.png` |
-| 15 | first | thứ nhất | `so-lon-va-thu-tu/first.png` |
-| 16 | second (order) | thứ hai (thứ tự) | `so-lon-va-thu-tu/second-order.png` |
+| 1 | twelve | mười hai | `dan/so-dem/twelve.webp` |
+| 2 | thirteen | mười ba | `dan/so-dem/thirteen.webp` |
+| 3 | fourteen | mười bốn | `dan/so-dem/fourteen.webp` |
+| 4 | fifteen | mười lăm | `dan/so-dem/fifteen.webp` |
+| 5 | sixteen | mười sáu | `dan/so-dem/sixteen.webp` |
+| 6 | seventeen | mười bảy | `dan/so-dem/seventeen.webp` |
+| 7 | eighteen | mười tám | `dan/so-dem/eighteen.webp` |
+| 8 | nineteen | mười chín | `dan/so-dem/nineteen.webp` |
+| 9 | twenty | hai mươi | `dan/so-dem/twenty.webp` |
+| 10 | thirty | ba mươi | `dan/so-dem/thirty.webp` |
+| 11 | forty | bốn mươi | `dan/so-dem/forty.webp` |
+| 12 | fifty | năm mươi | `dan/so-dem/fifty.webp` |
+| 13 | one hundred | một trăm | `dan/so-dem/one-hundred.webp` |
+| 14 | one thousand | một nghìn | `dan/so-dem/one-thousand.webp` |
+| 15 | first | thứ nhất | `dan/so-dem/first.webp` |
+| 16 | second (order) | thứ hai (thứ tự) | `dan/so-dem/second-order.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1568,22 +1568,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | third | thứ ba (thứ tự) | `so-lon-va-thu-tu/third.png` |
-| 2 | last | cuối cùng | `so-lon-va-thu-tu/last.png` |
-| 3 | half | một nửa | `so-lon-va-thu-tu/half.png` |
-| 4 | on | ở trên | `vi-tri-va-huong/on.png` |
-| 5 | under | ở dưới | `vi-tri-va-huong/under.png` |
-| 6 | in | ở trong | `vi-tri-va-huong/in.png` |
-| 7 | outside | ở ngoài | `vi-tri-va-huong/outside.png` |
-| 8 | next to | bên cạnh | `vi-tri-va-huong/next-to.png` |
-| 9 | in front of | phía trước | `vi-tri-va-huong/in-front-of.png` |
-| 10 | behind | phía sau | `vi-tri-va-huong/behind.png` |
-| 11 | between | ở giữa | `vi-tri-va-huong/between.png` |
-| 12 | left | bên trái | `vi-tri-va-huong/left.png` |
-| 13 | right (side) | bên phải | `vi-tri-va-huong/right-side.png` |
-| 14 | near | gần | `vi-tri-va-huong/near.png` |
-| 15 | far | xa | `vi-tri-va-huong/far.png` |
-| 16 | up | lên | `vi-tri-va-huong/up.png` |
+| 1 | third | thứ ba (thứ tự) | `dan/so-dem/third.webp` |
+| 2 | last | cuối cùng | `dan/so-dem/last.webp` |
+| 3 | half | một nửa | `dan/so-dem/half.webp` |
+| 4 | on | ở trên | `dan/vi-tri/on.webp` |
+| 5 | under | ở dưới | `dan/vi-tri/under.webp` |
+| 6 | in | ở trong | `dan/vi-tri/in.webp` |
+| 7 | outside | ở ngoài | `dan/vi-tri/outside.webp` |
+| 8 | next to | bên cạnh | `dan/vi-tri/next-to.webp` |
+| 9 | in front of | phía trước | `dan/vi-tri/in-front-of.webp` |
+| 10 | behind | phía sau | `dan/vi-tri/behind.webp` |
+| 11 | between | ở giữa | `dan/vi-tri/between.webp` |
+| 12 | left | bên trái | `dan/vi-tri/left.webp` |
+| 13 | right (side) | bên phải | `dan/vi-tri/right-side.webp` |
+| 14 | near | gần | `dan/vi-tri/near.webp` |
+| 15 | far | xa | `dan/vi-tri/far.webp` |
+| 16 | up | lên | `dan/vi-tri/up.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1629,22 +1629,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | down | xuống | `vi-tri-va-huong/down.png` |
-| 2 | into | vào | `vi-tri-va-huong/into.png` |
-| 3 | out | ra | `vi-tri-va-huong/out.png` |
-| 4 | around | quanh | `vi-tri-va-huong/around.png` |
-| 5 | across | qua | `vi-tri-va-huong/across.png` |
-| 6 | here | ở đây | `vi-tri-va-huong/here.png` |
-| 7 | there | ở kia | `vi-tri-va-huong/there.png` |
-| 8 | hello | xin chào | `cau-chao-va-le-phep/hello.png` |
-| 9 | goodbye | tạm biệt | `cau-chao-va-le-phep/goodbye.png` |
-| 10 | good morning | chào buổi sáng | `cau-chao-va-le-phep/good-morning.png` |
-| 11 | good night | chúc ngủ ngon | `cau-chao-va-le-phep/good-night.png` |
-| 12 | thank you | cảm ơn | `cau-chao-va-le-phep/thank-you.png` |
-| 13 | you're welcome | không có gì đâu | `cau-chao-va-le-phep/you-re-welcome.png` |
-| 14 | sorry | xin lỗi | `cau-chao-va-le-phep/sorry.png` |
-| 15 | please | làm ơn | `cau-chao-va-le-phep/please.png` |
-| 16 | how are you? | bạn khoẻ không? | `cau-chao-va-le-phep/how-are-you.png` |
+| 1 | down | xuống | `dan/vi-tri/down.webp` |
+| 2 | into | vào | `dan/vi-tri/into.webp` |
+| 3 | out | ra | `dan/vi-tri/out.webp` |
+| 4 | around | quanh | `dan/vi-tri/around.webp` |
+| 5 | across | qua | `dan/vi-tri/across.webp` |
+| 6 | here | ở đây | `dan/vi-tri/here.webp` |
+| 7 | there | ở kia | `dan/vi-tri/there.webp` |
+| 8 | hello | xin chào | `dan/giao-tiep/hello.webp` |
+| 9 | goodbye | tạm biệt | `dan/giao-tiep/goodbye.webp` |
+| 10 | good morning | chào buổi sáng | `dan/giao-tiep/good-morning.webp` |
+| 11 | good night | chúc ngủ ngon | `dan/giao-tiep/good-night.webp` |
+| 12 | thank you | cảm ơn | `dan/giao-tiep/thank-you.webp` |
+| 13 | you're welcome | không có gì đâu | `dan/giao-tiep/you-re-welcome.webp` |
+| 14 | sorry | xin lỗi | `dan/giao-tiep/sorry.webp` |
+| 15 | please | làm ơn | `dan/giao-tiep/please.webp` |
+| 16 | how are you? | bạn khoẻ không? | `dan/giao-tiep/how-are-you.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1690,22 +1690,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | I'm fine | tôi khoẻ | `cau-chao-va-le-phep/i-m-fine.png` |
-| 2 | what's your name? | tên bạn là gì? | `cau-chao-va-le-phep/what-s-your-name.png` |
-| 3 | my name is… | tôi tên là… | `cau-chao-va-le-phep/my-name-is.png` |
-| 4 | nice to meet you | rất vui được gặp bạn | `cau-chao-va-le-phep/nice-to-meet-you.png` |
-| 5 | see you | hẹn gặp lại | `cau-chao-va-le-phep/see-you.png` |
-| 6 | good luck | chúc may mắn | `cau-chao-va-le-phep/good-luck.png` |
-| 7 | happy birthday | chúc mừng sinh nhật | `cau-chao-va-le-phep/happy-birthday.png` |
-| 8 | how old are you? | bạn bao nhiêu tuổi? | `cau-chao-va-le-phep/how-old-are-you.png` |
-| 9 | I'm … years old | tôi … tuổi | `cau-chao-va-le-phep/i-m-years-old.png` |
-| 10 | where do you live? | bạn sống ở đâu? | `cau-chao-va-le-phep/where-do-you-live.png` |
-| 11 | I don't know | tôi không biết | `cau-chao-va-le-phep/i-don-t-know.png` |
-| 12 | I understand | tôi hiểu rồi | `cau-chao-va-le-phep/i-understand.png` |
-| 13 | say it again, please | xin nhắc lại | `cau-chao-va-le-phep/say-it-again-please.png` |
-| 14 | yes | có | `cau-chao-va-le-phep/yes.png` |
-| 15 | no | không | `cau-chao-va-le-phep/no.png` |
-| 16 | stand up | đứng lên | `cau-trong-lop-hoc/stand-up.png` |
+| 1 | I'm fine | tôi khoẻ | `dan/giao-tiep/i-m-fine.webp` |
+| 2 | what's your name? | tên bạn là gì? | `dan/giao-tiep/what-s-your-name.webp` |
+| 3 | my name is… | tôi tên là… | `dan/giao-tiep/my-name-is.webp` |
+| 4 | nice to meet you | rất vui được gặp bạn | `dan/giao-tiep/nice-to-meet-you.webp` |
+| 5 | see you | hẹn gặp lại | `dan/giao-tiep/see-you.webp` |
+| 6 | good luck | chúc may mắn | `dan/giao-tiep/good-luck.webp` |
+| 7 | happy birthday | chúc mừng sinh nhật | `dan/giao-tiep/happy-birthday.webp` |
+| 8 | how old are you? | bạn bao nhiêu tuổi? | `dan/giao-tiep/how-old-are-you.webp` |
+| 9 | I'm … years old | tôi … tuổi | `dan/giao-tiep/i-m-years-old.webp` |
+| 10 | where do you live? | bạn sống ở đâu? | `dan/giao-tiep/where-do-you-live.webp` |
+| 11 | I don't know | tôi không biết | `dan/giao-tiep/i-don-t-know.webp` |
+| 12 | I understand | tôi hiểu rồi | `dan/giao-tiep/i-understand.webp` |
+| 13 | say it again, please | xin nhắc lại | `dan/giao-tiep/say-it-again-please.webp` |
+| 14 | yes | có | `dan/giao-tiep/yes.webp` |
+| 15 | no | không | `dan/giao-tiep/no.webp` |
+| 16 | stand up | đứng lên | `dan/truong-hoc/stand-up.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1750,22 +1750,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | sit down | ngồi xuống | `cau-trong-lop-hoc/sit-down.png` |
-| 2 | be quiet | im lặng nào | `cau-trong-lop-hoc/be-quiet.png` |
-| 3 | listen to me | nghe cô nói | `cau-trong-lop-hoc/listen-to-me.png` |
-| 4 | look at the board | nhìn lên bảng | `cau-trong-lop-hoc/look-at-the-board.png` |
-| 5 | open your book | mở sách ra | `cau-trong-lop-hoc/open-your-book.png` |
-| 6 | close your book | gấp sách lại | `cau-trong-lop-hoc/close-your-book.png` |
-| 7 | put your hand up | giơ tay lên | `cau-trong-lop-hoc/put-your-hand-up.png` |
-| 8 | repeat after me | nhắc lại nào | `cau-trong-lop-hoc/repeat-after-me.png` |
-| 9 | well done | làm tốt lắm | `cau-trong-lop-hoc/well-done.png` |
-| 10 | try again | thử lại nhé | `cau-trong-lop-hoc/try-again.png` |
-| 11 | line up | xếp hàng | `cau-trong-lop-hoc/line-up.png` |
-| 12 | work in groups | làm theo nhóm | `cau-trong-lop-hoc/work-in-groups.png` |
-| 13 | it's your turn | đến lượt bạn | `cau-trong-lop-hoc/it-s-your-turn.png` |
-| 14 | break time | giờ ra chơi | `cau-trong-lop-hoc/break-time.png` |
-| 15 | home time | tan học | `cau-trong-lop-hoc/home-time.png` |
-| 16 | inside — outside | bên trong — bên ngoài | `nguoc-nghia/inside-outside.png` |
+| 1 | sit down | ngồi xuống | `dan/truong-hoc/sit-down.webp` |
+| 2 | be quiet | im lặng nào | `dan/truong-hoc/be-quiet.webp` |
+| 3 | listen to me | nghe cô nói | `dan/truong-hoc/listen-to-me.webp` |
+| 4 | look at the board | nhìn lên bảng | `dan/truong-hoc/look-at-the-board.webp` |
+| 5 | open your book | mở sách ra | `dan/truong-hoc/open-your-book.webp` |
+| 6 | close your book | gấp sách lại | `dan/truong-hoc/close-your-book.webp` |
+| 7 | put your hand up | giơ tay lên | `dan/truong-hoc/put-your-hand-up.webp` |
+| 8 | repeat after me | nhắc lại nào | `dan/truong-hoc/repeat-after-me.webp` |
+| 9 | well done | làm tốt lắm | `dan/truong-hoc/well-done.webp` |
+| 10 | try again | thử lại nhé | `dan/truong-hoc/try-again.webp` |
+| 11 | line up | xếp hàng | `dan/truong-hoc/line-up.webp` |
+| 12 | work in groups | làm theo nhóm | `dan/truong-hoc/work-in-groups.webp` |
+| 13 | it's your turn | đến lượt bạn | `dan/truong-hoc/it-s-your-turn.webp` |
+| 14 | break time | giờ ra chơi | `dan/truong-hoc/break-time.webp` |
+| 15 | home time | tan học | `dan/truong-hoc/home-time.webp` |
+| 16 | inside — outside | bên trong — bên ngoài | `dan/tinh-tu/inside-outside.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1811,22 +1811,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | before — after | trước — sau | `nguoc-nghia/before-after.png` |
-| 2 | early — late | sớm — muộn | `nguoc-nghia/early-late.png` |
-| 3 | more — less | nhiều — ít | `nguoc-nghia/more-less.png` |
-| 4 | same — different | cùng — khác | `nguoc-nghia/same-different.png` |
-| 5 | begin — end | bắt đầu — kết thúc | `nguoc-nghia/begin-end.png` |
-| 6 | remember — forget | nhớ — quên | `nguoc-nghia/remember-forget.png` |
-| 7 | lose — find | mất — tìm thấy | `nguoc-nghia/lose-find.png` |
-| 8 | win — lose | thắng — thua | `nguoc-nghia/win-lose.png` |
-| 9 | safe — dangerous | an toàn — nguy hiểm | `nguoc-nghia/safe-dangerous.png` |
-| 10 | maths | môn toán | `mon-hoc/maths.png` |
-| 11 | English | môn tiếng Anh | `mon-hoc/english.png` |
-| 12 | science | môn khoa học | `mon-hoc/science.png` |
-| 13 | history | môn lịch sử | `mon-hoc/history.png` |
-| 14 | geography | môn địa lí | `mon-hoc/geography.png` |
-| 15 | art | môn mĩ thuật | `mon-hoc/art.png` |
-| 16 | music | môn âm nhạc | `mon-hoc/music.png` |
+| 1 | before — after | trước — sau | `dan/tinh-tu/before-after.webp` |
+| 2 | early — late | sớm — muộn | `dan/tinh-tu/early-late.webp` |
+| 3 | more — less | nhiều — ít | `dan/tinh-tu/more-less.webp` |
+| 4 | same — different | cùng — khác | `dan/tinh-tu/same-different.webp` |
+| 5 | begin — end | bắt đầu — kết thúc | `dan/tinh-tu/begin-end.webp` |
+| 6 | remember — forget | nhớ — quên | `dan/tinh-tu/remember-forget.webp` |
+| 7 | lose — find | mất — tìm thấy | `dan/tinh-tu/lose-find.webp` |
+| 8 | win — lose | thắng — thua | `dan/tinh-tu/win-lose.webp` |
+| 9 | safe — dangerous | an toàn — nguy hiểm | `dan/tinh-tu/safe-dangerous.webp` |
+| 10 | maths | môn toán | `dan/truong-hoc/maths.webp` |
+| 11 | English | môn tiếng Anh | `dan/truong-hoc/english.webp` |
+| 12 | science | môn khoa học | `dan/truong-hoc/science.webp` |
+| 13 | history | môn lịch sử | `dan/truong-hoc/history.webp` |
+| 14 | geography | môn địa lí | `dan/truong-hoc/geography.webp` |
+| 15 | art | môn mĩ thuật | `dan/truong-hoc/art.webp` |
+| 16 | music | môn âm nhạc | `dan/truong-hoc/music.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1872,22 +1872,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | PE | môn thể dục | `mon-hoc/pe.png` |
-| 2 | test | bài kiểm tra | `mon-hoc/test.png` |
-| 3 | mark | điểm số | `mon-hoc/mark.png` |
-| 4 | homework | bài tập về nhà | `mon-hoc/homework.png` |
-| 5 | timetable | thời khoá biểu | `mon-hoc/timetable.png` |
-| 6 | menu | thực đơn | `o-nha-hang-va-cua-hang/menu.png` |
-| 7 | order | gọi món | `o-nha-hang-va-cua-hang/order.png` |
-| 8 | how much is it? | bao nhiêu tiền? | `o-nha-hang-va-cua-hang/how-much-is-it.png` |
-| 9 | it's too expensive | đắt quá | `o-nha-hang-va-cua-hang/it-s-too-expensive.png` |
-| 10 | cheap | rẻ | `o-nha-hang-va-cua-hang/cheap.png` |
-| 11 | can I have… | cho tôi xin… | `o-nha-hang-va-cua-hang/can-i-have.png` |
-| 12 | it's delicious | ngon quá | `o-nha-hang-va-cua-hang/it-s-delicious.png` |
-| 13 | I'm full | no rồi | `o-nha-hang-va-cua-hang/i-m-full.png` |
-| 14 | pay | trả tiền | `o-nha-hang-va-cua-hang/pay.png` |
-| 15 | change | tiền thừa | `o-nha-hang-va-cua-hang/change.png` |
-| 16 | turn left | rẽ trái | `di-duong/turn-left.png` |
+| 1 | PE | môn thể dục | `dan/truong-hoc/pe.webp` |
+| 2 | test | bài kiểm tra | `dan/truong-hoc/test.webp` |
+| 3 | mark | điểm số | `dan/truong-hoc/mark.webp` |
+| 4 | homework | bài tập về nhà | `dan/truong-hoc/homework.webp` |
+| 5 | timetable | thời khoá biểu | `dan/truong-hoc/timetable.webp` |
+| 6 | menu | thực đơn | `dan/mua-ban/menu.webp` |
+| 7 | order | gọi món | `dan/mua-ban/order.webp` |
+| 8 | how much is it? | bao nhiêu tiền? | `dan/mua-ban/how-much-is-it.webp` |
+| 9 | it's too expensive | đắt quá | `dan/mua-ban/it-s-too-expensive.webp` |
+| 10 | cheap | rẻ | `dan/mua-ban/cheap.webp` |
+| 11 | can I have… | cho tôi xin… | `dan/mua-ban/can-i-have.webp` |
+| 12 | it's delicious | ngon quá | `dan/mua-ban/it-s-delicious.webp` |
+| 13 | I'm full | no rồi | `dan/mua-ban/i-m-full.webp` |
+| 14 | pay | trả tiền | `dan/mua-ban/pay.webp` |
+| 15 | change | tiền thừa | `dan/mua-ban/change.webp` |
+| 16 | turn left | rẽ trái | `dan/noi-chon/turn-left.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1932,22 +1932,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | turn right | rẽ phải | `di-duong/turn-right.png` |
-| 2 | go straight | đi thẳng | `di-duong/go-straight.png` |
-| 3 | stop | dừng lại | `di-duong/stop.png` |
-| 4 | cross the road | qua đường | `di-duong/cross-the-road.png` |
-| 5 | traffic light | đèn giao thông | `di-duong/traffic-light.png` |
-| 6 | pavement | vỉa hè | `di-duong/pavement.png` |
-| 7 | directions | bản đồ đường đi | `di-duong/directions.png` |
-| 8 | get lost | lạc đường | `di-duong/get-lost.png` |
-| 9 | take a lift | đi nhờ xe | `di-duong/take-a-lift.png` |
-| 10 | ticket | vé xe | `di-duong/ticket.png` |
-| 11 | trip | chuyến đi | `di-duong/trip.png` |
-| 12 | a flock of birds | đàn chim | `thien-nhien-va-con-vat-chu/a-flock-of-birds.png` |
-| 13 | nest | tổ chim | `thien-nhien-va-con-vat-chu/nest.png` |
-| 14 | feather | cái lông vũ | `thien-nhien-va-con-vat-chu/feather.png` |
-| 15 | tail | cái đuôi | `thien-nhien-va-con-vat-chu/tail.png` |
-| 16 | wing | cái cánh | `thien-nhien-va-con-vat-chu/wing.png` |
+| 1 | turn right | rẽ phải | `dan/noi-chon/turn-right.webp` |
+| 2 | go straight | đi thẳng | `dan/noi-chon/go-straight.webp` |
+| 3 | stop | dừng lại | `dan/noi-chon/stop.webp` |
+| 4 | cross the road | qua đường | `dan/noi-chon/cross-the-road.webp` |
+| 5 | traffic light | đèn giao thông | `dan/noi-chon/traffic-light.webp` |
+| 6 | pavement | vỉa hè | `dan/noi-chon/pavement.webp` |
+| 7 | directions | bản đồ đường đi | `dan/noi-chon/directions.webp` |
+| 8 | get lost | lạc đường | `dan/noi-chon/get-lost.webp` |
+| 9 | take a lift | đi nhờ xe | `dan/noi-chon/take-a-lift.webp` |
+| 10 | ticket | vé xe | `dan/noi-chon/ticket.webp` |
+| 11 | trip | chuyến đi | `dan/noi-chon/trip.webp` |
+| 12 | a flock of birds | đàn chim | `dan/thien-nhien/a-flock-of-birds.webp` |
+| 13 | nest | tổ chim | `dan/thien-nhien/nest.webp` |
+| 14 | feather | cái lông vũ | `dan/thien-nhien/feather.webp` |
+| 15 | tail | cái đuôi | `dan/thien-nhien/tail.webp` |
+| 16 | wing | cái cánh | `dan/thien-nhien/wing.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -1992,22 +1992,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | horn | cái sừng | `thien-nhien-va-con-vat-chu/horn.png` |
-| 2 | fur | bộ lông | `thien-nhien-va-con-vat-chu/fur.png` |
-| 3 | scale | cái vảy | `thien-nhien-va-con-vat-chu/scale.png` |
-| 4 | cave | cái hang | `thien-nhien-va-con-vat-chu/cave.png` |
-| 5 | cage | cái chuồng | `thien-nhien-va-con-vat-chu/cage.png` |
-| 6 | pet food | thức ăn cho thú | `thien-nhien-va-con-vat-chu/pet-food.png` |
-| 7 | zoo | vườn thú | `thien-nhien-va-con-vat-chu/zoo.png` |
-| 8 | farm | nông trại | `thien-nhien-va-con-vat-chu/farm.png` |
-| 9 | field | cánh đồng | `thien-nhien-va-con-vat-chu/field.png` |
-| 10 | river | dòng sông | `thien-nhien-va-con-vat-chu/river.png` |
-| 11 | lake | cái hồ | `thien-nhien-va-con-vat-chu/lake.png` |
-| 12 | sky | bầu trời | `thien-nhien-va-con-vat-chu/sky.png` |
-| 13 | ground | mặt đất | `thien-nhien-va-con-vat-chu/ground.png` |
-| 14 | air | không khí | `thien-nhien-va-con-vat-chu/air.png` |
-| 15 | sand | cát | `thien-nhien-va-con-vat-chu/sand.png` |
-| 16 | glad | hạnh phúc | `cam-xuc-va-tinh-cach-chu/glad.png` |
+| 1 | horn | cái sừng | `dan/thien-nhien/horn.webp` |
+| 2 | fur | bộ lông | `dan/thien-nhien/fur.webp` |
+| 3 | scale | cái vảy | `dan/thien-nhien/scale.webp` |
+| 4 | cave | cái hang | `dan/thien-nhien/cave.webp` |
+| 5 | cage | cái chuồng | `dan/thien-nhien/cage.webp` |
+| 6 | pet food | thức ăn cho thú | `dan/thien-nhien/pet-food.webp` |
+| 7 | zoo | vườn thú | `dan/thien-nhien/zoo.webp` |
+| 8 | farm | nông trại | `dan/thien-nhien/farm.webp` |
+| 9 | field | cánh đồng | `dan/thien-nhien/field.webp` |
+| 10 | river | dòng sông | `dan/thien-nhien/river.webp` |
+| 11 | lake | cái hồ | `dan/thien-nhien/lake.webp` |
+| 12 | sky | bầu trời | `dan/thien-nhien/sky.webp` |
+| 13 | ground | mặt đất | `dan/thien-nhien/ground.webp` |
+| 14 | air | không khí | `dan/thien-nhien/air.webp` |
+| 15 | sand | cát | `dan/thien-nhien/sand.webp` |
+| 16 | glad | hạnh phúc | `dan/cam-xuc/glad.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -2053,22 +2053,22 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | worried | lo lắng | `cam-xuc-va-tinh-cach-chu/worried.png` |
-| 2 | excited | hồi hộp | `cam-xuc-va-tinh-cach-chu/excited.png` |
-| 3 | calm | bình tĩnh | `cam-xuc-va-tinh-cach-chu/calm.png` |
-| 4 | shy | xấu hổ | `cam-xuc-va-tinh-cach-chu/shy.png` |
-| 5 | proud | tự hào | `cam-xuc-va-tinh-cach-chu/proud.png` |
-| 6 | disappointed | thất vọng | `cam-xuc-va-tinh-cach-chu/disappointed.png` |
-| 7 | confused | bối rối | `cam-xuc-va-tinh-cach-chu/confused.png` |
-| 8 | pleased | hài lòng | `cam-xuc-va-tinh-cach-chu/pleased.png` |
-| 9 | amazed | ngạc nhiên lắm | `cam-xuc-va-tinh-cach-chu/amazed.png` |
-| 10 | friendly | thân thiện | `cam-xuc-va-tinh-cach-chu/friendly.png` |
-| 11 | honest | trung thực | `cam-xuc-va-tinh-cach-chu/honest.png` |
-| 12 | patient | kiên nhẫn | `cam-xuc-va-tinh-cach-chu/patient.png` |
-| 13 | selfish | ích kỉ | `cam-xuc-va-tinh-cach-chu/selfish.png` |
-| 14 | generous | hào phóng | `cam-xuc-va-tinh-cach-chu/generous.png` |
-| 15 | serious | nghiêm túc | `cam-xuc-va-tinh-cach-chu/serious.png` |
-| 16 | headache | đau đầu | `suc-khoe/headache.png` |
+| 1 | worried | lo lắng | `dan/cam-xuc/worried.webp` |
+| 2 | excited | hồi hộp | `dan/cam-xuc/excited.webp` |
+| 3 | calm | bình tĩnh | `dan/cam-xuc/calm.webp` |
+| 4 | shy | xấu hổ | `dan/cam-xuc/shy.webp` |
+| 5 | proud | tự hào | `dan/cam-xuc/proud.webp` |
+| 6 | disappointed | thất vọng | `dan/cam-xuc/disappointed.webp` |
+| 7 | confused | bối rối | `dan/cam-xuc/confused.webp` |
+| 8 | pleased | hài lòng | `dan/cam-xuc/pleased.webp` |
+| 9 | amazed | ngạc nhiên lắm | `dan/cam-xuc/amazed.webp` |
+| 10 | friendly | thân thiện | `dan/cam-xuc/friendly.webp` |
+| 11 | honest | trung thực | `dan/cam-xuc/honest.webp` |
+| 12 | patient | kiên nhẫn | `dan/cam-xuc/patient.webp` |
+| 13 | selfish | ích kỉ | `dan/cam-xuc/selfish.webp` |
+| 14 | generous | hào phóng | `dan/cam-xuc/generous.webp` |
+| 15 | serious | nghiêm túc | `dan/cam-xuc/serious.webp` |
+| 16 | headache | đau đầu | `dan/suc-khoe/headache.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 
@@ -2114,17 +2114,17 @@ Layout rules - these matter most:
 
 | Ô | Từ | Nghĩa | Lưu thành |
 |---|---|---|---|
-| 1 | stomach ache | đau bụng | `suc-khoe/stomach-ache.png` |
-| 2 | toothache | đau răng | `suc-khoe/toothache.png` |
-| 3 | fever | bị sốt | `suc-khoe/fever.png` |
-| 4 | cough | bị ho | `suc-khoe/cough.png` |
-| 5 | cold (illness) | bị cảm | `suc-khoe/cold-illness.png` |
-| 6 | tired | mệt | `suc-khoe/tired.png` |
-| 7 | hungry | đói | `suc-khoe/hungry.png` |
-| 8 | thirsty | khát | `suc-khoe/thirsty.png` |
-| 9 | healthy | khoẻ mạnh | `suc-khoe/healthy.png` |
-| 10 | medicine | viên thuốc | `suc-khoe/medicine.png` |
-| 11 | be off sick | nghỉ ốm | `suc-khoe/be-off-sick.png` |
+| 1 | stomach ache | đau bụng | `dan/suc-khoe/stomach-ache.webp` |
+| 2 | toothache | đau răng | `dan/suc-khoe/toothache.webp` |
+| 3 | fever | bị sốt | `dan/suc-khoe/fever.webp` |
+| 4 | cough | bị ho | `dan/suc-khoe/cough.webp` |
+| 5 | cold (illness) | bị cảm | `dan/suc-khoe/cold-illness.webp` |
+| 6 | tired | mệt | `dan/suc-khoe/tired.webp` |
+| 7 | hungry | đói | `dan/suc-khoe/hungry.webp` |
+| 8 | thirsty | khát | `dan/suc-khoe/thirsty.webp` |
+| 9 | healthy | khoẻ mạnh | `dan/suc-khoe/healthy.webp` |
+| 10 | medicine | viên thuốc | `dan/suc-khoe/medicine.webp` |
+| 11 | be off sick | nghỉ ốm | `dan/suc-khoe/be-off-sick.webp` |
 
 **Prompt — bấm nút copy ở góc phải khối dưới:**
 

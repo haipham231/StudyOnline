@@ -28,9 +28,9 @@ Dạy bé **chia sẻ**
 
 | Khung | Lời kể bé nghe | Lưu thành |
 |---|---|---|
-| 1 | Thỏ có hai quả táo đỏ. Bạn Sóc đi ngang, bụng đói meo, cứ nhìn mãi. | `canh/hai-qua-tao-1.png` |
-| 2 | Thỏ nhìn Sóc, rồi nhìn hai quả táo. Thỏ nghĩ mãi: chia hay là ăn hết đây? | `canh/hai-qua-tao-2.png` |
-| 3 | Thỏ đưa cho Sóc một quả. Thỏ chỉ ăn một quả thôi, mà vui gấp đôi. | `canh/hai-qua-tao-3.png` |
+| 1 | Thỏ có hai quả táo đỏ. Bạn Sóc đi ngang, bụng đói meo, cứ nhìn mãi. | `tranh/truyen/hai-qua-tao-1.webp` |
+| 2 | Thỏ nhìn Sóc, rồi nhìn hai quả táo. Thỏ nghĩ mãi: chia hay là ăn hết đây? | `tranh/truyen/hai-qua-tao-2.webp` |
+| 3 | Thỏ đưa cho Sóc một quả. Thỏ chỉ ăn một quả thôi, mà vui gấp đôi. | `tranh/truyen/hai-qua-tao-3.webp` |
 
 ```text
 A single image for a Vietnamese children's storybook app: exactly 3 illustrated scenes of one short story, placed side by side in one horizontal row, equal width, in reading order from left to right.
@@ -63,9 +63,9 @@ Dạy bé **biết xin lỗi**
 
 | Khung | Lời kể bé nghe | Lưu thành |
 |---|---|---|
-| 1 | Na quay người lại khoe tranh. Cây bút quệt vào áo bạn Bo, để lại một vết xanh dài. | `canh/vet-mau-tren-ao-1.png` |
-| 2 | Bo nhìn cái áo, mắt đỏ hoe. Na sợ quá, định lủi đi chỗ khác cho xong. | `canh/vet-mau-tren-ao-2.png` |
-| 3 | Nhưng Na quay lại: "Bo ơi, mình xin lỗi bạn." Hai bạn lại ngồi vẽ chung. | `canh/vet-mau-tren-ao-3.png` |
+| 1 | Na quay người lại khoe tranh. Cây bút quệt vào áo bạn Bo, để lại một vết xanh dài. | `tranh/truyen/vet-mau-tren-ao-1.webp` |
+| 2 | Bo nhìn cái áo, mắt đỏ hoe. Na sợ quá, định lủi đi chỗ khác cho xong. | `tranh/truyen/vet-mau-tren-ao-2.webp` |
+| 3 | Nhưng Na quay lại: "Bo ơi, mình xin lỗi bạn." Hai bạn lại ngồi vẽ chung. | `tranh/truyen/vet-mau-tren-ao-3.webp` |
 
 ```text
 A single image for a Vietnamese children's storybook app: exactly 3 illustrated scenes of one short story, placed side by side in one horizontal row, equal width, in reading order from left to right.
@@ -98,9 +98,9 @@ Dạy bé **thương ông bà**
 
 | Khung | Lời kể bé nghe | Lưu thành |
 |---|---|---|
-| 1 | Bà ngồi trong nhà, khát nước, gọi khẽ: "Mun ơi…". Mun đang chơi búp bê ngoài sân. | `canh/ly-nuoc-cho-ba-1.png` |
-| 2 | Mun nghe tiếng bà. Mun nghĩ mãi: chạy vào với bà hay là chơi tiếp đây? | `canh/ly-nuoc-cho-ba-2.png` |
-| 3 | Mun bưng ly nước bằng hai tay đưa cho bà. Bà xoa đầu Mun, Mun thấy ấm cả bụng. | `canh/ly-nuoc-cho-ba-3.png` |
+| 1 | Bà ngồi trong nhà, khát nước, gọi khẽ: "Mun ơi…". Mun đang chơi búp bê ngoài sân. | `tranh/truyen/ly-nuoc-cho-ba-1.webp` |
+| 2 | Mun nghe tiếng bà. Mun nghĩ mãi: chạy vào với bà hay là chơi tiếp đây? | `tranh/truyen/ly-nuoc-cho-ba-2.webp` |
+| 3 | Mun bưng ly nước bằng hai tay đưa cho bà. Bà xoa đầu Mun, Mun thấy ấm cả bụng. | `tranh/truyen/ly-nuoc-cho-ba-3.webp` |
 
 ```text
 A single image for a Vietnamese children's storybook app: exactly 3 illustrated scenes of one short story, placed side by side in one horizontal row, equal width, in reading order from left to right.
@@ -133,9 +133,9 @@ Dạy bé **trung thực, dám nhận lỗi**
 
 | Khung | Lời kể bé nghe | Lưu thành |
 |---|---|---|
-| 1 | Tin đá bóng trong nhà. Bụp! Quả bóng trúng chậu hoa của mẹ, chậu rơi xuống đất. | `canh/chau-hoa-cua-me-1.png` |
-| 2 | Mẹ hỏi: "Ai làm đổ chậu hoa thế này?" Tin nhìn con mèo đang ngủ, định bảo mèo làm. | `canh/chau-hoa-cua-me-2.png` |
-| 3 | Tin hít một hơi thật sâu: "Con ạ." Mẹ ôm Tin: "Con nói thật, mẹ vui hơn nhiều." | `canh/chau-hoa-cua-me-3.png` |
+| 1 | Tin đá bóng trong nhà. Bụp! Quả bóng trúng chậu hoa của mẹ, chậu rơi xuống đất. | `tranh/truyen/chau-hoa-cua-me-1.webp` |
+| 2 | Mẹ hỏi: "Ai làm đổ chậu hoa thế này?" Tin nhìn con mèo đang ngủ, định bảo mèo làm. | `tranh/truyen/chau-hoa-cua-me-2.webp` |
+| 3 | Tin hít một hơi thật sâu: "Con ạ." Mẹ ôm Tin: "Con nói thật, mẹ vui hơn nhiều." | `tranh/truyen/chau-hoa-cua-me-3.webp` |
 
 ```text
 A single image for a Vietnamese children's storybook app: exactly 3 illustrated scenes of one short story, placed side by side in one horizontal row, equal width, in reading order from left to right.
@@ -168,9 +168,9 @@ Dạy bé **thân thiện với bạn mới**
 
 | Khung | Lời kể bé nghe | Lưu thành |
 |---|---|---|
-| 1 | Lớp có bạn mới tên Mi. Mi ngồi một mình cuối lớp, chẳng ai nhìn tới. | `canh/ban-moi-trong-lop-1.png` |
-| 2 | Bo nhìn thấy Mi. Bo nghĩ: chạy ra chơi tiếp, hay là tới rủ bạn ấy nhỉ? | `canh/ban-moi-trong-lop-2.png` |
-| 3 | Bo chạy tới: "Chơi với bọn mình nhé!" Cả nhóm xếp hình, Mi cười thật tươi. | `canh/ban-moi-trong-lop-3.png` |
+| 1 | Lớp có bạn mới tên Mi. Mi ngồi một mình cuối lớp, chẳng ai nhìn tới. | `tranh/truyen/ban-moi-trong-lop-1.webp` |
+| 2 | Bo nhìn thấy Mi. Bo nghĩ: chạy ra chơi tiếp, hay là tới rủ bạn ấy nhỉ? | `tranh/truyen/ban-moi-trong-lop-2.webp` |
+| 3 | Bo chạy tới: "Chơi với bọn mình nhé!" Cả nhóm xếp hình, Mi cười thật tươi. | `tranh/truyen/ban-moi-trong-lop-3.webp` |
 
 ```text
 A single image for a Vietnamese children's storybook app: exactly 3 illustrated scenes of one short story, placed side by side in one horizontal row, equal width, in reading order from left to right.
@@ -203,9 +203,9 @@ Dạy bé **chào hỏi**
 
 | Khung | Lời kể bé nghe | Lưu thành |
 |---|---|---|
-| 1 | Bác Voi vẫy vòi: "Chào Gấu con!" Gấu mải nghĩ chuyện khác, cứ cắm cúi đi. | `canh/gau-quen-chao-1.png` |
-| 2 | Đi được mấy bước, Gấu chợt nhớ ra. Quay lại chào, hay là đi luôn nhỉ? | `canh/gau-quen-chao-2.png` |
-| 3 | Gấu chạy lại: "Cháu chào bác Voi ạ!" Bác Voi cười thật tươi. | `canh/gau-quen-chao-3.png` |
+| 1 | Bác Voi vẫy vòi: "Chào Gấu con!" Gấu mải nghĩ chuyện khác, cứ cắm cúi đi. | `tranh/truyen/gau-quen-chao-1.webp` |
+| 2 | Đi được mấy bước, Gấu chợt nhớ ra. Quay lại chào, hay là đi luôn nhỉ? | `tranh/truyen/gau-quen-chao-2.webp` |
+| 3 | Gấu chạy lại: "Cháu chào bác Voi ạ!" Bác Voi cười thật tươi. | `tranh/truyen/gau-quen-chao-3.webp` |
 
 ```text
 A single image for a Vietnamese children's storybook app: exactly 3 illustrated scenes of one short story, placed side by side in one horizontal row, equal width, in reading order from left to right.
@@ -238,9 +238,9 @@ Dạy bé **giúp đỡ**
 
 | Khung | Lời kể bé nghe | Lưu thành |
 |---|---|---|
-| 1 | Kiến bé tí kéo mãi một chiếc lá to. Lá chẳng nhúc nhích, Kiến ngồi thở, sắp khóc. | `canh/kien-khieng-la-1.png` |
-| 2 | Bọ Rùa bay ngang, đang vội về nhà. Bọ Rùa nhìn Kiến, rồi nhìn đường về, nghĩ một giây. | `canh/kien-khieng-la-2.png` |
-| 3 | Bọ Rùa đáp xuống đẩy phụ. Một bạn kéo, một bạn đẩy, chiếc lá trôi băng băng. | `canh/kien-khieng-la-3.png` |
+| 1 | Kiến bé tí kéo mãi một chiếc lá to. Lá chẳng nhúc nhích, Kiến ngồi thở, sắp khóc. | `tranh/truyen/kien-khieng-la-1.webp` |
+| 2 | Bọ Rùa bay ngang, đang vội về nhà. Bọ Rùa nhìn Kiến, rồi nhìn đường về, nghĩ một giây. | `tranh/truyen/kien-khieng-la-2.webp` |
+| 3 | Bọ Rùa đáp xuống đẩy phụ. Một bạn kéo, một bạn đẩy, chiếc lá trôi băng băng. | `tranh/truyen/kien-khieng-la-3.webp` |
 
 ```text
 A single image for a Vietnamese children's storybook app: exactly 3 illustrated scenes of one short story, placed side by side in one horizontal row, equal width, in reading order from left to right.
@@ -273,9 +273,9 @@ Dạy bé **tự dọn dẹp**
 
 | Khung | Lời kể bé nghe | Lưu thành |
 |---|---|---|
-| 1 | Bi chơi suốt cả buổi chiều. Đồ chơi vương khắp sàn nhà. | `canh/goc-do-choi-1.png` |
-| 2 | Mẹ gọi: "Tới giờ ăn cơm rồi!" Bi nhìn đống đồ chơi, định bỏ đó mà chạy đi. | `canh/goc-do-choi-2.png` |
-| 3 | Bi ngồi xuống nhặt từng món bỏ vào giỏ. Sàn nhà sạch bong, Bi thấy mình giỏi ghê. | `canh/goc-do-choi-3.png` |
+| 1 | Bi chơi suốt cả buổi chiều. Đồ chơi vương khắp sàn nhà. | `tranh/truyen/goc-do-choi-1.webp` |
+| 2 | Mẹ gọi: "Tới giờ ăn cơm rồi!" Bi nhìn đống đồ chơi, định bỏ đó mà chạy đi. | `tranh/truyen/goc-do-choi-2.webp` |
+| 3 | Bi ngồi xuống nhặt từng món bỏ vào giỏ. Sàn nhà sạch bong, Bi thấy mình giỏi ghê. | `tranh/truyen/goc-do-choi-3.webp` |
 
 ```text
 A single image for a Vietnamese children's storybook app: exactly 3 illustrated scenes of one short story, placed side by side in one horizontal row, equal width, in reading order from left to right.
@@ -308,9 +308,9 @@ Dạy bé **chờ đến lượt**
 
 | Khung | Lời kể bé nghe | Lưu thành |
 |---|---|---|
-| 1 | Cô mang sữa ra, cả lớp xếp thành một hàng dài. Tí đứng cuối, sốt ruột lắm. | `canh/xep-hang-lay-sua-1.png` |
-| 2 | Tí nghĩ: hay là mình chen lên trước nhỉ? Nhưng các bạn sẽ nhăn mặt mất. | `canh/xep-hang-lay-sua-2.png` |
-| 3 | Tí đứng yên chờ. Đến lượt Tí, ly sữa vẫn còn đó, mát lạnh. | `canh/xep-hang-lay-sua-3.png` |
+| 1 | Cô mang sữa ra, cả lớp xếp thành một hàng dài. Tí đứng cuối, sốt ruột lắm. | `tranh/truyen/xep-hang-lay-sua-1.webp` |
+| 2 | Tí nghĩ: hay là mình chen lên trước nhỉ? Nhưng các bạn sẽ nhăn mặt mất. | `tranh/truyen/xep-hang-lay-sua-2.webp` |
+| 3 | Tí đứng yên chờ. Đến lượt Tí, ly sữa vẫn còn đó, mát lạnh. | `tranh/truyen/xep-hang-lay-sua-3.webp` |
 
 ```text
 A single image for a Vietnamese children's storybook app: exactly 3 illustrated scenes of one short story, placed side by side in one horizontal row, equal width, in reading order from left to right.
@@ -343,9 +343,9 @@ Dạy bé **giữ lời hứa**
 
 | Khung | Lời kể bé nghe | Lưu thành |
 |---|---|---|
-| 1 | Bo hẹn Na: "Mai mình chờ bạn ở gốc cây nhé!" Sáng hôm sau, trời đổ mưa to. | `canh/hen-ban-goc-cay-1.png` |
-| 2 | Bo nằm trong chăn ấm, nhớ ra lời hẹn. Mưa thế này, chắc Na cũng chẳng đi đâu. | `canh/hen-ban-goc-cay-2.png` |
-| 3 | Bo mặc áo mưa chạy ra gốc cây. Na vẫn đứng đó chờ, ướt hết cả tóc. | `canh/hen-ban-goc-cay-3.png` |
+| 1 | Bo hẹn Na: "Mai mình chờ bạn ở gốc cây nhé!" Sáng hôm sau, trời đổ mưa to. | `tranh/truyen/hen-ban-goc-cay-1.webp` |
+| 2 | Bo nằm trong chăn ấm, nhớ ra lời hẹn. Mưa thế này, chắc Na cũng chẳng đi đâu. | `tranh/truyen/hen-ban-goc-cay-2.webp` |
+| 3 | Bo mặc áo mưa chạy ra gốc cây. Na vẫn đứng đó chờ, ướt hết cả tóc. | `tranh/truyen/hen-ban-goc-cay-3.webp` |
 
 ```text
 A single image for a Vietnamese children's storybook app: exactly 3 illustrated scenes of one short story, placed side by side in one horizontal row, equal width, in reading order from left to right.

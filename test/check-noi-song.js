@@ -15,7 +15,7 @@ const CV = g.ConVat, G = g.GameNoiSong;
 
 console.log('── Đưa bạn thú về nhà ──');
 
-const coAnh = d => fs.existsSync(ROOT + '/assets/sinh-vat/' + d + '.webp');
+const coAnh = d => fs.existsSync(ROOT + '/assets/hinh/' + d + '.webp');
 
 /* ---- 1. con nào cũng có nhà, nơi nào cũng có con ----
    Bảng CON_VAT viết không đều tay ("con sư tử" có chữ con, "gấu trúc" thì

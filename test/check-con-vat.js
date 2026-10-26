@@ -43,7 +43,7 @@ C.DS.forEach(c => {
 
 /* con nào trỏ thẳng vào tệp ảnh thì tệp đó phải có thật */
 C.DS.filter(c => c.hinh).forEach(c => {
-  if (!fs.existsSync(ROOT + '/assets/sinh-vat/' + c.hinh + '.webp'))
+  if (!fs.existsSync(ROOT + '/assets/hinh/' + c.hinh + '.webp'))
     bao(c.ten + ': không thấy ảnh ' + c.hinh);
   if (!/^<img /.test(C.anhCon(c))) bao(c.ten + ': anhCon không ra thẻ ảnh');
 });

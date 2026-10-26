@@ -45,9 +45,9 @@
     return global.HinhVe && global.HinhVe.doi ? global.HinhVe.doi(h) : h;
   }
 
-  /* Tranh nơi sống: có tranh vẽ kín nền (đường dẫn bắt đầu bằng noi-song/)
-     thì phủ trọn ô; còn đang dùng hình dán tạm thì đặt giữa nền màu. */
-  function laTranh(duong) { return /^noi-song\//.test(duong); }
+  /* Tranh nơi sống: tranh vẽ kín nền (nằm dưới tranh/) thì phủ trọn ô; còn
+     hình dán nền trong suốt (dưới dan/) thì đặt giữa nền màu. */
+  function laTranh(duong) { return /^tranh\//.test(duong); }
 
   function veNoi(k) {
     var n = CV.NOI[k];
@@ -98,13 +98,13 @@
   var CANH = {
     moDau: {
       hinh: null,   // có tranh thì đổi thành 'canh-con-vat/noi-song-mo-dau'
-      hinhTam: ['chim-bo/canh-cut', 'quen/khi', 'rung/lac-da', 'bien/ca-nhiet-doi'],
+      hinhTam: ['dan/con-vat/canh-cut', 'dan/con-vat/khi', 'dan/con-vat/lac-da', 'dan/con-vat/ca-nhiet-doi'],
       nen: 'linear-gradient(180deg,#dff1ff,#fff4dc)',
       loi: 'Ôi, các bạn thú bị lạc đường rồi! Bé giúp các bạn về đúng nhà nhé.'
     },
     ketThuc: {
       hinh: null,   // có tranh thì đổi thành 'canh-con-vat/noi-song-ket-thuc'
-      hinhTam: ['chim-bo/canh-cut', 'quen/khi', 'rung/lac-da', 'bien/ca-nhiet-doi'],
+      hinhTam: ['dan/con-vat/canh-cut', 'dan/con-vat/khi', 'dan/con-vat/lac-da', 'dan/con-vat/ca-nhiet-doi'],
       nen: 'linear-gradient(180deg,#e2fbe9,#fff4dc)'
     }
   };
