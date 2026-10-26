@@ -97,21 +97,15 @@
 
   var CANH = {
     moDau: {
-      hinh: null,   // có tranh thì đổi thành 'canh-con-vat/noi-song-mo-dau'
-      hinhTam: ['dan/con-vat/canh-cut', 'dan/con-vat/khi', 'dan/con-vat/lac-da', 'dan/con-vat/ca-nhiet-doi'],
-      nen: 'linear-gradient(180deg,#dff1ff,#fff4dc)',
+      hinh: 'tranh/cat-canh/noi-song-mo-dau',
       loi: 'Ôi, các bạn thú bị lạc đường rồi! Bé giúp các bạn về đúng nhà nhé.'
     },
-    ketThuc: {
-      hinh: null,   // có tranh thì đổi thành 'canh-con-vat/noi-song-ket-thuc'
-      hinhTam: ['dan/con-vat/canh-cut', 'dan/con-vat/khi', 'dan/con-vat/lac-da', 'dan/con-vat/ca-nhiet-doi'],
-      nen: 'linear-gradient(180deg,#e2fbe9,#fff4dc)'
-    }
+    ketThuc: { hinh: 'tranh/cat-canh/noi-song-ket-thuc' }
   };
 
   function moDau() {
     global.CatCanh.hien(goc, {
-      hinh: CANH.moDau.hinh, hinhTam: CANH.moDau.hinhTam, nen: CANH.moDau.nen,
+      hinh: CANH.moDau.hinh,
       loi: CANH.moDau.loi,
       cacNut: [{ chu: 'Giúp các bạn ▶', bam: batDauLuot }]
     });
@@ -133,7 +127,7 @@
     }
 
     global.CatCanh.hien(goc, {
-      hinh: CANH.ketThuc.hinh, hinhTam: CANH.ketThuc.hinhTam, nen: CANH.ketThuc.nen,
+      hinh: CANH.ketThuc.hinh,
       loi: 'Các bạn thú về tới nhà rồi! Cảm ơn bé nhiều lắm.',
       them: '<div class="stars">' + '⭐'.repeat(sao) +
             '<span class="off">' + '⭐'.repeat(3 - sao) + '</span></div>' +

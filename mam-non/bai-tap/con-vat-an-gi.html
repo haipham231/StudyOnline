@@ -46,14 +46,11 @@
   }
 
   /* Hai cắt cảnh biến tám câu hỏi thành một câu chuyện nhỏ: các bạn thú đói
-     bụng → bé cho các bạn ăn → các bạn no căng bụng. Có tranh rồi thì điền
-     đường dẫn vào hinh, chưa có thì dùng mấy hình dán trong kho xếp hàng. */
+     bụng → bé cho các bạn ăn → các bạn no căng bụng. */
   var CANH = {
-    moDau: { hinh: null, hinhTam: ['dan/con-vat/tho', 'dan/con-vat/khi', 'dan/con-vat/cho', 'dan/con-vat/meo'],
-             nen: 'linear-gradient(180deg,#fff3dd,#ffe6ef)',
+    moDau: { hinh: 'tranh/cat-canh/an-gi-mo-dau',
              loi: 'Các bạn thú đói bụng rồi! Bé cho các bạn ăn nhé.' },
-    ketThuc: { hinh: null, hinhTam: ['dan/con-vat/tho', 'dan/con-vat/khi', 'dan/con-vat/cho', 'dan/con-vat/meo'],
-               nen: 'linear-gradient(180deg,#e3fbe7,#fff3dd)' }
+    ketThuc: { hinh: 'tranh/cat-canh/an-gi-ket-thuc' }
   };
 
   Quiz.init({
@@ -64,14 +61,14 @@
     speak: true,
     moDau: function (goc, tiepTuc) {
       CatCanh.hien(goc, {
-        hinh: CANH.moDau.hinh, hinhTam: CANH.moDau.hinhTam, nen: CANH.moDau.nen,
+        hinh: CANH.moDau.hinh,
         loi: CANH.moDau.loi,
         cacNut: [{ chu: 'Cho các bạn ăn ▶', bam: tiepTuc }]
       });
     },
     ketThuc: function (goc, kq, tiepTuc) {
       CatCanh.hien(goc, {
-        hinh: CANH.ketThuc.hinh, hinhTam: CANH.ketThuc.hinhTam, nen: CANH.ketThuc.nen,
+        hinh: CANH.ketThuc.hinh,
         loi: 'Các bạn thú no căng bụng rồi! Cảm ơn bé nhé.',
         cacNut: [{ chu: 'Xem bé được mấy sao ▶', bam: tiepTuc }]
       });

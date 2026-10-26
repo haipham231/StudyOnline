@@ -97,24 +97,24 @@
      dùng, nhưng quá chung: con khỉ với con lạc đà đều "trên cạn" mà nhà hai
      bạn khác nhau một trời một vực. Bảng này chia mười nơi cụ thể.
 
-     hinh: lúc chưa có tranh nơi sống thì tạm trỏ vào một hình dán trong kho;
-           có tranh rồi thì đổi sang noi-song/<tên>, trang tự nhận ra là tranh
-           kín nền (theo tiền tố đường dẫn) mà vẽ phủ cả ô.
-     nen:  màu nền của ô, dùng lúc còn hình tạm và làm viền khi đã có tranh.
+     hinh: tranh vẽ kín nền trong tranh/noi-song/. Trong tranh cố ý không có
+           con vật nào — có sẵn con cá trong tranh biển thì bé nhìn là ra đáp
+           án, khỏi cần nghĩ.
+     nen:  màu nền của ô, hiện thoáng qua lúc tranh chưa tải xong.
      gan:  mấy nơi DỄ NHẦM với nơi này. Không bao giờ đưa chúng ra làm lựa
            chọn sai cùng nhau — con khỉ ở rừng nhiệt đới mà đưa thêm ô rừng
            thường thì người lớn còn ngập ngừng, nói gì bé ba tuổi. */
   var NOI = {
-    bien:   { ten: 'dưới biển',      hinh: 'dan/thien-nhien/song-bien',                nen: '#bfe7ff', gan: ['ao'] },
-    ao:     { ten: 'ở ao hồ',        hinh: 'dan/thien-nhien/lake',   nen: '#cdeedd', gan: ['bien'] },
-    bang:   { ten: 'ở xứ băng giá',  hinh: 'dan/thien-nhien/tuyet',                    nen: '#e8f4ff', gan: [] },
-    rungND: { ten: 'trong rừng nhiệt đới', hinh: 'dan/thien-nhien/palm-tree',  nen: '#c9efc4', gan: ['rung'] },
-    thao:   { ten: 'trên thảo nguyên', hinh: 'dan/thien-nhien/field', nen: '#fbe9b0', gan: ['saMac'] },
-    saMac:  { ten: 'ở sa mạc',       hinh: 'dan/thien-nhien/desert',           nen: '#fde3b0', gan: ['thao'] },
-    rung:   { ten: 'trong rừng',     hinh: 'dan/thien-nhien/forest',           nen: '#d4ecd0', gan: ['rungND'] },
-    trai:   { ten: 'ở nông trại',    hinh: 'dan/thien-nhien/farm',   nen: '#f7e3cf', gan: [] },
-    nha:    { ten: 'ở trong nhà',    hinh: 'dan/noi-chon/house',                    nen: '#fde7ef', gan: [] },
-    vuon:   { ten: 'trong vườn hoa', hinh: 'dan/thien-nhien/tulip',            nen: '#ffe9f6', gan: [] }
+    bien:   { ten: 'dưới biển',            hinh: 'tranh/noi-song/bien',           nen: '#bfe7ff', gan: ['ao'] },
+    ao:     { ten: 'ở ao hồ',              hinh: 'tranh/noi-song/ao-ho',          nen: '#cdeedd', gan: ['bien'] },
+    bang:   { ten: 'ở xứ băng giá',        hinh: 'tranh/noi-song/bang-gia',       nen: '#e8f4ff', gan: [] },
+    rungND: { ten: 'trong rừng nhiệt đới', hinh: 'tranh/noi-song/rung-nhiet-doi', nen: '#c9efc4', gan: ['rung'] },
+    thao:   { ten: 'trên thảo nguyên',     hinh: 'tranh/noi-song/thao-nguyen',    nen: '#fbe9b0', gan: ['saMac'] },
+    saMac:  { ten: 'ở sa mạc',             hinh: 'tranh/noi-song/sa-mac',         nen: '#fde3b0', gan: ['thao'] },
+    rung:   { ten: 'trong rừng',           hinh: 'tranh/noi-song/rung',           nen: '#d4ecd0', gan: ['rungND'] },
+    trai:   { ten: 'ở nông trại',          hinh: 'tranh/noi-song/nong-trai',      nen: '#f7e3cf', gan: [] },
+    nha:    { ten: 'ở trong nhà',          hinh: 'tranh/noi-song/trong-nha',      nen: '#fde7ef', gan: [] },
+    vuon:   { ten: 'trong vườn hoa',       hinh: 'tranh/noi-song/vuon-hoa',       nen: '#ffe9f6', gan: [] }
   };
 
   /* Nhà của từng con. Để riêng một bảng theo tên chứ không thêm trường vào
