@@ -1,6 +1,13 @@
 # thư mục cấu hình của công cụ trên máy, không thuộc về trang web
 .claude/
 
-# Tấm gốc do AI vẽ, mỗi tấm ~3MB, 36 tấm là gần 100MB. Cắt xong là xong
-# việc của nó nên không đưa vào repo — các đợt trước cũng vậy.
+# Tấm gốc do AI vẽ, mỗi tấm ~3MB, cộng lại hơn 160MB. Cắt xong là xong việc
+# của nó nên không đưa vào repo. Để trong nguon-anh/, đặt tên theo nội dung:
+#   nguon-anh/tu-vung/tam-01.png, nguon-anh/truyen/hai-qua-tao.png…
+nguon-anh/
+
+# Tên cũ, phòng khi còn tấm nào thả thẳng vào assets/ như mấy đợt trước
 assets/generated-image-*.png
+
+# tệp hệ thống macOS tự đẻ ra trong mọi thư mục
+.DS_Store
