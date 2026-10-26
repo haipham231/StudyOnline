@@ -91,6 +91,72 @@
     troi: { e: '☁️', ten: 'trên trời' }
   };
 
+  /* ===== Nơi sống cụ thể, cho game kéo thả =====
+
+     Ba ô "dưới nước / trên cạn / trên trời" ở trên vẫn giữ cho trang nào còn
+     dùng, nhưng quá chung: con khỉ với con lạc đà đều "trên cạn" mà nhà hai
+     bạn khác nhau một trời một vực. Bảng này chia mười nơi cụ thể.
+
+     hinh: lúc chưa có tranh nơi sống thì tạm trỏ vào một hình dán trong kho;
+           có tranh rồi thì đổi sang noi-song/<tên>, trang tự nhận ra là tranh
+           kín nền (theo tiền tố đường dẫn) mà vẽ phủ cả ô.
+     nen:  màu nền của ô, dùng lúc còn hình tạm và làm viền khi đã có tranh.
+     gan:  mấy nơi DỄ NHẦM với nơi này. Không bao giờ đưa chúng ra làm lựa
+           chọn sai cùng nhau — con khỉ ở rừng nhiệt đới mà đưa thêm ô rừng
+           thường thì người lớn còn ngập ngừng, nói gì bé ba tuổi. */
+  var NOI = {
+    bien:   { ten: 'dưới biển',      hinh: 'mau-troi/song-bien',                nen: '#bfe7ff', gan: ['ao'] },
+    ao:     { ten: 'ở ao hồ',        hinh: 'thien-nhien-va-con-vat-chu/lake',   nen: '#cdeedd', gan: ['bien'] },
+    bang:   { ten: 'ở xứ băng giá',  hinh: 'mau-troi/tuyet',                    nen: '#e8f4ff', gan: [] },
+    rungND: { ten: 'trong rừng nhiệt đới', hinh: 'thien-nhien-them/palm-tree',  nen: '#c9efc4', gan: ['rung'] },
+    thao:   { ten: 'trên thảo nguyên', hinh: 'thien-nhien-va-con-vat-chu/field', nen: '#fbe9b0', gan: ['saMac'] },
+    saMac:  { ten: 'ở sa mạc',       hinh: 'thien-nhien-them/desert',           nen: '#fde3b0', gan: ['thao'] },
+    rung:   { ten: 'trong rừng',     hinh: 'thien-nhien-them/forest',           nen: '#d4ecd0', gan: ['rungND'] },
+    trai:   { ten: 'ở nông trại',    hinh: 'thien-nhien-va-con-vat-chu/farm',   nen: '#f7e3cf', gan: [] },
+    nha:    { ten: 'ở trong nhà',    hinh: 'noi-chon/house',                    nen: '#fde7ef', gan: [] },
+    vuon:   { ten: 'trong vườn hoa', hinh: 'thien-nhien-them/tulip',            nen: '#ffe9f6', gan: [] }
+  };
+
+  /* Nhà của từng con. Để riêng một bảng theo tên chứ không thêm trường vào
+     từng dòng CON_VAT ở trên, cho dễ soát cả bảng một lượt.
+
+     Vài chỗ phải chọn:
+     - Rùa vào biển vì hình rùa trong kho là rùa biển, vây chèo chứ không phải
+       chân.
+     - Chim cánh cụt vào xứ băng giá, KHÔNG phải Bắc Cực: nó sống ở Nam Cực,
+       Bắc Cực là nhà gấu trắng.
+     - Dơi gộp vào rừng chứ không tách riêng hang động: một tranh cho đúng
+       một con thì phí, mà dơi cũng ngủ cả trên cây.
+     - Gấu trúc vào rừng: rừng tre trên núi, không phải rừng nhiệt đới. */
+  var NHA = {
+    bien: ['cá heo', 'cá voi', 'cá mập', 'bạch tuộc', 'cua', 'tôm', 'mực', 'sứa',
+           'cá voi xanh', 'cá voi lưng gù', 'cá nhà táng', 'cá voi sát thủ',
+           'lươn biển', 'sao biển', 'nhím biển', 'cá đuối', 'rùa'],
+    ao:     ['cá', 'vịt', 'ếch', 'cá sấu', 'hải ly'],
+    bang:   ['chim cánh cụt', 'gấu bắc cực', 'hải cẩu'],
+    rungND: ['khỉ', 'khỉ đột', 'vẹt', 'hổ', 'báo', 'rắn', 'lười', 'công'],
+    thao:   ['sư tử', 'ngựa vằn', 'hươu cao cổ', 'tê giác', 'hà mã', 'voi', 'kangaroo'],
+    saMac:  ['lạc đà'],
+    rung:   ['gấu', 'gấu nâu', 'sói', 'cáo', 'nai', 'nai sừng tấm', 'sóc', 'sóc đỏ',
+             'nhím', 'cú', 'gấu mèo', 'gấu trúc', 'đại bàng', 'dơi'],
+    trai:   ['bò', 'lợn', 'gà', 'cừu', 'ngựa', 'dê'],
+    nha:    ['chó', 'mèo', 'thỏ', 'chuột'],
+    vuon:   ['ong', 'bướm', 'kiến', 'bọ rùa', 'ốc sên', 'chim']
+  };
+
+  /* Khớp tên với hoặc không kèm chữ "con": bảng CON_VAT viết không đều tay,
+     "con sư tử" có chữ con mà "gấu trúc" thì không. Khớp một kiểu là sót mất
+     ba mươi hai con. */
+  (function () {
+    var theoTen = {};
+    Object.keys(NHA).forEach(function (k) {
+      NHA[k].forEach(function (t) { theoTen[t] = k; });
+    });
+    CON_VAT.forEach(function (c) {
+      c.noi = theoTen[c.ten.replace(/^con /, '')] || null;
+    });
+  })();
+
   /* Hình của một con: con nào có trường hinh thì trỏ thẳng vào tệp ảnh (mấy
      con không có emoji nào tả đúng), còn lại vẫn đi qua emoji như cũ. */
   function anhCon(con) {
@@ -132,6 +198,7 @@
     veCon: veCon,
     DS: CON_VAT,
     NOI_SONG: NOI_SONG,
+    NOI: NOI,
     anhCon: anhCon,
     khoaCon: khoaCon,
     nut: nut,

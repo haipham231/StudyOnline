@@ -4062,3 +4062,157 @@ body.khoa-cuon { overflow: hidden; }
 @media (max-width: 760px) {
   .panel.man-choi.khong-chu .o-hoi { --lan: 72px; padding: var(--lan) 8px 14px; }
 }
+
+/* ===== Game "Đưa bạn thú về nhà" — kéo con vật thả vào đúng nơi ===== */
+
+.san-noi-song { text-align: center; padding-top: 14px; }
+.san-noi-song .prompt { margin: 4px auto 6px; font-size: clamp(17px, 4.8vw, 21px); }
+
+/* chỗ con vật đứng chờ bé cầm lên */
+.cho-con { position: relative; margin: 2px 0 10px; }
+.con-keo {
+  display: inline-block;
+  position: relative;
+  z-index: 5;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  /* con vật nhún nhẹ để bé biết "cái này cầm được" */
+  animation: nhun-cho 2.2s ease-in-out infinite;
+}
+.con-keo .hinh-ve {
+  height: auto; width: auto;
+  max-height: 120px; max-width: 150px;
+  -webkit-user-drag: none;
+  /* ngón tay phải bấm trúng khung chứ không trúng ảnh, không thì trình duyệt
+     kéo nguyên cái ảnh đi theo kiểu kéo ảnh ra màn hình */
+  pointer-events: none;
+}
+.con-keo.dang-keo {
+  cursor: grabbing;
+  z-index: 50;
+  animation: none;
+  filter: drop-shadow(0 12px 14px rgba(37, 46, 92, .32));
+}
+@keyframes nhun-cho {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.goi-y-keo { font-size: 14px; font-weight: 700; color: var(--muted); margin-top: 2px; }
+
+/* ba nơi chồng lên nhau. Xếp dọc chứ không xếp ngang: ba ô ngang trên màn
+   375px thì mỗi ô chỉ còn trăm pixel, tranh nơi sống thu nhỏ tới đó là mất
+   hết cái đẹp mà chủ dự án muốn. Xếp dọc thì mỗi ô gần trọn bề ngang. */
+.ba-noi { display: flex; flex-direction: column; gap: 9px; }
+
+.o-noi {
+  position: relative;
+  height: clamp(98px, 15vh, 128px);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--nen, #eaf4ff);
+  box-shadow: 0 5px 0 var(--line), inset 0 0 0 3px rgba(255, 255, 255, .7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .18s, box-shadow .18s;
+}
+
+/* có tranh vẽ kín nền thì phủ trọn ô, cắt lấy dải giữa — prompt đã dặn AI
+   dồn mọi thứ quan trọng vào dải giữa vì mép trên mép dưới sẽ mất */
+.o-noi .tranh-noi {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+/* chưa có tranh thì đặt hình dán tạm giữa nền màu */
+.o-noi .dan-noi { height: auto; width: auto; max-height: 82%; max-width: 40%; opacity: .9; }
+
+/* chỗ con vật hiện ra sau khi bé đặt đúng */
+.o-noi .cho-dat {
+  position: absolute; inset: 0;
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 6px;
+  pointer-events: none;
+}
+.o-noi .cho-dat .hinh-ve {
+  height: auto; width: auto; max-height: 82%; max-width: 45%;
+  animation: ve-nha .45s cubic-bezier(.3, 1.5, .6, 1);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, .25));
+}
+@keyframes ve-nha {
+  from { transform: translateY(-40px) scale(.6); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+/* ngón tay đang ở trên ô nào thì ô ấy nổi lên, bé biết thả xuống là vào đó */
+.o-noi.dang-tro { transform: scale(1.03); box-shadow: 0 5px 0 var(--line), inset 0 0 0 4px var(--tim, #8b7bf7); }
+.o-noi.dung { box-shadow: 0 5px 0 #1fa36a, inset 0 0 0 4px #2fcf90; }
+.o-noi.lac { animation: lac-dau .42s ease; }
+@keyframes lac-dau {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-9px); } 40% { transform: translateX(8px); }
+  60% { transform: translateX(-5px); } 80% { transform: translateX(3px); }
+}
+/* sai hai lần thì nơi đúng sáng lên gợi ý */
+.o-noi.goi-y { animation: goi-y-sang 1.1s ease-in-out infinite; }
+@keyframes goi-y-sang {
+  0%, 100% { box-shadow: 0 5px 0 var(--line), inset 0 0 0 3px #ffd97a; }
+  50% { box-shadow: 0 5px 0 var(--line), inset 0 0 0 6px #ffc93c, 0 0 18px #ffd97a; }
+}
+.san-noi-song .feedback { min-height: 28px; margin-top: 10px; }
+
+/* ===== Cắt cảnh ===== */
+
+.cat-canh { text-align: center; }
+.tranh-cat-canh {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(37, 46, 92, .16);
+  margin-bottom: 14px;
+}
+.tranh-cat-canh .anh-cat-canh {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* dạng tạm: mấy hình dán xếp hàng trên nền màu */
+.tranh-cat-canh.tam {
+  display: flex; align-items: center; justify-content: center;
+  gap: 4%;
+  padding: 0 4%;
+}
+.tranh-cat-canh.tam .dan-tam {
+  height: auto; width: auto;
+  max-height: 46%; max-width: 22%;
+  animation: nhun-cho 2.4s ease-in-out infinite;
+}
+.tranh-cat-canh.tam .dan-tam:nth-child(2) { animation-delay: .3s; }
+.tranh-cat-canh.tam .dan-tam:nth-child(3) { animation-delay: .6s; }
+.tranh-cat-canh.tam .dan-tam:nth-child(4) { animation-delay: .9s; }
+
+.loi-cat-canh {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin: 0 0 8px;
+}
+.loi-cat-canh p {
+  margin: 0;
+  font-size: clamp(19px, 5.2vw, 24px);
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.loa-cat-canh {
+  flex: 0 0 auto;
+  border: 0; border-radius: 50%;
+  width: 40px; height: 40px;
+  background: var(--soft, #eef2ff);
+  font-size: 18px;
+  cursor: pointer;
+}
+.them-cat-canh .stars { font-size: 34px; margin: 4px 0; }
+.them-cat-canh .lead { margin: 0 0 6px; }
+.nut-cat-canh { justify-content: center; margin-top: 12px; }

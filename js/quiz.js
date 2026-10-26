@@ -298,7 +298,13 @@
 
       var go = el('button', 'btn go', config.exam ? '📝 Bắt đầu làm bài' : '🚀 Bắt đầu');
       go.type = 'button';
-      go.addEventListener('click', function () { startRound(chosen); });
+      go.addEventListener('click', function () {
+        /* config.moDau(tiepTuc): trang nào muốn có cắt cảnh mở đầu thì vẽ nó
+           vào root rồi gọi tiepTuc() khi bé bấm sang. Không khai thì vào bài
+           thẳng như mọi trang khác. */
+        if (config.moDau) config.moDau(root, function () { startRound(chosen); });
+        else startRound(chosen);
+      });
       panel.appendChild(go);
 
       root.appendChild(panel);
@@ -430,6 +436,15 @@
     function showResult() {
       detachKeyboard();
       clearInterval(state.nhip);
+
+      /* config.ketThuc(root, ketQua, tiepTuc): cắt cảnh kết thúc, chen vào
+         trước màn điểm. Chỉ chạy một lần mỗi lượt — tiepTuc() gọi lại hàm
+         này, phải có cờ chứ không thì quay vòng mãi. */
+      if (config.ketThuc && !state.daKetThuc) {
+        state.daKetThuc = true;
+        return config.ketThuc(root, { correct: state.correct, total: state.total }, showResult);
+      }
+
       root.innerHTML = '';
 
       var seconds = Math.round((Date.now() - state.startedAt) / 1000);
@@ -585,6 +600,7 @@
     choicesAround: choicesAround,
     repeatArt: repeatArt,
     readBest: readBest,
+    writeBest: writeBest,
     starsFor: starsFor,
     docTo: docTo,
     locLoiDoc: locLoiDoc,
