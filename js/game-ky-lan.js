@@ -214,17 +214,21 @@
   function cham(dung, q, phanHoi) {
     thaoPhim();
 
+    /* Chờ bấm Tiếp chứ không tự sang câu: tự sang thì câu mới đọc đè lên lời
+       khen đang đọc dở. Xem Quiz.nutTiep. */
     if (dung) {
       van.buoc += 1;
       phanHoi.className = 'feedback pop ok';
-      phanHoi.innerHTML = Q.pick(['⭐ Giỏi quá!', '🦄 Bay cao hơn rồi!', '🎉 Đúng rồi!', '✨ Tuyệt vời!']);
-      if (Q.docTo) Q.docTo('Giỏi quá');
+      var khen = Q.pick(['⭐ Giỏi quá!', '🦄 Bay cao hơn rồi!', '🎉 Đúng rồi!', '✨ Tuyệt vời!']);
+      phanHoi.innerHTML = khen;
+      if (Q.docTo) Q.docTo(khen.replace(/[^\p{L}\s]/gu, '').trim());
 
-      setTimeout(function () {
+      Q.nutTiep(phanHoi, function () {
         if (van.buoc >= van.chang.soCau) return len();
+        // bay lên một nấc rồi mới ra câu mới, để bé thấy mình vừa được thưởng
         van.dangChuyen = true; ve('len'); van.dangChuyen = false;
         setTimeout(raCauHoi, 520);
-      }, 760);
+      });
       return;
     }
 
@@ -233,8 +237,9 @@
     phanHoi.className = 'feedback pop bad';
     phanHoi.innerHTML = '✨ Đáp án đúng là <b>' + String(q.answer).replace(/<[^>]+>/g, ' ').trim() + '</b>' +
                         '<br><small>Không sao đâu, mình thử câu khác nhé!</small>';
+    if (Q.docTo) Q.docTo('Không sao đâu, mình thử câu khác nhé!');
 
-    setTimeout(raCauHoi, 2400);
+    Q.nutTiep(phanHoi, raCauHoi);
   }
 
   /* ---------- Lên tới nơi ---------- */

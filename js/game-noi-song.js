@@ -208,7 +208,9 @@
       phanHoi.innerHTML = '🎉 ' + loi;
       phanHoi.className = 'feedback ok';
       doc(loi);
-      global.setTimeout(function () { keo.go(); van.i++; vongMoi(); }, 2300);
+      // chờ bấm Tiếp, kẻo câu sau đọc đè lên câu khen đang đọc dở
+      Q.nutTiep(phanHoi, function () { keo.go(); van.i++; vongMoi(); },
+        van.i + 1 < van.de.length ? 'Bạn tiếp theo ▶' : 'Xong rồi ▶');
     }
 
     function sai(d) {

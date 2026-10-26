@@ -236,6 +236,38 @@
    * gen() trả về:
    *   { prompt?, art?, text?, after?, answer, choices?, cols?, unit? }
    */
+  /* Nút "Tiếp" sau khi bé trả lời.
+
+     Trang nào có đọc thành tiếng thì KHÔNG tự sang câu nữa. Trước đây đúng là
+     0,7 giây sau tự nhảy: máy vừa mở miệng khen đã bị cắt, câu mới lại đọc
+     đè lên. Chủ dự án ngồi chơi với bé thấy "đọc chưa xong mà nhảy vội qua
+     câu khác", muốn tự bấm mới sang.
+
+     Nghe cả phím Enter, phím cách và mũi tên phải, nhưng trễ một nhịp mới
+     bắt đầu nghe — kẻo chính phím Enter vừa dùng để nộp đáp án lại bấm luôn
+     nút Tiếp, bỏ qua mất câu khen. */
+  function nutTiep(sauNo, sau, chu) {
+    var b = el('button', 'btn chinh nut-tiep-cau', chu || 'Tiếp ▶');
+    b.type = 'button';
+    var xong = false;
+    function di() {
+      if (xong) return;
+      xong = true;
+      document.removeEventListener('keydown', phim);
+      sau();
+    }
+    function phim(e) {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') { e.preventDefault(); di(); }
+    }
+    b.addEventListener('click', di);
+    setTimeout(function () { if (!xong) document.addEventListener('keydown', phim); }, 350);
+    sauNo.parentNode.insertBefore(b, sauNo.nextSibling);
+    // trên điện thoại ô phản hồi hay nằm sát mép dưới, nút mới có thể lọt ra
+    // ngoài màn hình — kéo nhẹ cho thấy
+    try { b.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } catch (e) {}
+    return { nut: b, bo: function () { xong = true; document.removeEventListener('keydown', phim); } };
+  }
+
   function init(config) {
     var root = document.getElementById('quiz');
     var total = config.total || 10;
@@ -428,7 +460,8 @@
         feedback.innerHTML = '❌ Chưa đúng — đáp án là <b>' + q.answer + '</b>';
       }
 
-      setTimeout(nextQuestion, isCorrect ? 700 : 1900);
+      if (config.speak) nutTiep(feedback, nextQuestion);
+      else setTimeout(nextQuestion, isCorrect ? 700 : 1900);
     }
 
     /* --- Kết quả --- */
@@ -601,6 +634,7 @@
     repeatArt: repeatArt,
     readBest: readBest,
     writeBest: writeBest,
+    nutTiep: nutTiep,
     starsFor: starsFor,
     docTo: docTo,
     locLoiDoc: locLoiDoc,
