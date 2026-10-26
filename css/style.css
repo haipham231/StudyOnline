@@ -4036,3 +4036,29 @@ body.khoa-cuon { overflow: hidden; }
 .san-truyen { padding: 12px 12px 14px; border-radius: 20px; }
   .luong-vuon { grid-template-columns: repeat(5, 1fr); gap: 6px; padding: 10px 8px; }
 }
+
+/* ===== Ô trả lời chỉ có hình: cho hình to hết mức ===== */
+
+/* Ba ô ngang trên màn 375px thì mỗi ô chỉ được chừng một trăm pixel — đó là
+   trần thật, không nới thêm được. Nên phải vắt kiệt từng pixel: thu khoảng
+   cách giữa các ô, thu đệm hai bên, và bỏ khoảng trống chiều cao vốn chừa
+   cho nhãn chữ nay đã bỏ.
+
+   Trước khi sửa, ô cao 134px mà hình chỉ 84×88 — hơn một phần ba ô là chỗ
+   trống của cái nhãn đã gỡ đi. */
+.panel.kids.khong-chu .choices { gap: 10px; }
+.panel.kids.khong-chu .choice { padding: 10px 3px; }
+
+/* Trần chiều cao nới rộng ra để BỀ NGANG mới là thứ quyết định cỡ hình. Để
+   trần chiều cao thấp thì hình đứng (con mèo, chai nước) bị ép nhỏ hơn hẳn
+   hình nằm ngang, ba ô cạnh nhau nhìn to nhỏ lộn xộn. */
+.panel.kids.khong-chu .choice .hinh-ve {
+  max-height: min(2.1em, 200px);
+  max-width: 100%;
+}
+
+/* Khung game thu đệm hai bên cho ba ô rộng thêm, và hạ mép nhoà xuống vì
+   không còn nhãn chữ thì ô trả lời thấp hẳn, chừa 92px là thừa. */
+@media (max-width: 760px) {
+  .panel.man-choi.khong-chu .o-hoi { --lan: 72px; padding: var(--lan) 8px 14px; }
+}

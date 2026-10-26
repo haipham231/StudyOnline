@@ -19,7 +19,22 @@
   }
 
   // nút chọn: hình to, nhãn tiếng Việt, thêm tiếng Anh nếu bật song ngữ
+  /* Chế độ KHÔNG CHỮ.
+
+     Bé hai tới năm tuổi chưa đọc được, nên ở những trang dành riêng cho bé
+     thì ô trả lời chỉ nên có hình, không có nhãn chữ. Nhãn chữ vừa vô dụng
+     vừa chiếm chỗ: hình bị ép nhỏ lại để chừa chỗ cho mấy chữ bé không đọc
+     nổi.
+
+     Để dạng cờ bật được chứ không sửa cứng, vì mấy bộ sinh đề này còn dùng ở
+     trang bài tập có kèm chữ cho bé lớn hơn. Không lưu vào máy — trang nào
+     cần thì tự bật lúc nạp. */
+  var KHONG_CHU = false;
+  function datKhongChu(bat) { KHONG_CHU = !!bat; }
+  function dangKhongChu() { return KHONG_CHU; }
+
   function nut(hinh, vi, en) {
+    if (KHONG_CHU) return hinh;
     return hinh + '<span class="nhan">' + vi +
       (songNgu() && en ? '<i class="en">' + en + '</i>' : '') + '</span>';
   }
@@ -121,6 +136,20 @@
   function hoatDong() {
     var dung = chon(HOAT_DONG);
     var sai = nhieu(HOAT_DONG, 2, dung, function (x) { return x.vi; });
+    /* Không chữ thì phải ĐẢO CHIỀU câu hỏi. Giữ nguyên kiểu cũ mà bỏ chữ đi
+       là hỏng: đề đã hiện sẵn hình việc đang làm, ba ô trả lời cũng là hình
+       — ô đúng trùng khít với đề, bé chỉ việc so hình, chẳng học được gì.
+       Nên bỏ hình ở đề, đọc tên việc lên, để bé chọn hình. */
+    if (KHONG_CHU) {
+      return {
+        prompt: 'Đâu là bạn đang <b>' + dung.vi + '</b>?',
+        speak: 'Đâu là bạn đang ' + dung.vi + '?',
+        answer: dung.e,
+        choices: Q.shuffle([dung].concat(sai)).map(function (x) { return x.e; }),
+        cols: 3, mach: 'Hoạt động hằng ngày'
+      };
+    }
+
     return {
       prompt: 'Bạn nhỏ đang làm gì?',
       speak: 'Bạn nhỏ đang làm gì?',
@@ -224,8 +253,9 @@
 
   function chuDauTu() {
     var c = chon(CHU_CAI);
+    // ba chữ thôi, cùng luật với nhanBietChu — bốn chữ là rối mắt bé mầm non
     var sai = Q.shuffle(CHU_CAI.filter(function (x) { return x.c !== c.c; }))
-      .slice(0, 3).map(function (x) { return x.c; });
+      .slice(0, 2).map(function (x) { return x.c; });
 
     return {
       prompt: '<b>' + c.tu + '</b> bắt đầu bằng chữ gì?',
@@ -235,7 +265,7 @@
       choices: Q.shuffle([c.c].concat(sai)).map(function (x) {
         return '<span class="chu-to">' + x + '</span>';
       }),
-      cols: 4, mach: 'Chữ đầu của từ'
+      cols: 3, mach: 'Chữ đầu của từ'
     };
   }
 
@@ -249,6 +279,23 @@
     var sai = [n - 1, n + 1, n + 2, n - 2]
       .filter(function (v) { return v >= 1 && v <= 10 && v !== n; })
       .map(function (v) { return SO_CHU[v]; });
+
+    /* Không chữ thì đáp án là CHỮ SỐ chứ không phải chữ viết. "ba" với "bốn"
+       thì bé mầm non chịu, còn mặt số 3 với 4 là thứ bé học nhận dạng từ
+       lớp mầm — nhìn hình thù mà chọn, không cần đọc. */
+    if (KHONG_CHU) {
+      var soSai = [n - 1, n + 1, n + 2, n - 2]
+        .filter(function (v) { return v >= 1 && v <= 10 && v !== n; })
+        .map(function (v) { return '<span class="chu-to">' + v + '</span>'; });
+      return {
+        prompt: 'Có mấy ' + ds.vi + '?',
+        speak: 'Có mấy ' + ds.vi + '?',
+        art: Q.repeatArt(ds.e, n),
+        answer: '<span class="chu-to">' + n + '</span>',
+        choices: Q.shuffle(['<span class="chu-to">' + n + '</span>'].concat(soSai.slice(0, 2))),
+        cols: 3, mach: 'Đếm số'
+      };
+    }
 
     return {
       prompt: 'Có mấy ' + ds.vi + '?',
@@ -482,6 +529,7 @@
     xungHo: xungHo, nhanThanh: nhanThanh, thanhCuaTieng: thanhCuaTieng,
     mauCau: mauCau, vanHoaViet: vanHoaViet, ghepAmDon: ghepAmDon, tachTieng: tachTieng,
     songNgu: songNgu, datSongNgu: datSongNgu,
+    datKhongChu: datKhongChu, dangKhongChu: dangKhongChu,
     ngheVaChon: ngheVaChon, goiTen: goiTen,
     nhanBietChu: nhanBietChu, chuDauTu: chuDauTu,
     demBangChu: demBangChu, chaoHoi: chaoHoi,

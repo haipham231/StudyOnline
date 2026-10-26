@@ -174,7 +174,7 @@
     var chang = van.chang;
     goc.innerHTML = '';
 
-    var khung = el('div', 'panel man-choi kids');
+    var khung = el('div', 'panel man-choi kids khong-chu');
     khung.style.setProperty('--mau', chang.mau);
 
     var tren = el('div', 'thanh-tren');
@@ -286,6 +286,10 @@
   global.GameKyLan = {
     CHANG: CHANG,
     batDau: function (idGoc) {
+      /* Game này dành riêng cho bé hai tới năm tuổi, nên ô trả lời chỉ có
+         hình. Bật trước khi sinh câu đầu tiên, vì bộ sinh đề đọc cờ này lúc
+         dựng từng câu. */
+      if (M && M.datKhongChu) M.datKhongChu(true);
       goc = document.getElementById(idGoc || 'game');
       veBanDo();
     },
